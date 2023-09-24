@@ -6,7 +6,7 @@ The Web version is deployed at [fwew.app](https://fwew.app)
 
 The Android version is on the [Google Play Store](https://play.google.com/store/apps/details?id=app.fwew.react)
 
-The Na'vi language was created by Paul Frommer for the 2009 James Cameron film _Avatar_ and its upcoming sequels.
+The Na'vi language was created by Paul Frommer for James Cameron's _Avatar_ universe.
 
 Uses the [Fwew API](https://github.com/fwew/fwew-api) to fetch dictionary data
 
