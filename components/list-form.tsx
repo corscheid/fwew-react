@@ -53,6 +53,7 @@ function ListForm({ onSearch, wcsArray }: ListFormProps): JSX.Element {
   const [what, setWhat] = useState('')
   const [cond, setCond] = useState('')
   const [spec, setSpec] = useState('')
+  const [isCreatingNewCondition, setIsCreatingNewCondition] = useState(false)
   const [array, setArray] = useState(wcsArray)
   const windowHeight = Dimensions.get('window').height
   const windowWidth = Dimensions.get('window').width
@@ -129,10 +130,12 @@ function ListForm({ onSearch, wcsArray }: ListFormProps): JSX.Element {
     newArray[index].spec = spec
     setSpec(spec)
     setArray(newArray)
+    setIsCreatingNewCondition(false)
   }
 
   /** function to handle the Floating Action Button press to add a card */
   const add = (): void => {
+    setIsCreatingNewCondition(true)
     setWhat('')
     setCond('')
     setSpec('')
@@ -300,7 +303,7 @@ function ListForm({ onSearch, wcsArray }: ListFormProps): JSX.Element {
         color={colors.buttonText}
         icon="plus"
         onPress={add}
-        visible={array.length === 0 || (!!what && !!cond && !!spec)}
+        visible={array.length === 0 || !isCreatingNewCondition}
       />
     </View>
   )
