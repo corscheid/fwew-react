@@ -1,6 +1,5 @@
 import { useResultsLanguageContext } from "@/context/ResultsLanguageContext";
 import { useDebounce } from "@/hooks/useDebounce";
-import type { PhonemeFrequencyMap } from "fwew.js";
 import { dictLen, phonemeFrequency } from "fwew.js";
 import { useEffect, useState } from "react";
 
@@ -21,7 +20,7 @@ export function useStats() {
   const [loading, setLoading] = useState(false);
   const [wordCount, setWordCount] = useState<String>();
   const [phonemeGrid, setPhonemes] = useState<String[][]>([]);
-  const [clusterMap, setClusters] = useState<number[][]>([]);
+  const [clusterMap, setClusters] = useState<String[][]>([]);
   const debounce = useDebounce();
   let abortController = new AbortController();
 
@@ -29,7 +28,7 @@ export function useStats() {
     setLoading(true);
 
     let data1: String;
-    let data2: Map<string,Map<string,Map<string,number>>>
+    let data2: String[][][]
     let value1: Map<string,Map<string,number>>
     
     try {
@@ -43,39 +42,10 @@ export function useStats() {
       setLoading(false);
       return;
     }
-
-    let i: number = 0
-    let phonemeGrid: string[][] = [[],[],[]];
-    let clusterMap: number[][] = [[],[],[]];
-
-    let clusters1: string[] = ["f", "s", "ts"];
-    let clusters2: string[] = ["p", "t", "k", "px", "tx", "kx", "m", "n", "ng", "r", "l", "w", "y"];
-
-    for (const [key, value1] of data2.entries()) {
-      if (key == "Clusters") {
-        i = 0
-        clusters1.forEach((consonant1: string) => {
-          clusters2.forEach((consonant2: string) => {
-            assign(data2.get(key)?.get(consonant1)?.get(consonant2))
-            clusterMap[i].push(numberOnly);
-          });
-          i += 1
-        });
-      } else {
-        i = 0
-        for (const [key, value2] of Object.entries(value1)) {
-          phonemeGrid[i].push(key)
-          for (const [key, value3] of Object.entries(value2)) {
-            phonemeGrid[i].push(String(value3) + " " + key)
-          }
-          i += 1
-        }
-      }
-    }
     
     setWordCount(data1)
-    setPhonemes(phonemeGrid);
-    setClusters(clusterMap);
+    setPhonemes(data2[0]);
+    setClusters(data2[1]);
     setLoading(false);
   };
 

@@ -10,38 +10,42 @@ export default function ToyboxScreen() {
   const { toybox } = i18n[appLanguage];
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <Link href="/(tabs)/toybox/names">
-        <CardView style={styles.card}>
-          <Text style={styles.text}>{toybox.names}</Text>
-          <ItalicText>Names</ItalicText>
-        </CardView>
-      </Link>
-      <Link href="/(tabs)/toybox/lists">
-        <CardView style={styles.card}>
-          <Text style={styles.text}>{toybox.lists}</Text>
-          <ItalicText>Lists</ItalicText>
-        </CardView>
-      </Link>
-      <Link href="/(tabs)/toybox/stats">
-        <CardView style={styles.card}>
-          <Text style={styles.text}>{toybox.stats}</Text>
-          <ItalicText>Stats</ItalicText>
-        </CardView>
-      </Link>
-      <Link href="/(tabs)/toybox/valid">
-        <CardView style={styles.card}>
-          <Text style={styles.text}>{toybox.valid}</Text>
-          <ItalicText>Valid</ItalicText>
-        </CardView>
-      </Link>
-      <Link href="/(tabs)/toybox/lenition">
-        <CardView style={styles.card}>
-          <Text style={styles.text}>{toybox.lenition}</Text>
-          <ItalicText>Lenition</ItalicText>
-        </CardView>
-      </Link>
-    </ScrollView>
+      <ScrollView contentContainerStyle={styles.container}>
+        <span>
+        <Link href="/(tabs)/toybox/names">
+          <CardView style={styles.card}>
+            <Text style={styles.text}>{toybox.names}</Text>
+            <ItalicText>Names</ItalicText>
+          </CardView>
+        </Link>
+        <Link href="/(tabs)/toybox/lists">
+          <CardView style={styles.card}>
+            <Text style={styles.text}>{toybox.lists}</Text>
+            <ItalicText>Lists</ItalicText>
+          </CardView>
+        </Link>
+        </span>
+        <span>
+        <Link href="/(tabs)/toybox/stats">
+          <CardView style={styles.card}>
+            <Text style={styles.text}>{toybox.stats}</Text>
+            <ItalicText>Stats</ItalicText>
+          </CardView>
+        </Link>
+        <Link href="/(tabs)/toybox/valid">
+          <CardView style={styles.card}>
+            <Text style={styles.text}>{toybox.valid}</Text>
+            <ItalicText>Valid</ItalicText>
+          </CardView>
+        </Link>
+        </span>
+        <Link href="/(tabs)/toybox/lenition">
+          <CardView style={styles.card}>
+            <Text style={styles.text}>{toybox.lenition}</Text>
+            <ItalicText>Lenition</ItalicText>
+          </CardView>
+        </Link>
+      </ScrollView>
   );
 }
 
@@ -51,6 +55,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     gap: 32,
+    padding: 16,
   },
   card: {
     padding: 32,
