@@ -40,11 +40,10 @@ export function Text(props: TextProps) {
 
 export function View(props: ViewProps) {
   const { style, ...otherProps } = props;
-  const { colors } = useTheme();
 
   return (
     <DefaultView
-      style={[{ backgroundColor: colors.background }, style]}
+      style={[style]}
       {...otherProps}
     />
   );

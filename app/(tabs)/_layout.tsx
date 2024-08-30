@@ -9,6 +9,7 @@ import { useTheme } from "@react-navigation/native";
 import { Tabs } from "expo-router";
 import { useColorScheme } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
+import { View } from "react-native";
 
 type TabBarIconProps = {
   name: React.ComponentProps<typeof FontAwesome>["name"];
@@ -31,28 +32,47 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
+        headerStyle: { backgroundColor: theme.colors.primary },
         headerTintColor: Colors.dark.text,
         tabBarActiveTintColor: theme.colors.primary,
         tabBarInactiveTintColor: colors.placeholder,
         headerLeft: () => <Logo />,
         headerRight: () => <ActionButtons />,
         headerBackground: () => (
-          <LinearGradient
-            start={{ x: 0, y: 0 }}
-            end={{ x: 0, y: 1 }}
-            //colors={["#88FFFF", "#55DDDD", "#0044FF"]}
-            colors={[theme.colors.primary, theme.colors.primary]}
-            style={{ height: "100%" }}
-          />
+          <View style={{ height: "100%" }}>
+            <LinearGradient
+              start={{ x: 0, y: 0 }}
+              end={{ x: 0, y: 1 }}
+              //colors={["#55DDFF", "#88FFFF"]}
+              colors={[theme.colors.primary, theme.colors.primary]}
+              style={{ height: "50%" }}
+            />
+            <LinearGradient
+              start={{ x: 0, y: 0 }}
+              end={{ x: 0, y: 1 }}
+              //colors={["#66BBFF", "#55DDFF"]}
+              colors={[theme.colors.primary, theme.colors.primary]}
+              style={{ height: "50%" }}
+            />
+          </View>
         ),
         tabBarBackground: () => (
-          <LinearGradient
-            start={{ x: 0, y: 0 }}
-            end={{ x: 0, y: 1 }}
-            //colors={["#00FFFF", "#0044FF", "#006699"]}
-            colors={[theme.colors.primary, theme.colors.primary]}
-            style={{ height: "100%" }}
-          />
+          <View style={{ height: "100%" }}>
+            <LinearGradient
+              start={{ x: 0, y: 0 }}
+              end={{ x: 0, y: 1 }}
+              //colors={["#00FFFF", "#006699"]}
+              colors={[theme.colors.card, theme.colors.card]}
+              style={{ height: "50%" }}
+            />
+            <LinearGradient
+              start={{ x: 0, y: 0 }}
+              end={{ x: 0, y: 1 }}
+              //colors={["#0044FF", "#00FFFF"]}
+              colors={[theme.colors.card, theme.colors.card]}
+              style={{ height: "50%" }}
+            />
+          </View>
         ),
       }}
       
