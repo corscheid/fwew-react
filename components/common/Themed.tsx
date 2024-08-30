@@ -46,10 +46,10 @@ export function View(props: ViewProps) {
   const { style, ...otherProps } = props;
 
   return (
-      <DefaultView
-        style={[style]}
-        {...otherProps}
-      />
+    <DefaultView
+      style={[style]}
+      {...otherProps}
+    />
   );
 }
 
