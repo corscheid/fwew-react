@@ -31,8 +31,8 @@ export default function SearchScreen() {
     <LinearGradient
     start={{ x: 0, y: 0 }}
     end={{ x: 0, y: 1 }}
-    //colors={["#000033", "#000033", "#0000AA"]}
-    colors={[colors.background, colors.background]}
+    colors={["#000033", "#000033", "#0000AA"]}
+    //colors={[colors.background, colors.background]}
     style={{ height: "100%" }}
   >
     <ScrollView

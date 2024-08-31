@@ -196,7 +196,7 @@ function AdpositionDisplay({ adposition }: { adposition: string }) {
     ) {
       return;
     }
-    const result = results[0][1][languageCode];
+    const result = results[0][0][languageCode];
     setDisplay(result);
   }, [adposition, languageCode]);
 

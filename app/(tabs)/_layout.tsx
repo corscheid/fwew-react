@@ -43,15 +43,15 @@ export default function TabLayout() {
             <LinearGradient
               start={{ x: 0, y: 0 }}
               end={{ x: 0, y: 1 }}
-              //colors={["#55DDFF", "#88FFFF"]}
-              colors={[theme.colors.primary, theme.colors.primary]}
+              colors={["#55DDFF", "#88FFFF"]}
+              //colors={[theme.colors.primary, theme.colors.primary]}
               style={{ height: "50%" }}
             />
             <LinearGradient
               start={{ x: 0, y: 0 }}
               end={{ x: 0, y: 1 }}
-              //colors={["#66BBFF", "#55DDFF"]}
-              colors={[theme.colors.primary, theme.colors.primary]}
+              colors={["#66BBFF", "#55DDFF"]}
+              //colors={[theme.colors.primary, theme.colors.primary]}
               style={{ height: "50%" }}
             />
           </View>
@@ -61,15 +61,15 @@ export default function TabLayout() {
             <LinearGradient
               start={{ x: 0, y: 0 }}
               end={{ x: 0, y: 1 }}
-              //colors={["#00FFFF", "#006699"]}
-              colors={[theme.colors.card, theme.colors.card]}
+              colors={["#00FFFF", "#006699"]}
+              //colors={[theme.colors.card, theme.colors.card]}
               style={{ height: "50%" }}
             />
             <LinearGradient
               start={{ x: 0, y: 0 }}
               end={{ x: 0, y: 1 }}
-              //colors={["#0044FF", "#00FFFF"]}
-              colors={[theme.colors.card, theme.colors.card]}
+              colors={["#0044FF", "#00FFFF"]}
+              //colors={[theme.colors.card, theme.colors.card]}
               style={{ height: "50%" }}
             />
           </View>
