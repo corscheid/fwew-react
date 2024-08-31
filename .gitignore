@@ -51,3 +51,6 @@ android/
 
 # Yarn
 .yarn/
+
+# Package lock
+packege-lock.json
