@@ -45,3 +45,6 @@ expo-env.d.ts
 # @end expo-cli
 .vercel
 credentials.json
+
+# Android build
+android
