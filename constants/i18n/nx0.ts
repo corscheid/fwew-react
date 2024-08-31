@@ -234,7 +234,7 @@ const strings: UITranslation = {
         value: CameronWords.A1Names,
       },
       {
-        key: "Ta Muvea UNiltìrantokx a Stxo",
+        key: "Ta Muvea Uniltìrantokx a Stxo",
         value: CameronWords.A2Names,
       },
       {
