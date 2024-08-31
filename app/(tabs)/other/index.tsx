@@ -3,6 +3,7 @@ import { View } from "@/components/common/Themed";
 import { getUI } from "@/constants/i18n";
 import { useAppLanguageContext } from "@/context/AppLanguageContext";
 import { useDialectContext } from "@/context/DialectContext";
+import { Link } from "expo-router";
 import { ScrollView, StyleSheet } from "react-native";
 
 export default function OtherScreen() {

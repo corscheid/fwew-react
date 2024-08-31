@@ -1,8 +1,10 @@
-import { ScreenLinkCard } from "@/components/common/ScreenLinkCard";
-import { View } from "@/components/common/Themed";
+import { ItalicText } from "@/components/common/StyledText";
+import { CardView, Text, View } from "@/components/common/Themed";
 import { getUI } from "@/constants/i18n";
+import { ScreenLinkCard } from "@/components/common/ScreenLinkCard";
 import { useAppLanguageContext } from "@/context/AppLanguageContext";
 import { useDialectContext } from "@/context/DialectContext";
+import { Link } from "expo-router";
 import { StyleSheet } from "react-native";
 
 export default function NamesScreen() {
