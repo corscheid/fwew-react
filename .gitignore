@@ -47,4 +47,4 @@ expo-env.d.ts
 credentials.json
 
 # Android build
-android
+android/
