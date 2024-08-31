@@ -48,3 +48,6 @@ credentials.json
 
 # Android build
 android/
+
+# Yarn
+.yarn/
