@@ -1,5 +1,5 @@
 import { SmallButton } from "@/components/common/SmallButton";
-import { TextInput, View } from "@/components/common/Themed";
+import { GradientCardView, TextInput, View } from "@/components/common/Themed";
 import Colors from "@/constants/Colors";
 import { getUI } from "@/constants/i18n";
 import { useAppLanguageContext } from "@/context/AppLanguageContext";
@@ -23,7 +23,7 @@ export function NumberSearchBar(props: NumberSearchBarProps) {
   let ui = getUI(appLanguage, dialect);
 
   return (
-    <View style={styles.inputContainer}>
+    <GradientCardView style={styles.inputContainer}>
       <TextInput
         value={query}
         onChangeText={search}
@@ -42,7 +42,7 @@ export function NumberSearchBar(props: NumberSearchBarProps) {
       />
       <SmallButton icon="close" onPress={clear} />
       <SmallButton icon="exchange" onPress={toggleMode} />
-    </View>
+    </GradientCardView>
   );
 }
 

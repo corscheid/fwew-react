@@ -27,8 +27,8 @@ export default function SearchScreen() {
   const { dialect } = useDialectContext();
   const ui = getUI(appLanguage, dialect).search;
 
-  const frutigerForest = ["#000033", "#0000AA"]
-  const frutigerReef = ["#001A22", "#004A55"]
+  const auxtheme = "normal" as string
+  const frutiger = dialect === "reef" ? ["#001A22", "#004A55"] : ["#000033", "#0000AA"]
 
   return (
     <View style={{height: "100%"}}>
@@ -36,9 +36,8 @@ export default function SearchScreen() {
         start={{ x: 0, y:0 }}
         end={{ x: 0, y: 1 }}
         locations={[0.9,1]}
-        colors={dialect === "reef" ? frutigerReef : frutigerForest}
+        colors={auxtheme == "normal" ? [colors.background,colors.background] : frutiger}
         //colors={[colors.background, colors.background]}
-        style={styles.container}
       >
       <ScrollView
         style={styles.container}

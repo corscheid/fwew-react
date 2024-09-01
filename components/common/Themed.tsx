@@ -16,6 +16,7 @@ import {
 } from "react-native";
 import { useDialectContext } from "@/context/DialectContext";
 import { LinearGradient } from 'expo-linear-gradient';
+//import { useAuxtheme } from "@/hooks/useAuxtheme";
 
 export function useThemeColor(
   props: { light?: string; dark?: string },
@@ -51,7 +52,7 @@ export function View(props: ViewProps) {
   );
 }
 
-export function CardView(props: ViewProps) {
+export function PlainCardView(props: ViewProps) {
   const { style, ...otherProps } = props;
   const { colors } = useTheme();
 
@@ -71,18 +72,21 @@ export function CardView(props: ViewProps) {
 
 export function GradientCardView(props: ViewProps) {
   const { style, ...otherProps } = props;
+  //const auxtheme = useAuxtheme().auxtheme
+  const auxtheme = "normal" as string
+  const { colors } = useTheme();
 
   return (
     <LinearGradient
               start={{ x: 0, y: 0 }}
               end={{ x: 0, y: 1 }}
-              colors={["#0A0A0A", "#292929"]}
+              colors={auxtheme === "normal" ? [colors.card,colors.card] : ["#292929","#0A0A0A"]}
               //colors={[theme.colors.primary, theme.colors.primary]}
               style={{borderRadius:5}}
             >
       <DefaultView
         style={[
-          {
+          auxtheme === "normal" ? {} : {
             //backgroundColor: colors.card,
             borderRadius: 8,
             borderWidth: 1,

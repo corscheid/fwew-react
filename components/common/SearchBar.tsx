@@ -1,4 +1,4 @@
-import { GradientCardView, TextInput } from "@/components/common/Themed";
+import { PlainCardView, GradientCardView, TextInput } from "@/components/common/Themed";
 import Colors from "@/constants/Colors";
 import { getUI } from "@/constants/i18n";
 import { useAppLanguageContext } from "@/context/AppLanguageContext";
@@ -82,9 +82,9 @@ function SearchBarRight({ showClear, clear }: SearchBarRightProps) {
   }
 
   return (
-    <GradientCardView style={styles.button}>
+    <PlainCardView style={styles.button}>
       <FontAwesome name="search" size={24} color={colors.placeholder} />
-    </GradientCardView>
+    </PlainCardView>
   );
 }
 

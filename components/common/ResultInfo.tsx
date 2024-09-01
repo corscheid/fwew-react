@@ -4,7 +4,7 @@ import {
   ItalicText,
   UnderlinedText,
 } from "@/components/common/StyledText";
-import { CardView, GradientCardView, Text } from "@/components/common/Themed";
+import { PlainCardView, GradientCardView, Text } from "@/components/common/Themed";
 import { Affixes } from "@/constants/Affixes";
 import Colors from "@/constants/Colors";
 import { LenitingAdpositions } from "@/constants/Lenition";
@@ -40,8 +40,8 @@ export function ResultInfo({ word }: ResultInfoProps) {
   );
 
   return (
-    <CardView style={styles.container}>
-      <CardView style={styles.buttonContainer}>
+    <PlainCardView style={styles.container}>
+      <PlainCardView style={styles.buttonContainer}>
         <Button
           onPress={() => playSound(word.ID)}
           disabled={disabled || (dialect === "reef" && forestNavi !== reefNavi)}
@@ -51,7 +51,7 @@ export function ResultInfo({ word }: ResultInfoProps) {
           textStyle={{ color: Colors.dark.text }}
         />
         <FavoriteButton word={word} />
-      </CardView>
+      </PlainCardView>
       <DetailItem
         label={ui.search.navi}
         value={dialect === "reef" ? reefNavi : forestNavi}
@@ -110,7 +110,7 @@ export function ResultInfo({ word }: ResultInfoProps) {
         />
       )}
       <DetailItem link label={ui.search.source} value={word.Source} />
-    </CardView>
+    </PlainCardView>
   );
 }
 
@@ -150,7 +150,7 @@ function AffixDetail({ label, value, type }: AffixDetailProps) {
   const affixes = value.map((v) => Affixes[type][v]);
 
   return (
-    <CardView>
+    <PlainCardView>
       <BoldText style={styles.label}>{label}:</BoldText>
       {affixes.map((affix, i) => {
         if (affix?.navi) {
@@ -166,7 +166,7 @@ function AffixDetail({ label, value, type }: AffixDetailProps) {
           );
         }
         return (
-          <CardView key={`rip_a_${i}`} style={styles.wrapRow}>
+          <PlainCardView key={`rip_a_${i}`} style={styles.wrapRow}>
             <Text style={styles.value}>
               <BoldText>
                 -{value[i]}
@@ -174,10 +174,10 @@ function AffixDetail({ label, value, type }: AffixDetailProps) {
               </BoldText>{" "}
               <AdpositionDisplay adposition={value[i]} /> (productive for nouns)
             </Text>
-          </CardView>
+          </PlainCardView>
         );
       })}
-    </CardView>
+    </PlainCardView>
   );
 }
 
@@ -215,7 +215,7 @@ type DetailItemProps = {
 
 function DetailItem({ label, value, link }: DetailItemProps) {
   return (
-    <CardView>
+    <PlainCardView>
       <BoldText style={[styles.label, { userSelect: "text" }]}>
         {label}:
       </BoldText>
@@ -224,7 +224,7 @@ function DetailItem({ label, value, link }: DetailItemProps) {
       ) : (
         <Text style={styles.value}>{value}</Text>
       )}
-    </CardView>
+    </PlainCardView>
   );
 }
 
@@ -244,7 +244,7 @@ function Pronunciation({ IPA, Stressed, Navi }: PronunciationProps) {
         label={ui.search.ipa}
         value={`[${dialect === "reef" ? reefIPA : forestIPA}]`}
       />
-      <CardView>
+      <PlainCardView>
         <BoldText style={[styles.label, { userSelect: "text" }]}>
           {ui.search.breakdown}:
         </BoldText>
@@ -263,7 +263,7 @@ function Pronunciation({ IPA, Stressed, Navi }: PronunciationProps) {
             />
           )}
         </Text>
-      </CardView>
+      </PlainCardView>
     </>
   );
 }
