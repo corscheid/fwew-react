@@ -42,6 +42,9 @@ export default function TabLayout() {
   routeConv['numbers'] = 'number'
   routeConv['other'] = 'other'
 
+  const frutigerForest = [["#2288FF", "#2244FF"],["#004499", "#2288FF"]]
+  const frutigerReef = [["#44BBBB", "#227A92"],["#006A6A", "#44BBBB"]]
+
   return (
     <Tabs
       screenOptions={{
