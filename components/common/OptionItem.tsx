@@ -1,4 +1,4 @@
-import { CardView, Text } from "@/components/common/Themed";
+import { GradientCardView, Text } from "@/components/common/Themed";
 import Colors from "@/constants/Colors";
 import { FontAwesome } from "@expo/vector-icons";
 import { useTheme } from "@react-navigation/native";
@@ -23,7 +23,7 @@ export function OptionItem(props: OptionItemProps) {
 
   return (
     <TouchableOpacity onPress={onSelect}>
-      <CardView
+      <GradientCardView
         style={[
           styles.iconContainer,
           {
@@ -43,7 +43,7 @@ export function OptionItem(props: OptionItemProps) {
             style={styles.check}
           />
         )}
-      </CardView>
+      </GradientCardView>
     </TouchableOpacity>
   );
 }

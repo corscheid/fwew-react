@@ -1,14 +1,14 @@
-import { CardView } from "@/components/common/Themed";
+import { GradientCardView } from "@/components/common/Themed";
 import { Credits } from "@/components/settings/Credits";
 import { Version } from "@/components/settings/Version";
 import { StyleSheet } from "react-native";
 
 export function About() {
   return (
-    <CardView style={styles.expanded}>
+    <GradientCardView style={styles.expanded}>
       <Version />
       <Credits />
-    </CardView>
+    </GradientCardView>
   );
 }
 

@@ -1,4 +1,4 @@
-import { CardView } from "@/components/common/Themed";
+import { GradientCardView } from "@/components/common/Themed";
 import { FontAwesome } from "@expo/vector-icons";
 import { useTheme } from "@react-navigation/native";
 import { useState } from "react";
@@ -33,7 +33,7 @@ export function DropDownSelect<T>(props: DropDownSelectProps<T>) {
   };
 
   return (
-    <CardView>
+    <GradientCardView>
       <TouchableOpacity
         onPress={toggle}
         style={{
@@ -44,7 +44,7 @@ export function DropDownSelect<T>(props: DropDownSelectProps<T>) {
           paddingVertical: 8,
         }}
       >
-        {value ? renderOption(value) : <CardView style={{ padding: 16 }} />}
+        {value ? renderOption(value) : <GradientCardView style={{ padding: 16 }} />}
         <FontAwesome
           name={open ? "chevron-down" : "chevron-right"}
           size={24}
@@ -63,6 +63,6 @@ export function DropDownSelect<T>(props: DropDownSelectProps<T>) {
           ))}
         </>
       )}
-    </CardView>
+    </GradientCardView>
   );
 }

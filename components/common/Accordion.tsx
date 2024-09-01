@@ -1,4 +1,4 @@
-import { CardView } from "@/components/common/Themed";
+import { GradientCardView } from "@/components/common/Themed";
 import Colors from "@/constants/Colors";
 import { FontAwesome } from "@expo/vector-icons";
 import { useState } from "react";
@@ -19,7 +19,7 @@ export function Accordion(props: AccordionProps) {
   const toggleExpanded = () => setExpanded(!expanded);
 
   return (
-    <CardView>
+    <GradientCardView>
       <TouchableOpacity style={styles.container} onPress={toggleExpanded}>
         {closedContent}
         {expanded ? (
@@ -39,7 +39,7 @@ export function Accordion(props: AccordionProps) {
         )}
       </TouchableOpacity>
       {expanded && openedContent}
-    </CardView>
+    </GradientCardView>
   );
 }
 

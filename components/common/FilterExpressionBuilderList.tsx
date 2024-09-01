@@ -1,7 +1,7 @@
 import { Button } from "@/components/common/Button";
 import { FilterExpressionBuilder } from "@/components/common/FilterExpressionBuilder";
 import { SmallButton } from "@/components/common/SmallButton";
-import { CardView, Text, View } from "@/components/common/Themed";
+import { GradientCardView, Text, View } from "@/components/common/Themed";
 import { getUI } from "@/constants/i18n";
 import { useAppLanguageContext } from "@/context/AppLanguageContext";
 import { useDialectContext } from "@/context/DialectContext";
@@ -39,7 +39,7 @@ export function FilterExpressionBuilderList(
   };
 
   return (
-    <CardView>
+    <GradientCardView>
       {filters.map((_, i) => (
         <View key={`feb_${i}`}>
           <View style={styles.febHeader}>
@@ -61,7 +61,7 @@ export function FilterExpressionBuilderList(
       <View style={{ paddingTop: 10 }}>
         <Button onPress={add} icon="plus" disabled={disabled} />
       </View>
-    </CardView>
+    </GradientCardView>
   );
 }
 

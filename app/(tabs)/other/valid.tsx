@@ -1,6 +1,6 @@
 import { ResultCount } from "@/components/common/ResultCount";
 import { SearchBar } from "@/components/common/SearchBar";
-import { CardView, Text, View } from "@/components/common/Themed";
+import { GradientCardView, Text, View } from "@/components/common/Themed";
 import { useValid } from "@/hooks/useValid";
 import { ScrollView, StyleSheet } from "react-native";
 
@@ -26,9 +26,9 @@ export default function ValidScreen() {
           visible={results.length > 0 && !loading}
         />
         {results.map((row, index) => (
-          <CardView key={`vrc_${index}`} style={styles.container}>
+          <GradientCardView key={`vrc_${index}`} style={styles.container}>
             <Text>{row}</Text>
-          </CardView>
+          </GradientCardView>
         ))}
       </View>
     </ScrollView>

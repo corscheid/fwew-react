@@ -7,7 +7,7 @@ import { useAppLanguageContext } from "@/context/AppLanguageContext";
 import { useDialectContext } from "@/context/DialectContext";
 import { useFwew } from "@/hooks/useFwew";
 import { useTheme } from "@react-navigation/native";
-import { RefreshControl, ScrollView, StyleSheet } from "react-native";
+import { RefreshControl, ScrollView, StyleSheet, View } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
 
 export default function SearchScreen() {
@@ -27,45 +27,51 @@ export default function SearchScreen() {
   const { dialect } = useDialectContext();
   const ui = getUI(appLanguage, dialect).search;
 
+  const frutigerForest = ["#000033", "#0000AA"]
+  const frutigerReef = ["#001A22", "#004A55"]
+
   return (
-    <LinearGradient
-    start={{ x: 0, y: 0 }}
-    end={{ x: 0, y: 1 }}
-    colors={["#000033", "#000033", "#0000AA"]}
-    //colors={[colors.background, colors.background]}
-    style={{ height: "100%" }}
-  >
-    <ScrollView
-      style={styles.container}
-      keyboardShouldPersistTaps="always"
-      refreshControl={
-        <RefreshControl
-          refreshing={loading}
-          onRefresh={execute}
-          colors={[colors.primary]}
+    <View style={{height: "100%"}}>
+      <LinearGradient
+        start={{ x: 0, y:0 }}
+        end={{ x: 0, y: 1 }}
+        locations={[0.9,1]}
+        colors={dialect === "reef" ? frutigerReef : frutigerForest}
+        //colors={[colors.background, colors.background]}
+        style={styles.container}
+      >
+      <ScrollView
+        style={styles.container}
+        keyboardShouldPersistTaps="always"
+        refreshControl={
+          <RefreshControl
+            refreshing={loading}
+            onRefresh={execute}
+            colors={[colors.primary]}
+          />
+        }
+      >
+        <SearchBar
+          query={query}
+          search={search}
+          execute={execute}
+          cancel={cancel}
+          autoFocus
         />
-      }
-    >
-      <SearchBar
-        query={query}
-        search={search}
-        execute={execute}
-        cancel={cancel}
-        autoFocus
-      />
-      <SwitchInput
-        leftLabel={ui.naviOnly}
-        rightLabel=""
-        value={naviOnly}
-        onValueChange={setNaviOnly}
-      />
-      <ResultCount
-        visible={query.length > 0 && resultCount > 0}
-        resultCount={resultCount}
-      />
-      <FwewSearchResults loading={loading} results={results} />
-    </ScrollView>
-    </LinearGradient>
+        <SwitchInput
+          leftLabel={ui.naviOnly}
+          rightLabel=""
+          value={naviOnly}
+          onValueChange={setNaviOnly}
+        />
+        <ResultCount
+          visible={query.length > 0 && resultCount > 0}
+          resultCount={resultCount}
+        />
+        <FwewSearchResults loading={loading} results={results} />
+      </ScrollView>
+      </LinearGradient>
+    </View>
   );
 }
 

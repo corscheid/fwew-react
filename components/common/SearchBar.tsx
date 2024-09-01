@@ -1,4 +1,4 @@
-import { CardView, TextInput } from "@/components/common/Themed";
+import { GradientCardView, TextInput } from "@/components/common/Themed";
 import Colors from "@/constants/Colors";
 import { getUI } from "@/constants/i18n";
 import { useAppLanguageContext } from "@/context/AppLanguageContext";
@@ -42,7 +42,7 @@ export function SearchBar(props: SearchBarProps) {
   };
 
   return (
-    <CardView style={styles.searchContainer}>
+    <GradientCardView style={styles.searchContainer}>
       <TextInput
         style={styles.input}
         placeholder={placeholder ?? ui.search.search}
@@ -59,7 +59,7 @@ export function SearchBar(props: SearchBarProps) {
         onSubmitEditing={execute}
       />
       <SearchBarRight showClear={query.length > 0} clear={clear} />
-    </CardView>
+    </GradientCardView>
   );
 }
 
@@ -82,9 +82,9 @@ function SearchBarRight({ showClear, clear }: SearchBarRightProps) {
   }
 
   return (
-    <CardView style={styles.button}>
+    <GradientCardView style={styles.button}>
       <FontAwesome name="search" size={24} color={colors.placeholder} />
-    </CardView>
+    </GradientCardView>
   );
 }
 

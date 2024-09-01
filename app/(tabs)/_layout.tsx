@@ -29,6 +29,9 @@ export default function TabLayout() {
   const { dialect } = useDialectContext();
   const { screens } = getUI(appLanguage, dialect);
 
+  const frutigerForest = [["#2288FF", "#2244FF"],["#004499", "#2288FF"]]
+  const frutigerReef = [["#44BBBB", "#227A92"],["#006A6A", "#44BBBB"]]
+
   return (
     <Tabs
       screenOptions={{
@@ -43,14 +46,14 @@ export default function TabLayout() {
             <LinearGradient
               start={{ x: 0, y: 0 }}
               end={{ x: 0, y: 1 }}
-              colors={["#55DDFF", "#88FFFF"]}
+              colors={dialect === "reef" ? frutigerReef[0] : frutigerForest[0]}
               //colors={[theme.colors.primary, theme.colors.primary]}
               style={{ height: "50%" }}
             />
             <LinearGradient
               start={{ x: 0, y: 0 }}
               end={{ x: 0, y: 1 }}
-              colors={["#66BBFF", "#55DDFF"]}
+              colors={dialect === "reef" ? frutigerReef[1] : frutigerForest[1]}
               //colors={[theme.colors.primary, theme.colors.primary]}
               style={{ height: "50%" }}
             />
@@ -61,14 +64,14 @@ export default function TabLayout() {
             <LinearGradient
               start={{ x: 0, y: 0 }}
               end={{ x: 0, y: 1 }}
-              colors={["#00FFFF", "#006699"]}
+              colors={dialect === "reef" ? frutigerReef[0] : frutigerForest[0]}
               //colors={[theme.colors.card, theme.colors.card]}
               style={{ height: "50%" }}
             />
             <LinearGradient
               start={{ x: 0, y: 0 }}
               end={{ x: 0, y: 1 }}
-              colors={["#0044FF", "#00FFFF"]}
+              colors={dialect === "reef" ? frutigerReef[1] : frutigerForest[1]}
               //colors={[theme.colors.card, theme.colors.card]}
               style={{ height: "50%" }}
             />

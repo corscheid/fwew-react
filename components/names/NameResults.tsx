@@ -1,7 +1,7 @@
 import { FontAwesome } from "@expo/vector-icons";
 import { useTheme } from "@react-navigation/native";
 import { StyleSheet, TouchableOpacity } from "react-native";
-import { CardView, Text, View } from "../common/Themed";
+import { GradientCardView, Text, View } from "../common/Themed";
 
 type NameResultsProps = {
   names: string[];
@@ -14,10 +14,10 @@ export function NameResults({ names, copyName }: NameResultsProps) {
     <View style={styles.results}>
       {names.map((name, i) => (
         <TouchableOpacity key={`nr_${i}`} onPress={() => copyName(name)}>
-          <CardView style={styles.nameCard}>
+          <GradientCardView style={styles.nameCard}>
             <Text style={styles.name}>{name}</Text>
             <FontAwesome name="copy" size={24} color={theme.colors.text} />
-          </CardView>
+          </GradientCardView>
         </TouchableOpacity>
       ))}
     </View>

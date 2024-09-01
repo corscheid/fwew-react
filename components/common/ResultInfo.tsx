@@ -4,7 +4,7 @@ import {
   ItalicText,
   UnderlinedText,
 } from "@/components/common/StyledText";
-import { CardView, Text } from "@/components/common/Themed";
+import { CardView, GradientCardView, Text } from "@/components/common/Themed";
 import { Affixes } from "@/constants/Affixes";
 import Colors from "@/constants/Colors";
 import { LenitingAdpositions } from "@/constants/Lenition";
@@ -155,14 +155,14 @@ function AffixDetail({ label, value, type }: AffixDetailProps) {
       {affixes.map((affix, i) => {
         if (affix?.navi) {
           return (
-            <CardView key={`rip_a_${i}`} style={styles.wrapRow}>
+            <GradientCardView key={`rip_a_${i}`} style={styles.wrapRow}>
               <Text style={styles.value}>
                 <BoldText>{affix.navi}</BoldText>{" "}
                 <ItalicText>{affix.display}</ItalicText> (
                 {affix.productive ? "" : "not "}
                 productive{affix.productive ? ` for ${affix.for}` : ""})
               </Text>
-            </CardView>
+            </GradientCardView>
           );
         }
         return (

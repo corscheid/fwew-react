@@ -1,5 +1,5 @@
 import { SmallButton } from "@/components/common/SmallButton";
-import { CardView, TextInput } from "@/components/common/Themed";
+import { GradientCardView, TextInput } from "@/components/common/Themed";
 import Colors from "@/constants/Colors";
 import { StyleSheet, useColorScheme } from "react-native";
 
@@ -16,7 +16,7 @@ export function AlphaTextInput(props: AlphaTextInputProps) {
   const colors = Colors[colorScheme ?? "light"];
 
   return (
-    <CardView style={styles.inputContainer}>
+    <GradientCardView style={styles.inputContainer}>
       <TextInput
         placeholder={placeholder}
         placeholderTextColor={colors.placeholder}
@@ -32,9 +32,9 @@ export function AlphaTextInput(props: AlphaTextInputProps) {
       {value ? (
         <SmallButton icon="close" onPress={() => onChangeText("")} />
       ) : (
-        <CardView style={[styles.clearButton, { borderColor: colors.text }]} />
+        <GradientCardView style={[styles.clearButton, { borderColor: colors.text }]} />
       )}
-    </CardView>
+    </GradientCardView>
   );
 }
 

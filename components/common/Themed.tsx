@@ -14,6 +14,8 @@ import {
   type TextProps,
   type ViewProps,
 } from "react-native";
+import { useDialectContext } from "@/context/DialectContext";
+import { LinearGradient } from 'expo-linear-gradient';
 
 export function useThemeColor(
   props: { light?: string; dark?: string },
@@ -34,7 +36,7 @@ export function Text(props: TextProps) {
   const { colors } = useTheme();
 
   return (
-    <DefaultText style={[{ color: colors.text }, style]} {...otherProps} />
+      <DefaultText style={[{ color: colors.text }, style]} {...otherProps} />
   );
 }
 
@@ -42,10 +44,10 @@ export function View(props: ViewProps) {
   const { style, ...otherProps } = props;
 
   return (
-    <DefaultView
-      style={[style]}
-      {...otherProps}
-    />
+      <DefaultView
+        style={[style]}
+        {...otherProps}
+      />
   );
 }
 
@@ -57,7 +59,7 @@ export function CardView(props: ViewProps) {
     <DefaultView
       style={[
         {
-          backgroundColor: colors.card,
+          //backgroundColor: colors.card,
           borderRadius: 8,
         },
         style,
@@ -67,13 +69,40 @@ export function CardView(props: ViewProps) {
   );
 }
 
+export function GradientCardView(props: ViewProps) {
+  const { style, ...otherProps } = props;
+
+  return (
+    <LinearGradient
+              start={{ x: 0, y: 0 }}
+              end={{ x: 0, y: 1 }}
+              colors={["#0A0A0A", "#292929"]}
+              //colors={[theme.colors.primary, theme.colors.primary]}
+              style={{borderRadius:5}}
+            >
+      <DefaultView
+        style={[
+          {
+            //backgroundColor: colors.card,
+            borderRadius: 8,
+            borderWidth: 1,
+            borderColor: "#999999"
+          },
+          style,
+        ]}
+        {...otherProps}
+      />
+    </LinearGradient>
+  );
+}
+
 export function TextInput(props: TextInputProps) {
   const { style, ...otherProps } = props;
   const { colors } = useTheme();
 
   return (
     <DefaultTextInput
-      style={[{ backgroundColor: colors.card, color: colors.text }, style]}
+      style={[{ color: colors.text }, style]}
       selectionColor={colors.primary}
       cursorColor={colors.primary}
       {...otherProps}

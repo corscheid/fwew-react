@@ -1,4 +1,4 @@
-import { CardView, Text } from "@/components/common/Themed";
+import { GradientCardView, Text } from "@/components/common/Themed";
 import credits from "@/constants/Credits";
 import { getUI } from "@/constants/i18n";
 import { AppLanguages } from "@/constants/Language";
@@ -14,27 +14,19 @@ export function Credits() {
   const { dialect } = useDialectContext();
   const ui = getUI(appLanguage, dialect);
   return (
-    <CardView style={styles.creditsContainer}>
+    <GradientCardView style={styles.creditsContainer}>
       <Text style={styles.label}>{ui.settings.credits}</Text>
-      <Text style={styles.label}>{ui.settings.development}</Text>
-      <CreditsItem names={credits.development} />
-      <Text style={styles.label}>{ui.settings.design}</Text>
-      <CreditsItem names={credits.design} />
-      <Text style={styles.label}>{ui.settings.testing}</Text>
-      <CreditsItem names={credits.testing} />
-      <Text style={styles.label}>{ui.settings.translation}</Text>
-      {AppLanguages.map((language, i) => {
-        const names = credits.translation[language.value];
-        if (names.length > 0)
-          return (
-            <CreditsItem
-              key={`sct_${i}_${language.value}`}
-              language={language.value}
-              names={names}
-            />
-          );
-      })}
-    </CardView>
+      <CreditsItem
+        title={ui.settings.development}
+        names={credits.development}
+      />
+      <CreditsItem title={ui.settings.design} names={credits.design} />
+      <CreditsItem title={ui.settings.testing} names={credits.testing} />
+      <CreditsItem
+        title={ui.settings.translation}
+        names={credits.translation}
+      />
+    </GradientCardView>
   );
 }
 
@@ -48,24 +40,22 @@ function CreditsItem({
   const { colors } = useTheme();
 
   return (
-    <CardView style={styles.creditsItemContainer}>
-      <CardView>{language && FlagMap[language]}</CardView>
-      <CardView style={{ flex: 1 }}>
-        <CardView style={styles.creditsItemContainer}>
-          {names.map((name, i) => (
-            <CardView
-              key={`ci_${name}_${i}`}
-              style={[
-                styles.textContainer,
-                { backgroundColor: colors.background },
-              ]}
-            >
-              <Text style={styles.text}>{name}</Text>
-            </CardView>
-          ))}
-        </CardView>
-      </CardView>
-    </CardView>
+    <GradientCardView>
+      <Text style={styles.label}>{title}</Text>
+      <GradientCardView style={styles.creditsItemContainer}>
+        {names.map((name, i) => (
+          <GradientCardView
+            key={`ci_${title}_${i}`}
+            style={[
+              styles.textContainer,
+              { backgroundColor: colors.background },
+            ]}
+          >
+            <Text style={styles.text}>{name}</Text>
+          </GradientCardView>
+        ))}
+      </GradientCardView>
+    </GradientCardView>
   );
 }
 
