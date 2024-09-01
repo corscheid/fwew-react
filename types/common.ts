@@ -1,4 +1,4 @@
-import type { Dialect as FwDialect, LanguageCode } from "fwew.js";
+import type { Dialect as FwDialect, LanguageCode, FwAuxtheme } from "fwew.js";
 
 export type ExtendedLanguageCode = LanguageCode | "eo" | "nx0" | "nx1";
 
