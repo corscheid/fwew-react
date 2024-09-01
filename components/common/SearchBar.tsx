@@ -82,9 +82,9 @@ function SearchBarRight({ showClear, clear }: SearchBarRightProps) {
   }
 
   return (
-    <GradientCardView style={styles.button}>
+    <PlainCardView style={styles.button}>
       <FontAwesome name="search" size={24} color={colors.placeholder} />
-    </GradientCardView>
+    </PlainCardView>
   );
 }
 
