@@ -1,5 +1,6 @@
 import { ScreenLinkCard } from "@/components/common/ScreenLinkCard";
-import { View } from "@/components/common/Themed";
+import { ItalicText } from "@/components/common/StyledText";
+import { CardView, GradientCardView, Text, View } from "@/components/common/Themed";
 import { getUI } from "@/constants/i18n";
 import { useAppLanguageContext } from "@/context/AppLanguageContext";
 import { useDialectContext } from "@/context/DialectContext";
