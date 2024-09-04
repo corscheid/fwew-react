@@ -20,6 +20,9 @@ export default function StackLayout() {
       screenOptions={{
         headerStyle: { backgroundColor: theme.colors.primary },
         headerTintColor: Colors.dark.text,
+        headerBackground: () => (
+          Topbar()
+        ),
         headerLeft: () => (
           <View style={styles.logo}>
             <Logo />
