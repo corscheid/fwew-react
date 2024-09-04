@@ -51,14 +51,8 @@ export default function TabLayout() {
           headerTintColor: Colors.dark.text,
           tabBarActiveTintColor: theme.colors.primary,
           tabBarInactiveTintColor: inactiveTint,
-          headerLeft: () => (
-            <View style={styles.logo}>
-              <Logo />
-            </View>
-          ),
-          headerRight: () => (
-            <ActionButtons />
-          ),
+          headerLeft: () => ( <Logo /> ),
+          headerRight: () => ( <ActionButtons /> ),
           headerBackground: () => (auxtheme.Topbar()),
           tabBarBackground: () => (auxtheme.Bottombar(auxtheme.highlight())),
         }}

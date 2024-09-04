@@ -6,6 +6,7 @@ import { useAppLanguageContext } from "@/context/AppLanguageContext";
 import { useDialectContext } from "@/context/DialectContext";
 import { Link } from "expo-router";
 import { ScrollView, StyleSheet } from "react-native";
+import { Background, BackgroundReef } from "@/themes/frutigerAero";
 
 export default function OtherScreen() {
   const { appLanguage } = useAppLanguageContext();
