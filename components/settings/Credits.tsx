@@ -59,6 +59,21 @@ function CreditsItem({
   );
 }
 
+function LanguageCreditsItem({
+  language,
+  names,
+}: {
+  language: ExtendedLanguageCode;
+  names: string[];
+}) {
+  if (names.length > 0)
+    return (
+      <CardView style={styles.creditsItemContainer}>
+        {FlagMap[language]} <CreditsItem names={names} />
+      </CardView>
+    );
+}
+
 const styles = StyleSheet.create({
   creditsContainer: {
     paddingTop: 8,
