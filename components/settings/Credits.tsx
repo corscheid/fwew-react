@@ -40,22 +40,16 @@ function CreditsItem({
   const { colors } = useTheme();
 
   return (
-    <GradientCardView>
-      <Text style={styles.label}>{title}</Text>
-      <GradientCardView style={styles.creditsItemContainer}>
-        {names.map((name, i) => (
-          <GradientCardView
-            key={`ci_${title}_${i}`}
-            style={[
-              styles.textContainer,
-              { backgroundColor: colors.background },
-            ]}
-          >
-            <Text style={styles.text}>{name}</Text>
-          </GradientCardView>
-        ))}
-      </GradientCardView>
-    </GradientCardView>
+    <CardView style={styles.creditsItemContainer}>
+      {names.map((name, i) => (
+        <CardView
+          key={`ci_${name}_${i}`}
+          style={[styles.textContainer, { backgroundColor: colors.background }]}
+        >
+          <Text style={styles.text}>{name}</Text>
+        </CardView>
+      ))}
+    </CardView>
   );
 }
 
@@ -88,6 +82,16 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     gap: 8,
+  },
+  languageCreditsItemContainer: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 8,
+  },
+  label: {
+    paddingBottom: 10,
+    fontSize: 16,
+    fontWeight: "bold",
   },
   textContainer: {
     padding: 8,
