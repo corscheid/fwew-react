@@ -14,6 +14,8 @@ import {
   type TextProps,
   type ViewProps,
 } from "react-native";
+import { LinearGradient } from 'expo-linear-gradient';
+import { StyleCard, StyleCardReef } from "@/themes/frutigerAero";
 import { useDialectContext } from "@/context/DialectContext";
 //import { useAuxtheme } from "@/hooks/useAuxtheme";
 
