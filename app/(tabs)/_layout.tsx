@@ -9,8 +9,7 @@ import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { useTheme } from "@react-navigation/native";
 import { Tabs } from "expo-router";
 import { useColorScheme } from "react-native";
-import { LinearGradient } from 'expo-linear-gradient';
-import { View } from "react-native";
+import { Topbar, TopbarReef, Bottombar, BottombarReef } from "@/themes/frutigerAero";
 
 type TabBarIconProps = {
   name: React.ComponentProps<typeof FontAwesome>["name"];
@@ -29,12 +28,6 @@ export default function TabLayout() {
   const { appLanguage } = useAppLanguageContext();
   const { dialect } = useDialectContext();
   const { screens } = getUI(appLanguage, dialect);
-  //const { auxtheme } = useAuxthemeContext();
-  const auxtheme = "normal" as string
-
-  const frutiger = dialect === "reef" ? [["#44BBBB", "#227A92"],["#006A6A", "#44BBBB"]] : [["#2288FF", "#2244FF"],["#004499", "#2288FF"]]
-  const plainHeader = [theme.colors.primary,theme.colors.primary]
-  const plainFooter = [theme.colors.card,theme.colors.card]
 
   return (
     <Tabs
@@ -44,44 +37,13 @@ export default function TabLayout() {
         tabBarInactiveTintColor: colors.placeholder,
         headerLeft: () => <Logo />,
         headerRight: () => <ActionButtons />,
-        headerBackground: () => (
-          <View style={{ height: "100%" }}>
-            <LinearGradient
-              start={{ x: 0, y: 0 }}
-              end={{ x: 0, y: 1 }}
-              colors={auxtheme === "normal" ? plainHeader : frutiger[0]}
-              //colors={[theme.colors.primary, theme.colors.primary]}
-              style={{ height: "50%" }}
-            />
-            <LinearGradient
-              start={{ x: 0, y: 0 }}
-              end={{ x: 0, y: 1 }}
-              colors={auxtheme === "normal" ? plainHeader : frutiger[0]}
-              //colors={[theme.colors.primary, theme.colors.primary]}
-              style={{ height: "50%" }}
-            />
-          </View>
-        ),
-        tabBarBackground: () => (
-          <View style={{ height: "100%" }}>
-            <LinearGradient
-              start={{ x: 0, y: 0 }}
-              end={{ x: 0, y: 1 }}
-              colors={auxtheme === "normal" ? plainFooter : frutiger[1]}
-              //colors={[theme.colors.card, theme.colors.card]}
-              style={{ height: "50%" }}
-            />
-            <LinearGradient
-              start={{ x: 0, y: 0 }}
-              end={{ x: 0, y: 1 }}
-              colors={auxtheme === "normal" ? plainFooter : frutiger[1]}
-              //colors={[theme.colors.card, theme.colors.card]}
-              style={{ height: "50%" }}
-            />
-          </View>
-        ),
+        headerBackground: () => (dialect === "reef"
+          ? TopbarReef()
+          : Topbar()),
+        tabBarBackground: () => (dialect === "reef"
+          ? BottombarReef()
+          : Bottombar()),
       }}
-      
     >
       <Tabs.Screen
         name="index"

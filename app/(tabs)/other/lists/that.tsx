@@ -7,13 +7,24 @@ import {
 import { useDialectContext } from "@/context/DialectContext";
 import { useTheme } from "@react-navigation/native";
 import { ScrollView, StyleSheet, useWindowDimensions } from "react-native";
+import { LinearGradient } from 'expo-linear-gradient';
+import { Background, BackgroundReef } from "@/themes/frutigerAero";
+import { View as DefaultView, type ViewProps } from "react-native";
 
 export default function ThatScreen() {
   const { width, height } = useWindowDimensions();
   const landscape = width > height;
 
+  const { dialect } = useDialectContext();
+
+  var content = (<ScrollView style={styles.container}>
+                      <ThatTable1 />
+                      <Divider />
+                      <ThatTable2 />
+                    </ScrollView>);
+
   if (landscape) {
-    return (
+    content = (
       <ScrollView style={styles.container}>
         <View
           style={{
@@ -31,13 +42,9 @@ export default function ThatScreen() {
     );
   }
 
-  return (
-    <ScrollView style={styles.container}>
-      <ThatTable1 />
-      <Divider />
-      <ThatTable2 />
-    </ScrollView>
-  );
+  return dialect === "reef"
+  ? BackgroundReef(content)
+  : Background(content);
 }
 
 function ThatTable1() {

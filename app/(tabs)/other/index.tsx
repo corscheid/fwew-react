@@ -6,13 +6,14 @@ import { useAppLanguageContext } from "@/context/AppLanguageContext";
 import { useDialectContext } from "@/context/DialectContext";
 import { Link } from "expo-router";
 import { ScrollView, StyleSheet } from "react-native";
+import { Background, BackgroundReef } from "@/themes/frutigerAero";
 
 export default function OtherScreen() {
   const { appLanguage } = useAppLanguageContext();
   const { dialect } = useDialectContext();
   const { screens } = getUI(appLanguage, dialect);
 
-  return (
+  const content = (
     <ScrollView>
       <View style={styles.container}>
         <ScreenLinkCard href="/(tabs)/other/names" title={screens.names} />
@@ -26,6 +27,10 @@ export default function OtherScreen() {
       </View>
     </ScrollView>
   );
+
+  return dialect === "reef"
+  ? BackgroundReef(content)
+  : Background(content);
 }
 
 const styles = StyleSheet.create({

@@ -9,6 +9,8 @@ import { useFwew } from "@/hooks/useFwew";
 import { useTheme } from "@react-navigation/native";
 import { RefreshControl, ScrollView, StyleSheet, View } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
+import { Background, BackgroundReef } from "@/themes/frutigerAero";
+import { useColorScheme } from "react-native";
 
 export default function SearchScreen() {
   const {
@@ -26,52 +28,42 @@ export default function SearchScreen() {
   const { appLanguage } = useAppLanguageContext();
   const { dialect } = useDialectContext();
   const ui = getUI(appLanguage, dialect).search;
-
-  const auxtheme = "normal" as string
-  const frutiger = dialect === "reef" ? ["#001A22", "#004A55"] : ["#000033", "#0000AA"]
-
-  return (
-    <View style={{height: "100%"}}>
-      <LinearGradient
-        start={{ x: 0, y:0 }}
-        end={{ x: 0, y: 1 }}
-        locations={[0.9,1]}
-        colors={auxtheme == "normal" ? [colors.background,colors.background] : frutiger}
-        //colors={[colors.background, colors.background]}
-      >
-      <ScrollView
-        style={styles.container}
-        keyboardShouldPersistTaps="always"
-        refreshControl={
-          <RefreshControl
-            refreshing={loading}
-            onRefresh={execute}
-            colors={[colors.primary]}
-          />
-        }
-      >
-        <SearchBar
-          query={query}
-          search={search}
-          execute={execute}
-          cancel={cancel}
-          autoFocus
+  const content = (
+    <ScrollView
+      style={styles.container}
+      keyboardShouldPersistTaps="always"
+      refreshControl={
+        <RefreshControl
+          refreshing={loading}
+          onRefresh={execute}
+          colors={[colors.primary]}
         />
-        <SwitchInput
-          leftLabel={ui.naviOnly}
-          rightLabel=""
-          value={naviOnly}
-          onValueChange={setNaviOnly}
-        />
-        <ResultCount
-          visible={query.length > 0 && resultCount > 0}
-          resultCount={resultCount}
-        />
-        <FwewSearchResults loading={loading} results={results} />
-      </ScrollView>
-      </LinearGradient>
-    </View>
-  );
+      }
+    >
+      <SearchBar
+        query={query}
+        search={search}
+        execute={execute}
+        cancel={cancel}
+        autoFocus
+      />
+      <SwitchInput
+        leftLabel={ui.naviOnly}
+        rightLabel=""
+        value={naviOnly}
+        onValueChange={setNaviOnly}
+      />
+      <ResultCount
+        visible={query.length > 0 && resultCount > 0}
+        resultCount={resultCount}
+      />
+      <FwewSearchResults loading={loading} results={results} />
+    </ScrollView>
+)
+  
+  return dialect === "reef"
+  ? BackgroundReef(content)
+  : Background(content);
 }
 
 const styles = StyleSheet.create({

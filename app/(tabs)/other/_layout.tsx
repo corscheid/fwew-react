@@ -7,6 +7,7 @@ import { useDialectContext } from "@/context/DialectContext";
 import { useTheme } from "@react-navigation/native";
 import { Stack } from "expo-router";
 import { Platform, StyleSheet, View } from "react-native";
+import { Topbar, Bottombar } from "@/themes/frutigerAero";
 
 export default function StackLayout() {
   const theme = useTheme();
@@ -29,6 +30,9 @@ export default function StackLayout() {
             <ActionButtons />
           </View>
         ),
+        headerBackground: () => (
+          Topbar()
+        )
       }}
     >
       <Stack.Screen name="index" options={{ title: screens.other }} />
