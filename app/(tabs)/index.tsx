@@ -8,9 +8,7 @@ import { useDialectContext } from "@/context/DialectContext";
 import { useFwew } from "@/hooks/useFwew";
 import { useTheme } from "@react-navigation/native";
 import { RefreshControl, ScrollView, StyleSheet, View } from "react-native";
-import { LinearGradient } from 'expo-linear-gradient';
 import { Background, BackgroundReef } from "@/themes/frutigerAero";
-import { useColorScheme } from "react-native";
 
 export default function SearchScreen() {
   const {
