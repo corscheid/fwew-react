@@ -27,6 +27,10 @@ type RouteToWindow = {
   [id: string]: ActiveWindow
 }
 
+type RouteToWindow = {
+  [id: string]: ActiveWindow
+}
+
 export default function TabLayout() {
   const auxtheme = getTheme()
   const colorScheme = useColorScheme();
@@ -35,6 +39,13 @@ export default function TabLayout() {
   const { dialect } = useDialectContext();
   const { screens } = getUI(appLanguage, dialect);
   const { saveActiveWindow } = useActiveWindowContext();
+  const routeConv: RouteToWindow = {};
+  routeConv['index'] = 'search'
+  routeConv['list'] = 'list'
+  routeConv['random'] = 'random'
+  routeConv['numbers'] = 'number'
+  routeConv['other'] = 'other'
+  const { activeWindow, saveActiveWindow } = useActiveWindowContext();
   const routeConv: RouteToWindow = {};
   routeConv['index'] = 'search'
   routeConv['list'] = 'list'
