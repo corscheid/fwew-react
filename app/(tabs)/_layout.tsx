@@ -27,6 +27,10 @@ type RouteToWindow = {
   [id: string]: ActiveWindow
 }
 
+type RouteToWindow = {
+  [id: string]: ActiveWindow
+}
+
 export default function TabLayout() {
   const colorScheme = useColorScheme();
   const colors = Colors[colorScheme ?? "light"];
@@ -41,27 +45,35 @@ export default function TabLayout() {
   routeConv['random'] = 'random'
   routeConv['numbers'] = 'number'
   routeConv['other'] = 'other'
+  const { activeWindow, saveActiveWindow } = useActiveWindowContext();
+  const routeConv: RouteToWindow = {};
+  routeConv['index'] = 'search'
+  routeConv['list'] = 'list'
+  routeConv['random'] = 'random'
+  routeConv['numbers'] = 'number'
+  routeConv['other'] = 'other'
 
   const frutiger = dialect === "reef" ? [["#44BBBB", "#227A92"],["#006A6A", "#44BBBB"]] : [["#2288FF", "#2244FF"],["#004499", "#2288FF"]]
   const plainHeader = [theme.colors.primary,theme.colors.primary]
   const plainFooter = [theme.colors.card,theme.colors.card]
 
   return (
-    <Tabs
-      screenOptions={{
-        headerTintColor: Colors.dark.text,
-        tabBarActiveTintColor: theme.colors.primary,
-        tabBarInactiveTintColor: colors.placeholder,
-        headerLeft: () => <Logo />,
-        headerRight: () => <ActionButtons />,
-        headerBackground: () => (dialect === "reef"
-          ? TopbarReef()
-          : Topbar()),
-        tabBarBackground: () => (dialect === "reef"
-          ? BottombarReef()
-          : Bottombar()),
-      }}
-      screenListeners={({route}) => ({
+    <View>
+      <Tabs
+        screenOptions={{
+          headerTintColor: Colors.dark.text,
+          tabBarActiveTintColor: theme.colors.primary,
+          tabBarInactiveTintColor: colors.placeholder,
+          headerLeft: () => <Logo />,
+          headerRight: () => <ActionButtons />,
+          headerBackground: () => (dialect === "reef"
+            ? TopbarReef()
+            : Topbar()),
+          tabBarBackground: () => (dialect === "reef"
+            ? BottombarReef()
+            : Bottombar()),
+        }}
+        screenListeners={({route}) => ({
         tabPress: () => {
           saveActiveWindow(routeConv[route.name])
         }
