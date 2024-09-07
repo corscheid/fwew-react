@@ -8,9 +8,7 @@ import { useDialectContext } from "@/context/DialectContext";
 import { useFwew } from "@/hooks/useFwew";
 import { useTheme } from "@react-navigation/native";
 import { RefreshControl, ScrollView, StyleSheet, View } from "react-native";
-import { LinearGradient } from 'expo-linear-gradient';
 import { Background, BackgroundReef } from "@/themes/frutigerAero";
-import { useColorScheme } from "react-native";
 
 export default function SearchScreen() {
   const {
@@ -29,6 +27,7 @@ export default function SearchScreen() {
   const { dialect } = useDialectContext();
   const ui = getUI(appLanguage, dialect).search;
   const content = (
+    <View style={{height: "100%"}}>
     <ScrollView
       style={styles.container}
       keyboardShouldPersistTaps="always"
@@ -59,6 +58,7 @@ export default function SearchScreen() {
       />
       <FwewSearchResults loading={loading} results={results} />
     </ScrollView>
+    </View>
 )
   
   return dialect === "reef"

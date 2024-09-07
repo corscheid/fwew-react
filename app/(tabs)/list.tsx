@@ -9,6 +9,7 @@ import { useCallback, useEffect } from "react";
 import { RefreshControl, ScrollView, StyleSheet } from "react-native";
 
 export default function ListScreen() {
+
   const { filters, filterExpression, incomplete, add, remove, update } =
     useFilterExpression();
   const { loading, results, execute, cancel } = useList();

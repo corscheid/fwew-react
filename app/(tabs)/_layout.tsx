@@ -4,12 +4,14 @@ import Colors from "@/constants/Colors";
 import { getUI } from "@/constants/i18n";
 import { useAppLanguageContext } from "@/context/AppLanguageContext";
 import { useDialectContext } from "@/context/DialectContext";
+import { useActiveWindowContext } from "@/context/ActiveWindowContext";
 //import { useAuxthemeContext } from "@/context/AuxthemeContext";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { useTheme } from "@react-navigation/native";
 import { Tabs } from "expo-router";
-import { useColorScheme } from "react-native";
+import { useColorScheme, View } from "react-native";
 import { Topbar, TopbarReef, Bottombar, BottombarReef } from "@/themes/frutigerAero";
+import { ActiveWindow } from "@/types/common";
 
 type TabBarIconProps = {
   name: React.ComponentProps<typeof FontAwesome>["name"];
@@ -21,6 +23,10 @@ function TabBarIcon(props: TabBarIconProps) {
   return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
 }
 
+type RouteToWindow = {
+  [id: string]: ActiveWindow
+}
+
 export default function TabLayout() {
   const colorScheme = useColorScheme();
   const colors = Colors[colorScheme ?? "light"];
@@ -28,6 +34,13 @@ export default function TabLayout() {
   const { appLanguage } = useAppLanguageContext();
   const { dialect } = useDialectContext();
   const { screens } = getUI(appLanguage, dialect);
+  const { activeWindow, saveActiveWindow } = useActiveWindowContext();
+  const routeConv: RouteToWindow = {};
+  routeConv['index'] = 'search'
+  routeConv['list'] = 'list'
+  routeConv['random'] = 'random'
+  routeConv['numbers'] = 'number'
+  routeConv['other'] = 'other'
 
   return (
     <Tabs
@@ -44,6 +57,11 @@ export default function TabLayout() {
           ? BottombarReef()
           : Bottombar()),
       }}
+      screenListeners={({route}) => ({
+        tabPress: () => {
+          saveActiveWindow(routeConv[route.name])
+        }
+      })}
     >
       <Tabs.Screen
         name="index"
