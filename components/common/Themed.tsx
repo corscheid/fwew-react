@@ -86,6 +86,26 @@ export function GradientCardViewListprop(props: ViewProps) {
   return auxtheme.ButtonBackgroundList(content);
 }
 
+export function GradientCardViewListprop(props: ViewProps) {
+  const { style, ...otherProps } = props;
+  //const auxtheme = useAuxtheme().auxtheme
+  const auxtheme = getTheme()
+  const content = (<DefaultView style={style} {...otherProps}/>)
+
+  return auxtheme.StyleCard(content);
+}
+
+export function GradientCardViewListprop(props: ViewProps) {
+  const { style, ...otherProps } = props;
+  //const auxtheme = useAuxtheme().auxtheme
+  const auxtheme = getTheme()
+  const content = (<DefaultView style={style} {...otherProps}/>)
+
+  return dialect === "reef"
+  ? StyleCard2Reef(content)
+  : StyleCard2(content);
+}
+
 export function TextInput(props: TextInputProps) {
   const { style, ...otherProps } = props;
   const { colors } = useTheme();
