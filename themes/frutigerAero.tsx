@@ -1,7 +1,24 @@
 import { LinearGradient } from 'expo-linear-gradient';
 
-import { View } from 'react-native';
-import { useColorScheme } from "react-native";
+import { View, Text, StyleSheet, useColorScheme } from "react-native";
+import { useActiveWindowContext } from "@/context/ActiveWindowContext";
+
+export function highlight() {
+  const { activeWindow } = useActiveWindowContext();
+  const background = (<LinearGradient start={{ x: 0, y: 0 }}
+  end={{ x: 0, y: 1 }}
+  colors={["#CCCCCC", "#999999","#555555", "#CCCCCC"]}
+  locations={[0,0.5,0.5,1]}
+  style={{ height: "80%", borderRadius: 5, margin: 5, borderWidth: 1, borderColor:"#000" }} ></LinearGradient>);
+
+  return (<View style={{flexDirection: "row", justifyContent:'space-between', width: "100%", flex:2}}>
+    <View style={styles.buttonOverlay}>{activeWindow === "search" ? background : <View />}</View> 
+    <View style={styles.buttonOverlay}>{activeWindow === "list" ? background : <View />}</View>
+    <View style={styles.buttonOverlay}>{activeWindow === "random" ? background : <View />}</View>
+    <View style={styles.buttonOverlay}>{activeWindow === "number" ? background : <View />}</View>
+    <View style={styles.buttonOverlay}>{activeWindow === "other" ? background : <View />}</View>
+  </View>);
+}
 
 export function Topbar() {
   const colorScheme = useColorScheme();
@@ -47,7 +64,7 @@ export function TopbarReef() {
   return theme
 }
 
-export function Bottombar() {
+export function Bottombar(element: JSX.Element) {
   const colorScheme = useColorScheme();
   const theme =
     colorScheme === "dark"
@@ -57,19 +74,19 @@ export function Bottombar() {
         colors={["#2288FF", "#2244FF","#004499", "#2288FF"]}
         locations={[0,0.5,0.5,1]}
         style={{ height: "100%" }}
-        />
+        >{element}</LinearGradient>
       : <LinearGradient
       start={{ x: 0, y: 0 }}
       end={{ x: 0, y: 1 }}
       colors={["#2288FF", "#2244FF","#004499", "#2288FF"]}
       locations={[0,0.5,0.5,1]}
       style={{ height: "100%" }}
-      />
+      >{element}</LinearGradient>
 
   return theme
 }
 
-export function BottombarReef() {
+export function BottombarReef(element: JSX.Element) {
   const colorScheme = useColorScheme();
   const theme =
     colorScheme === "dark"
@@ -79,13 +96,13 @@ export function BottombarReef() {
         colors={["#44BBBB", "#228A92","#006A6A", "#44BBBB"]}
         locations={[0,0.5,0.5,1]}
         style={{ height: "100%" }}
-        /> : <LinearGradient
+        >{element}</LinearGradient> : <LinearGradient
       start={{ x: 0, y: 0 }}
       end={{ x: 0, y: 1 }}
       colors={["#44BBBB", "#228A92","#006A6A", "#44BBBB"]}
       locations={[0,0.5,0.5,1]}
       style={{ height: "100%" }}
-      />
+      >{element}</LinearGradient>
 
   return theme
 }
@@ -194,3 +211,9 @@ export function StyleCardReef(element: JSX.Element) {
                     >{element}</LinearGradient>
   return theme
 }
+
+const styles = StyleSheet.create({
+  buttonOverlay: {
+    width: "20%"
+  },
+});

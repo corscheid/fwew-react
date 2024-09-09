@@ -9,8 +9,8 @@ import { useActiveWindowContext } from "@/context/ActiveWindowContext";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { useTheme } from "@react-navigation/native";
 import { Tabs } from "expo-router";
-import { useColorScheme, View } from "react-native";
-import { Topbar, TopbarReef, Bottombar, BottombarReef } from "@/themes/frutigerAero";
+import { useColorScheme, View, StyleSheet } from "react-native";
+import { Topbar, TopbarReef, Bottombar, BottombarReef, highlight } from "@/themes/frutigerAero";
 import { ActiveWindow } from "@/types/common";
 import { Text } from "@/components/common/Themed";
 
@@ -39,7 +39,7 @@ export default function TabLayout() {
   const { appLanguage } = useAppLanguageContext();
   const { dialect } = useDialectContext();
   const { screens } = getUI(appLanguage, dialect);
-  const { activeWindow, saveActiveWindow } = useActiveWindowContext();
+  const { saveActiveWindow } = useActiveWindowContext();
   const routeConv: RouteToWindow = {};
   routeConv['index'] = 'search'
   routeConv['list'] = 'list'
@@ -71,8 +71,8 @@ export default function TabLayout() {
             ? TopbarReef()
             : Topbar()),
           tabBarBackground: () => (dialect === "reef"
-            ? BottombarReef()
-            : Bottombar()),
+            ? BottombarReef(highlight())
+            : Bottombar(highlight())),
         }}
         screenListeners={({route}) => ({
         tabPress: () => {
@@ -123,10 +123,6 @@ export default function TabLayout() {
           }}
         />
       </Tabs>
-      <View style={{position:'absolute', height:"100%"}}>
-        <View style={{height:"90%"}}></View>
-        <Text style={{backgroundColor: "#FFF"}}>{activeWindow}</Text>
-      </View>
     </View>
   );
 }
