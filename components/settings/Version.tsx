@@ -1,5 +1,5 @@
 import { MonoText } from "@/components/common/StyledText";
-import { GradientCardView, Text } from "@/components/common/Themed";
+import { PlainCardView, GradientCardView, Text } from "@/components/common/Themed";
 import { GitDetails } from "@/components/settings/GitDetails";
 import { getUI } from "@/constants/i18n";
 import { useAppLanguageContext } from "@/context/AppLanguageContext";
@@ -16,14 +16,14 @@ export function Version() {
   return (
     <>
       <Text style={styles.label}>{ui.settings.version}</Text>
-      <GradientCardView style={styles.versionContainer}>
-        <GradientCardView>
+      <PlainCardView style={styles.versionContainer}>
+        <PlainCardView>
           <MonoText style={styles.text}>fwew-react</MonoText>
           <MonoText style={styles.text}>fwew-api </MonoText>
           <MonoText style={styles.text}>fwew-lib</MonoText>
           <MonoText style={styles.text}>dictionary</MonoText>
-        </GradientCardView>
-        <GradientCardView>
+        </PlainCardView>
+        <PlainCardView>
           <MonoText style={styles.text}>
             {version.AppVersion}{" "}
             <GitDetails
@@ -34,8 +34,8 @@ export function Version() {
           <MonoText style={styles.text}>{version.APIVersion || "?"}</MonoText>
           <MonoText style={styles.text}>{version.FwewVersion || "?"}</MonoText>
           <MonoText style={styles.text}>{version.DictVersion || "?"}</MonoText>
-        </GradientCardView>
-      </GradientCardView>
+        </PlainCardView>
+      </PlainCardView>
     </>
   );
 }

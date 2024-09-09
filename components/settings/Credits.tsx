@@ -1,4 +1,4 @@
-import { GradientCardView, Text } from "@/components/common/Themed";
+import { PlainCardView, GradientCardView, Text } from "@/components/common/Themed";
 import credits from "@/constants/Credits";
 import { getUI } from "@/constants/i18n";
 import { AppLanguages } from "@/constants/Language";
@@ -14,7 +14,7 @@ export function Credits() {
   const { dialect } = useDialectContext();
   const ui = getUI(appLanguage, dialect);
   return (
-    <GradientCardView style={styles.creditsContainer}>
+    <PlainCardView style={styles.creditsContainer}>
       <Text style={styles.label}>{ui.settings.credits}</Text>
       <CreditsItem
         title={ui.settings.development}
@@ -40,12 +40,12 @@ function CreditsItem({
   const { colors } = useTheme();
 
   return (
-    <GradientCardView style={styles.creditsItemContainer}>
-      <GradientCardView>{language && FlagMap[language]}</GradientCardView>
-      <GradientCardView style={{ flex: 1 }}>
-        <GradientCardView style={styles.creditsItemContainer}>
+    <PlainCardView style={styles.creditsItemContainer}>
+      <PlainCardView>{language && FlagMap[language]}</PlainCardView>
+      <PlainCardView style={{ flex: 1 }}>
+        <PlainCardView style={styles.creditsItemContainer}>
           {names.map((name, i) => (
-            <GradientCardView
+            <PlainCardView
               key={`ci_${name}_${i}`}
               style={[
                 styles.textContainer,
@@ -53,11 +53,11 @@ function CreditsItem({
               ]}
             >
               <Text style={styles.text}>{name}</Text>
-            </GradientCardView>
+            </PlainCardView>
           ))}
-        </GradientCardView>
-      </GradientCardView>
-    </GradientCardView>
+        </PlainCardView>
+      </PlainCardView>
+    </PlainCardView>
   );
 }
 

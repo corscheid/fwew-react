@@ -1,6 +1,6 @@
 import { ResultCount } from "@/components/common/ResultCount";
 import { BoldText, MonoText } from "@/components/common/StyledText";
-import { GradientCardView, Text, View } from "@/components/common/Themed";
+import { GradientCardView, PlainCardView, Text, View } from "@/components/common/Themed";
 import { ListResults } from "@/components/list/ListResults";
 import { getUI } from "@/constants/i18n";
 import { useAppLanguageContext } from "@/context/AppLanguageContext";
@@ -38,10 +38,10 @@ function LenitionTable() {
   return (
     <GradientCardView style={{ padding: 16 }}>
       {lenitionData.map(({ key, value }, i) => (
-        <GradientCardView key={`lt_r_${i}`} style={styles.lenitionRow}>
+        <PlainCardView key={`lt_r_${i}`} style={styles.lenitionRow}>
           <MonoText style={styles.lenitionKey}>{key}</MonoText>
           <MonoText style={styles.lenitionValue}>{value}</MonoText>
-        </GradientCardView>
+        </PlainCardView>
       ))}
     </GradientCardView>
   );

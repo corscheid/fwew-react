@@ -212,6 +212,53 @@ export function StyleCardReef(element: JSX.Element) {
   return theme
 }
 
+export function StyleCard2(element: JSX.Element) {
+  const colorScheme = useColorScheme();
+  const theme =
+    colorScheme === "dark"
+                    ? <LinearGradient
+                      start={{ x: 0, y: 0 }}
+                      end={{ x: 0, y: 1 }}
+                      colors={["#292929","#0A0A0A"]}
+                      //colors={[theme.colors.primary, theme.colors.primary]}
+                      style={{borderWidth: 1,
+                      borderColor: "#999999"}}
+                    >{element}</LinearGradient>
+                    : <LinearGradient
+                      start={{ x: 0, y: 0 }}
+                      end={{ x: 0, y: 1 }}
+                      colors={["#F6F6F6","#D7D7D7"]}
+                      //colors={[theme.colors.primary, theme.colors.primary]}
+                      style={{borderWidth: 1,
+                        borderColor: "#999999"}}
+                    >{element}</LinearGradient>
+
+  return theme
+}
+
+export function StyleCard2Reef(element: JSX.Element) {
+  const colorScheme = useColorScheme();
+  const theme =
+  colorScheme === "dark"
+                  ? <LinearGradient
+                      start={{ x: 0, y: 0 }}
+                      end={{ x: 0, y: 1 }}
+                      colors={["#292929","#0A0A0A"]}
+                      //colors={[theme.colors.primary, theme.colors.primary]}
+                      style={{borderWidth: 1,
+                        borderColor: "#999999"}}
+                    >{element}</LinearGradient>
+                  : <LinearGradient
+                      start={{ x: 0, y: 0 }}
+                      end={{ x: 0, y: 1 }}
+                      colors={["#F6F6F6","#D7D7D7"]}
+                      //colors={[theme.colors.primary, theme.colors.primary]}
+                      style={{borderWidth: 1,
+                        borderColor: "#999999"}}
+                    >{element}</LinearGradient>
+  return theme
+}
+
 const styles = StyleSheet.create({
   buttonOverlay: {
     width: "20%"

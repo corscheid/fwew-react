@@ -1,6 +1,6 @@
 import { Accordion } from "@/components/common/Accordion";
 import { OptionItem } from "@/components/common/OptionItem";
-import { GradientCardView, Text } from "@/components/common/Themed";
+import { PlainCardView, GradientCardView, Text } from "@/components/common/Themed";
 import { Auxthemes } from "@/constants/Auxthemes";
 import { useDialectContext } from "@/context/DialectContext";
 import { getUI } from "@/constants/i18n";
@@ -18,22 +18,22 @@ export function AuxthemeSelect() {
   return (
     <Accordion
       closedContent={
-        <GradientCardView style={styles.iconContainer}>
+        <PlainCardView style={styles.iconContainer}>
           <Text style={styles.value}>{ui.settings.auxtheme}</Text>
-        </GradientCardView>
+        </PlainCardView>
       }
       openedContent={
-        <GradientCardView>
+        <PlainCardView>
           {Auxthemes.map((language, i) => (
-            <GradientCardView key={`sal_${i}`} style={{ paddingHorizontal: 8 }}>
+            <PlainCardView key={`sal_${i}`} style={{ paddingHorizontal: 8 }}>
               <OptionItem
                 value={language.label}
                 selected={auxtheme === language.value}
                 onSelect={() => saveAuxtheme(language.value)}
               />
-            </GradientCardView>
+            </PlainCardView>
           ))}
-        </GradientCardView>
+        </PlainCardView>
       }
     />
   );

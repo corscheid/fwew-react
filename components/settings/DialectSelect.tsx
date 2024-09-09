@@ -5,7 +5,7 @@ import { useDialectContext } from "@/context/DialectContext";
 import { StyleSheet } from "react-native";
 import { Accordion } from "../common/Accordion";
 import { OptionItem } from "../common/OptionItem";
-import { GradientCardView, Text } from "../common/Themed";
+import { PlainCardView, GradientCardView, Text } from "../common/Themed";
 
 export function DialectSelect() {
   const { dialect, dialectDisplay, saveDialect } = useDialectContext();
@@ -15,24 +15,24 @@ export function DialectSelect() {
   return (
     <Accordion
       closedContent={
-        <GradientCardView style={styles.iconContainer}>
+        <PlainCardView style={styles.iconContainer}>
           <Text style={styles.value}>{dialectDisplay}</Text>
           <Text style={styles.value}>{ui.names.dialect}</Text>
-        </GradientCardView>
+        </PlainCardView>
       }
       openedContent={
-        <GradientCardView>
+        <PlainCardView>
           {Dialects.map((d, i) => (
-            <GradientCardView key={`sd_${i}`} style={{ paddingHorizontal: 8 }}>
+            <PlainCardView key={`sd_${i}`} style={{ paddingHorizontal: 8 }}>
               <OptionItem
                 icon={null}
                 value={d.name}
                 selected={dialect === d.value}
                 onSelect={() => saveDialect(d.value)}
               />
-            </GradientCardView>
+            </PlainCardView>
           ))}
-        </GradientCardView>
+        </PlainCardView>
       }
     />
   );

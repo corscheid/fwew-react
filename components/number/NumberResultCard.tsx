@@ -1,5 +1,5 @@
 import { MonoText } from "@/components/common/StyledText";
-import { GradientCardView, Text, View } from "@/components/common/Themed";
+import { PlainCardView, GradientCardView, Text, View } from "@/components/common/Themed";
 import { getUI } from "@/constants/i18n";
 import { useAppLanguageContext } from "@/context/AppLanguageContext";
 import { useDialectContext } from "@/context/DialectContext";
@@ -30,7 +30,7 @@ export function NumberResultCard({ result }: NumberResultCardProps) {
   return (
     <GradientCardView style={styles.container}>
       <Text style={styles.navi}>{result.name}</Text>
-      <GradientCardView
+      <PlainCardView
         style={{
           flexDirection: "row",
           alignItems: "center",
@@ -39,15 +39,15 @@ export function NumberResultCard({ result }: NumberResultCardProps) {
           gap: 16,
         }}
       >
-        <GradientCardView style={{ alignItems: "flex-end" }}>
+        <PlainCardView style={{ alignItems: "flex-end" }}>
           <Text style={styles.text}>{ui.numbers.octal}</Text>
           <Text style={styles.text}>{ui.numbers.decimal}</Text>
-        </GradientCardView>
-        <GradientCardView style={{ alignItems: "flex-end" }}>
+        </PlainCardView>
+        <PlainCardView style={{ alignItems: "flex-end" }}>
           <MonoText style={styles.text}>{result.octal}</MonoText>
           <MonoText style={styles.text}>{result.decimal}</MonoText>
-        </GradientCardView>
-      </GradientCardView>
+        </PlainCardView>
+      </PlainCardView>
       <Scientific result={result} />
     </GradientCardView>
   );
@@ -75,15 +75,15 @@ function Scientific({ result }: { result: FwewNumber }) {
         />
       );
     });
-  return <GradientCardView style={{ flexDirection: "row" }}>{octalDigits}</GradientCardView>;
+  return <PlainCardView style={{ flexDirection: "row" }}>{octalDigits}</PlainCardView>;
 }
 
 function Power({ base, exponent }: { base: string; exponent: string }) {
   return (
-    <GradientCardView style={{ flexDirection: "row" }}>
+    <PlainCardView style={{ flexDirection: "row" }}>
       <MonoText style={{ fontSize: 18 }}>{base}</MonoText>
       <MonoText style={{ fontSize: 12 }}>{exponent}</MonoText>
-    </GradientCardView>
+    </PlainCardView>
   );
 }
 

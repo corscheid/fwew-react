@@ -1,6 +1,6 @@
 import { Accordion } from "@/components/common/Accordion";
 import { OptionItem } from "@/components/common/OptionItem";
-import { GradientCardView, Text } from "@/components/common/Themed";
+import { PlainCardView, GradientCardView, Text } from "@/components/common/Themed";
 import { FlagMap } from "@/components/settings/Flags";
 import { AppLanguages } from "@/constants/Language";
 import { getUI } from "@/constants/i18n";
@@ -16,24 +16,24 @@ export function AppLanguageSelect() {
   return (
     <Accordion
       closedContent={
-        <GradientCardView style={styles.iconContainer}>
+        <PlainCardView style={styles.iconContainer}>
           {FlagMap[appLanguage]}
           <Text style={styles.value}>{ui.settings.appLanguage}</Text>
-        </GradientCardView>
+        </PlainCardView>
       }
       openedContent={
-        <GradientCardView>
+        <PlainCardView>
           {AppLanguages.map((language, i) => (
-            <GradientCardView key={`sal_${i}`} style={{ paddingHorizontal: 8 }}>
+            <PlainCardView key={`sal_${i}`} style={{ paddingHorizontal: 8 }}>
               <OptionItem
                 icon={FlagMap[language.value]}
                 value={language.label}
                 selected={appLanguage === language.value}
                 onSelect={() => saveAppLanguage(language.value)}
               />
-            </GradientCardView>
+            </PlainCardView>
           ))}
-        </GradientCardView>
+        </PlainCardView>
       }
     />
   );
