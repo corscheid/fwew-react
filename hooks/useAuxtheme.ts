@@ -2,11 +2,6 @@ import { Auxtheme } from "@/types/common";
 import { useAsyncStorage } from "@react-native-async-storage/async-storage";
 import { useEffect, useState } from "react";
 
-const auxthemeAbbr: { [key in Auxtheme]: string } = {
-  normal: "normal",
-  frutigerAero: "FA",
-};
-
 export function useAuxtheme() {
   const [auxtheme, setAuxtheme] = useState<Auxtheme>("normal");
   const { getItem, setItem } = useAsyncStorage("fw_auxtheme");
@@ -19,11 +14,6 @@ export function useAuxtheme() {
       return;
     }
     setAuxtheme(value);
-  }
-
-  async function toggleAuxtheme() {
-    const value = auxtheme === "normal" ? "normal" : "frutiger aero";
-    saveAuxtheme(value);
   }
 
   useEffect(() => {
@@ -39,8 +29,6 @@ export function useAuxtheme() {
 
   return {
     auxtheme,
-    auxthemeDisplay: auxthemeAbbr[auxtheme],
     saveAuxtheme,
-    toggleAuxtheme,
   };
 }

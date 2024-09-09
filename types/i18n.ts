@@ -141,6 +141,11 @@ export type SettingsStrings = {
   testing: string;
   translation: string;
   appLanguage: string;
+  auxtheme: string;
+  auxthemes: {
+    name: string;
+    value: string;
+  }[];
   resultsLanguage: string;
 };
 

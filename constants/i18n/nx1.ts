@@ -266,6 +266,11 @@ const strings: UITranslation = {
     testing: "Fmetokyu",
     translation: "Ralpengyu",
     appLanguage: "'Ure lì'fya",
+    auxtheme: "Ayùr alahe",
+    auxthemes: [
+      { name: "Letrrtrr", value: "normal" },
+      { name: "Frutìgrr Ero", value: "frutiger aero" },
+    ],
     resultsLanguage: "Kume lì'fya",
   },
 };

@@ -274,6 +274,11 @@ const strings: UITranslation = {
     testing: "Teste",
     translation: "Tradução",
     appLanguage: "Idioma do Aplicativo",
+    auxtheme: "Other Themes", // TODO
+    auxthemes: [
+      { name: "normal", value: "normal" }, // TODO
+      { name: "frutiger aero", value: "frutiger aero" }, // TODO
+    ],
     resultsLanguage: "Idioma dos Resultados",
   },
 };

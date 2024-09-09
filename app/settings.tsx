@@ -3,6 +3,7 @@ import { About } from "@/components/settings/About";
 import { AppLanguageSelect } from "@/components/settings/AppLanguageSelect";
 import { DialectSelect } from "@/components/settings/DialectSelect";
 import { ResultsLanguageSelect } from "@/components/settings/ResultsLanguageSelect";
+import { AuxthemeSelect } from "@/components/settings/AuxthemeSelect";
 import { getUI } from "@/constants/i18n";
 import { useAppLanguageContext } from "@/context/AppLanguageContext";
 import { useDialectContext } from "@/context/DialectContext";
@@ -22,6 +23,7 @@ export default function SettingsScreen() {
         <AppLanguageSelect />
         <ResultsLanguageSelect />
         <DialectSelect />
+        <AuxthemeSelect />
         <Text style={styles.value}>{ui.settings.about}</Text>
         <About />
       </View>
