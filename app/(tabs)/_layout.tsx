@@ -9,7 +9,7 @@ import { useActiveWindowContext } from "@/context/ActiveWindowContext";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { useTheme } from "@react-navigation/native";
 import { Tabs } from "expo-router";
-import { useColorScheme, View, StyleSheet } from "react-native";
+import { Platform, useColorScheme, View, StyleSheet } from "react-native";
 import { Topbar, TopbarReef, Bottombar, BottombarReef, highlight } from "@/themes/frutigerAero";
 import { ActiveWindow } from "@/types/common";
 import { Text } from "@/components/common/Themed";
@@ -126,3 +126,13 @@ export default function TabLayout() {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  logo: {
+    marginLeft: Platform.OS === "web" ? 0 : -16,
+    marginRight: Platform.OS === "web" ? 0 : 16,
+  },
+  actionButton: {
+    marginRight: Platform.OS === "web" ? 0 : -16,
+  },
+});

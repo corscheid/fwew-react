@@ -7,7 +7,7 @@ export function highlight() {
   const { activeWindow } = useActiveWindowContext();
   const background = (<LinearGradient start={{ x: 0, y: 0 }}
   end={{ x: 0, y: 1 }}
-  colors={["#CCCCCC", "#999999","#555555", "#CCCCCC"]}
+  colors={["#CCC", "#555", "#999", "#CCC"]}
   locations={[0,0.5,0.5,1]}
   style={{ height: "80%", borderRadius: 5, margin: 5, borderWidth: 1, borderColor:"#000" }} ></LinearGradient>);
 
