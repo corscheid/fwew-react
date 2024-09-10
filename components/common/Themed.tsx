@@ -101,9 +101,7 @@ export function GradientCardViewListprop(props: ViewProps) {
   const auxtheme = getTheme()
   const content = (<DefaultView style={style} {...otherProps}/>)
 
-  return dialect === "reef"
-  ? auxtheme.StyleCard2Reef(content)
-  : auxtheme.StyleCard2(content);
+  return auxtheme.ButtonBackgroundList(content);
 }
 
 export function TextInput(props: TextInputProps) {
