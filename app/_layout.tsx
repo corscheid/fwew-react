@@ -15,7 +15,7 @@ import { useFonts } from "expo-font";
 import { SplashScreen, Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
-import { useColorScheme } from "react-native";
+import { useColorScheme, SafeAreaView, Platform } from "react-native";
 import { useActiveWindow } from "@/hooks/useActiveWindow";
 import { AuxthemeProvider } from "@/context/AuxthemeContext";
 import { useAuxtheme, getTheme } from "@/hooks/useAuxtheme";

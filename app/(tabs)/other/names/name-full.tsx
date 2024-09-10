@@ -146,6 +146,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     gap: 16,
     paddingTop: 16,
+    height: 75,
   },
   resultCount: {
     padding: 16,

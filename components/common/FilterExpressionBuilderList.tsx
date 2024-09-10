@@ -60,7 +60,7 @@ export function FilterExpressionBuilderList(
           />
         </View>
       ))}
-      <View style={{ paddingTop: 10 }}>
+      <View style={{ paddingTop: 10, height: 65 }}>
         {auxtheme.ButtonBackground(<Button onPress={add} icon="plus" disabled={disabled} />)}
       </View>
     </PlainCardView>

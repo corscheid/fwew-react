@@ -2,7 +2,8 @@ import { GradientCardView, GradientCardViewListprop, Text } from "@/components/c
 import Colors from "@/constants/Colors";
 import { FontAwesome } from "@expo/vector-icons";
 import { useTheme } from "@react-navigation/native";
-import { StyleSheet, TouchableOpacity } from "react-native";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
+import { getTheme } from "@/hooks/useAuxtheme";
 
 type OptionItemProps = {
   icon?: React.ReactNode;
@@ -21,31 +22,27 @@ export function OptionItem(props: OptionItemProps) {
     return Colors.light.text;
   };
 
-  return (
-    <TouchableOpacity onPress={onSelect}>
-      <GradientCardViewListprop
-        style={[
-          styles.iconContainer,
-          /*{
-            backgroundColor: selected
-              ? theme.colors.primary
-              : theme.colors.card,
-          },*/
-        ]}
-      >
-        {icon}
-        <Text style={[styles.value, { color: getTextColor() }]}>{value}</Text>
-        {selected && (
-          <FontAwesome
-            name="check"
-            size={24}
-            color={Colors.dark.text}
-            style={styles.check}
-          />
-        )}
-      </GradientCardViewListprop>
-    </TouchableOpacity>
-  );
+  const auxtheme = getTheme()
+
+  const content =
+  (<View style={styles.iconContainer}>{icon}
+    <Text style={[styles.value, { color: getTextColor() }]}>{value}</Text>
+    {selected && (
+      <FontAwesome
+        name="check"
+        size={24}
+        color={Colors.dark.text}
+        style={styles.check}
+      />
+    )}</View>)
+
+  return selected ?
+    (<TouchableOpacity onPress={onSelect}>
+      {auxtheme.ButtonBackground((content))}
+    </TouchableOpacity>)
+  :(<TouchableOpacity onPress={onSelect}>
+      {auxtheme.ButtonBackgroundList((content))}
+    </TouchableOpacity>);
 }
 
 const styles = StyleSheet.create({

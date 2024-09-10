@@ -13,6 +13,7 @@ import { useTheme } from "@react-navigation/native";
 import * as Clipboard from "expo-clipboard";
 import { RefreshControl, ScrollView, StyleSheet } from "react-native";
 import { getTheme } from "@/hooks/useAuxtheme";
+import { GradientCardView } from "@/components/common/Themed";
 
 export default function NameAluScreen() {
   const auxtheme = getTheme();
@@ -55,38 +56,40 @@ export default function NameAluScreen() {
         />
       }
     >
-      <Accordion
-        closedContent={<Text>{uiNames.options}</Text>}
-        openedContent={
-          <View style={styles.optionContainer}>
-            <Text style={styles.label}>{uiNames.numNames}</Text>
-            <NumericTextInput
-              value={numNames}
-              onChangeText={updateNumNames}
-              placeholder="1-50"
-              autoFocus
-            />
-            <Text style={styles.label}>{uiNameAlu.numSyllables}</Text>
-            <OptionSelect
-              items={uiNames.syllablesOptions}
-              active={(value) => numSyllables === value}
-              onSelect={updateNumSyllables}
-            />
-            <Text style={styles.label}>{uiNameAlu.nounMode}</Text>
-            <OptionSelect
-              items={uiNameAlu.nounModes}
-              active={(value) => nounMode === value}
-              onSelect={setNounMode}
-            />
-            <Text style={styles.label}>{uiNameAlu.adjMode}</Text>
-            <OptionSelect
-              items={uiNameAlu.adjModes}
-              active={(value) => adjMode === value}
-              onSelect={setAdjMode}
-            />
-          </View>
-        }
-      />
+      <GradientCardView style={styles.optionContainer}>
+        <Accordion
+          closedContent={<Text>{uiNames.options}</Text>}
+          openedContent={
+            <>
+              <Text style={styles.label}>{uiNames.numNames}</Text>
+              <NumericTextInput
+                value={numNames}
+                onChangeText={updateNumNames}
+                placeholder="1-50"
+                autoFocus
+              />
+              <Text style={styles.label}>{uiNameAlu.numSyllables}</Text>
+              <OptionSelect
+                items={uiNames.syllablesOptions}
+                active={(value) => numSyllables === value}
+                onSelect={updateNumSyllables}
+              />
+              <Text style={styles.label}>{uiNameAlu.nounMode}</Text>
+              <OptionSelect
+                items={uiNameAlu.nounModes}
+                active={(value) => nounMode === value}
+                onSelect={setNounMode}
+              />
+              <Text style={styles.label}>{uiNameAlu.adjMode}</Text>
+              <OptionSelect
+                items={uiNameAlu.adjModes}
+                active={(value) => adjMode === value}
+                onSelect={setAdjMode}
+              />
+            </>
+          }
+        />
+      </GradientCardView>
       <View style={styles.buttonContainer}>
       {auxtheme.ButtonBackground(<Button
           icon="clipboard"
@@ -125,6 +128,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     gap: 16,
     paddingTop: 16,
+    height: 75,
   },
   resultCount: {
     padding: 16,

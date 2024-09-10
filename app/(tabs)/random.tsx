@@ -78,7 +78,7 @@ export default function RandomScreen() {
         incomplete={incomplete}
       />
       </GradientCardView>
-      <View style={{ paddingTop: 16 }}>
+      <View style={{ paddingTop: 16, height: 72 }}>
         {auxtheme.ButtonBackground(<Button
           icon="refresh"
           text=""

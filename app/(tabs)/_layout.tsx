@@ -128,7 +128,7 @@ export default function TabLayout() {
 
 const styles = StyleSheet.create({
   logo: {
-    marginLeft: Platform.OS === "web" ? 0 : -16,
+    marginLeft: 0,
     marginRight: Platform.OS === "web" ? 0 : 16,
   },
   actionButton: {

@@ -8,6 +8,7 @@ import { useTheme } from "@react-navigation/native";
 import { Stack } from "expo-router";
 import { Platform, StyleSheet, View } from "react-native";
 import { getTheme } from "@/hooks/useAuxtheme";
+import { useAuxtheme } from "@/hooks/useAuxtheme";
 
 export default function StackLayout() {
   const theme = useTheme();
@@ -15,28 +16,27 @@ export default function StackLayout() {
   const { dialect } = useDialectContext();
   const { screens, names } = getUI(appLanguage, dialect);
   const auxtheme = getTheme()
+  const auxthemeName = useAuxtheme().auxtheme
 
   return (
     <Stack
       screenOptions={{
-        headerStyle: { backgroundColor: theme.colors.primary },
+        //headerStyle: { backgroundColor: theme.colors.primary },
         headerTintColor: Colors.dark.text,
         headerBackground: () => (
           Topbar()
         ),
         headerLeft: () => (
-          <View style={styles.logo}>
+          <View style={auxthemeName === "frutiger aero" ? styles.logoAero : styles.logo}>
             <Logo />
           </View>
         ),
         headerRight: () => (
-          <View style={styles.actionButton}>
+          <View style={auxthemeName === "frutiger aero" ? styles.actionButtonAero : styles.actionButton}>
             <ActionButtons />
           </View>
         ),
-        headerBackground: () => (
-          auxtheme.Topbar()
-        )
+        headerBackground: () => (auxtheme.Topbar())
       }}
     >
       <Stack.Screen name="index" options={{ title: screens.other }} />
@@ -81,7 +81,16 @@ const styles = StyleSheet.create({
     marginLeft: Platform.OS === "web" ? 0 : -16,
     marginRight: Platform.OS === "web" ? 0 : 16,
   },
+  logoAero: {
+    marginLeft: Platform.OS === "web" ? 0 : -16,
+    marginRight: Platform.OS === "web" ? 0 : 16,
+    marginTop: Platform.OS === "web" ? 0 : -8,
+  },
   actionButton: {
     marginRight: Platform.OS === "web" ? 0 : -16,
+  },
+  actionButtonAero: {
+    marginRight: Platform.OS === "web" ? 0 : -16,
+    marginTop: Platform.OS === "web" ? 0 : -8,
   },
 });
