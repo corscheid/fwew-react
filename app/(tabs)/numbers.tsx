@@ -3,11 +3,15 @@ import { NumberResultCard } from "@/components/number/NumberResultCard";
 import { NumberSearchBar } from "@/components/number/NumberSearchBar";
 import { useNumber } from "@/hooks/useNumber";
 import { StyleSheet } from "react-native";
+import { getTheme } from "@/hooks/useAuxtheme";
+import { useDialectContext } from "@/context/DialectContext";
 
 export default function NumbersScreen() {
+  const auxtheme = getTheme();
+
   const [mode, toggleMode, query, result, search, clear] = useNumber();
 
-  return (
+  const content = (
     <View style={styles.container}>
       <NumberSearchBar
         mode={mode}
@@ -19,6 +23,8 @@ export default function NumbersScreen() {
       <NumberResultCard result={result} />
     </View>
   );
+
+  return auxtheme.Background(content);
 }
 
 const styles = StyleSheet.create({

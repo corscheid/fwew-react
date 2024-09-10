@@ -19,14 +19,16 @@ import { Romanize } from "@/lib/romanize";
 import { useTheme } from "@react-navigation/native";
 import { fwewSimple, type LanguageCode, type Word } from "fwew.js";
 import { useCallback, useEffect, useState } from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 import Autolink from "react-native-autolink";
+import { getTheme } from "@/hooks/useAuxtheme";
 
 type ResultInfoProps = {
   word: Word;
 };
 
 export function ResultInfo({ word }: ResultInfoProps) {
+  const auxtheme = getTheme();
   const { playSound, disabled } = useSound();
   const { resultsLanguage } = useResultsLanguageContext();
   const local = word[resultsLanguage.toUpperCase() as Uppercase<LanguageCode>];
@@ -41,16 +43,20 @@ export function ResultInfo({ word }: ResultInfoProps) {
 
   return (
     <PlainCardView style={styles.container}>
-      <PlainCardView style={styles.buttonContainer}>
-        <Button
+      <PlainCardView style={[styles.buttonContainer, {marginBottom: 16}]}>
+        <View style={styles.audioButton}>
+        {auxtheme.ButtonBackground(<Button
           onPress={() => playSound(word.ID)}
           disabled={disabled || (dialect === "reef" && forestNavi !== reefNavi)}
           icon="volume-up"
           text={ui.search.audio}
           style={styles.audioButton}
           textStyle={{ color: Colors.dark.text }}
-        />
+        />)}
+        </View>
+        <View style={styles.audioButton}>
         <FavoriteButton word={word} />
+        </View>
       </PlainCardView>
       <DetailItem
         label={ui.search.navi}
@@ -349,7 +355,6 @@ const styles = StyleSheet.create({
   },
   audioButton: {
     flex: 1,
-    marginBottom: 16,
     borderRadius: 8,
   },
   wrapRow: {

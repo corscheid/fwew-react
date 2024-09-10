@@ -32,9 +32,8 @@ export function Button(props: ButtonProps) {
       style={[
         styles.button,
         {
-          backgroundColor: disabled ? colors.placeholder : theme.colors.primary,
           ...style,
-        },
+        }, {height: "100%"}
       ]}
       disabled={disabled}
     >

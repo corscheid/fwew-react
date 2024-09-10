@@ -8,9 +8,12 @@ import { useDialectContext } from "@/context/DialectContext";
 import { useList } from "@/hooks/useList";
 import { useEffect } from "react";
 import { ScrollView, StyleSheet } from "react-native";
+import { getTheme } from "@/hooks/useAuxtheme";
 
 export default function LenitionScreen() {
-  return (
+  const auxtheme = getTheme();
+
+  return auxtheme.Background(
     <ScrollView style={{ padding: 16 }}>
       <LenitionTable />
       <LenPreList />

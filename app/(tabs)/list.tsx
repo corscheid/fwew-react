@@ -7,8 +7,11 @@ import { useList } from "@/hooks/useList";
 import { useTheme } from "@react-navigation/native";
 import { useCallback, useEffect } from "react";
 import { RefreshControl, ScrollView, StyleSheet } from "react-native";
+import { getTheme } from "@/hooks/useAuxtheme";
+import { GradientCardView } from "@/components/common/Themed";
 
 export default function ListScreen() {
+  const auxtheme = getTheme();
 
   const { filters, filterExpression, incomplete, add, remove, update } =
     useFilterExpression();
@@ -31,7 +34,7 @@ export default function ListScreen() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [getData]);
 
-  return (
+  const content = (
     <ScrollView
       style={styles.container}
       keyboardShouldPersistTaps="always"
@@ -43,6 +46,7 @@ export default function ListScreen() {
         />
       }
     >
+      <GradientCardView>
       <ListOptions
         filters={filters}
         add={add}
@@ -50,6 +54,7 @@ export default function ListScreen() {
         update={update}
         incomplete={incomplete}
       />
+      </GradientCardView>
       <ResultCount
         visible={resultsVisible}
         resultCount={results.length}
@@ -58,6 +63,8 @@ export default function ListScreen() {
       <ListResults loading={loading} results={resultsVisible ? results : []} />
     </ScrollView>
   );
+
+  return auxtheme.Background(content);
 }
 
 const styles = StyleSheet.create({

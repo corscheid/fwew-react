@@ -8,6 +8,7 @@ import { useDialectContext } from "@/context/DialectContext";
 import { FilterExpressionBuilderValue } from "@/types/list";
 import { useTheme } from "@react-navigation/native";
 import { StyleSheet } from "react-native";
+import { getTheme } from "@/hooks/useAuxtheme";
 
 type FilterExpressionBuilderListProps = {
   filters: FilterExpressionBuilderValue[];
@@ -26,6 +27,7 @@ export function FilterExpressionBuilderList(
   const { appLanguage } = useAppLanguageContext();
   const { dialect } = useDialectContext();
   const { list, random } = getUI(appLanguage, dialect);
+  const auxtheme = getTheme()
 
   const getHeaderText = () => {
     switch (mode) {
@@ -46,11 +48,11 @@ export function FilterExpressionBuilderList(
             <Text style={styles.label}>
               {i > 0 ? list.and : getHeaderText()}
             </Text>
-            <SmallButton
+            {auxtheme.ButtonBackgroundList((<SmallButton
               onPress={() => remove(i)}
               icon="trash"
               color={colors.notification}
-            />
+            />))}
           </View>
           <FilterExpressionBuilder
             value={filters[i]}
@@ -59,7 +61,7 @@ export function FilterExpressionBuilderList(
         </View>
       ))}
       <View style={{ paddingTop: 10 }}>
-        <Button onPress={add} icon="plus" disabled={disabled} />
+        {auxtheme.ButtonBackground(<Button onPress={add} icon="plus" disabled={disabled} />)}
       </View>
     </PlainCardView>
   );

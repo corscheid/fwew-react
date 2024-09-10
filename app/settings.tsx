@@ -9,13 +9,15 @@ import { useAppLanguageContext } from "@/context/AppLanguageContext";
 import { useDialectContext } from "@/context/DialectContext";
 import { StatusBar } from "expo-status-bar";
 import { Platform, ScrollView, StyleSheet } from "react-native";
+import { getTheme } from "@/hooks/useAuxtheme";
 
 export default function SettingsScreen() {
   const { appLanguage } = useAppLanguageContext();
   const { dialect } = useDialectContext();
   const ui = getUI(appLanguage, dialect);
+  const auxtheme = getTheme();
 
-  return (
+  const content = (
     <ScrollView>
       {/* Use a light status bar on iOS to account for the black space above the modal */}
       <StatusBar style={Platform.OS === "ios" ? "light" : "auto"} />
@@ -29,6 +31,8 @@ export default function SettingsScreen() {
       </View>
     </ScrollView>
   );
+
+  return auxtheme.Background(content);
 }
 
 const styles = StyleSheet.create({

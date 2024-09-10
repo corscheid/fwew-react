@@ -3,12 +3,14 @@ import { FwewSearchResults } from "@/components/search/FwewSearchResults";
 import { useProfanity } from "@/hooks/useProfanity";
 import { useTheme } from "@react-navigation/native";
 import { RefreshControl, ScrollView, StyleSheet } from "react-native";
+import { getTheme } from "@/hooks/useAuxtheme";
 
 export default function ProfanityScreen() {
+  const auxtheme = getTheme()
   const { results, resultCount, loading, execute } = useProfanity();
   const { colors } = useTheme();
 
-  return (
+  const content = (
     <ScrollView
       style={styles.container}
       keyboardShouldPersistTaps="always"
@@ -24,6 +26,8 @@ export default function ProfanityScreen() {
       <FwewSearchResults loading={loading} results={results} />
     </ScrollView>
   );
+
+  return auxtheme.Background(content);
 }
 
 const styles = StyleSheet.create({

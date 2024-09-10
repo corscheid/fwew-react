@@ -9,12 +9,6 @@ import { useAppLanguage } from "@/hooks/useAppLanguage";
 import { useDialect } from "@/hooks/useDialect";
 import { useFavorites } from "@/hooks/useFavorites";
 import { useResultsLanguage } from "@/hooks/useResultsLanguage";
-import {
-  FwewDarkReefTheme,
-  FwewDarkTheme,
-  FwewLightReefTheme,
-  FwewLightTheme,
-} from "@/themes";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { ThemeProvider } from "@react-navigation/native";
 import { useFonts } from "expo-font";
@@ -24,7 +18,7 @@ import { useEffect } from "react";
 import { useColorScheme } from "react-native";
 import { useActiveWindow } from "@/hooks/useActiveWindow";
 import { AuxthemeProvider } from "@/context/AuxthemeContext";
-import { useAuxtheme } from "@/hooks/useAuxtheme";
+import { useAuxtheme, getTheme } from "@/hooks/useAuxtheme";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -74,21 +68,22 @@ function RootLayoutNav() {
   const windowValue = useActiveWindow();
   const auxtheme = useAuxtheme();
   const favorites = useFavorites();
+  const auxthemeComponents = getTheme()
   const theme =
     colorScheme === "dark"
       ? dialectValue.dialect === "reef"
-        ? FwewDarkReefTheme
-        : FwewDarkTheme
+        ? auxthemeComponents.FwewDarkReefTheme
+        : auxthemeComponents.FwewDarkTheme
       : dialectValue.dialect === "reef"
-      ? FwewLightReefTheme
-      : FwewLightTheme;
+      ? auxthemeComponents.FwewLightReefTheme
+      : auxthemeComponents.FwewLightTheme;
 
   return (
     <>
       <GlobalStyle />
       <StatusBar style="light" />
-      <ThemeProvider value={theme}>
-        <AuxthemeProvider value={auxtheme}>
+      <AuxthemeProvider value={auxtheme}>
+        <ThemeProvider value={theme}>
           <AppLanguageProvider value={appLanguageValue}>
             <ResultsLanguageProvider value={resultsLanguage}>
               <ActiveWindowProvider value={windowValue}>
@@ -119,8 +114,8 @@ function RootLayoutNav() {
               </ActiveWindowProvider>
             </ResultsLanguageProvider>
           </AppLanguageProvider>
-        </AuxthemeProvider>
-      </ThemeProvider>
+        </ThemeProvider>
+      </AuxthemeProvider>
     </>
   );
 }

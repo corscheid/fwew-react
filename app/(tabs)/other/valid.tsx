@@ -3,11 +3,13 @@ import { SearchBar } from "@/components/common/SearchBar";
 import { GradientCardView, Text, View } from "@/components/common/Themed";
 import { useValid } from "@/hooks/useValid";
 import { ScrollView, StyleSheet } from "react-native";
+import { getTheme } from "@/hooks/useAuxtheme";
 
 export default function ValidScreen() {
+  const auxtheme = getTheme();
   const { query, results, loading, search, cancel } = useValid();
 
-  return (
+  return auxtheme.Background(
     <ScrollView
       style={styles.container}
       keyboardShouldPersistTaps="always"

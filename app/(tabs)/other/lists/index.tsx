@@ -6,13 +6,15 @@ import { useAppLanguageContext } from "@/context/AppLanguageContext";
 import { useDialectContext } from "@/context/DialectContext";
 import { Link } from "expo-router";
 import { ScrollView, StyleSheet } from "react-native";
+import { getTheme } from "@/hooks/useAuxtheme";
 
 export default function ListsScreen() {
+  const auxtheme = getTheme()
   const { appLanguage } = useAppLanguageContext();
   const { dialect } = useDialectContext();
   const { screens } = getUI(appLanguage, dialect);
 
-  return (
+  const content = (
     <ScrollView>
       <View style={styles.container}>
         <ScreenLinkCard
@@ -39,6 +41,8 @@ export default function ListsScreen() {
       </View>
     </ScrollView>
   );
+
+  return auxtheme.Background(content);
 }
 
 const styles = StyleSheet.create({

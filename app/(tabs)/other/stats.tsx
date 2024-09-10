@@ -1,4 +1,4 @@
-import { GradientCardView, Text, View } from "@/components/common/Themed";
+import { GradientCardView, PlainCardView, Text, View } from "@/components/common/Themed";
 import { useStats } from "@/hooks/useStats";
 import { useTheme } from "@react-navigation/native";
 import {
@@ -7,6 +7,7 @@ import {
   StyleSheet,
   useWindowDimensions,
 } from "react-native";
+import { getTheme } from "@/hooks/useAuxtheme";
 
 export default function StatsScreen() {
   const { wordCount, phonemeGrid, clusterName, clusterMap, loading } =
@@ -14,16 +15,17 @@ export default function StatsScreen() {
   const { colors } = useTheme();
   const { width, height } = useWindowDimensions();
   const landscape = width > height;
+  const auxtheme = getTheme();
 
   if (loading) {
-    return (
+    return auxtheme.Background(
       <View style={styles.loadingContainer}>
         <ActivityIndicator color={colors.text} size="large" />
       </View>
     );
   }
 
-  return (
+  return auxtheme.Background(
     <ScrollView>
       <View
         style={[
@@ -66,7 +68,7 @@ function PhonemeTable({ data }: { data: string[][] }) {
 
 function PhonemeTableHeaderRow({ row }: { row: string[] }) {
   return (
-    <GradientCardView style={styles.row}>
+    <PlainCardView style={styles.row}>
       {row.map((col, i) => {
         return (
           <Text key={`pthr_c${i}`} style={styles.phonemeHeader}>
@@ -74,23 +76,23 @@ function PhonemeTableHeaderRow({ row }: { row: string[] }) {
           </Text>
         );
       })}
-    </GradientCardView>
+    </PlainCardView>
   );
 }
 
 function PhonemeTableRow({ row }: { row: string[] }) {
   return (
-    <GradientCardView style={styles.row}>
+    <PlainCardView style={styles.row}>
       {row.map((col, i) => {
         const [phoneme, frequency] = col.split(" ");
         return (
-          <GradientCardView key={`ptr_c${i}`} style={styles.phonemeCol}>
+          <PlainCardView key={`ptr_c${i}`} style={styles.phonemeCol}>
             <Text style={styles.phoneme}>{phoneme}</Text>
             <Text>{frequency}</Text>
-          </GradientCardView>
+          </PlainCardView>
         );
       })}
-    </GradientCardView>
+    </PlainCardView>
   );
 }
 
@@ -109,44 +111,44 @@ function ClusterTable({ data }: { data: string[][] }) {
 
 function ClusterTableHeaderRow({ row }: { row: string[] }) {
   return (
-    <GradientCardView style={styles.row}>
+    <PlainCardView style={styles.row}>
       {row.map((col, i) => {
         return (
-          <GradientCardView key={`cthr_c${i}`} style={styles.clusterCol}>
+          <PlainCardView key={`cthr_c${i}`} style={styles.clusterCol}>
             <Text style={styles.clusterHeading}>{col}</Text>
-          </GradientCardView>
+          </PlainCardView>
         );
       })}
-    </GradientCardView>
+    </PlainCardView>
   );
 }
 
 function ClusterTableRow({ row }: { row: string[] }) {
   return (
-    <GradientCardView style={styles.row}>
+    <PlainCardView style={styles.row}>
       {row.map((col, i) => {
         if (i === 0) {
           return <ClusterTableHeaderCol key={`ctr_c${i}`} col={col} />;
         }
         return <ClusterTableCol key={`ctr_c${i}`} col={col} />;
       })}
-    </GradientCardView>
+    </PlainCardView>
   );
 }
 
 function ClusterTableHeaderCol({ col }: { col: string }) {
   return (
-    <GradientCardView style={styles.clusterCol}>
+    <PlainCardView style={styles.clusterCol}>
       <Text style={styles.clusterHeading}>{col}</Text>
-    </GradientCardView>
+    </PlainCardView>
   );
 }
 
 function ClusterTableCol({ col }: { col: string }) {
   return (
-    <GradientCardView style={styles.clusterCol}>
+    <PlainCardView style={styles.clusterCol}>
       <Text style={styles.clusterCell}>{col}</Text>
-    </GradientCardView>
+    </PlainCardView>
   );
 }
 

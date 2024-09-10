@@ -6,6 +6,7 @@ import { useResultsLanguageContext } from "@/context/ResultsLanguageContext";
 import type { LanguageCode, Word } from "fwew.js";
 import { useColorScheme } from "react-native";
 import { ResultOverview } from "./ResultOverview";
+import { GradientCardView } from "./Themed";
 
 type ResultCardProps = {
   word: Word;
@@ -19,6 +20,7 @@ export function ResultCard({ word }: ResultCardProps) {
   const { dialect } = useDialectContext();
 
   return (
+    <GradientCardView>
     <Accordion
       closedContent={
         <ResultOverview
@@ -30,5 +32,6 @@ export function ResultCard({ word }: ResultCardProps) {
       }
       openedContent={<ResultInfo word={word} />}
     />
+    </GradientCardView>
   );
 }

@@ -1,7 +1,7 @@
 import { AlphaTextInput } from "@/components/common/AlphaTextInput";
 import { DropDownSelect } from "@/components/common/DropDownSelect";
 import { NumericTextInput } from "@/components/common/NumericTextInput";
-import { Text, View } from "@/components/common/Themed";
+import { GradientCardView, Text, View } from "@/components/common/Themed";
 import { getUI } from "@/constants/i18n";
 import { useAppLanguageContext } from "@/context/AppLanguageContext";
 import { useDialectContext } from "@/context/DialectContext";
@@ -77,6 +77,7 @@ export function FilterExpressionBuilder(props: FilterExpressionBuilderProps) {
   return (
     <View style={styles.container}>
       {/* what */}
+      <GradientCardView>
       <DropDownSelect
         options={whatValues}
         value={value.what}
@@ -87,8 +88,10 @@ export function FilterExpressionBuilder(props: FilterExpressionBuilderProps) {
         keyExtractor={(option, i) => `dd_${option?.value}_${i}`}
         onChange={setWhat}
       />
+      </GradientCardView>
       {/* cond */}
       {value.what && (
+        <GradientCardView>
         <DropDownSelect
           options={condValues}
           value={value.cond}
@@ -99,6 +102,7 @@ export function FilterExpressionBuilder(props: FilterExpressionBuilderProps) {
           keyExtractor={(option, i) => `dd_${option?.value}_${i}`}
           onChange={setCond}
         />
+        </GradientCardView>
       )}
       {/* spec pos is, spec pos not-is */}
       {value.what && value.cond && isExactPosSpec && (

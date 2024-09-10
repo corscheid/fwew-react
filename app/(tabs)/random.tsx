@@ -1,6 +1,6 @@
 import { Button } from "@/components/common/Button";
 import { ResultCount } from "@/components/common/ResultCount";
-import { View } from "@/components/common/Themed";
+import { GradientCardView, View } from "@/components/common/Themed";
 import { ListResults } from "@/components/list/ListResults";
 import { RandomOptions } from "@/components/random/RandomOptions";
 import { useDebounce } from "@/hooks/useDebounce";
@@ -10,8 +10,12 @@ import { NumericString } from "@/types/common";
 import { useTheme } from "@react-navigation/native";
 import { useCallback, useEffect, useState } from "react";
 import { RefreshControl, ScrollView, StyleSheet } from "react-native";
+import { getTheme } from "@/hooks/useAuxtheme";
+import { useDialectContext } from "@/context/DialectContext";
 
 export default function RandomScreen() {
+  const auxtheme = getTheme();
+
   const [numWords, setNumWords] = useState<NumericString>("8");
   const { filters, filterExpression, incomplete, add, remove, update } =
     useFilterExpression();
@@ -51,7 +55,7 @@ export default function RandomScreen() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [getData]);
 
-  return (
+  const content = (
     <ScrollView
       style={styles.container}
       keyboardShouldPersistTaps="always"
@@ -63,6 +67,7 @@ export default function RandomScreen() {
         />
       }
     >
+      <GradientCardView>
       <RandomOptions
         numWords={numWords}
         updateNumWords={updateNumWords}
@@ -72,13 +77,14 @@ export default function RandomScreen() {
         update={update}
         incomplete={incomplete}
       />
+      </GradientCardView>
       <View style={{ paddingTop: 16 }}>
-        <Button
+        {auxtheme.ButtonBackground(<Button
           icon="refresh"
           text=""
           onPress={() => execute(numWords, filterExpression)}
           disabled={loading}
-        />
+        />)}
       </View>
       <ResultCount
         visible={resultsVisible}
@@ -88,6 +94,8 @@ export default function RandomScreen() {
       <ListResults loading={loading} results={resultsVisible ? results : []} />
     </ScrollView>
   );
+
+  return auxtheme.Background(content);
 }
 
 const styles = StyleSheet.create({

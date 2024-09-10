@@ -14,8 +14,6 @@ export default function ThatScreen() {
   const { width, height } = useWindowDimensions();
   const landscape = width > height;
 
-  const { dialect } = useDialectContext();
-
   var content = (<ScrollView style={styles.container}>
                       <ThatTable1 />
                       <Divider />
@@ -41,9 +39,7 @@ export default function ThatScreen() {
     );
   }
 
-  return dialect === "reef"
-  ? auxtheme.BackgroundReef(content)
-  : auxtheme.Background(content);
+  return auxtheme.Background(content);
 }
 
 function ThatTable1() {

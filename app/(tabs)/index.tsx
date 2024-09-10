@@ -22,7 +22,7 @@ export default function SearchScreen() {
     execute,
     cancel,
   } = useFwew();
-  const auxtheme = getTheme()
+  const auxtheme = getTheme();
   const { colors } = useTheme();
   const { appLanguage } = useAppLanguageContext();
   const { dialect } = useDialectContext();
@@ -62,9 +62,7 @@ export default function SearchScreen() {
     </View>
 )
   
-  return dialect === "reef"
-  ? auxtheme.BackgroundReef(content)
-  : auxtheme.Background(content);
+  return auxtheme.Background(content);
 }
 
 const styles = StyleSheet.create({

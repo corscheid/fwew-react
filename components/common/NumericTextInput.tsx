@@ -1,8 +1,9 @@
 import { SmallButton } from "@/components/common/SmallButton";
-import { GradientCardView, TextInput } from "@/components/common/Themed";
+import { PlainCardView, GradientCardView, TextInput } from "@/components/common/Themed";
 import Colors from "@/constants/Colors";
 import type { NumericString } from "@/types/common";
-import { StyleSheet, useColorScheme } from "react-native";
+import { StyleSheet, useColorScheme, View } from "react-native";
+import { getTheme } from "@/hooks/useAuxtheme";
 
 type NumericTextInputProps = {
   value?: string | NumericString;
@@ -15,6 +16,7 @@ export function NumericTextInput(props: NumericTextInputProps) {
   const { value, onChangeText, placeholder, autoFocus } = props;
   const colorScheme = useColorScheme();
   const colors = Colors[colorScheme ?? "light"];
+  const auxtheme = getTheme()
 
   return (
     <GradientCardView style={styles.inputContainer}>
@@ -30,11 +32,13 @@ export function NumericTextInput(props: NumericTextInputProps) {
         clearButtonMode="never"
         autoFocus={autoFocus}
       />
-      <GradientCardView style={styles.clearButton}>
+      <View style={styles.clearButton}>
+      {auxtheme.ButtonBackgroundList((<PlainCardView>
         {value && value.length > 0 && (
           <SmallButton icon="close" onPress={() => onChangeText("")} />
         )}
-      </GradientCardView>
+    </PlainCardView>))}
+    </View>
     </GradientCardView>
   );
 }

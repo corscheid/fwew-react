@@ -35,9 +35,7 @@ export default function StackLayout() {
           </View>
         ),
         headerBackground: () => (
-          dialect === "reef"
-            ? auxtheme.TopbarReef()
-            : auxtheme.Topbar()
+          auxtheme.Topbar()
         )
       }}
     >

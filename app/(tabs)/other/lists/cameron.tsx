@@ -4,13 +4,15 @@ import { getUI } from "@/constants/i18n";
 import { useAppLanguageContext } from "@/context/AppLanguageContext";
 import { useDialectContext } from "@/context/DialectContext";
 import { FlatList, StyleSheet } from "react-native";
+import { getTheme } from "@/hooks/useAuxtheme";
 
 export default function CameronScreen() {
+  const auxtheme = getTheme()
   const { appLanguage } = useAppLanguageContext();
   const { dialect } = useDialectContext();
   const ui = getUI(appLanguage, dialect).cameronWords;
 
-  return (
+  const content = (
     <View style={styles.container}>
       <FlatList
         data={ui.data}
@@ -43,6 +45,7 @@ export default function CameronScreen() {
       />
     </View>
   );
+  return auxtheme.Background(content);
 }
 
 const styles = StyleSheet.create({

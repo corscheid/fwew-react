@@ -29,9 +29,7 @@ export default function OtherScreen() {
     </ScrollView>
   );
 
-  return dialect === "reef"
-  ? auxtheme.BackgroundReef(content)
-  : auxtheme.Background(content);
+  return auxtheme.Background(content);
 }
 
 const styles = StyleSheet.create({

@@ -18,8 +18,10 @@ import {
   StyleSheet,
   useColorScheme,
 } from "react-native";
+import { getTheme } from "@/hooks/useAuxtheme";
 
 export default function NameFullScreen() {
+  const auxtheme = getTheme();
   const theme = useTheme();
   const colorScheme = useColorScheme();
   const colors = Colors[colorScheme ?? "light"];
@@ -51,7 +53,7 @@ export default function NameFullScreen() {
     await Clipboard.setStringAsync(text);
   };
 
-  return (
+  return auxtheme.Background(
     <ScrollView
       style={styles.container}
       keyboardShouldPersistTaps="always"
@@ -107,13 +109,13 @@ export default function NameFullScreen() {
         }
       />
       <View style={styles.buttonContainer}>
-        <Button
+      {auxtheme.ButtonBackground(<Button
           icon="clipboard"
           text={uiNames.copyAll}
           onPress={copyAll}
           disabled={!resultsVisible}
-        />
-        <Button icon="refresh" text="" onPress={execute} disabled={loading} />
+        />)}
+        {auxtheme.ButtonBackground(<Button icon="refresh" text="" onPress={execute} disabled={loading} />)}
       </View>
       <ResultCount
         visible={resultsVisible}

@@ -1,6 +1,6 @@
 import { Accordion } from "@/components/common/Accordion";
 import { OptionItem } from "@/components/common/OptionItem";
-import { PlainCardView, GradientCardView, Text } from "@/components/common/Themed";
+import { PlainCardView, Text } from "@/components/common/Themed";
 import { Auxthemes } from "@/constants/Auxthemes";
 import { useDialectContext } from "@/context/DialectContext";
 import { getUI } from "@/constants/i18n";
@@ -8,6 +8,7 @@ import { useAppLanguageContext } from "@/context/AppLanguageContext";
 import { useAuxthemeContext } from "@/context/AuxthemeContext";
 import { StyleSheet } from "react-native";
 import { Auxtheme } from "@/types/common";
+import { signalChangeTheme } from "@/context/AuxthemeContext";
 
 export function AuxthemeSelect() {
   const { appLanguage } = useAppLanguageContext();
@@ -16,8 +17,8 @@ export function AuxthemeSelect() {
   const ui = getUI(appLanguage, dialect);
 
   function UpdateTwice(auxtheme: Auxtheme) {
-    saveAuxtheme(auxtheme)
-    window.location.reload()
+    saveAuxtheme(auxtheme);
+    signalChangeTheme();
   }
 
   return (

@@ -12,8 +12,10 @@ import useNameSingle from "@/hooks/useNameSingle";
 import { useTheme } from "@react-navigation/native";
 import * as Clipboard from "expo-clipboard";
 import { RefreshControl, ScrollView, StyleSheet } from "react-native";
+import { getTheme } from "@/hooks/useAuxtheme";
 
 export default function NameSingleScreen() {
+  const auxtheme = getTheme();
   const {
     names,
     numNames,
@@ -40,7 +42,7 @@ export default function NameSingleScreen() {
     await Clipboard.setStringAsync(text);
   };
 
-  return (
+  return auxtheme.Background(
     <ScrollView
       style={styles.container}
       keyboardShouldPersistTaps="always"
@@ -72,13 +74,13 @@ export default function NameSingleScreen() {
         }
       />
       <View style={styles.buttonContainer}>
-        <Button
+      {auxtheme.ButtonBackground(<Button
           icon="clipboard"
           text={uiNames.copyAll}
           onPress={copyAll}
           disabled={!resultsVisible}
-        />
-        <Button icon="refresh" text="" onPress={execute} disabled={loading} />
+        />)}
+        {auxtheme.ButtonBackground(<Button icon="refresh" text="" onPress={execute} disabled={loading} />)}
       </View>
       <ResultCount
         visible={resultsVisible}
