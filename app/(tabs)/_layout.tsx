@@ -12,7 +12,6 @@ import { Tabs } from "expo-router";
 import { Platform, useColorScheme, View, StyleSheet } from "react-native";
 import { getTheme } from "@/hooks/useAuxtheme";
 import { ActiveWindow } from "@/types/common";
-import { Text } from "@/components/common/Themed";
 
 type TabBarIconProps = {
   name: React.ComponentProps<typeof FontAwesome>["name"];

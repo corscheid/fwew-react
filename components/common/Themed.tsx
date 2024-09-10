@@ -102,8 +102,8 @@ export function GradientCardViewListprop(props: ViewProps) {
   const content = (<DefaultView style={style} {...otherProps}/>)
 
   return dialect === "reef"
-  ? StyleCard2Reef(content)
-  : StyleCard2(content);
+  ? auxtheme.StyleCard2Reef(content)
+  : auxtheme.StyleCard2(content);
 }
 
 export function TextInput(props: TextInputProps) {
