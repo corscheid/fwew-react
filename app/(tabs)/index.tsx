@@ -8,7 +8,7 @@ import { useDialectContext } from "@/context/DialectContext";
 import { useFwew } from "@/hooks/useFwew";
 import { useTheme } from "@react-navigation/native";
 import { RefreshControl, ScrollView, StyleSheet, View } from "react-native";
-import { Background, BackgroundReef } from "@/themes/frutigerAero";
+import { getTheme } from "@/hooks/useAuxtheme";
 
 export default function SearchScreen() {
   const {
@@ -22,6 +22,7 @@ export default function SearchScreen() {
     execute,
     cancel,
   } = useFwew();
+  const auxtheme = getTheme()
   const { colors } = useTheme();
   const { appLanguage } = useAppLanguageContext();
   const { dialect } = useDialectContext();
@@ -62,8 +63,8 @@ export default function SearchScreen() {
 )
   
   return dialect === "reef"
-  ? BackgroundReef(content)
-  : Background(content);
+  ? auxtheme.BackgroundReef(content)
+  : auxtheme.Background(content);
 }
 
 const styles = StyleSheet.create({

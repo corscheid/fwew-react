@@ -7,13 +7,18 @@ import { getUI } from "@/constants/i18n";
 import { useAppLanguageContext } from "@/context/AppLanguageContext";
 import { useAuxthemeContext } from "@/context/AuxthemeContext";
 import { StyleSheet } from "react-native";
+import { Auxtheme } from "@/types/common";
 
 export function AuxthemeSelect() {
   const { appLanguage } = useAppLanguageContext();
   const { dialect } = useDialectContext();
   const { auxtheme, saveAuxtheme } = useAuxthemeContext();
-  
   const ui = getUI(appLanguage, dialect);
+
+  function UpdateTwice(auxtheme: Auxtheme) {
+    saveAuxtheme(auxtheme)
+    window.location.reload()
+  }
 
   return (
     <Accordion
@@ -29,7 +34,7 @@ export function AuxthemeSelect() {
               <OptionItem
                 value={language.label}
                 selected={auxtheme === language.value}
-                onSelect={() => saveAuxtheme(language.value)}
+                onSelect={() => UpdateTwice(language.value) }
               />
             </PlainCardView>
           ))}

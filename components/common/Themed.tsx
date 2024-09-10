@@ -14,8 +14,7 @@ import {
   type TextProps,
   type ViewProps,
 } from "react-native";
-import { LinearGradient } from 'expo-linear-gradient';
-import { StyleCard, StyleCardReef, StyleCard2, StyleCard2Reef } from "@/themes/frutigerAero";
+import { getTheme } from "@/hooks/useAuxtheme";
 import { useDialectContext } from "@/context/DialectContext";
 //import { useAuxtheme } from "@/hooks/useAuxtheme";
 
@@ -74,27 +73,27 @@ export function PlainCardView(props: ViewProps) {
 export function GradientCardView(props: ViewProps) {
   const { style, ...otherProps } = props;
   //const auxtheme = useAuxtheme().auxtheme
-  const auxtheme = "frutiger" as string
+  const auxtheme = getTheme()
   const { colors } = useTheme();
   const { dialect } = useDialectContext();
   const content = (<DefaultView style={style} {...otherProps}/>)
 
   return dialect === "reef"
-  ? StyleCardReef(content)
-  : StyleCard(content);
+  ? auxtheme.StyleCardReef(content)
+  : auxtheme.StyleCard(content);
 }
 
 export function GradientCardViewListprop(props: ViewProps) {
   const { style, ...otherProps } = props;
   //const auxtheme = useAuxtheme().auxtheme
-  const auxtheme = "frutiger" as string
+  const auxtheme = getTheme()
   const { colors } = useTheme();
   const { dialect } = useDialectContext();
   const content = (<DefaultView style={style} {...otherProps}/>)
 
   return dialect === "reef"
-  ? StyleCard2Reef(content)
-  : StyleCard2(content);
+  ? auxtheme.StyleCard2Reef(content)
+  : auxtheme.StyleCard2(content);
 }
 
 export function TextInput(props: TextInputProps) {

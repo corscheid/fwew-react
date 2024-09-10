@@ -259,6 +259,12 @@ export function StyleCard2Reef(element: JSX.Element) {
   return theme
 }
 
+export const completeAero = {
+  Topbar, TopbarReef, Bottombar, BottombarReef, highlight,
+  Background, BackgroundReef,
+  StyleCard, StyleCardReef, StyleCard2, StyleCard2Reef
+}
+
 const styles = StyleSheet.create({
   buttonOverlay: {
     width: "20%"

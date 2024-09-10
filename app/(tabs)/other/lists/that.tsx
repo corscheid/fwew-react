@@ -7,11 +7,10 @@ import {
 import { useDialectContext } from "@/context/DialectContext";
 import { useTheme } from "@react-navigation/native";
 import { ScrollView, StyleSheet, useWindowDimensions } from "react-native";
-import { LinearGradient } from 'expo-linear-gradient';
-import { Background, BackgroundReef } from "@/themes/frutigerAero";
-import { View as DefaultView, type ViewProps } from "react-native";
+import { getTheme } from "@/hooks/useAuxtheme";
 
 export default function ThatScreen() {
+  const auxtheme = getTheme()
   const { width, height } = useWindowDimensions();
   const landscape = width > height;
 
@@ -43,8 +42,8 @@ export default function ThatScreen() {
   }
 
   return dialect === "reef"
-  ? BackgroundReef(content)
-  : Background(content);
+  ? auxtheme.BackgroundReef(content)
+  : auxtheme.Background(content);
 }
 
 function ThatTable1() {

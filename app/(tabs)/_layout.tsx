@@ -10,9 +10,8 @@ import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { useTheme } from "@react-navigation/native";
 import { Tabs } from "expo-router";
 import { Platform, useColorScheme, View, StyleSheet } from "react-native";
-import { Topbar, TopbarReef, Bottombar, BottombarReef, highlight } from "@/themes/frutigerAero";
+import { getTheme } from "@/hooks/useAuxtheme";
 import { ActiveWindow } from "@/types/common";
-import { Text } from "@/components/common/Themed";
 
 type TabBarIconProps = {
   name: React.ComponentProps<typeof FontAwesome>["name"];
@@ -33,6 +32,7 @@ type RouteToWindow = {
 }
 
 export default function TabLayout() {
+  const auxtheme = getTheme()
   const colorScheme = useColorScheme();
   const colors = Colors[colorScheme ?? "light"];
   const theme = useTheme();
@@ -68,11 +68,11 @@ export default function TabLayout() {
           headerLeft: () => <Logo />,
           headerRight: () => <ActionButtons />,
           headerBackground: () => (dialect === "reef"
-            ? TopbarReef()
-            : Topbar()),
+            ? auxtheme.TopbarReef()
+            : auxtheme.Topbar()),
           tabBarBackground: () => (dialect === "reef"
-            ? BottombarReef(highlight())
-            : Bottombar(highlight())),
+            ? auxtheme.BottombarReef(auxtheme.highlight())
+            : auxtheme.Bottombar(auxtheme.highlight())),
         }}
         screenListeners={({route}) => ({
         tabPress: () => {

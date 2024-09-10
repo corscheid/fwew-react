@@ -1,6 +1,8 @@
 import { Auxtheme } from "@/types/common";
 import { useAsyncStorage } from "@react-native-async-storage/async-storage";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
+import { completeAero } from "@/themes/frutigerAero";
+import { completeNormal } from "@/themes/default";
 
 export function useAuxtheme() {
   const [auxtheme, setAuxtheme] = useState<Auxtheme>("normal");
@@ -31,4 +33,12 @@ export function useAuxtheme() {
     auxtheme,
     saveAuxtheme,
   };
+}
+
+export function getTheme() {
+  const auxtheme = useAuxtheme().auxtheme
+  if (auxtheme === "frutiger aero") {
+    return completeAero
+  }
+  return completeNormal
 }

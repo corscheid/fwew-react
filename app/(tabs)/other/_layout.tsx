@@ -7,13 +7,14 @@ import { useDialectContext } from "@/context/DialectContext";
 import { useTheme } from "@react-navigation/native";
 import { Stack } from "expo-router";
 import { Platform, StyleSheet, View } from "react-native";
-import { Topbar, Bottombar } from "@/themes/frutigerAero";
+import { getTheme } from "@/hooks/useAuxtheme";
 
 export default function StackLayout() {
   const theme = useTheme();
   const { appLanguage } = useAppLanguageContext();
   const { dialect } = useDialectContext();
   const { screens, names } = getUI(appLanguage, dialect);
+  const auxtheme = getTheme()
 
   return (
     <Stack
@@ -34,7 +35,9 @@ export default function StackLayout() {
           </View>
         ),
         headerBackground: () => (
-          Topbar()
+          dialect === "reef"
+            ? auxtheme.TopbarReef()
+            : auxtheme.Topbar()
         )
       }}
     >
