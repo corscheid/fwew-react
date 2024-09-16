@@ -1,6 +1,6 @@
 import { Accordion } from "@/components/common/Accordion";
 import { OptionItem } from "@/components/common/OptionItem";
-import { PlainCardView, Text } from "@/components/common/Themed";
+import { PlainCardView, GradientCardView, Text } from "@/components/common/Themed";
 import { Auxthemes } from "@/constants/Auxthemes";
 import { useDialectContext } from "@/context/DialectContext";
 import { getUI } from "@/constants/i18n";
@@ -22,6 +22,7 @@ export function AuxthemeSelect() {
   }
 
   return (
+    <GradientCardView>
     <Accordion
       closedContent={
         <PlainCardView style={styles.iconContainer}>
@@ -42,6 +43,7 @@ export function AuxthemeSelect() {
         </PlainCardView>
       }
     />
+    </GradientCardView>
   );
 }
 

@@ -14,6 +14,7 @@ export function AppLanguageSelect() {
   const ui = getUI(appLanguage, dialect);
 
   return (
+    <GradientCardView>
     <Accordion
       closedContent={
         <PlainCardView style={styles.iconContainer}>
@@ -36,6 +37,7 @@ export function AppLanguageSelect() {
         </PlainCardView>
       }
     />
+    </GradientCardView>
   );
 }
 

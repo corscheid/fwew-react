@@ -10,7 +10,7 @@ export function highlight() {
   end={{ x: 0, y: 1 }}
   colors={["#555", "#333", "#222", "#555"]}
   locations={[0,0.5,0.5,1]}
-  style={{ height: "80%", borderRadius: 5, margin: 5 }} ></LinearGradient>);
+  style={{ height: "90%", borderRadius: 8, margin: 2 }} ></LinearGradient>);
 
   return (<View style={{flexDirection: "row", justifyContent:'space-between', width: "100%", flex:2}}>
     <View style={styles.buttonOverlay}>{activeWindow === "search" ? background : <View />}</View> 
@@ -268,7 +268,7 @@ export function ButtonBackgroundTop(element: JSX.Element) {
                       end={{ x: 0, y: 1 }}
                       colors={["#74baac","#3a7569"]}
                       //colors={[theme.colors.primary, theme.colors.primary]}
-                      style={{borderRadius: 4, borderWidth: 1, width: 40, height: 40, justifyContent: 'center',
+                      style={{borderRadius: 8, borderWidth: 1, width: 40, height: 40, justifyContent: 'center',
                         borderColor: "#999999"}}
                     >{element}</LinearGradient>
                     :
@@ -277,7 +277,7 @@ export function ButtonBackgroundTop(element: JSX.Element) {
                       end={{ x: 0, y: 1 }}
                       colors={["#7494ba","#3a5575"]}
                       //colors={[theme.colors.primary, theme.colors.primary]}
-                      style={{borderRadius: 4, borderWidth: 1, width: 40, height: 40, justifyContent: 'center',
+                      style={{borderRadius: 8, borderWidth: 1, width: 40, height: 40, justifyContent: 'center',
                         borderColor: "#999999"}}
                     >{element}</LinearGradient>
 
@@ -325,7 +325,7 @@ export const FwewDarkReefTheme: Theme = {
   ...FwewDarkTheme,
   colors: {
     ...FwewDarkTheme.colors,
-    primary: "#3a7569",
+    primary: "#74baac",
     background: "#282b2d",
     card: "#181a1b",
     text: "#e8e6e3",
@@ -357,8 +357,8 @@ export const FwewLightReefTheme: Theme = {
   },
 };
 
-const bottomButtonColor = "#999999"
-const bottomButtonColorDark = "#999999"
+const bottomButtonColor = "#BBB"
+const bottomButtonColorDark = "#BBB"
 
 export const completeAero = {
   Topbar, Bottombar, highlight,
