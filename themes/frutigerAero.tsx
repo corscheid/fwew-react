@@ -10,7 +10,7 @@ export function highlight() {
   end={{ x: 0, y: 1 }}
   colors={["#555", "#333", "#222", "#555"]}
   locations={[0,0.5,0.5,1]}
-  style={{ height: "90%", borderRadius: 8, margin: 2 }} ></LinearGradient>);
+  style={{ height: "95%", borderRadius: 24, margin: 1 }} ></LinearGradient>);
 
   return (<View style={{flexDirection: "row", justifyContent:'space-between', width: "100%", flex:2}}>
     <View style={styles.buttonOverlay}>{activeWindow === "search" ? background : <View />}</View> 
