@@ -22,10 +22,14 @@
       }
     },
     "production": {
+      "android": {
+        "buildType": "apk"
+      },
       "extends": "base",
       "distribution": "store",
       "env": {
-        "EXPO_PUBLIC_GIT_BRANCH": "main"
+        "EXPO_PUBLIC_GIT_BRANCH": "main",
+        "ANDROID_SDK_ROOT": "/home/lemondrop/Android/Sdk"
       }
     }
   },
