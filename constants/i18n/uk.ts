@@ -48,14 +48,14 @@ const strings: UITranslation = {
   screens: {
     search: "Пошук",
     list: "Список",
-    random: "Випадково",
+    random: "Випадкові слова",
     numbers: "Числа",
-    other: "Other",
+    other: "Інше",
 
     lenition: "Lenition", // TODO
-    stats: "Stats", // TODO
+    stats: "Статистика",
     valid: "Valid", // TODO
-    lists: "Lists", // TODO
+    lists: "Додаткові категорії",
 
     cameronWords: "Cameron Words", // TODO
     homonyms: "Homonyms", // TODO
