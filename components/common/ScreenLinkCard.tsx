@@ -1,13 +1,13 @@
-import {Href, Link} from "expo-router";
-import {CardView, Text} from "@/components/common/Themed";
-import {ItalicText} from "@/components/common/StyledText";
-import {StyleSheet} from "react-native";
+import { ItalicText } from "@/components/common/StyledText";
+import { CardView, Text } from "@/components/common/Themed";
+import { Href, Link } from "expo-router";
+import { StyleSheet } from "react-native";
 
 type Props = {
   href: Href<string>;
   title: string;
   description?: string;
-}
+};
 
 export function ScreenLinkCard({ href, title, description }: Props) {
   return (
@@ -23,7 +23,7 @@ export function ScreenLinkCard({ href, title, description }: Props) {
         </CardView>
       </CardView>
     </Link>
-  )
+  );
 }
 
 const styles = StyleSheet.create({

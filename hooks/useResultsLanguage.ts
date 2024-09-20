@@ -1,7 +1,7 @@
-import type {ExtendedLanguageCode} from "@/types/common";
-import {useAsyncStorage} from "@react-native-async-storage/async-storage";
-import type {LanguageCode} from "fwew.js";
-import {useEffect, useState} from "react";
+import type { ExtendedLanguageCode } from "@/types/common";
+import { useAsyncStorage } from "@react-native-async-storage/async-storage";
+import type { LanguageCode } from "fwew.js";
+import { useEffect, useState } from "react";
 
 export function useResultsLanguage() {
   const [resultsLanguage, setResultsLanguage] = useState<LanguageCode>("en");

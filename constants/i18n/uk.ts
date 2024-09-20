@@ -1,5 +1,5 @@
-import {CameronWords} from "@/constants/Cameron";
-import type {UITranslation} from "@/types/i18n";
+import { CameronWords } from "@/constants/Cameron";
+import type { UITranslation } from "@/types/i18n";
 
 const partOfSpeech = {
   "adj.": "Прикметник",
