@@ -37,7 +37,7 @@ export function Romanize(IPA: string): string {
 
         let runes = [...syllable];
 
-        var romanize: { [id: string]: string } = {
+        const romanize: { [id: string]: string } = {
           ʔ: "'",
           l: "l",
           ɾ: "r",

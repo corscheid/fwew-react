@@ -1,14 +1,14 @@
-import type { ExtendedLanguageCode } from "@/types/common";
-import { useAsyncStorage } from "@react-native-async-storage/async-storage";
-import type { LanguageCode } from "fwew.js";
-import { useEffect, useState } from "react";
+import type {ExtendedLanguageCode} from "@/types/common";
+import {useAsyncStorage} from "@react-native-async-storage/async-storage";
+import type {LanguageCode} from "fwew.js";
+import {useEffect, useState} from "react";
 
 export function useResultsLanguage() {
   const [resultsLanguage, setResultsLanguage] = useState<LanguageCode>("en");
   const { getItem, setItem } = useAsyncStorage("fw_lang_results");
 
   async function saveResultsLanguage(value: ExtendedLanguageCode) {
-    if (value === "eo" || value === "nx") {
+    if (value === "eo" || value === "nx0" || value === "nx1") {
       return;
     }
     try {

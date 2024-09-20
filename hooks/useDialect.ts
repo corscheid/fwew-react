@@ -1,6 +1,6 @@
-import { Dialect } from "@/types/common";
-import { useAsyncStorage } from "@react-native-async-storage/async-storage";
-import { useEffect, useState } from "react";
+import {Dialect} from "@/types/common";
+import {useAsyncStorage} from "@react-native-async-storage/async-storage";
+import {useEffect, useState} from "react";
 
 const dialectAbbr: { [key in Dialect]: string } = {
   forest: "LN",
@@ -23,7 +23,7 @@ export function useDialect() {
 
   async function toggleDialect() {
     const value = dialect === "forest" ? "reef" : "forest";
-    saveDialect(value);
+    void saveDialect(value);
   }
 
   useEffect(() => {
