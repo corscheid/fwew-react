@@ -16,36 +16,11 @@ export default function OtherScreen() {
   const content = (
     <ScrollView>
       <View style={styles.container}>
-        <Link href="/(tabs)/other/names">
-          <GradientCardView style={styles.card}>
-            <Text style={styles.text}>{screens.names}</Text>
-            <ItalicText>{screens.names}</ItalicText>
-          </GradientCardView>
-        </Link>
-        <Link href="/(tabs)/other/lists">
-          <GradientCardView style={styles.card}>
-            <Text style={styles.text}>{screens.lists}</Text>
-            <ItalicText>{screens.lists}</ItalicText>
-          </GradientCardView>
-        </Link>
-        <Link href="/(tabs)/other/stats">
-          <GradientCardView style={styles.card}>
-            <Text style={styles.text}>{screens.stats}</Text>
-            <ItalicText>{screens.stats}</ItalicText>
-          </GradientCardView>
-        </Link>
-        <Link href="/(tabs)/other/valid">
-          <GradientCardView style={styles.card}>
-            <Text style={styles.text}>{screens.valid}</Text>
-            <ItalicText>{screens.valid}</ItalicText>
-          </GradientCardView>
-        </Link>
-        <Link href="/(tabs)/other/lenition">
-          <GradientCardView style={styles.card}>
-            <Text style={styles.text}>{screens.lenition}</Text>
-            <ItalicText>{screens.lenition}</ItalicText>
-          </GradientCardView>
-        </Link>
+        <ScreenLinkCard href="/(tabs)/other/names" title={screens.names} />
+        <ScreenLinkCard href="/(tabs)/other/lists" title={screens.lists} />
+        <ScreenLinkCard href="/(tabs)/other/stats" title={screens.stats} />
+        <ScreenLinkCard href={"/(tabs)/other/valid"} title={screens.valid} />
+        <ScreenLinkCard href="/(tabs)/other/lenition" title={screens.lenition} />
       </View>
     </ScrollView>
   );
@@ -60,17 +35,5 @@ const styles = StyleSheet.create({
     alignItems: "center",
     gap: 32,
     padding: 16,
-  },
-  card: {
-    padding: 32,
-    width: 256,
-    height: 128,
-    borderRadius: 8,
-    justifyContent: "center",
-    alignItems: "center",
-    gap: 16,
-  },
-  text: {
-    fontSize: 24,
   },
 });

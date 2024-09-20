@@ -16,42 +16,12 @@ export default function ListsScreen() {
   const content = (
     <ScrollView>
       <View style={styles.container}>
-        <Link href="/(tabs)/other/lists/cameron">
-          <GradientCardView style={styles.card}>
-            <Text style={styles.text}>{screens.cameronWords}</Text>
-            <ItalicText>{screens.cameronWords}</ItalicText>
-          </GradientCardView>
-        </Link>
-        <Link href="/(tabs)/other/lists/homonyms">
-          <GradientCardView style={styles.card}>
-            <Text style={styles.text}>{screens.homonyms}</Text>
-            <ItalicText>{screens.homonyms}</ItalicText>
-          </GradientCardView>
-        </Link>
-        <Link href="/(tabs)/other/lists/multi-ipa">
-          <GradientCardView style={styles.card}>
-            <Text style={styles.text}>{screens.multiIPA}</Text>
-            <ItalicText>{screens.multiIPA}</ItalicText>
-          </GradientCardView>
-        </Link>
-        <Link href="/(tabs)/other/lists/oddballs">
-          <GradientCardView style={styles.card}>
-            <Text style={styles.text}>{screens.oddballs}</Text>
-            <ItalicText>{screens.oddballs}</ItalicText>
-          </GradientCardView>
-        </Link>
-        <Link href="/(tabs)/other/lists/profanity">
-          <GradientCardView style={styles.card}>
-            <Text style={styles.text}>{screens.profanity}</Text>
-            <ItalicText>{screens.profanity}</ItalicText>
-          </GradientCardView>
-        </Link>
-        <Link href="/(tabs)/other/lists/that">
-          <GradientCardView style={styles.card}>
-            <Text style={styles.text}>{screens.that}</Text>
-            <ItalicText>{screens.that}</ItalicText>
-          </GradientCardView>
-        </Link>
+        <ScreenLinkCard href="/other/lists/cameron" title={screens.cameronWords} />
+        <ScreenLinkCard href={"/other/lists/homonyms"} title={screens.homonyms} />
+        <ScreenLinkCard href={"/other/lists/multi-ipa"} title={screens.multiIPA} />
+        <ScreenLinkCard href={"/(tabs)/other/lists/oddballs"} title={screens.oddballs} />
+        <ScreenLinkCard href={"/other/lists/profanity"} title={screens.profanity} />
+        <ScreenLinkCard href={"/other/lists/that"} title={screens.that} />
       </View>
     </ScrollView>
   );
@@ -66,17 +36,5 @@ const styles = StyleSheet.create({
     alignItems: "center",
     gap: 32,
     padding: 16,
-  },
-  card: {
-    padding: 32,
-    width: 256,
-    height: 128,
-    borderRadius: 8,
-    justifyContent: "center",
-    alignItems: "center",
-    gap: 16,
-  },
-  text: {
-    fontSize: 24,
   },
 });

@@ -15,24 +15,9 @@ export default function NamesScreen() {
 
   return auxtheme.Background(
     <View style={styles.container}>
-      <Link href="/(tabs)/other/names/name-single">
-        <GradientCardView style={styles.card}>
-          <Text style={styles.text}>{names.single}</Text>
-          <ItalicText>Neytiri</ItalicText>
-        </GradientCardView>
-      </Link>
-      <Link href="/(tabs)/other/names/name-full">
-        <GradientCardView style={styles.card}>
-          <Text style={styles.text}>{names.full}</Text>
-          <ItalicText>Neytiri te Tskaha Mo'at'ite</ItalicText>
-        </GradientCardView>
-      </Link>
-      <Link href="/(tabs)/other/names/name-alu">
-        <GradientCardView style={styles.card}>
-          <Text style={styles.text}>{names.alu}</Text>
-          <ItalicText>Neytiri alu Taronyu Teyluä</ItalicText>
-        </GradientCardView>
-      </Link>
+      <ScreenLinkCard href="/other/names/name-single" title={names.single} description="Neytiri" />
+      <ScreenLinkCard href="/other/names/name-full" title={names.full} description="Neytiri te Tskaha Mo'at'ite" />
+      <ScreenLinkCard href="/other/names/name-alu" title={names.alu} description="Neytiri alu Taronyu Teyluä" />
     </View>
   );
 }
@@ -43,17 +28,5 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     gap: 32,
-  },
-  card: {
-    padding: 32,
-    width: 256,
-    height: 128,
-    borderRadius: 8,
-    justifyContent: "center",
-    alignItems: "center",
-    gap: 16,
-  },
-  text: {
-    fontSize: 24,
   },
 });
