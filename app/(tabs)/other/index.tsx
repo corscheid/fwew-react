@@ -1,11 +1,9 @@
-import { ItalicText } from "@/components/common/StyledText";
-import { GradientCardView, Text, View } from "@/components/common/Themed";
+import { ScreenLinkCard } from "@/components/common/ScreenLinkCard";
+import { View } from "@/components/common/Themed";
 import { getUI } from "@/constants/i18n";
 import { useAppLanguageContext } from "@/context/AppLanguageContext";
 import { useDialectContext } from "@/context/DialectContext";
-import { Link } from "expo-router";
 import { ScrollView, StyleSheet } from "react-native";
-import { getTheme } from "@/hooks/useAuxtheme";
 
 export default function OtherScreen() {
   const { appLanguage } = useAppLanguageContext();
@@ -20,7 +18,10 @@ export default function OtherScreen() {
         <ScreenLinkCard href="/(tabs)/other/lists" title={screens.lists} />
         <ScreenLinkCard href="/(tabs)/other/stats" title={screens.stats} />
         <ScreenLinkCard href={"/(tabs)/other/valid"} title={screens.valid} />
-        <ScreenLinkCard href="/(tabs)/other/lenition" title={screens.lenition} />
+        <ScreenLinkCard
+          href="/(tabs)/other/lenition"
+          title={screens.lenition}
+        />
       </View>
     </ScrollView>
   );
