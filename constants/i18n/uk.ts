@@ -1,5 +1,5 @@
-import { CameronWords } from "@/constants/Cameron";
-import type { UITranslation } from "@/types/i18n";
+import {CameronWords} from "@/constants/Cameron";
+import type {UITranslation} from "@/types/i18n";
 
 const partOfSpeech = {
   "adj.": "Прикметник",
@@ -57,8 +57,8 @@ const strings: UITranslation = {
     valid: "Valid", // TODO
     lists: "Додаткові категорії",
 
-    cameronWords: "Cameron Words", // TODO
-    homonyms: "Homonyms", // TODO
+    cameronWords: "слова Кемерона",
+    homonyms: "Омоніми",
     multiIPA: "Multi IPA", // TODO
     oddballs: "Oddballs", // TODO
     profanity: "Profanity", // TODO
