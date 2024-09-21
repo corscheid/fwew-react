@@ -1,5 +1,7 @@
 import Colors from "@/constants/Colors";
+import { ResultsLanguages } from "@/constants/Language";
 import { useDialectContext } from "@/context/DialectContext";
+import { useResultsLanguageContext } from "@/context/ResultsLanguageContext";
 import { FontAwesomeIconName } from "@/types/icons";
 import { FontAwesome } from "@expo/vector-icons";
 import { getTheme } from "@/hooks/useAuxtheme";
@@ -82,6 +84,29 @@ export function ActionButtons() {
       {auxtheme.ButtonBackgroundTop(favoritesButton)}
       {auxtheme.ButtonBackgroundTop(settingsButton)}
     </View>
+  );
+}
+
+function LanguageDisplay() {
+  const { resultsLanguage, saveResultsLanguage } = useResultsLanguageContext();
+  const Languages = ResultsLanguages.map((rl) => rl.value);
+  const index = Languages.indexOf(resultsLanguage);
+  const resultsFlag = FlagMap[resultsLanguage];
+
+  const nextLanguage = () => {
+    if (index < 0 || index === Languages.length - 1) {
+      saveResultsLanguage(Languages[0]);
+      return;
+    }
+    saveResultsLanguage(Languages[index + 1]);
+  };
+
+  return (
+    <Pressable style={styles.actionButton} onPress={nextLanguage}>
+      {({ pressed }) => (
+        <View style={{ opacity: pressed ? 0.5 : 1 }}>{resultsFlag}</View>
+      )}
+    </Pressable>
   );
 }
 
