@@ -16,25 +16,17 @@ export function Credits() {
   return (
     <PlainCardView style={styles.creditsContainer}>
       <Text style={styles.label}>{ui.settings.credits}</Text>
-      <Text style={styles.label}>{ui.settings.development}</Text>
-      <CreditsItem names={credits.development} />
-      <Text style={styles.label}>{ui.settings.design}</Text>
-      <CreditsItem names={credits.design} />
-      <Text style={styles.label}>{ui.settings.testing}</Text>
-      <CreditsItem names={credits.testing} />
-      <Text style={styles.label}>{ui.settings.translation}</Text>
-      {AppLanguages.map((language, i) => {
-        const names = credits.translation[language.value];
-        if (names.length > 0)
-          return (
-            <CreditsItem
-              key={`sct_${i}_${language.value}`}
-              language={language.value}
-              names={names}
-            />
-          );
-      })}
-    </PlainCardView>
+      <CreditsItem
+        title={ui.settings.development}
+        names={credits.development}
+      />
+      <CreditsItem title={ui.settings.design} names={credits.design} />
+      <CreditsItem title={ui.settings.testing} names={credits.testing} />
+      <CreditsItem
+        title={ui.settings.translation}
+        names={credits.translation}
+      />
+    </GradientCardView>
   );
 }
 

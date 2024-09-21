@@ -38,13 +38,6 @@ export default function TabLayout() {
   const { appLanguage } = useAppLanguageContext();
   const { dialect } = useDialectContext();
   const { screens } = getUI(appLanguage, dialect);
-  const { saveActiveWindow } = useActiveWindowContext();
-  const routeConv: RouteToWindow = {};
-  routeConv['index'] = 'search'
-  routeConv['list'] = 'list'
-  routeConv['random'] = 'random'
-  routeConv['numbers'] = 'number'
-  routeConv['other'] = 'other'
   const { activeWindow, saveActiveWindow } = useActiveWindowContext();
   const routeConv: RouteToWindow = {};
   routeConv['index'] = 'search'
