@@ -1,6 +1,9 @@
 {
   "cli": {
-    "version": ">= 5.8.0"
+    "version": ">= 12.5.1",
+    "requireCommit": false,
+    "appVersionSource": "local",
+    "promptToConfigurePushNotifications": false
   },
   "build": {
     "base": {

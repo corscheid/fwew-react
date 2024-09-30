@@ -1,3 +1,4 @@
+import { WideLayout } from "@/components/common/WideLayout";
 import { About } from "@/components/settings/About";
 import { AppLanguageSelect } from "@/components/settings/AppLanguageSelect";
 import { DialectSelect } from "@/components/settings/DialectSelect";
@@ -15,34 +16,31 @@ export default function SettingsScreen() {
   const { width } = useWindowDimensions();
   const wide = width > 720;
 
-  const ratio =
-    [
-      { breakpoint: 1280, value: 3 },
-      { breakpoint: 950, value: 2 },
-      { breakpoint: 720, value: 1 },
-    ].filter((b) => width >= b.breakpoint)[0]?.value ?? 1;
+  if (wide) {
+    return (
+      <WideLayout
+        sidebar={
+          <View style={{ gap: 16 }}>
+            <AppLanguageSelect />
+            <ResultsLanguageSelect />
+            <DialectSelect />
+            <ThemeSelect />
+          </View>
+        }
+        main={<About />}
+      />
+    );
+  }
 
   return (
     <ScrollView>
       <StatusBar style="light" />
-      <View
-        style={[
-          styles.container,
-          {
-            flexDirection: wide ? "row" : "column",
-            justifyContent: wide ? "center" : undefined,
-          },
-        ]}
-      >
-        <View style={{ flex: 1, gap: 16 }}>
-          <AppLanguageSelect />
-          <ResultsLanguageSelect />
-          <DialectSelect />
-          <ThemeSelect />
-        </View>
-        <View style={{ flex: ratio, gap: 16 }}>
-          <About />
-        </View>
+      <View style={styles.container}>
+        <AppLanguageSelect />
+        <ResultsLanguageSelect />
+        <DialectSelect />
+        <ThemeSelect />
+        <About />
       </View>
     </ScrollView>
   );

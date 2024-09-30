@@ -1,4 +1,5 @@
 import { ResultCount } from "@/components/common/ResultCount";
+import { WideLayout } from "@/components/common/WideLayout";
 import { ListResults } from "@/components/list/ListResults";
 import { getUI } from "@/constants/i18n";
 import { useAppLanguageContext } from "@/context/AppLanguageContext";
@@ -7,9 +8,31 @@ import { useThemeNameContext } from "@/context/ThemeNameContext";
 import { useList } from "@/hooks/useList";
 import { getThemedComponents } from "@/themes";
 import { useEffect } from "react";
-import { ScrollView, StyleSheet, View } from "react-native";
+import {
+  ScrollView,
+  StyleSheet,
+  useWindowDimensions,
+  View,
+} from "react-native";
 
 export default function LenitionScreen() {
+  const { width } = useWindowDimensions();
+  const wide = width > 720;
+
+  if (wide) {
+    return (
+      <WideLayout
+        sidebar={
+          <>
+            <LenitionTable />
+            <LenPreList />
+          </>
+        }
+        main={<LenAdpList />}
+      />
+    );
+  }
+
   return (
     <ScrollView>
       <View style={{ padding: 16 }}>
@@ -134,6 +157,7 @@ const styles = StyleSheet.create({
   header: {
     fontSize: 20,
     paddingVertical: 8,
+    alignSelf: "center",
   },
   prefixText: {
     fontSize: 18,

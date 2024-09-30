@@ -35,18 +35,12 @@ export function RandomOptions(props: RandomOptionsProps) {
     <Accordion
       closedContent={<Themed.Text>{ui.random.randomOptions}</Themed.Text>}
       openedContent={
-        <View
-          style={[
-            styles.optionContainer,
-            { backgroundColor: theme.colors.background },
-          ]}
-        >
+        <View style={{ backgroundColor: theme.colors.background }}>
           <Themed.Text style={styles.label}>{ui.random.numWords}</Themed.Text>
           <NumericTextInput
             placeholder={`${ui.random.numWords} (1-100)`}
             onChangeText={updateNumWords}
             value={numWords}
-            autoFocus
           />
           <FilterExpressionBuilderList
             filters={filters}
@@ -63,24 +57,9 @@ export function RandomOptions(props: RandomOptionsProps) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 16,
-  },
-  optionContainer: {},
   label: {
     paddingVertical: 16,
     fontSize: 16,
     fontWeight: "bold",
-  },
-  buttonContainer: {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    gap: 16,
-    paddingTop: 16,
-  },
-  resultCount: {
-    padding: 16,
   },
 });

@@ -6,6 +6,8 @@ import { useDialectContext } from "@/context/DialectContext";
 import { useThemeNameContext } from "@/context/ThemeNameContext";
 import { getThemedComponents } from "@/themes";
 import type { FilterExpressionBuilderValue } from "@/types/list";
+import { useTheme } from "@react-navigation/native";
+import { View } from "react-native";
 
 type ListOptionsProps = {
   filters: FilterExpressionBuilderValue[];
@@ -19,23 +21,26 @@ export function ListOptions(props: ListOptionsProps) {
   const { filters, add, remove, update, incomplete } = props;
   const { appLanguage } = useAppLanguageContext();
   const { dialect } = useDialectContext();
-  const { list } = getUI(appLanguage, dialect);
+  const ui = getUI(appLanguage, dialect);
+  const theme = useTheme();
   const { themeName } = useThemeNameContext();
   const Themed = getThemedComponents(themeName);
 
   return (
     <Accordion
       initiallyOpen
-      closedContent={<Themed.Text>{list.listOptions}</Themed.Text>}
+      closedContent={<Themed.Text>{ui.list.listOptions}</Themed.Text>}
       openedContent={
-        <FilterExpressionBuilderList
-          filters={filters}
-          add={add}
-          remove={remove}
-          update={update}
-          disabled={incomplete}
-          mode="list"
-        />
+        <View style={{ backgroundColor: theme.colors.background }}>
+          <FilterExpressionBuilderList
+            filters={filters}
+            add={add}
+            remove={remove}
+            update={update}
+            disabled={incomplete}
+            mode="random"
+          />
+        </View>
       }
     />
   );

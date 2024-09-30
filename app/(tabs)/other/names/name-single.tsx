@@ -3,6 +3,7 @@ import { Button } from "@/components/common/Button";
 import { NumericTextInput } from "@/components/common/NumericTextInput";
 import { OptionSelect } from "@/components/common/OptionSelect";
 import { ResultCount } from "@/components/common/ResultCount";
+import { WideLayout } from "@/components/common/WideLayout";
 import { NameResults } from "@/components/names/NameResults";
 import { getUI } from "@/constants/i18n";
 import { useAppLanguageContext } from "@/context/AppLanguageContext";
@@ -12,7 +13,13 @@ import useNameSingle from "@/hooks/useNameSingle";
 import { getThemedComponents } from "@/themes";
 import { useTheme } from "@react-navigation/native";
 import * as Clipboard from "expo-clipboard";
-import { RefreshControl, ScrollView, StyleSheet, View } from "react-native";
+import {
+  RefreshControl,
+  ScrollView,
+  StyleSheet,
+  useWindowDimensions,
+  View,
+} from "react-native";
 
 export default function NameSingleScreen() {
   const {
@@ -34,6 +41,8 @@ export default function NameSingleScreen() {
   const resultsVisible = numNames.length > 0 && names.length > 0;
   const { themeName } = useThemeNameContext();
   const Themed = getThemedComponents(themeName);
+  const { width } = useWindowDimensions();
+  const wide = width > 720;
 
   const copyAll = async () => {
     await Clipboard.setStringAsync(names.join("\n"));
@@ -42,6 +51,68 @@ export default function NameSingleScreen() {
   const copy = async (text: string) => {
     await Clipboard.setStringAsync(text);
   };
+
+  if (wide) {
+    return (
+      <WideLayout
+        sidebar={
+          <>
+            <Accordion
+              closedContent={<Themed.Text>{uiNames.options}</Themed.Text>}
+              openedContent={
+                <View
+                  style={[
+                    styles.optionContainer,
+                    { backgroundColor: theme.colors.background },
+                  ]}
+                >
+                  <Themed.Text style={styles.label}>
+                    {uiNames.numNames}
+                  </Themed.Text>
+                  <NumericTextInput
+                    placeholder={`${uiNames.numNames} (1-50)`}
+                    value={numNames}
+                    onChangeText={updateNumNames}
+                    autoFocus
+                  />
+                  <Themed.Text style={styles.label}>
+                    {uiNameSingle.numSyllables}
+                  </Themed.Text>
+                  <OptionSelect
+                    items={uiNames.syllablesOptions}
+                    active={(value) => numSyllables === value}
+                    onSelect={updateNumSyllables}
+                  />
+                </View>
+              }
+            />
+            <View style={styles.buttonContainerLandscape}>
+              <Button
+                icon="clipboard"
+                text={uiNames.copyAll}
+                onPress={copyAll}
+                disabled={!resultsVisible}
+              />
+              <Button icon="refresh" onPress={execute} disabled={loading} />
+            </View>
+          </>
+        }
+        header={
+          <ResultCount
+            visible={resultsVisible}
+            resultCount={names.length}
+            style={styles.resultCount}
+          />
+        }
+        main={<NameResults names={names} copyName={copy} />}
+        refresh={{
+          loading,
+          getData: execute,
+          colors: [theme.colors.primary],
+        }}
+      />
+    );
+  }
 
   return (
     <ScrollView
@@ -112,6 +183,10 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
     fontSize: 16,
     fontWeight: "bold",
+  },
+  buttonContainerLandscape: {
+    gap: 16,
+    paddingTop: 16,
   },
   buttonContainer: {
     flexDirection: "row",

@@ -21,7 +21,6 @@ const styles = StyleSheet.create({
     gap: 16,
     padding: 16,
     justifyContent: "center",
-    maxWidth: "80%",
     alignSelf: "center",
     marginVertical: "auto",
   },
