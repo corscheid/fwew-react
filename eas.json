@@ -1,6 +1,9 @@
 {
   "cli": {
-    "version": ">= 5.8.0"
+    "version": ">= 12.5.1",
+    "requireCommit": false,
+    "appVersionSource": "local",
+    "promptToConfigurePushNotifications": false
   },
   "build": {
     "base": {
@@ -22,14 +25,10 @@
       }
     },
     "production": {
-      "android": {
-        "buildType": "apk"
-      },
       "extends": "base",
       "distribution": "store",
       "env": {
-        "EXPO_PUBLIC_GIT_BRANCH": "main",
-        "ANDROID_SDK_ROOT": "/home/lemondrop/Android/Sdk"
+        "EXPO_PUBLIC_GIT_BRANCH": "main"
       }
     }
   },
