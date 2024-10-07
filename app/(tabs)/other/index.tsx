@@ -17,5 +17,5 @@ export default function OtherScreen() {
     { href: "/(tabs)/other/lenition", title: screens.lenition },
   ];
 
-  return <IndexGrid links={links} />;
+  return (<IndexGrid links={links} />);
 }

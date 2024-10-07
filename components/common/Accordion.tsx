@@ -20,7 +20,7 @@ export function Accordion(props: AccordionProps) {
   const Themed = getThemedComponents(themeName);
 
   return (
-    <Themed.CardView>
+    <>
       <Pressable
         style={({ pressed }) => [
           styles.container,
@@ -37,7 +37,7 @@ export function Accordion(props: AccordionProps) {
         />
       </Pressable>
       {expanded && openedContent}
-    </Themed.CardView>
+    </>
   );
 }
 

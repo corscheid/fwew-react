@@ -64,7 +64,7 @@ export function FilterExpressionBuilderList(
         </View>
       ))}
       <View style={{ paddingTop: 10 }}>
-        <Button onPress={add} icon="plus" disabled={disabled} />
+        <Button selected={true} onPress={add} icon="plus" disabled={disabled} />
       </View>
     </View>
   );

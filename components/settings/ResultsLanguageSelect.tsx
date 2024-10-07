@@ -19,6 +19,7 @@ export function ResultsLanguageSelect() {
   const Themed = getThemedComponents(themeName);
 
   return (
+    <Themed.CardView>
     <Accordion
       closedContent={
         <View style={styles.iconContainer}>
@@ -43,6 +44,7 @@ export function ResultsLanguageSelect() {
         </View>
       }
     />
+    </Themed.CardView>
   );
 }
 

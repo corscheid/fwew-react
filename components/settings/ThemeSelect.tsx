@@ -1,5 +1,5 @@
 import { useThemeNameContext } from "@/context/ThemeNameContext";
-import { getColorExtension, getThemedComponents, ThemeNames } from "@/themes";
+import { getColorExtension, getThemedComponents, ThemeNames, ThemeNamesUser } from "@/themes";
 import { StyleSheet, View } from "react-native";
 import { Accordion } from "../common/Accordion";
 import { OptionItem } from "../common/OptionItem";
@@ -12,6 +12,7 @@ export function ThemeSelect() {
   const Themed = getThemedComponents(themeName);
 
   return (
+    <Themed.CardView>
     <Accordion
       closedContent={
         <View style={styles.iconContainer}>
@@ -45,7 +46,7 @@ export function ThemeSelect() {
                     </Themed.MonoText>
                   </View>
                 }
-                value={tn}
+                value={ThemeNamesUser[i]}
                 selected={themeName === tn}
                 onSelect={() => saveThemeName(tn)}
               />
@@ -54,6 +55,7 @@ export function ThemeSelect() {
         </View>
       }
     />
+    </Themed.CardView>
   );
 }
 

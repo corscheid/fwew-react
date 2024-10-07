@@ -7,6 +7,7 @@ import { useDialectContext } from "@/context/DialectContext";
 import { useThemeNameContext } from "@/context/ThemeNameContext";
 import { getThemedComponents } from "@/themes";
 import { useTheme } from "@react-navigation/native";
+import { getBackground } from "@/themes";
 import {
   ScrollView,
   StyleSheet,
@@ -17,9 +18,11 @@ import {
 export default function ThatScreen() {
   const { width, height } = useWindowDimensions();
   const landscape = width > height;
+  const { dialect } = useDialectContext();
+  const { themeName } = useThemeNameContext();
 
   if (landscape) {
-    return (
+    return getBackground(themeName,
       <ScrollView>
         <View
           style={[
@@ -36,18 +39,18 @@ export default function ThatScreen() {
           <Divider vertical />
           <ThatTable2 />
         </View>
-      </ScrollView>
+      </ScrollView>, dialect
     );
   }
 
-  return (
+  return getBackground(themeName,
     <ScrollView>
       <View style={styles.container}>
         <ThatTable1 />
         <Divider />
         <ThatTable2 />
       </View>
-    </ScrollView>
+    </ScrollView>, dialect
   );
 }
 

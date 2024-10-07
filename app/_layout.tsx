@@ -18,6 +18,8 @@ import { SplashScreen, Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
 import { useColorScheme } from "react-native";
+import { ActiveWindowProvider } from "@/context/ActiveWindowContext";
+import { useActiveWindow } from "@/hooks/useActiveWindow";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -67,6 +69,7 @@ function RootLayoutNav() {
   const themeNameValue = useThemeName();
   const { themeName } = themeNameValue;
   const theme = getTheme(themeName, colorScheme, dialect);
+  const windowValue = useActiveWindow();
 
   return (
     <>
@@ -76,30 +79,32 @@ function RootLayoutNav() {
         <ThemeProvider value={theme}>
           <AppLanguageProvider value={appLanguageValue}>
             <ResultsLanguageProvider value={resultsLanguage}>
-              <DialectProvider value={dialectValue}>
-                <FavoritesProvider value={favorites}>
-                  <Stack>
-                    <Stack.Screen
-                      name="(tabs)"
-                      options={{ headerShown: false }}
-                    />
-                    <Stack.Screen
-                      name="favorites"
-                      options={{
-                        title: getUI(appLanguage, dialect).screens.favorites,
-                        presentation: "modal",
-                      }}
-                    />
-                    <Stack.Screen
-                      name="settings"
-                      options={{
-                        title: getUI(appLanguage, dialect).screens.settings,
-                        presentation: "modal",
-                      }}
-                    />
-                  </Stack>
-                </FavoritesProvider>
-              </DialectProvider>
+              <ActiveWindowProvider value={windowValue}>
+                <DialectProvider value={dialectValue}>
+                  <FavoritesProvider value={favorites}>
+                    <Stack>
+                      <Stack.Screen
+                        name="(tabs)"
+                        options={{ headerShown: false }}
+                      />
+                      <Stack.Screen
+                        name="favorites"
+                        options={{
+                          title: getUI(appLanguage, dialect).screens.favorites,
+                          presentation: "modal",
+                        }}
+                      />
+                      <Stack.Screen
+                        name="settings"
+                        options={{
+                          title: getUI(appLanguage, dialect).screens.settings,
+                          presentation: "modal",
+                        }}
+                      />
+                    </Stack>
+                  </FavoritesProvider>
+                </DialectProvider>
+              </ActiveWindowProvider>
             </ResultsLanguageProvider>
           </AppLanguageProvider>
         </ThemeProvider>

@@ -3,7 +3,8 @@ import { SearchBar } from "@/components/common/SearchBar";
 import { WideLayout } from "@/components/common/WideLayout";
 import { useThemeNameContext } from "@/context/ThemeNameContext";
 import { useValid } from "@/hooks/useValid";
-import { getThemedComponents } from "@/themes";
+import { getBackground, getThemedComponents } from "@/themes";
+import { useDialectContext } from "@/context/DialectContext";
 import {
   ScrollView,
   StyleSheet,
@@ -17,9 +18,27 @@ export default function ValidScreen() {
   const Themed = getThemedComponents(themeName);
   const { width } = useWindowDimensions();
   const wide = width > 720;
+  const { dialect } = useDialectContext();
+
+  var content = (
+    <ScrollView keyboardShouldPersistTaps="always">
+      <View style={styles.container}>
+        <SearchBar query={query} search={search} cancel={cancel} autoFocus />
+        <ResultCount
+          resultCount={results.length}
+          visible={results.length > 0 && !loading}
+        />
+        {results.map((row, index) => (
+          <Themed.CardView key={`vrc_${index}`} style={styles.container}>
+            <Themed.Text>{row}</Themed.Text>
+          </Themed.CardView>
+        ))}
+      </View>
+    </ScrollView>
+  );
 
   if (wide) {
-    return (
+    content = (
       <WideLayout
         sidebar={
           <SearchBar query={query} search={search} cancel={cancel} autoFocus />
@@ -44,22 +63,7 @@ export default function ValidScreen() {
     );
   }
 
-  return (
-    <ScrollView keyboardShouldPersistTaps="always">
-      <View style={styles.container}>
-        <SearchBar query={query} search={search} cancel={cancel} autoFocus />
-        <ResultCount
-          resultCount={results.length}
-          visible={results.length > 0 && !loading}
-        />
-        {results.map((row, index) => (
-          <Themed.CardView key={`vrc_${index}`} style={styles.container}>
-            <Themed.Text>{row}</Themed.Text>
-          </Themed.CardView>
-        ))}
-      </View>
-    </ScrollView>
-  );
+  return getBackground(themeName, content, dialect);
 }
 
 const styles = StyleSheet.create({

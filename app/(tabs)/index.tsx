@@ -15,6 +15,8 @@ import {
   useWindowDimensions,
   View,
 } from "react-native";
+import { useThemeNameContext } from "@/context/ThemeNameContext";
+import { getBackground } from "@/themes";
 
 export default function SearchScreen() {
   const {
@@ -35,8 +37,44 @@ export default function SearchScreen() {
   const { width } = useWindowDimensions();
   const wide = width > 720;
 
+  const { themeName } = useThemeNameContext();
+
+  var content = (
+    <View style={styles.container}>
+      <SearchBar
+        query={query}
+        search={search}
+        execute={execute}
+        cancel={cancel}
+        autoFocus
+      />
+      <SwitchInput
+        leftLabel={ui.naviOnly}
+        rightLabel=""
+        value={naviOnly}
+        onValueChange={setNaviOnly}
+      />
+      <ResultCount
+        visible={query.length > 0 && resultCount > 0}
+        resultCount={resultCount}
+      />
+      <ScrollView
+        keyboardShouldPersistTaps="always"
+        refreshControl={
+          <RefreshControl
+            refreshing={loading}
+            onRefresh={execute}
+            colors={[colors.primary]}
+          />
+        }
+      >
+        <FwewSearchResults loading={loading} results={results} />
+      </ScrollView>
+    </View>
+  );
+
   if (wide) {
-    return (
+    content = (
       <WideLayout
         sidebar={
           <>
@@ -72,39 +110,7 @@ export default function SearchScreen() {
     );
   }
 
-  return (
-    <View style={styles.container}>
-      <SearchBar
-        query={query}
-        search={search}
-        execute={execute}
-        cancel={cancel}
-        autoFocus
-      />
-      <SwitchInput
-        leftLabel={ui.naviOnly}
-        rightLabel=""
-        value={naviOnly}
-        onValueChange={setNaviOnly}
-      />
-      <ResultCount
-        visible={query.length > 0 && resultCount > 0}
-        resultCount={resultCount}
-      />
-      <ScrollView
-        keyboardShouldPersistTaps="always"
-        refreshControl={
-          <RefreshControl
-            refreshing={loading}
-            onRefresh={execute}
-            colors={[colors.primary]}
-          />
-        }
-      >
-        <FwewSearchResults loading={loading} results={results} />
-      </ScrollView>
-    </View>
-  );
+  return getBackground(themeName, content, dialect);
 }
 
 const styles = StyleSheet.create({

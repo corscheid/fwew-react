@@ -152,5 +152,7 @@ const styles = StyleSheet.create({
   },
   text: {
     padding: 10,
+    borderTopWidth: 1,
+    borderTopColor:"#888"
   },
 });

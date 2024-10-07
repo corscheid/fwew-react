@@ -24,6 +24,7 @@ export function DialectSelect() {
   const updatePWATheme = getPWAThemeUpdater(themeName);
 
   return (
+    <Themed.CardView>
     <Accordion
       closedContent={
         <View style={styles.iconContainer}>
@@ -73,6 +74,7 @@ export function DialectSelect() {
         </View>
       }
     />
+    </Themed.CardView>
   );
 }
 

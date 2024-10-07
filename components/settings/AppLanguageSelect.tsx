@@ -17,30 +17,32 @@ export function AppLanguageSelect() {
   const Themed = getThemedComponents(themeName);
 
   return (
-    <Accordion
-      closedContent={
-        <View style={styles.iconContainer}>
-          <View style={styles.icon}>{FlagMap[appLanguage]}</View>
-          <Themed.Text style={styles.value}>
-            {ui.settings.appLanguage}
-          </Themed.Text>
-        </View>
-      }
-      openedContent={
-        <View style={styles.contentContainer}>
-          {AppLanguages.map((language, i) => (
-            <View key={`sal_${i}`}>
-              <OptionItem
-                icon={FlagMap[language.value]}
-                value={language.label}
-                selected={appLanguage === language.value}
-                onSelect={() => saveAppLanguage(language.value)}
-              />
-            </View>
-          ))}
-        </View>
-      }
-    />
+    <Themed.CardView>
+      <Accordion
+        closedContent={
+          <View style={styles.iconContainer}>
+            <View style={styles.icon}>{FlagMap[appLanguage]}</View>
+            <Themed.Text style={styles.value}>
+              {ui.settings.appLanguage}
+            </Themed.Text>
+          </View>
+        }
+        openedContent={
+          <View style={styles.contentContainer}>
+            {AppLanguages.map((language, i) => (
+              <View key={`sal_${i}`}>
+                <OptionItem
+                  icon={FlagMap[language.value]}
+                  value={language.label}
+                  selected={appLanguage === language.value}
+                  onSelect={() => saveAppLanguage(language.value)}
+                />
+              </View>
+            ))}
+          </View>
+        }
+      />
+    </Themed.CardView>
   );
 }
 

@@ -46,6 +46,7 @@ export function ResultInfo({ word }: ResultInfoProps) {
           text={ui.search.audio}
           style={styles.audioButton}
           textStyle={{ color: colorExtension.dark.text }}
+          selected={true}
         />
         <FavoriteButton word={word} />
       </View>
@@ -128,11 +129,12 @@ function FavoriteButton({ word }: { word: Word }) {
       text={ui.search.favorite}
       style={{
         ...styles.audioButton,
-        backgroundColor: faved
+        /*backgroundColor: faved
           ? theme.colors?.primary
-          : colorExtension[theme.dark ? "dark" : "light"].innerCard,
+          : colorExtension[theme.dark ? "dark" : "light"].innerCard,*/
       }}
       textStyle={{ color: colorExtension.dark.text }}
+      selected={faved}
     />
   );
 }

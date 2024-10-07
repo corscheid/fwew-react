@@ -10,6 +10,8 @@ import {
   type TextStyle,
   type ViewStyle,
 } from "react-native";
+import { getButtonBackground } from "@/themes";
+import { useDialectContext } from "@/context/DialectContext";
 
 type ButtonProps = {
   onPress: () => void;
@@ -18,6 +20,7 @@ type ButtonProps = {
   text?: string;
   style?: ViewStyle;
   textStyle?: TextStyle;
+  selected: boolean;
 };
 
 export function Button(props: ButtonProps) {
@@ -27,28 +30,31 @@ export function Button(props: ButtonProps) {
   const colorExtension = getColorExtension(themeName);
   const colors = colorExtension[colorScheme ?? "light"];
   const theme = useTheme();
+  const selected = props.selected;
   const Themed = getThemedComponents(themeName);
+  const { dialect } = useDialectContext();
 
   return (
+    getButtonBackground(themeName,style,
     <Pressable
       onPress={onPress}
       style={({ pressed }) => [
         styles.button,
         {
-          backgroundColor: disabled ? colors.placeholder : theme.colors.primary,
+          //backgroundColor: disabled ? colors.placeholder : theme.colors.primary,
           opacity: pressed ? 0.5 : 1,
-          ...style,
         },
       ]}
       disabled={disabled}
     >
-      <FontAwesome name={icon} size={24} color={colorExtension.dark.text} />
+      {<><FontAwesome name={icon} size={24} color={colorExtension.dark.text} />
       {text && (
         <Themed.Text style={{ color: colorExtension.dark.text, ...textStyle }}>
           {text}
         </Themed.Text>
-      )}
+      )}</>}
     </Pressable>
+    , dialect, selected)
   );
 }
 

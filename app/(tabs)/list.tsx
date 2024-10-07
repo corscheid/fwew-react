@@ -5,8 +5,11 @@ import { ListResults } from "@/components/list/ListResults";
 import { useDebounce } from "@/hooks/useDebounce";
 import { useFilterExpression } from "@/hooks/useFilterExpression";
 import { useList } from "@/hooks/useList";
+import { getBackground, getThemedComponents } from "@/themes";
 import { useTheme } from "@react-navigation/native";
 import { useEffect } from "react";
+import { useDialectContext } from "@/context/DialectContext";
+import { useThemeNameContext } from "@/context/ThemeNameContext";
 import {
   RefreshControl,
   ScrollView,
@@ -24,6 +27,8 @@ export default function ListScreen() {
   const theme = useTheme();
   const { width } = useWindowDimensions();
   const wide = width > 720;
+  const { themeName } = useThemeNameContext();
+  const Themed = getThemedComponents(themeName);
 
   const getData = () => debounce(async () => await execute(filterExpression));
 
@@ -36,17 +41,49 @@ export default function ListScreen() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filterExpression, incomplete]);
 
+  const { dialect } = useDialectContext();
+
+  var content = (<ScrollView
+    keyboardShouldPersistTaps="always"
+    refreshControl={
+      <RefreshControl
+        refreshing={loading}
+        onRefresh={getData}
+        colors={[theme.colors.primary]}
+      />
+    }
+  >
+    <View style={styles.container}>
+      <Themed.CardView>
+      <ListOptions
+        filters={filters}
+        add={add}
+        remove={remove}
+        update={update}
+        incomplete={incomplete}
+      />
+      </Themed.CardView>
+      <ResultCount visible={resultsVisible} resultCount={results.length} />
+      <ListResults
+        loading={loading}
+        results={resultsVisible ? results : []}
+      />
+    </View>
+  </ScrollView>);
+
   if (wide) {
-    return (
+    content = (
       <WideLayout
         sidebar={
-          <ListOptions
-            filters={filters}
-            add={add}
-            remove={remove}
-            update={update}
-            incomplete={incomplete}
-          />
+          <Themed.CardView>
+            <ListOptions
+              filters={filters}
+              add={add}
+              remove={remove}
+              update={update}
+              incomplete={incomplete}
+            />
+          </Themed.CardView>
         }
         header={
           <ResultCount
@@ -70,33 +107,7 @@ export default function ListScreen() {
     );
   }
 
-  return (
-    <ScrollView
-      keyboardShouldPersistTaps="always"
-      refreshControl={
-        <RefreshControl
-          refreshing={loading}
-          onRefresh={getData}
-          colors={[theme.colors.primary]}
-        />
-      }
-    >
-      <View style={styles.container}>
-        <ListOptions
-          filters={filters}
-          add={add}
-          remove={remove}
-          update={update}
-          incomplete={incomplete}
-        />
-        <ResultCount visible={resultsVisible} resultCount={results.length} />
-        <ListResults
-          loading={loading}
-          results={resultsVisible ? results : []}
-        />
-      </View>
-    </ScrollView>
-  );
+  return getBackground(themeName, content, dialect);
 }
 
 const styles = StyleSheet.create({

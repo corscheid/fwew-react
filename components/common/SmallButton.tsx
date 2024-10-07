@@ -20,7 +20,7 @@ export function SmallButton(props: SmallButtonProps) {
       style={({ pressed }) => [
         styles.button,
         {
-          backgroundColor: colors.card,
+          backgroundColor: "300000000",
           borderWidth: borderColor ? 1 : 0,
           opacity: pressed ? 0.5 : 1,
           borderColor,

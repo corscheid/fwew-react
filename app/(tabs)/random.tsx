@@ -9,6 +9,9 @@ import { useRandom } from "@/hooks/useRandom";
 import { NumericString } from "@/types/common";
 import { useTheme } from "@react-navigation/native";
 import { useCallback, useEffect, useState } from "react";
+import { useDialectContext } from "@/context/DialectContext";
+import { useThemeNameContext } from "@/context/ThemeNameContext";
+import { getBackground, getThemedComponents } from "@/themes";
 import {
   RefreshControl,
   ScrollView,
@@ -27,6 +30,9 @@ export default function RandomScreen() {
   const resultsVisible = numWords.length > 0 && results.length > 0;
   const { width } = useWindowDimensions();
   const wide = width > 720;
+  const { dialect } = useDialectContext();
+  const { themeName } = useThemeNameContext();
+  const Themed = getThemedComponents(themeName);
 
   const updateNumWords = useCallback((num: NumericString) => {
     if (num === "") {
@@ -60,11 +66,51 @@ export default function RandomScreen() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [numWords, filterExpression, incomplete]);
 
+  var content = (
+    <ScrollView
+      keyboardShouldPersistTaps="always"
+      refreshControl={
+        <RefreshControl
+          refreshing={loading}
+          onRefresh={getData}
+          colors={[theme.colors.primary]}
+        />
+      }
+    >
+      <View style={styles.container}>
+      <Themed.CardView>
+        <RandomOptions
+          numWords={numWords}
+          updateNumWords={updateNumWords}
+          filters={filters}
+          add={add}
+          remove={remove}
+          update={update}
+          incomplete={incomplete}
+        />
+        </Themed.CardView>
+        <View>
+          <Button
+            icon="refresh"
+            onPress={() => execute(numWords, filterExpression)}
+            disabled={loading}
+            selected={true}
+          />
+        </View>
+        <ResultCount visible={resultsVisible} resultCount={results.length} />
+        <ListResults
+          loading={loading}
+          results={resultsVisible ? results : []}
+        />
+      </View>
+    </ScrollView>
+  );
+
   if (wide) {
-    return (
+    content = (
       <WideLayout
         sidebar={
-          <>
+          <><Themed.CardView>
             <RandomOptions
               numWords={numWords}
               updateNumWords={updateNumWords}
@@ -74,11 +120,13 @@ export default function RandomScreen() {
               update={update}
               incomplete={incomplete}
             />
+            </Themed.CardView>
             <View style={{ paddingTop: 16 }}>
               <Button
                 icon="refresh"
                 onPress={() => execute(numWords, filterExpression)}
                 disabled={loading}
+                selected={true}
               />
             </View>
           </>
@@ -105,42 +153,7 @@ export default function RandomScreen() {
     );
   }
 
-  return (
-    <ScrollView
-      keyboardShouldPersistTaps="always"
-      refreshControl={
-        <RefreshControl
-          refreshing={loading}
-          onRefresh={getData}
-          colors={[theme.colors.primary]}
-        />
-      }
-    >
-      <View style={styles.container}>
-        <RandomOptions
-          numWords={numWords}
-          updateNumWords={updateNumWords}
-          filters={filters}
-          add={add}
-          remove={remove}
-          update={update}
-          incomplete={incomplete}
-        />
-        <View style={{}}>
-          <Button
-            icon="refresh"
-            onPress={() => execute(numWords, filterExpression)}
-            disabled={loading}
-          />
-        </View>
-        <ResultCount visible={resultsVisible} resultCount={results.length} />
-        <ListResults
-          loading={loading}
-          results={resultsVisible ? results : []}
-        />
-      </View>
-    </ScrollView>
-  );
+  return getBackground(themeName, content, dialect)
 }
 
 const styles = StyleSheet.create({
