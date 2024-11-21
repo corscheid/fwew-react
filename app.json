@@ -12,9 +12,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#7494BA"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "bundleIdentifier": "app.fwew.react",
       "buildNumber": "4.2.2",

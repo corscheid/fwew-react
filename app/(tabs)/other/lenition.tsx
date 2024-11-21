@@ -6,7 +6,7 @@ import { useAppLanguageContext } from "@/context/AppLanguageContext";
 import { useDialectContext } from "@/context/DialectContext";
 import { useThemeNameContext } from "@/context/ThemeNameContext";
 import { useList } from "@/hooks/useList";
-import { getThemedComponents } from "@/themes";
+import { getThemedComponents, getBackground } from "@/themes";
 import { useEffect } from "react";
 import {
   ScrollView,
@@ -18,9 +18,21 @@ import {
 export default function LenitionScreen() {
   const { width } = useWindowDimensions();
   const wide = width > 720;
+  const { dialect } = useDialectContext();
+  const { themeName } = useThemeNameContext();
+
+  var content = (
+    <ScrollView>
+      <View style={{ padding: 16 }}>
+        <LenitionTable />
+        <LenPreList />
+        <LenAdpList />
+      </View>
+    </ScrollView>
+  );
 
   if (wide) {
-    return (
+    content = (
       <WideLayout
         sidebar={
           <>
@@ -33,15 +45,7 @@ export default function LenitionScreen() {
     );
   }
 
-  return (
-    <ScrollView>
-      <View style={{ padding: 16 }}>
-        <LenitionTable />
-        <LenPreList />
-        <LenAdpList />
-      </View>
-    </ScrollView>
-  );
+  return getBackground(themeName, content, dialect)
 }
 
 function LenitionTable() {

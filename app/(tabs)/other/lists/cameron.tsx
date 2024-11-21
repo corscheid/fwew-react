@@ -3,7 +3,7 @@ import { getUI } from "@/constants/i18n";
 import { useAppLanguageContext } from "@/context/AppLanguageContext";
 import { useDialectContext } from "@/context/DialectContext";
 import { useThemeNameContext } from "@/context/ThemeNameContext";
-import { getThemedComponents } from "@/themes";
+import { getThemedComponents, getBackground } from "@/themes";
 import { FlatList, StyleSheet, View } from "react-native";
 
 export default function CameronScreen() {
@@ -13,7 +13,8 @@ export default function CameronScreen() {
   const { themeName } = useThemeNameContext();
   const Themed = getThemedComponents(themeName);
 
-  return (
+  return getBackground(
+    themeName, (
     <View style={styles.container}>
       <FlatList
         data={ui.data}
@@ -45,7 +46,7 @@ export default function CameronScreen() {
           );
         }}
       />
-    </View>
+    </View>), dialect
   );
 }
 

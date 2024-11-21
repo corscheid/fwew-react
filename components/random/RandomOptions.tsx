@@ -35,7 +35,7 @@ export function RandomOptions(props: RandomOptionsProps) {
     <Accordion
       closedContent={<Themed.Text>{ui.random.randomOptions}</Themed.Text>}
       openedContent={
-        <View style={{ backgroundColor: theme.colors.background }}>
+        <View>
           <Themed.Text style={styles.label}>{ui.random.numWords}</Themed.Text>
           <NumericTextInput
             placeholder={`${ui.random.numWords} (1-100)`}

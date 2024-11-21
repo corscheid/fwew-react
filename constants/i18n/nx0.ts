@@ -28,6 +28,8 @@ const partOfSpeech: PartOfSpeech = {
   "adv., conj.": { abbr: "adv., conj.", name: "fyalì'u, tilì'u" },
   "adv., intj.": { abbr: "adv., intj.", name: "fyalì'u, tìleym" },
   "adv., n.": { abbr: "adv., n.", name: "fyalì'u, tstxolì'u" },
+  "adv., part.": { abbr: "adv., part.", name: "fyalì'u, lahea fnel" },
+  "conj., adj.": { abbr: "conj., adj.", name: "tilì'u, syonlì'u" },
   "inter., intj.": { abbr: "inter., intj.", name: "tìpawm, tìleym" },
   "n., intj.": { abbr: "n., intj.", name: "tstxolì'u, tìleym" },
   "part., intj.": { abbr: "part., intj.", name: "lahea fnel, tìleym" },

@@ -11,10 +11,13 @@ import { useThemeName } from "@/hooks/useThemeName";
 import { getTheme } from "@/themes";
 import { ThemeProvider } from "@react-navigation/native";
 import { useColorScheme } from "react-native";
+import { ActiveWindowProvider } from "@/context/ActiveWindowContext";
+import { useActiveWindow } from "@/hooks/useActiveWindow";
 
 export function ContextProviders({ children }: { children: React.ReactNode }) {
   const colorScheme = useColorScheme();
   const appLanguageValue = useAppLanguage();
+  const { appLanguage } = appLanguageValue;
   const resultsLanguage = useResultsLanguage();
   const dialectValue = useDialect();
   const { dialect } = dialectValue;
@@ -22,17 +25,20 @@ export function ContextProviders({ children }: { children: React.ReactNode }) {
   const themeNameValue = useThemeName();
   const { themeName } = themeNameValue;
   const theme = getTheme(themeName, colorScheme, dialect);
+  const windowValue = useActiveWindow();
 
   return (
     <ThemeNameProvider value={themeNameValue}>
       <ThemeProvider value={theme}>
         <AppLanguageProvider value={appLanguageValue}>
           <ResultsLanguageProvider value={resultsLanguage}>
-            <DialectProvider value={dialectValue}>
-              <FavoritesProvider value={favorites}>
-                {children}
-              </FavoritesProvider>
-            </DialectProvider>
+            <ActiveWindowProvider value={windowValue}>
+              <DialectProvider value={dialectValue}>
+                <FavoritesProvider value={favorites}>
+                  {children}
+                </FavoritesProvider>
+              </DialectProvider>
+            </ActiveWindowProvider>
           </ResultsLanguageProvider>
         </AppLanguageProvider>
       </ThemeProvider>

@@ -26,6 +26,8 @@ const partOfSpeech: PartOfSpeech = {
   "adv., conj.": { abbr: "adv., conj.", name: "adverbo, konjunkcio" },
   "adv., intj.": { abbr: "adv., intj.", name: "adverbo, interjekcio" },
   "adv., n.": { abbr: "adv., n.", name: "adverbo, substantivo" },
+  "adv., part.": { abbr: "adv., part.", name: "adverbo, partiklo" },
+  "conj., adj.": { abbr: "conj., adj.", name: "konjunkcio, adjektivo" },
   "inter., intj.": {
     abbr: "inter., intj.",
     name: "interrogativa vorto, interjekcio",

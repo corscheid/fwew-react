@@ -5,11 +5,13 @@ import {
   Text as DefaultText,
   TextInput as DefaultTextInput,
   View as DefaultView,
-  Platform,
   type TextInputProps,
   type TextProps,
   type ViewProps,
+  type ViewStyle,
 } from "react-native";
+import { useActiveWindowContext } from "@/context/ActiveWindowContext";
+import { useDialect } from "@/hooks/useDialect";
 
 const FwewDarkTheme: Theme = {
   dark: true,
@@ -80,7 +82,7 @@ const FwewColorExtension: ColorExtension = {
     link: "#62a0ea",
     innerCard: "#2d3133",
   },
-};
+}; 
 
 function Text(props: TextProps) {
   const { colors } = useTheme();
@@ -143,10 +145,6 @@ function TextInput(props: TextInputProps) {
 }
 
 function updatePWATheme(dialect: Dialect): void {
-  if (Platform.OS !== "web") {
-    return;
-  }
-
   const attrThemeColor = "name=theme-color";
 
   const attrMediaLight = "media='(prefers-color-scheme: light)'";
@@ -161,7 +159,55 @@ function updatePWATheme(dialect: Dialect): void {
     ?.setAttribute("content", FwewTheme.dark[dialect].colors.primary);
 }
 
+function Topbar(dialect: Dialect): JSX.Element {
+  const { colors } = useTheme();
+  return <DefaultView
+  style={{backgroundColor: colors.primary,
+    height: "100%",
+  }}
+  />;
+}
+
+function Bottombar(dialect: Dialect): JSX.Element {
+  const { activeWindow } = useActiveWindowContext();
+
+  const { colors } = useTheme();
+  return <DefaultView
+  style={{backgroundColor: colors.card,
+    height: "100%",
+  }}
+  />;
+}
+
+function Background(content: JSX.Element, dialect: Dialect): JSX.Element {
+  const { colors } = useTheme();
+  return <DefaultView
+  style={{backgroundColor: colors.background,
+    height: "100%",
+  }}
+  >{content}</DefaultView>;
+}
+
+function ButtonBackground(content: JSX.Element, style:ViewStyle, dialect: Dialect, selected: boolean): JSX.Element {
+  const { colors, dark } = useTheme();
+  const theme = selected ?
+  dialect === "reef" ?
+                    <DefaultView
+                      style={{backgroundColor: colors.primary, borderRadius: 8, ...style}}
+                    >{content}</DefaultView>
+                    :
+                    <DefaultView
+                      style={{backgroundColor: colors.primary, borderRadius: 8, ...style}}
+                    >{content}</DefaultView>
+  :
+                    <DefaultView
+                    style={{backgroundColor: dark ? FwewColorExtension.dark.innerCard : FwewColorExtension.light.innerCard, borderRadius: 8, ...style}}
+                  >{content}</DefaultView>
+  return theme
+}
+
 const FwewTheme: ThemeType = {
+  name: "Fwew",
   light: {
     forest: FwewLightTheme,
     reef: FwewLightReefTheme,
@@ -181,6 +227,10 @@ const FwewTheme: ThemeType = {
     TextInput,
   },
   updatePWATheme,
+  Topbar,
+  Bottombar,
+  Background,
+  ButtonBackground
 };
 
 export default FwewTheme;

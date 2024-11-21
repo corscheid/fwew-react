@@ -26,6 +26,8 @@ const partOfSpeech: PartOfSpeech = {
   "adv., conj.": { abbr: "adv., conj.", name: "Adverb, Conjuction" },
   "adv., intj.": { abbr: "adv., intj.", name: "Adverb, Interjective" },
   "adv., n.": { abbr: "adv., n.", name: "határozószó, főnév" },
+  "adv., part.": { abbr: "adv., part.", name: "határozószó, részecske" },
+  "conj., adj.": { abbr: "conj., adj.", name: "Conjunction, melléknév" },
   "inter., intj.": { abbr: "inter., intj.", name: "Kérdés, közbeszólás" },
   "n., intj.": { abbr: "n., intj.", name: "Főnév, Közbeszólás" },
   "part., intj.": { abbr: "part., intj.", name: "Particle, Interjection" },

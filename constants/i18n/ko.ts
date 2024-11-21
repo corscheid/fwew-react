@@ -26,6 +26,8 @@ const partOfSpeech: PartOfSpeech = {
   "adv., conj.": { abbr: "부/접속", name: "부사, 접속사" },
   "adv., intj.": { abbr: "부/감탄", name: "부사, 감탄사" },
   "adv., n.": { abbr: "부/명", name: "부사, 명사" },
+  "adv., part.": { abbr: "부/불변화사", name: "부사, 불변화사" },
+  "conj., adj.": { abbr: "접속/형", name: "접속사, 형용사" },
   "inter., intj.": { abbr: "의문/감탄", name: "의문사, 감탄사" },
   "n., intj.": { abbr: "명/감탄", name: "명사, 감탄사" },
   "part., intj.": { abbr: "불변화사/감탄", name: "불변화사, 감탄사" },
