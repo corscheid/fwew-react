@@ -10,6 +10,7 @@ const profanityQuery = [
   "teylupil",
   "tsahey",
   "txanfwìngtu",
+  "vitronvä'",
   "vonvä'",
   "wiya",
   "yayl",
