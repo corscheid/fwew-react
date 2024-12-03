@@ -1,16 +1,22 @@
 import { ScreenLinkCard } from "@/components/common/ScreenLinkCard";
 import type { LinkType } from "@/types/common";
 import { ScrollView, StyleSheet, View } from "react-native";
+import { getBackground } from "@/themes";
+import { useDialectContext } from "@/context/DialectContext";
+import { useThemeNameContext } from "@/context/ThemeNameContext";
 
 export function IndexGrid({ links }: { links: LinkType[] }) {
-  return (
+  const { themeName } = useThemeNameContext();
+  const { dialect } = useDialectContext();
+  return getBackground(
+    themeName, (
     <ScrollView>
       <View style={styles.grid}>
         {links.map((link) => (
           <ScreenLinkCard key={`oi_${link.title}`} {...link} />
         ))}
       </View>
-    </ScrollView>
+    </ScrollView>), dialect
   );
 }
 

@@ -21,3 +21,5 @@ export type LinkType = {
   href: Href<string>;
   title: string;
 };
+
+export type ActiveWindow = "search" | "list" | "random" | "numbers" | "other";

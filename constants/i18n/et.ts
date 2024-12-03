@@ -26,6 +26,8 @@ const partOfSpeech: PartOfSpeech = {
   "adv., conj.": { abbr: "adv., conj.", name: "adverb, sidesõna" },
   "adv., intj.": { abbr: "adv., intj.", name: "adverb, interjektsioon" },
   "adv., n.": { abbr: "adv., n.", name: "adverb, nimisõna" },
+  "adv., part.": { abbr: "adv., part.", name: "adverb, partikkel" },
+  "conj., adj.": { abbr: "conj., adj.", name: "sidesõna, omadussõna" },
   "inter., intj.": {
     abbr: "inter., intj.",
     name: "interrogatiiv, interjektsioon",

@@ -32,6 +32,8 @@ const partOfSpeech: PartOfSpeech = {
     name: "Прислівник, Вставне слово, вигук",
   },
   "adv., n.": { abbr: "присл., ім.", name: "Прислівник, Іменник" },
+  "adv., part.": { abbr: "присл., part.", name: "Прислівник, Частка*" },
+  "conj., adj.": { abbr: "conj., прикм.", name: "Сполучник, Прикметник" },
   "inter., intj.": {
     abbr: "inter., intj.",
     name: "Питальний*, Вставне слово, вигук",

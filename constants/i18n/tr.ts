@@ -26,6 +26,8 @@ const partOfSpeech: PartOfSpeech = {
   "adv., conj.": { abbr: "adv., conj.", name: "Zarf, Bağlaç" },
   "adv., intj.": { abbr: "adv., intj.", name: "Zarf, Ünlem" },
   "adv., n.": { abbr: "adv., n.", name: "Zarf, İsim" },
+  "adv., part.": { abbr: "adv., part.", name: "Zarf, Parça" },
+  "conj., adj.": { abbr: "conj., adj.", name: "Bağlaç, Sıfat" },
   "inter., intj.": { abbr: "inter., intj.", name: "Soru, Ünlem" },
   "n., intj.": { abbr: "n., intj.", name: "İsim, Ünlem" },
   "part., intj.": { abbr: "part., intj.", name: "Parça, Ünlem" },

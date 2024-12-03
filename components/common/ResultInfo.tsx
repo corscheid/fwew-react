@@ -10,7 +10,7 @@ import { useThemeNameContext } from "@/context/ThemeNameContext";
 import { useSound } from "@/hooks/useSound";
 import { ReefMe } from "@/lib/dialect";
 import { Romanize } from "@/lib/romanize";
-import { getColorExtension, getThemedComponents } from "@/themes";
+import { getColorExtension, getThemedComponents, getButtonBackground } from "@/themes";
 import { useTheme } from "@react-navigation/native";
 import { fwewSimple, type LanguageCode, type Word } from "fwew.js";
 import { useCallback, useEffect, useState } from "react";
@@ -59,14 +59,13 @@ export function ResultInfo({ word }: ResultInfoProps) {
       {/* Buttons */}
       <View style={styles.buttonContainer}>
         {/* Audio Button */}
-        <Button
+        {getButtonBackground(themeName, (styles.audioButton), (<Button
           onPress={() => playSound(word.ID)}
           disabled={disabled || (dialect === "reef" && forestNavi !== reefNavi)}
           icon="volume-up"
           text={ui.search.audio}
-          style={styles.audioButton}
           textStyle={{ color: colorExtension.dark.text }}
-        />
+        />), dialect, true)}
         {/* Favorite Button */}
         <FavoriteButton word={word} />
       </View>
@@ -182,19 +181,15 @@ function FavoriteButton({ word }: { word: Word }) {
   const colorExtension = getColorExtension(themeName);
 
   const faved = isFavorite(word);
-  return (
-    <Button
+  return getButtonBackground(themeName, ({
+    ...styles.audioButton,
+  }),
+    (<Button
       onPress={() => toggleFavorite(word)}
       icon={faved ? "heart" : "heart-o"}
       text={ui.search.favorite}
-      style={{
-        ...styles.audioButton,
-        backgroundColor: faved
-          ? theme.colors?.primary
-          : colorExtension[theme.dark ? "dark" : "light"].innerCard,
-      }}
       textStyle={{ color: colorExtension.dark.text }}
-    />
+    />), dialect, faved
   );
 }
 

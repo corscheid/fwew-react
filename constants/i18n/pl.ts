@@ -26,6 +26,8 @@ const partOfSpeech: PartOfSpeech = {
   "adv., conj.": { abbr: "adv., conj.", name: "przysłówek, spójnik" },
   "adv., intj.": { abbr: "adv., intj.", name: "przysłówek, wykrzyknik" },
   "adv., n.": { abbr: "adv., n.", name: "przysłówek, rzeczownik" },
+  "adv., part.": { abbr: "adv., part.", name: "przysłówek, cząstka" },
+  "conj., adj.": { abbr: "conj., adj.", name: "spójnik, przymiotnik" },
   "inter., intj.": {
     abbr: "inter., intj.",
     name: "zaimek pytający, wykrzyknik",

@@ -1,6 +1,6 @@
 import { useThemeNameContext } from "@/context/ThemeNameContext";
 import { useStats } from "@/hooks/useStats";
-import { getThemedComponents } from "@/themes";
+import { getThemedComponents, getBackground } from "@/themes";
 import { useTheme } from "@react-navigation/native";
 import {
   ActivityIndicator,
@@ -9,6 +9,7 @@ import {
   useWindowDimensions,
   View,
 } from "react-native";
+import { useDialectContext } from "@/context/DialectContext";
 
 export default function StatsScreen() {
   const { wordCount, phonemeGrid, clusterName, clusterMap, loading } =
@@ -18,16 +19,19 @@ export default function StatsScreen() {
   const landscape = width > height;
   const { themeName } = useThemeNameContext();
   const Themed = getThemedComponents(themeName);
+  const { dialect } = useDialectContext();
 
   if (loading) {
-    return (
+    return getBackground(
+      themeName, (
       <View style={styles.loadingContainer}>
         <ActivityIndicator color={colors.text} size="large" />
-      </View>
+      </View>), dialect
     );
   }
 
-  return (
+  return getBackground(
+    themeName, (
     <ScrollView>
       <View
         style={[
@@ -51,7 +55,7 @@ export default function StatsScreen() {
           <ClusterTable data={clusterMap} />
         </View>
       </View>
-    </ScrollView>
+    </ScrollView>), dialect
   );
 }
 

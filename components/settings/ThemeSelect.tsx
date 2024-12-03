@@ -4,7 +4,7 @@ import { getUI } from "@/constants/i18n";
 import { useAppLanguageContext } from "@/context/AppLanguageContext";
 import { useDialectContext } from "@/context/DialectContext";
 import { useThemeNameContext } from "@/context/ThemeNameContext";
-import { getColorExtension, getThemedComponents, ThemeNames } from "@/themes";
+import { getColorExtension, getThemedComponents, ThemeNames, ThemeNamesUser } from "@/themes";
 import { useTheme } from "@react-navigation/native";
 import { StyleSheet, View } from "react-native";
 
@@ -51,7 +51,7 @@ export function ThemeSelect() {
                     </Themed.MonoText>
                   </View>
                 }
-                value={tn}
+                value={ThemeNamesUser[i]}
                 selected={themeName === tn}
                 onSelect={() => saveThemeName(tn)}
               />
