@@ -28,6 +28,7 @@ export function NumberSearchBar(props: NumberSearchBarProps) {
 
   return (
     <View style={styles.inputContainer}>
+      <Themed.CardView style={styles.input}>
       <Themed.TextInput
         value={query}
         onChangeText={search}
@@ -38,14 +39,18 @@ export function NumberSearchBar(props: NumberSearchBarProps) {
         }
         placeholderTextColor={colors.placeholder}
         keyboardType={mode === "number" ? "number-pad" : "default"}
-        style={styles.input}
         autoCapitalize="none"
         autoCorrect={false}
         clearButtonMode="never"
         autoFocus
       />
-      <SmallButton icon="close" onPress={clear} />
-      <SmallButton icon="exchange" onPress={toggleMode} />
+      </Themed.CardView>
+      <Themed.CardView style={styles.button}>
+        <SmallButton icon="close" onPress={clear}/>
+      </Themed.CardView>
+      <Themed.CardView style={styles.button}>
+        <SmallButton icon="exchange" onPress={toggleMode}/>
+      </Themed.CardView>
     </View>
   );
 }
@@ -64,8 +69,6 @@ const styles = StyleSheet.create({
   button: {
     alignItems: "center",
     justifyContent: "center",
-    padding: 8,
-    borderWidth: 1,
-    height: Platform.OS === "web" ? null : 50,
+    height: Platform.OS === "web" ? null : 60,
   },
 });

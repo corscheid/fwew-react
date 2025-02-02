@@ -3,8 +3,8 @@ import { getUI } from "@/constants/i18n";
 import { useAppLanguageContext } from "@/context/AppLanguageContext";
 import { useDialectContext } from "@/context/DialectContext";
 import { useThemeNameContext } from "@/context/ThemeNameContext";
-import { getThemedComponents } from "@/themes";
-import { FlatList, StyleSheet, useWindowDimensions, View } from "react-native";
+import { getThemedComponents, getBackground } from "@/themes";
+import { Platform, FlatList, StyleSheet, useWindowDimensions, View, ScrollView } from "react-native";
 
 export default function CameronScreen() {
   const { appLanguage } = useAppLanguageContext();
@@ -12,27 +12,17 @@ export default function CameronScreen() {
   const { cameronWords } = getUI(appLanguage, dialect);
   const { width } = useWindowDimensions();
   const wide = width > 720;
+  const { themeName } = useThemeNameContext();
 
-  if (wide) {
-    return (
-      <View style={{ gap: 16 }}>
-        {cameronWords.data.map((cw, i) => (
-          <TitleContentCard key={`cw_${cw.key}_${i}`} item={cw} />
-        ))}
-      </View>
-    );
-  }
-
-  return (
-    <View style={styles.container}>
-      <FlatList
-        data={cameronWords.data}
-        contentContainerStyle={{ gap: 16, padding: 16 }}
-        renderItem={({ item }) => <TitleContentCard item={item} />}
-        keyExtractor={({ key }, i) => `cw_${key}_${i}`}
-      />
-    </View>
+  const content = (
+    <ScrollView style={{gap: 16, padding: 16}}>
+      {cameronWords.data.map((cw, i) => (
+        <TitleContentCard key={`cw_${cw.key}_${i}`} item={cw} />
+      ))}
+    </ScrollView>
   );
+
+  return getBackground(themeName, content, dialect, !wide);
 }
 
 type TCCProps = {
@@ -82,6 +72,7 @@ const styles = StyleSheet.create({
   },
   row: {
     padding: 16,
+    marginBottom: 16,
   },
   col: {
     gap: 8,

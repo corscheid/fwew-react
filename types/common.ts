@@ -23,3 +23,5 @@ export type LinkType = {
   Component?: () => JSX.Element;
   links?: LinkType[];
 };
+
+export type ActiveWindow = "search" | "list" | "random" | "numbers" | "other";

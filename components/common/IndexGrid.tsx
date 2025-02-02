@@ -12,6 +12,8 @@ import {
   View,
 } from "react-native";
 import { WideLayout } from "./WideLayout";
+import { useDialectContext } from "@/context/DialectContext";
+import { getBackground } from "@/themes";
 
 export function IndexGrid({ links }: { links: LinkType[] }) {
   const [Current, setCurrent] = useState<LinkType>(links[0]);
@@ -27,9 +29,10 @@ export function IndexGrid({ links }: { links: LinkType[] }) {
       { breakpoint: 950, value: 4 },
       { breakpoint: 720, value: 3 },
     ].filter((b) => width >= b.breakpoint)[0]?.value ?? 3;
+  const { dialect } = useDialectContext();
 
   if (wide) {
-    return (
+     return getBackground(themeName, (
       <WideLayout
         flexRatio={ratio}
         containerStyle={{ gap: 0, padding: 0 }}
@@ -121,18 +124,18 @@ export function IndexGrid({ links }: { links: LinkType[] }) {
           </View>
         }
         main={Current?.Component && <Current.Component />}
-      />
+      /> ), dialect, true
     );
   }
 
-  return (
+  return getBackground(themeName, (
     <ScrollView>
       <View style={styles.grid}>
         {links.map((link) => (
           <ScreenLinkCard key={`oi_${link.title}`} {...link} />
         ))}
       </View>
-    </ScrollView>
+    </ScrollView>), dialect, true
   );
 }
 
