@@ -2,13 +2,14 @@ import { ResultCount } from "@/components/common/ResultCount";
 import { SearchBar } from "@/components/common/SearchBar";
 import { useThemeNameContext } from "@/context/ThemeNameContext";
 import { useValid } from "@/hooks/useValid";
-import { getThemedComponents } from "@/themes";
+import { getThemedComponents, getBackground } from "@/themes";
 import {
   ScrollView,
   StyleSheet,
   useWindowDimensions,
   View,
 } from "react-native";
+import { useDialectContext } from "@/context/DialectContext";
 
 export default function ValidScreen() {
   const { query, results, loading, search, cancel } = useValid();
@@ -16,6 +17,7 @@ export default function ValidScreen() {
   const Themed = getThemedComponents(themeName);
   const { width } = useWindowDimensions();
   const wide = width > 720;
+  const { dialect } = useDialectContext();
 
   if (wide) {
     return (
@@ -34,7 +36,7 @@ export default function ValidScreen() {
     );
   }
 
-  return (
+  return getBackground(themeName, (
     <ScrollView keyboardShouldPersistTaps="always">
       <View style={{ alignItems: "center" }}>
         <View style={styles.container}>
@@ -51,7 +53,7 @@ export default function ValidScreen() {
         </View>
       </View>
     </ScrollView>
-  );
+  ), dialect, true);
 }
 
 const styles = StyleSheet.create({

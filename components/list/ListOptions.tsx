@@ -32,7 +32,7 @@ export function ListOptions(props: ListOptionsProps) {
       initiallyOpen={initiallyOpen}
       closedContent={<Themed.Text>{ui.list.listOptions}</Themed.Text>}
       openedContent={
-        <View style={{ backgroundColor: theme.colors.background }}>
+        <View>
           <FilterExpressionBuilderList
             filters={filters}
             add={add}

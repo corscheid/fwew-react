@@ -3,7 +3,7 @@ import { reefReplacements } from "@/constants/That";
 import { useDialectContext } from "@/context/DialectContext";
 import { useResultsLanguageContext } from "@/context/ResultsLanguageContext";
 import { useThemeNameContext } from "@/context/ThemeNameContext";
-import { getThemedComponents } from "@/themes";
+import { getThemedComponents, getBackground } from "@/themes";
 import { useTheme } from "@react-navigation/native";
 import {
   ScrollView,
@@ -15,10 +15,14 @@ import {
 export default function ThatScreen() {
   const { width, height } = useWindowDimensions();
   const landscape = width > height;
+  const { themeName } = useThemeNameContext();
+  const { dialect } = useDialectContext();
+
   const extraWide = width > 1080;
+  const wide = width > 720;
 
   if (landscape && extraWide) {
-    return (
+    return getBackground(themeName, (
       <ScrollView>
         <View style={[styles.container, styles.rowContainer]}>
           <View style={styles.tableContainer}>
@@ -30,10 +34,10 @@ export default function ThatScreen() {
           </View>
         </View>
       </ScrollView>
-    );
+    ), dialect, !wide);
   }
 
-  return (
+  return getBackground(themeName, (
     <ScrollView>
       <View style={styles.container}>
         <ThatTable1 />
@@ -41,7 +45,7 @@ export default function ThatScreen() {
         <ThatTable2 />
       </View>
     </ScrollView>
-  );
+  ), dialect, !wide);
 }
 
 type ThatTableProps = {

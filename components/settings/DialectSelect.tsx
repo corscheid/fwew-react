@@ -18,7 +18,7 @@ export function DialectSelect() {
   const { appLanguage } = useAppLanguageContext();
   const ui = getUI(appLanguage, dialect);
   const theme = useTheme();
-  const { themeName } = useThemeNameContext();
+  const { themeName, saveThemeName } = useThemeNameContext();
   const colorExtension = getColorExtension(themeName);
   const Themed = getThemedComponents(themeName);
   const updatePWATheme = getPWAThemeUpdater(themeName);

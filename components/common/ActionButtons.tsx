@@ -13,6 +13,7 @@ import { FontAwesome } from "@expo/vector-icons";
 import { Href, useRouter } from "expo-router";
 import { Platform, Pressable, StyleSheet, View } from "react-native";
 import { FlagMap } from "../settings/Flags";
+import { waitFor } from "@testing-library/react-native";
 
 export function ActionButtons() {
   return (
@@ -60,6 +61,7 @@ function DialectButton() {
         const value = dialect === "forest" ? "reef" : "forest";
         await saveDialect(value);
         updatePWATheme(value);
+        //signalChangeTheme();
       }}
     >
       {({ pressed }) => (

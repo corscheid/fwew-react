@@ -15,9 +15,12 @@ import NameFullScreen from "./names/name-full";
 import NameSingleScreen from "./names/name-single";
 import StatsScreen from "./stats";
 import ValidScreen from "./valid";
+import { getBackground } from "@/themes";
+import { useThemeNameContext } from "@/context/ThemeNameContext";
 import AllScreen from "./lists/all";
 
 export default function OtherScreen() {
+  const { themeName } = useThemeNameContext();
   const { appLanguage } = useAppLanguageContext();
   const { dialect } = useDialectContext();
   const { screens, names } = getUI(appLanguage, dialect);
