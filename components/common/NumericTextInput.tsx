@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
   inputContainer: {
     flexDirection: "row",
     alignItems: "center",
-    paddingVertical: 4,
+    //paddingVertical: 4,
     gap: 8,
   },
   input: {

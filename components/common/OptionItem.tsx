@@ -1,5 +1,6 @@
 import { useThemeNameContext } from "@/context/ThemeNameContext";
-import { getColorExtension, getThemedComponents } from "@/themes";
+import { useDialect } from "@/hooks/useDialect";
+import { getColorExtension, getThemedComponents, getButtonBackground } from "@/themes";
 import { FontAwesome } from "@expo/vector-icons";
 import { useTheme } from "@react-navigation/native";
 import { Pressable, StyleSheet, View } from "react-native";
@@ -7,7 +8,7 @@ import { Pressable, StyleSheet, View } from "react-native";
 type OptionItemProps = {
   icon?: React.ReactNode;
   value: string;
-  selected?: boolean;
+  selected: boolean;
   onSelect?: () => void;
 };
 
@@ -17,6 +18,7 @@ export function OptionItem(props: OptionItemProps) {
   const { themeName } = useThemeNameContext();
   const colorExtension = getColorExtension(themeName);
   const Themed = getThemedComponents(themeName);
+  const dialect = useDialect().dialect
 
   const getTextColor = () => {
     if (selected) return colorExtension.dark.text;
@@ -24,19 +26,14 @@ export function OptionItem(props: OptionItemProps) {
     return colorExtension.light.text;
   };
 
-  return (
+  return getButtonBackground(themeName, {},
     <Pressable
       onPress={onSelect}
       style={({ pressed }) => ({ opacity: pressed ? 0.5 : 1 })}
     >
       <View
         style={[
-          styles.container,
-          {
-            backgroundColor: selected
-              ? theme.colors.primary
-              : theme.colors.card,
-          },
+          styles.container
         ]}
       >
         <View style={styles.itemContainer}>
@@ -56,7 +53,7 @@ export function OptionItem(props: OptionItemProps) {
           )}
         </View>
       </View>
-    </Pressable>
+    </Pressable>, dialect, selected
   );
 }
 

@@ -8,6 +8,9 @@ import { useFilterExpression } from "@/hooks/useFilterExpression";
 import { useRandom } from "@/hooks/useRandom";
 import { NumericString } from "@/types/common";
 import { useTheme } from "@react-navigation/native";
+import { useThemeName } from "@/hooks/useThemeName";
+import { useDialectContext } from "@/context/DialectContext";
+import { getButtonBackground, getThemedComponents, getBackground } from "@/themes";
 import React, { useCallback, useEffect, useState } from "react";
 import {
   RefreshControl,
@@ -23,10 +26,12 @@ export default function RandomScreen() {
     useFilterExpression();
   const { loading, results, execute, cancel } = useRandom();
   const debounce = useDebounce();
-  const theme = useTheme();
+  const { dialect } = useDialectContext();
   const resultsVisible = numWords.length > 0 && results.length > 0;
   const { width } = useWindowDimensions();
   const wide = width > 720;
+  const theme = useTheme();
+  const themeName = useThemeName().themeName;
 
   const updateNumWords = useCallback((num: NumericString) => {
     if (num === "") {
@@ -50,7 +55,7 @@ export default function RandomScreen() {
   }, [numWords, filterExpression, incomplete]);
 
   if (wide) {
-    return (
+    return getBackground(themeName, (
       <WideLayout
         sidebar={
           <>
@@ -65,11 +70,11 @@ export default function RandomScreen() {
               initiallyOpen
             />
             <View style={{ paddingTop: 16 }}>
-              <Button
-                icon="refresh"
-                onPress={() => execute(numWords, filterExpression)}
-                disabled={loading}
-              />
+            {getButtonBackground(themeName, {}, (<Button
+            icon="refresh"
+            onPress={() => execute(numWords, filterExpression)}
+            disabled={loading}
+          />), dialect, true)}
             </View>
           </>
         }
@@ -92,10 +97,11 @@ export default function RandomScreen() {
           colors: [theme.colors.primary],
         }}
       />
-    );
+    ), dialect, true
+  );
   }
 
-  return (
+  return getBackground(themeName, (
     <ScrollView
       keyboardShouldPersistTaps="always"
       refreshControl={
@@ -117,11 +123,11 @@ export default function RandomScreen() {
           incomplete={incomplete}
         />
         <View style={{}}>
-          <Button
+          {getButtonBackground(themeName, {}, (<Button
             icon="refresh"
             onPress={() => execute(numWords, filterExpression)}
             disabled={loading}
-          />
+          />), dialect, true)}
         </View>
         <ResultCount visible={resultsVisible} resultCount={results.length} />
         <ListResults
@@ -130,7 +136,8 @@ export default function RandomScreen() {
         />
       </View>
     </ScrollView>
-  );
+  ), dialect, true
+);
 }
 
 const styles = StyleSheet.create({

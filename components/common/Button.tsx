@@ -35,7 +35,7 @@ export function Button(props: ButtonProps) {
       style={({ pressed }) => [
         styles.button,
         {
-          backgroundColor: disabled ? colors.placeholder : theme.colors.primary,
+          //backgroundColor: disabled ? colors.placeholder : theme.colors.primary,
           opacity: pressed ? 0.5 : 1,
           ...style,
         },

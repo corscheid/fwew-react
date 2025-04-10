@@ -5,7 +5,7 @@ import { getUI } from "@/constants/i18n";
 import { useAppLanguageContext } from "@/context/AppLanguageContext";
 import { useDialectContext } from "@/context/DialectContext";
 import { useThemeNameContext } from "@/context/ThemeNameContext";
-import { getThemedComponents } from "@/themes";
+import { getButtonBackground, getThemedComponents } from "@/themes";
 import { FilterExpressionBuilderValue } from "@/types/list";
 import { useTheme } from "@react-navigation/native";
 import { StyleSheet, View } from "react-native";
@@ -41,7 +41,7 @@ export function FilterExpressionBuilderList(
       {filters.map((_, i) => (
         <View key={`feb_${i}`}>
           <View
-            style={[styles.febHeader, { backgroundColor: colors.background }]}
+            style={[styles.febHeader]}
           >
             <Themed.Text style={styles.label}>{getHeaderText(i)}</Themed.Text>
             <SmallButton
@@ -57,7 +57,11 @@ export function FilterExpressionBuilderList(
         </View>
       ))}
       <View style={{ paddingTop: 10 }}>
-        <Button onPress={add} icon="plus" disabled={disabled} />
+        {getButtonBackground(themeName, ({
+          ...styles.audioButton,
+        }),
+          (<Button onPress={add} icon="plus" disabled={disabled} />), dialect, true
+        )}
       </View>
     </View>
   );

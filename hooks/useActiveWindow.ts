@@ -1,28 +1,26 @@
-import { ThemeName } from "@/themes";
+import { ActiveWindow } from "@/types/common";
 import { useAsyncStorage } from "@react-native-async-storage/async-storage";
 import { useEffect, useState } from "react";
-import { signalChangeTheme } from "@/context/ThemeNameContext";
 
-export function useThemeName() {
-  const [themeName, setThemeName] = useState<ThemeName>("fwew");
-  const { getItem, setItem } = useAsyncStorage("fw_theme");
+export function useActiveWindow() {
+  const [activeWindow, setActiveWindow] = useState<ActiveWindow>("search");
+  const { getItem, setItem } = useAsyncStorage("active_window");
 
-  async function saveThemeName(value: ThemeName) {
+  async function saveActiveWindow(value: ActiveWindow) {
     try {
       await setItem(value);
     } catch (error) {
       console.error(error);
       return;
     }
-    setThemeName(value);
-    signalChangeTheme();
+    setActiveWindow(value);
   }
 
   useEffect(() => {
     (async () => {
       const value = await getItem();
       if (value) {
-        setThemeName(value as ThemeName);
+        setActiveWindow(value as ActiveWindow);
         return;
       }
     })();
@@ -30,7 +28,7 @@ export function useThemeName() {
   }, []);
 
   return {
-    themeName,
-    saveThemeName,
+    activeWindow,
+    saveActiveWindow,
   };
 }

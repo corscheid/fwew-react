@@ -5,11 +5,13 @@ import { useAppLanguageContext } from "@/context/AppLanguageContext";
 import { useColorSchemeContext } from "@/context/ColorSchemeContext";
 import { useDialectContext } from "@/context/DialectContext";
 import { useThemeNameContext } from "@/context/ThemeNameContext";
-import { getColorExtension } from "@/themes";
+import { getColorExtension, getThemedComponents, getTopbar, getBottombar } from "@/themes";
 import type { FAIconName } from "@/types/icons";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { useTheme } from "@react-navigation/native";
 import { Tabs } from "expo-router";
+import { useColorScheme } from "react-native";
+import { useActiveWindowContext } from "@/context/ActiveWindowContext";
 
 type TabBarIconProps = {
   name: FAIconName;
@@ -30,16 +32,23 @@ export default function TabLayout() {
   const { appLanguage } = useAppLanguageContext();
   const { dialect } = useDialectContext();
   const { screens } = getUI(appLanguage, dialect);
+  const Themed = getThemedComponents(themeName);
+  const { saveActiveWindow } = useActiveWindowContext();
+
+  const Topbar = getTopbar(themeName, dialect)
+  const Bottombar = getBottombar(themeName, dialect)
 
   return (
     <Tabs
       screenOptions={{
-        headerStyle: { backgroundColor: theme.colors.primary },
+        //headerStyle: { backgroundColor: theme.colors.primary },
         headerTintColor: colorExtension.dark.text,
         tabBarActiveTintColor: theme.colors.primary,
         tabBarInactiveTintColor: colors.placeholder,
-        headerLeft: Logo,
-        headerRight: ActionButtons,
+        headerLeft: () => <Logo />,
+        headerRight: () => <ActionButtons />,
+        headerBackground: () => Topbar,
+        tabBarBackground: () => Bottombar,
       }}
     >
       <Tabs.Screen
@@ -48,6 +57,11 @@ export default function TabLayout() {
           title: screens.search,
           tabBarIcon: ({ color }) => <TabBarIcon name="search" color={color} />,
         }}
+        listeners={() => ({
+          focus: () => {
+            saveActiveWindow("search")
+          }
+        })}
       />
       <Tabs.Screen
         name="list"
@@ -57,6 +71,11 @@ export default function TabLayout() {
             <TabBarIcon name="list-ol" color={color} />
           ),
         }}
+        listeners={() => ({
+          focus: () => {
+            saveActiveWindow("list")
+          }
+        })}
       />
       <Tabs.Screen
         name="random"
@@ -64,6 +83,11 @@ export default function TabLayout() {
           title: screens.random,
           tabBarIcon: ({ color }) => <TabBarIcon name="random" color={color} />,
         }}
+        listeners={() => ({
+          focus: () => {
+            saveActiveWindow("random")
+          }
+        })}
       />
       <Tabs.Screen
         name="numbers"
@@ -73,6 +97,11 @@ export default function TabLayout() {
             <TabBarIcon name="calculator" color={color} />
           ),
         }}
+        listeners={() => ({
+          focus: () => {
+            saveActiveWindow("numbers")
+          }
+        })}
       />
       <Tabs.Screen
         name="other"
@@ -82,6 +111,11 @@ export default function TabLayout() {
             <TabBarIcon name="ellipsis-h" color={color} />
           ),
         }}
+        listeners={() => ({
+          focus: () => {
+            saveActiveWindow("other")
+          }
+        })}
       />
     </Tabs>
   );

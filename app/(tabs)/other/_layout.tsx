@@ -1,8 +1,11 @@
 import { getUI } from "@/constants/i18n";
 import { useAppLanguageContext } from "@/context/AppLanguageContext";
 import { useDialectContext } from "@/context/DialectContext";
-import { useTheme } from "@react-navigation/native";
+import { useThemeNameContext } from "@/context/ThemeNameContext";
 import { Stack } from "expo-router";
+import { Platform, StyleSheet, View } from "react-native";
+import { getBackground, getTopbar } from "@/themes";
+import { ActionButtons } from "@/components/common/ActionButtons";
 
 // https://docs.expo.dev/router/reference/faq/#missing-back-button
 export const unstable_settings = {
@@ -10,18 +13,14 @@ export const unstable_settings = {
 };
 
 export default function StackLayout() {
-  const theme = useTheme();
+  const { themeName } = useThemeNameContext();
   const { appLanguage } = useAppLanguageContext();
   const { dialect } = useDialectContext();
   const { screens, names } = getUI(appLanguage, dialect);
 
-  return (
-    <Stack
-      screenOptions={{
-        headerStyle: { backgroundColor: theme.colors.card },
-        headerTintColor: theme.colors.text,
-      }}
-    >
+  return getBackground(
+    themeName, (
+    <Stack>
       <Stack.Screen
         name="index"
         options={{
@@ -63,5 +62,6 @@ export default function StackLayout() {
       <Stack.Screen name="names/name-full" options={{ title: names.full }} />
       <Stack.Screen name="names/name-alu" options={{ title: names.alu }} />
     </Stack>
+    ), dialect, true
   );
 }
