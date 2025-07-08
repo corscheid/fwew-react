@@ -1,4 +1,6 @@
 import AudioResources from "@/constants/AudioResources";
+// TODO: λ  WARN  [expo-av]: Expo AV has been deprecated and will be removed in SDK 54. 
+// Use the `expo-audio` and `expo-video` packages to replace the required functionality.
 import { Audio } from "expo-av";
 import { useEffect, useState } from "react";
 

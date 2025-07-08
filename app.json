@@ -2,7 +2,7 @@
   "expo": {
     "name": "Fwew",
     "slug": "fwew-react",
-    "version": "4.3.6",
+    "version": "4.3.7",
     "orientation": "default",
     "icon": "./assets/images/icon.png",
     "scheme": "fwew",
@@ -12,17 +12,20 @@
       "resizeMode": "contain",
       "backgroundColor": "#7494BA"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "jsEngine": "hermes",
     "ios": {
       "bundleIdentifier": "app.fwew.react",
-      "buildNumber": "4.3.6",
+      "buildNumber": "4.3.7",
       "supportsTablet": true
     },
     "android": {
       "package": "app.fwew.react",
-      "versionCode": 34,
+      "versionCode": 35,
       "permissions": [],
+      "edgeToEdgeEnabled": true,
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-fwew.png",
         "backgroundColor": "#7494ba",
@@ -48,7 +51,8 @@
           "android.permission.VIBRATE"
         ]
       ],
-      "expo-font"
+      "expo-font",
+      "expo-web-browser"
     ],
     "newArchEnabled": true,
     "experiments": {

@@ -1,13 +1,13 @@
 {
   "cli": {
-    "version": ">= 12.5.1",
+    "version": ">= 16.14.0",
     "requireCommit": false,
     "appVersionSource": "local",
     "promptToConfigurePushNotifications": false
   },
   "build": {
     "base": {
-      "node": "20.12.2"
+      "node": "22.16.0"
     },
     "dev": {
       "extends": "base",
