@@ -20,6 +20,9 @@ build-remote:
 build-prod-remote:
 	eas build -p android -e production
 
+build-web:
+	yarn run build
+
 run:
 	yarn start
 
