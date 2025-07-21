@@ -27,23 +27,25 @@ export function useNumber() {
       setResult(null);
       return;
     }
+    // Remove all commas
+    let query2 = query.replace(/[,]/g, '');
     let n;
-    if (/^(0[xX][0-9a-fA-F]+)$/.test(query)) {
-      n = parseInt(query, 16);
-    } else if (/^(0[bB][01]+)$/.test(query)) {
-      n = parseInt(query.slice(2), 2);
-    } else if (/^(0[0-7]+)$/.test(query)) {
-      n = parseInt(query, 8);
-    } else if (/^([0-9]+)$/.test(query)) {
-      n = parseInt(query, 10);
+    if (/^(0[xX][0-9a-fA-F]+)$/.test(query2)) {
+      n = parseInt(query2, 16);
+    } else if (/^(0[bB][01]+)$/.test(query2)) {
+      n = parseInt(query2.slice(2), 2);
+    } else if (/^(0[0-7]+)$/.test(query2)) {
+      n = parseInt(query2, 8);
+    } else if (/^([0-9]+)$/.test(query2)) {
+      n = parseInt(query2, 10);
     }
     if (n) {
       const data = await numberToNavi(n);
       setResult(data);
       return;
     }
-    if (/^([a-zA-ZäÄìÌ]+)$/.test(query)) {
-      const data = await naviToNumber(query);
+    if (/^([a-zA-ZäÄìÌ]+)$/.test(query2)) {
+      const data = await naviToNumber(query2);
       setResult(data);
       return;
     }
