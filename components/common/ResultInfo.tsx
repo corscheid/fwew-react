@@ -22,7 +22,7 @@ type ResultInfoProps = {
 };
 
 export function ResultInfo({ word }: ResultInfoProps) {
-  const { playSound, disabled } = useSound();
+  const { playSound, disabled } = useSound(word.ID);
   const { resultsLanguage } = useResultsLanguageContext();
   const local = word[resultsLanguage.toUpperCase() as Uppercase<LanguageCode>];
   const { dialect } = useDialectContext();
@@ -60,7 +60,7 @@ export function ResultInfo({ word }: ResultInfoProps) {
       <View style={styles.buttonContainer}>
         {/* Audio Button */}
         <Button
-          onPress={() => playSound(word.ID)}
+          onPress={playSound}
           disabled={disabled || (dialect === "reef" && forestNavi !== reefNavi)}
           icon="volume-up"
           text={ui.search.audio}
@@ -366,7 +366,7 @@ function Breakdown({ IPA, Stressed, Syllables }: BreakdownProps) {
   let everything = [];
   // split by spaces first
   let superH = 0;
-  for (let h = 0; h < individualWord.length; ) {
+  for (let h = 0; h < individualWord.length;) {
     // then split by hyphens
     let syllables = individualWord[h].split("-");
     if (individualWord[h] === "or") {
