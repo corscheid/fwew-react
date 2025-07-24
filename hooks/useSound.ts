@@ -1,6 +1,6 @@
 import AudioResources from "@/constants/AudioResources";
 import { useAudioPlayer } from "expo-audio";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export function useSound(wordId: string) {
   const player = useAudioPlayer(`${AudioResources.URL}/${wordId}.mp3`);
@@ -16,8 +16,6 @@ export function useSound(wordId: string) {
       setDisabled(true);
     }
   };
-
-  useEffect(() => () => player.remove(), [player]);
 
   return { playSound, disabled };
 }
