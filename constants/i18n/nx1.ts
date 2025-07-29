@@ -293,10 +293,10 @@ const strings: UITranslation = {
     design: "'Ongopyu",
     testing: "Fmetokyu",
     translation: "Ralpengyu",
-    appLanguage: "'Ure lì'fya",
+    appLanguage: "'Ùre lì'fya",
     resultsLanguage: "Kume lì'fya",
     dialect: "Lì'fyafnel",
-    theme: "Lupra",
+    theme: "Lùpra",
     colorScheme: "Ayopin",
     colorSchemes: [
       { name: "vawm", value: "dark" },
