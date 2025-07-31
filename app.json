@@ -23,7 +23,7 @@
     },
     "android": {
       "package": "app.fwew.react",
-      "versionCode": 35,
+      "versionCode": 36,
       "permissions": [],
       "edgeToEdgeEnabled": true,
       "adaptiveIcon": {
