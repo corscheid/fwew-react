@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 
 export function useDebounce() {
-  const [typingTimeout, setTypingTimeout] = useState({} as NodeJS.Timeout);
+  const [typingTimeout, setTypingTimeout] = useState<number>();
 
   function debounce(func: () => void, cancel?: () => void, wait: number = 300) {
     clearTimeout(typingTimeout);

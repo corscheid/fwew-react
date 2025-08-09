@@ -23,7 +23,7 @@ export function GitDetails({ branch, commitHash }: GitDetailsProps) {
   return (
     <Themed.MonoText style={styles.text}>
       (
-      <ExternalLink href={`https://github.com/corscheid/fwew-react/tree/next`}>
+      <ExternalLink href={`https://github.com/corscheid/fwew-react/tree/${branch}`}>
         <Themed.MonoText style={{ color: colors.link }}>
           {branch} {commitHash?.substring(0, 7)}
         </Themed.MonoText>

@@ -90,6 +90,15 @@ export const Hungary = (props: SvgProps) => (
   </Svg>
 );
 
+// it
+export const Italy = (props: SvgProps) => (
+  <Svg viewBox="0 0 512 512" width={32} height={32} {...props}>
+    <polygon fill="#F0F0F0" points="341.334,85.33 170.666,85.33 0,85.33 0,426.662 170.666,426.662 341.334,426.662 512,426.662 512,85.33 " />
+    <rect y="85.333" fill="#6DA544" width="170.663" height="341.337" />
+    <rect x="341.337" y="85.333" fill="#D80027" width="170.663" height="341.337" />
+  </Svg>
+);
+
 // ko
 export const SouthKorea = (props: SvgProps) => (
   <View style={{ paddingVertical: 5 }}>
@@ -227,6 +236,7 @@ export const FlagMap: FlagMapType = {
   et: <Estonia />,
   fr: <France />,
   hu: <Hungary />,
+  it: <Italy />,
   ko: <SouthKorea />,
   nl: <Netherlands />,
   nx0: <Navi />,

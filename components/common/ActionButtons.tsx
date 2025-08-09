@@ -1,3 +1,4 @@
+import { FlagMap } from "@/components/settings/Flags";
 import { DialectDisplay } from "@/constants/Dialects";
 import { ResultsLanguages } from "@/constants/Language";
 import { useDialectContext } from "@/context/DialectContext";
@@ -12,7 +13,6 @@ import type { FAIconName } from "@/types/icons";
 import { FontAwesome } from "@expo/vector-icons";
 import { Href, useRouter } from "expo-router";
 import { Platform, Pressable, StyleSheet, View } from "react-native";
-import { FlagMap } from "../settings/Flags";
 
 export function ActionButtons() {
   return (

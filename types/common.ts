@@ -1,7 +1,8 @@
 import type { Href } from "expo-router";
 import type { Dialect as FwDialect, LanguageCode } from "fwew.js";
+import type { JSX } from "react";
 
-export type ExtendedLanguageCode = LanguageCode | "eo" | "nx0" | "nx1";
+export type ExtendedLanguageCode = LanguageCode | "eo" | "it" | "nx0" | "nx1";
 
 export type NumericString = `${number}` | "";
 

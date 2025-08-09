@@ -5,6 +5,7 @@ import es from "@/constants/i18n/es";
 import et from "@/constants/i18n/et";
 import fr from "@/constants/i18n/fr";
 import hu from "@/constants/i18n/hu";
+import it from "@/constants/i18n/it";
 import ko from "@/constants/i18n/ko";
 import nl from "@/constants/i18n/nl";
 import nx0 from "@/constants/i18n/nx0";
@@ -26,6 +27,7 @@ const i18n: I18N = {
   et,
   fr,
   hu,
+  it,
   ko,
   nl,
   nx0,

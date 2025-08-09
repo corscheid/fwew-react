@@ -5,6 +5,7 @@ import { useResultsLanguageContext } from "@/context/ResultsLanguageContext";
 import { useThemeNameContext } from "@/context/ThemeNameContext";
 import { getThemedComponents } from "@/themes";
 import { useTheme } from "@react-navigation/native";
+import type { JSX } from "react";
 import {
   ScrollView,
   StyleSheet,

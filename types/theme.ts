@@ -1,5 +1,6 @@
 import type { Dialect } from "@/types/common";
 import type { Theme } from "@react-navigation/native";
+import type { JSX } from "react";
 import type { TextInputProps, TextProps, ViewProps } from "react-native";
 
 export type ColorExtension = Record<
