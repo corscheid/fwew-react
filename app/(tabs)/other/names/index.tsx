@@ -1,4 +1,4 @@
-import { IndexGrid } from "@/components/common/IndexGrid";
+import { IndexList } from "@/components/common/IndexList";
 import { getUI } from "@/constants/i18n";
 import { useAppLanguageContext } from "@/context/AppLanguageContext";
 import { useDialectContext } from "@/context/DialectContext";
@@ -15,5 +15,5 @@ export default function NamesScreen() {
     { href: "/other/names/name-alu", title: names.alu },
   ];
 
-  return <IndexGrid links={links} />;
+  return <IndexList links={links} />;
 }

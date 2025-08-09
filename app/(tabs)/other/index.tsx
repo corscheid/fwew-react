@@ -1,4 +1,4 @@
-import { IndexGrid } from "@/components/common/IndexGrid";
+import { IndexList } from "@/components/common/IndexList";
 import { getUI } from "@/constants/i18n";
 import { useAppLanguageContext } from "@/context/AppLanguageContext";
 import { useDialectContext } from "@/context/DialectContext";
@@ -102,5 +102,5 @@ export default function OtherScreen() {
     },
   ];
 
-  return <IndexGrid links={links} />;
+  return <IndexList links={links} />;
 }

@@ -1,7 +1,9 @@
+import { useColorSchemeContext } from "@/context/ColorSchemeContext";
 import { useThemeNameContext } from "@/context/ThemeNameContext";
-import { getThemedComponents } from "@/themes";
+import { getColorExtension, getThemedComponents } from "@/themes";
+import { FontAwesome } from "@expo/vector-icons";
 import { Href, Link } from "expo-router";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet } from "react-native";
 
 type Props = {
   href: Href;
@@ -11,32 +13,39 @@ type Props = {
 
 export function ScreenLinkCard({ href, title, description }: Props) {
   const { themeName } = useThemeNameContext();
+  const { colorSchemeValue } = useColorSchemeContext();
   const Themed = getThemedComponents(themeName);
+  const colorExtension = getColorExtension(themeName);
+  const colors = colorExtension[colorSchemeValue ?? "light"];
 
   return (
     <Link href={href}>
-      <Themed.CardView style={styles.card}>
-        <View style={styles.textGroup}>
-          <Themed.Text style={styles.text}>{title}</Themed.Text>
-          {description && <Themed.ItalicText>{description}</Themed.ItalicText>}
-        </View>
+      <Themed.CardView style={styles.container}>
+        <Themed.Text style={styles.text}>{title}</Themed.Text>
+        <FontAwesome
+          size={24}
+          name="chevron-right"
+          color={colors.text}
+          style={styles.arrow}
+        />
       </Themed.CardView>
     </Link>
   );
 }
 
 const styles = StyleSheet.create({
-  card: {
-    padding: 32,
-    width: 320,
+  container: {
+    flexDirection: "row",
+    alignItems: "center",
+    width: "100%",
+    gap: 16,
+    padding: 16,
     borderRadius: 8,
   },
-  textGroup: {
-    justifyContent: "center",
-    alignItems: "center",
-    gap: 16,
-  },
   text: {
-    fontSize: 24,
+    fontSize: 14,
+  },
+  arrow: {
+    marginLeft: "auto",
   },
 });

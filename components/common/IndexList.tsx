@@ -13,7 +13,7 @@ import {
 } from "react-native";
 import { WideLayout } from "./WideLayout";
 
-export function IndexGrid({ links }: { links: LinkType[] }) {
+export function IndexList({ links }: { links: LinkType[] }) {
   const [Current, setCurrent] = useState<LinkType>(links[0]);
   const theme = useTheme();
   const { width } = useWindowDimensions();
@@ -127,7 +127,7 @@ export function IndexGrid({ links }: { links: LinkType[] }) {
 
   return (
     <ScrollView>
-      <View style={styles.grid}>
+      <View style={styles.list}>
         {links.map((link) => (
           <ScreenLinkCard key={`oi_${link.title}`} {...link} />
         ))}
@@ -137,21 +137,8 @@ export function IndexGrid({ links }: { links: LinkType[] }) {
 }
 
 const styles = StyleSheet.create({
-  grid: {
-    flexDirection: "row",
-    flexWrap: "wrap",
+  list: {
     gap: 16,
     padding: 16,
-    justifyContent: "center",
-    alignSelf: "center",
-    marginVertical: "auto",
-  },
-  item: {
-    flex: 1,
-    minWidth: 320,
-    maxWidth: 320,
-    height: 320,
-    justifyContent: "center",
-    alignItems: "center",
   },
 });
