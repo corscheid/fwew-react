@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   text: {
-    fontSize: 14,
+    fontSize: 24,
   },
   arrow: {
     marginLeft: "auto",
