@@ -8,10 +8,9 @@ import { StyleSheet } from "react-native";
 type Props = {
   href: Href;
   title: string;
-  description?: string;
 };
 
-export function ScreenLinkCard({ href, title, description }: Props) {
+export function ScreenLinkCard({ href, title }: Props) {
   const { themeName } = useThemeNameContext();
   const { colorSchemeValue } = useColorSchemeContext();
   const Themed = getThemedComponents(themeName);
