@@ -7,9 +7,8 @@ import { Fragment, useState } from "react";
 import {
   Pressable,
   ScrollView,
-  StyleSheet,
   useWindowDimensions,
-  View,
+  View
 } from "react-native";
 import { WideLayout } from "./WideLayout";
 
@@ -127,7 +126,7 @@ export function IndexList({ links }: { links: LinkType[] }) {
 
   return (
     <ScrollView>
-      <View style={styles.list}>
+      <View style={{ gap: 16, padding: 16 }}>
         {links.map((link) => (
           <ScreenLinkCard key={`oi_${link.title}`} {...link} />
         ))}
@@ -135,10 +134,3 @@ export function IndexList({ links }: { links: LinkType[] }) {
     </ScrollView>
   );
 }
-
-const styles = StyleSheet.create({
-  list: {
-    gap: 16,
-    padding: 16,
-  },
-});

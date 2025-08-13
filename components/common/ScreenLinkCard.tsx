@@ -2,8 +2,8 @@ import { useColorSchemeContext } from "@/context/ColorSchemeContext";
 import { useThemeNameContext } from "@/context/ThemeNameContext";
 import { getColorExtension, getThemedComponents } from "@/themes";
 import { FontAwesome } from "@expo/vector-icons";
-import { Href, Link } from "expo-router";
-import { StyleSheet } from "react-native";
+import { Href, useRouter } from "expo-router";
+import { Pressable, StyleSheet } from "react-native";
 
 type Props = {
   href: Href;
@@ -16,10 +16,16 @@ export function ScreenLinkCard({ href, title }: Props) {
   const Themed = getThemedComponents(themeName);
   const colorExtension = getColorExtension(themeName);
   const colors = colorExtension[colorSchemeValue ?? "light"];
+  const router = useRouter();
 
   return (
-    <Link href={href}>
-      <Themed.CardView style={styles.container}>
+    <Themed.CardView>
+      <Pressable style={({ pressed }) => [
+        styles.container,
+        { opacity: pressed ? 0.5 : 1 },
+      ]}
+        onPress={() => router.push(href)}
+      >
         <Themed.Text style={styles.text}>{title}</Themed.Text>
         <FontAwesome
           size={24}
@@ -27,8 +33,8 @@ export function ScreenLinkCard({ href, title }: Props) {
           color={colors.text}
           style={styles.arrow}
         />
-      </Themed.CardView>
-    </Link>
+      </Pressable>
+    </Themed.CardView>
   );
 }
 
@@ -36,13 +42,12 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     alignItems: "center",
-    width: "100%",
     gap: 16,
     padding: 16,
     borderRadius: 8,
   },
   text: {
-    fontSize: 24,
+    fontSize: 18,
   },
   arrow: {
     marginLeft: "auto",
