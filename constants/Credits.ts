@@ -14,7 +14,7 @@ export type CreditsType = {
 const Credits: CreditsType = {
   development: ["Tirea Aean", "Txonpay"],
   design: ["Tirea Aean", "Tsyili"],
-  testing: ["Palusyulang", "Tsyili", "Txonpay"],
+  testing: ["Palusyulang", "Tsyili", "Txafpa", "Txonpay"],
   translation: {
     de: ["Tìtstewan"],
     en: ["Tirea Aean", "Tsyili", "Atxewluke (suchtrashley)"],
