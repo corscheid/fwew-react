@@ -46,27 +46,27 @@ const partOfSpeechList = Object.entries(partOfSpeech).map(
 
 // TODO
 const table1Data = [
-  ["Case", "Noun", "", "Clause Wrapper", ""],
-  ["", "", "proximal", "distal", "answer"],
-  ["Subjective", "Tsaw", "Fwa", "Tsawa", "Teynga"],
-  ["Agentive", "Tsal", "Fula", "Tsala", "Teyngla"],
-  ["Patientive", "Tsat", "Futa", "Tsata", "Teyngta"],
-  ["Genitive", "Tseyä", "N/A", "N/A", "Teyngä"],
-  ["Dative", "Tsar", "Fura", "Tsara", "Teyngra"],
-  ["Topical", "Tsari", "Furia", "Tsaria", "Teyngria"],
+  ["Caso", "Sostantivo", "", "Nucleo propositivo", ""],
+  ["", "", "prossimale", "distanziale", "risposta"],
+  ["Ergativo", "Tsaw", "Fwa", "Tsawa", "Teynga"],
+  ["Nominativo", "Tsal", "Fula", "Tsala", "Teyngla"],
+  ["Accusativo", "Tsat", "Futa", "Tsata", "Teyngta"],
+  ["Genitivo", "Tseyä", "N/A", "N/A", "Teyngä"],
+  ["Dativo", "Tsar", "Fura", "Tsara", "Teyngra"],
+  ["Rispettivo", "Tsari", "Furia", "Tsaria", "Teyngria"],
 ];
 
 // TODO
 const table2Data = [
-  ["tsa-", "prefix", "that"],
-  ["tsa'u", "n.", "that (thing)"],
-  ["tsakem", "n.", "that (action)"],
-  ["fmawnta", "sbd.", "that news"],
-  ["fayluta", "sbd.", "these words"],
-  ["tsnì", "sbd.", "that (function word)"],
-  ["tsonta", "conj.", "to (with kxìm)"],
-  ["kuma/akum", "conj.", "that (as a result)"],
-  ["a", "part.", "clause level attributive marker"],
+  ["tsa-", "prefisso", "quel"],
+  ["tsa'u", "n.", "quel (cosa)"],
+  ["tsakem", "n.", "quel (azione)"],
+  ["fmawnta", "sbd.", "Quella notizia"],
+  ["fayluta", "sbd.", "queste parole"],
+  ["tsnì", "sbd.", "quella (parola funzionale)"],
+  ["tsonta", "conj.", "di (con kxìm)"],
+  ["kuma/akum", "conj.", "quello (come risultato)"],
+  ["a", "part.", "marcatore attributivo"],
 ];
 
 const strings: UITranslation = {
@@ -88,7 +88,7 @@ const strings: UITranslation = {
     valid: "Valido",
     lists: "Liste",
 
-    allWords: "Tutte le parole", // TODO
+    allWords: "Tutte le parole",
     cameronWords: "Parole di Cameron",
     homonyms: "Omonimi",
     multiIPA: "Multi IPA",
@@ -201,7 +201,7 @@ const strings: UITranslation = {
   },
   names: {
     single: "Singolo",
-    full: "Pieno",
+    full: "Completo",
     alu: "Alu",
     options: "Opzioni",
     numNames: "Numero di nomi da generare",
@@ -280,7 +280,7 @@ const strings: UITranslation = {
     ],
   },
   lenition: {
-    glottalStop: "(Cade, se non prima di ll/rr)",
+    glottalStop: "(Cade, eccetto prima di ll/rr)",
     lenitingPrefixes: "Prefisso Lenitivo",
     lenitingAdpositions: "Apposizione lenitiva",
   },
@@ -300,15 +300,15 @@ const strings: UITranslation = {
     design: "Design",
     testing: "Testing",
     translation: "Traduzione",
-    appLanguage: "App Linguaggio",
-    resultsLanguage: "Risultati Linguaggio",
+    appLanguage: "Lingua Applicazione",
+    resultsLanguage: "Lingua Risultati",
     dialect: "Dialetto",
-    theme: "Theme", // TODO
-    colorScheme: "Color Scheme", // TODO
+    theme: "Tema", // TODO
+    colorScheme: "Schema colori", // TODO
     colorSchemes: [
-      { name: "dark", value: "dark" }, // TODO
-      { name: "light", value: "light" }, // TODO
-      { name: "auto", value: "auto" }, // TODO
+      { name: "scuro", value: "dark" }, // TODO
+      { name: "chiaro", value: "light" }, // TODO
+      { name: "automatico", value: "auto" }, // TODO
     ],
   },
 };
