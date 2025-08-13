@@ -35,6 +35,16 @@ function getOtherLinks(screens: ScreenStrings, names: NamesStrings): LinkType[] 
       Component: LenitionScreen,
     },
     {
+      href: "/(tabs)/other/stats",
+      title: screens.stats,
+      Component: StatsScreen,
+    },
+    {
+      href: "/(tabs)/other/valid",
+      title: screens.valid,
+      Component: ValidScreen,
+    },
+    {
       href: "/(tabs)/other/lists",
       title: screens.lists,
       links: [
@@ -95,16 +105,6 @@ function getOtherLinks(screens: ScreenStrings, names: NamesStrings): LinkType[] 
           Component: NameAluScreen,
         },
       ],
-    },
-    {
-      href: "/(tabs)/other/stats",
-      title: screens.stats,
-      Component: StatsScreen,
-    },
-    {
-      href: "/(tabs)/other/valid",
-      title: screens.valid,
-      Component: ValidScreen,
     },
   ];
 }
