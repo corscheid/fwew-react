@@ -9,14 +9,14 @@ export type LanguageMeta = {
 
 const Languages: LanguageMeta[] = [
   { value: "de", label: "Deutsch", ui: true, results: true },
-  { value: "et", label: "Eesti", ui: true, results: true },
   { value: "en", label: "English", ui: true, results: true },
   { value: "es", label: "Español", ui: true, results: true },
   { value: "eo", label: "Esperanto", ui: true, results: false },
+  { value: "et", label: "Eesti", ui: true, results: true },
   { value: "fr", label: "Français", ui: true, results: true },
-  { value: "ko", label: "한국어", ui: true, results: true },
   { value: "hu", label: "Magyar", ui: true, results: true },
   { value: "it", label: "Italiano", ui: true, results: false },
+  { value: "ko", label: "한국어", ui: true, results: true },
   { value: "nl", label: "Nederlands", ui: true, results: true },
   { value: "nx0", label: "Lì'fya leNa'vi", ui: true, results: false },
   { value: "nx1", label: "Lì'fya leNa'vi (wione)", ui: false, results: false },
