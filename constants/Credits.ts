@@ -23,7 +23,7 @@ const Credits: CreditsType = {
     et: [],
     fr: ["Vawmataw"],
     hu: [],
-    it: ["Nolorin"], // TODO
+    it: ["Txafpa"],
     ko: ["유펀"],
     nl: ["Charlotte", "Wllìm"],
     nx0: ["Tsyili", "Palusyulang", "Tirea Aean"],
