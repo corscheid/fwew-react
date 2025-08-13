@@ -15,7 +15,7 @@ const Languages: LanguageMeta[] = [
   { label: "Esperanto", value: "eo", ui: true, results: false },
   { label: "Français", value: "fr", ui: true, results: true },
   { label: "한국어", value: "ko", ui: true, results: true },
-  { label: "Italiano", value: "it", ui: true, results: false },
+  { label: "Italiano", value: "it", ui: true, results: true },
   { label: "Lì'fya leNa'vi", value: "nx0", ui: true, results: false },
   { label: "Lì'fya leNa'vi (wione)", value: "nx1", ui: false, results: false },
   { label: "Magyar", value: "hu", ui: true, results: true },
