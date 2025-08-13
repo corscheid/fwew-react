@@ -44,7 +44,6 @@ const partOfSpeechList = Object.entries(partOfSpeech).map(
   ([value, { name }]) => ({ name, value })
 );
 
-// TODO
 const table1Data = [
   ["Caso", "Sostantivo", "", "Nucleo propositivo", ""],
   ["", "", "prossimale", "distanziale", "risposta"],
@@ -56,7 +55,6 @@ const table1Data = [
   ["Rispettivo", "Tsari", "Furia", "Tsaria", "Teyngria"],
 ];
 
-// TODO
 const table2Data = [
   ["tsa-", "prefisso", "quel"],
   ["tsa'u", "n.", "quel (cosa)"],
@@ -127,10 +125,10 @@ const strings: UITranslation = {
       whatValues: [
         { value: "pos", description: "parte del discorso" },
         { value: "word", description: "parola" },
-        { value: "words", description: "Parole in ordine di pubblicazione" },
+        { value: "words", description: "parole in ordine di pubblicazione" },
         { value: "syllables", description: "numero di sillabe" },
-        { value: "stress", description: "Posizione della sillaba accentata" },
-        { value: "length", description: "Lunghezza della parola in fonemi" },
+        { value: "stress", description: "posizione della sillaba accentata" },
+        { value: "length", description: "lunghezza della parola in fonemi" },
       ],
       condValues: {
         pos: [
@@ -221,7 +219,7 @@ const strings: UITranslation = {
     ],
   },
   nameSingle: {
-    numSyllables: "numero di sillabe",
+    numSyllables: "Numero di sillabe",
   },
   nameFull: {
     numSyllables1: "Numero di sillabe nel primo nome",
@@ -303,12 +301,12 @@ const strings: UITranslation = {
     appLanguage: "Lingua Applicazione",
     resultsLanguage: "Lingua Risultati",
     dialect: "Dialetto",
-    theme: "Tema", // TODO
-    colorScheme: "Schema colori", // TODO
+    theme: "Tema",
+    colorScheme: "Schema colori",
     colorSchemes: [
-      { name: "scuro", value: "dark" }, // TODO
-      { name: "chiaro", value: "light" }, // TODO
-      { name: "automatico", value: "auto" }, // TODO
+      { name: "scuro", value: "dark" },
+      { name: "chiaro", value: "light" },
+      { name: "automatico", value: "auto" },
     ],
   },
 };
