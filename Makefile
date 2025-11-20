@@ -5,7 +5,7 @@ OUTPUT_DIR = ./dist
 
 export EXPO_PUBLIC_GIT_BRANCH      = $(GIT_BRANCH)
 export EXPO_PUBLIC_GIT_COMMIT_HASH = $(COMMIT_SHA)
-export NODE_ENV=production
+export NODE_ENV=development
 
 default: build
 
