@@ -1,13 +1,13 @@
 {
   "cli": {
-    "version": ">= 16.25.0",
+    "version": ">= 16.27.0",
     "requireCommit": false,
     "appVersionSource": "local",
     "promptToConfigurePushNotifications": false
   },
   "build": {
     "base": {
-      "node": "22.21.0"
+      "node": "24.11.1"
     },
     "dev": {
       "extends": "base",
@@ -21,7 +21,7 @@
       "extends": "base",
       "distribution": "internal",
       "env": {
-        "EXPO_PUBLIC_GIT_BRANCH": "next"
+        "EXPO_PUBLIC_GIT_BRANCH": "main"
       }
     },
     "production": {
