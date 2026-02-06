@@ -15,10 +15,12 @@ export default function MultiIPAScreen() {
 
   if (wide) {
     return (
-      <View>
-        <ResultCount visible={resultCount > 0} resultCount={resultCount} />
-        <FwewSearchResults loading={loading} results={results} />
-      </View>
+      <ScrollView>
+        <View style={styles.container}>
+          <ResultCount visible={resultCount > 0} resultCount={resultCount} />
+          <FwewSearchResults loading={loading} results={results} />
+        </View>
+      </ScrollView>
     );
   }
 
