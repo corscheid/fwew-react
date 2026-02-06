@@ -1,5 +1,5 @@
 import { useColorScheme } from "@/hooks/useColorScheme";
-import { createContext, useContext } from "react";
+import { createContext, type ReactNode, useContext } from "react";
 
 export type ColorSchemeType = ReturnType<typeof useColorScheme>;
 
@@ -11,7 +11,7 @@ export const useColorSchemeContext = () => useContext(ColorSchemeContext);
 
 type ColorSchemeProviderProps = {
   value: ColorSchemeType;
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 export function ColorSchemeProvider({
