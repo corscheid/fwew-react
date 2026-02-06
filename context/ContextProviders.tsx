@@ -26,9 +26,9 @@ export function ContextProviders({ children }: { children: React.ReactNode }) {
   const theme = getTheme(themeName, colorSchemeValue, dialect);
 
   return (
-    <ThemeNameProvider value={themeNameValue}>
-      <ThemeProvider value={theme}>
-        <ColorSchemeProvider value={colorScheme}>
+    <ColorSchemeProvider value={colorScheme}>
+      <ThemeNameProvider value={themeNameValue}>
+        <ThemeProvider value={theme}>
           <AppLanguageProvider value={appLanguageValue}>
             <ResultsLanguageProvider value={resultsLanguage}>
               <DialectProvider value={dialectValue}>
@@ -38,8 +38,8 @@ export function ContextProviders({ children }: { children: React.ReactNode }) {
               </DialectProvider>
             </ResultsLanguageProvider>
           </AppLanguageProvider>
-        </ColorSchemeProvider>
-      </ThemeProvider>
-    </ThemeNameProvider>
+        </ThemeProvider>
+      </ThemeNameProvider>
+    </ColorSchemeProvider>
   );
 }

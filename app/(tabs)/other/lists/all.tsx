@@ -23,14 +23,16 @@ export default function AllScreen() {
 
   if (wide) {
     return (
-      <View style={styles.wideContainer}>
-        <ResultCount visible={resultCount > 0} resultCount={resultCount} />
-        {loading ? (
-          <ActivityIndicator />
-        ) : (
-          <FwewSearchResults loading={loading} results={[results]} />
-        )}
-      </View>
+      <ScrollView>
+        <View style={styles.container}>
+          <ResultCount visible={resultCount > 0} resultCount={resultCount} />
+          {loading ? (
+            <ActivityIndicator />
+          ) : (
+            <FwewSearchResults loading={loading} results={[results]} />
+          )}
+        </View>
+      </ScrollView>
     );
   }
 
@@ -49,9 +51,6 @@ export default function AllScreen() {
 }
 
 const styles = StyleSheet.create({
-  wideContainer: {
-    gap: 16,
-  },
   container: {
     flex: 1,
     padding: 16,
