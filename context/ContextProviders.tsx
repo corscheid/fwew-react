@@ -15,15 +15,29 @@ import { ColorSchemeProvider } from "./ColorSchemeContext";
 
 export function ContextProviders({ children }: { children: React.ReactNode }) {
   const colorScheme = useColorScheme();
-  const { colorSchemeValue } = colorScheme;
+  const { colorSchemeValue, isLoaded: colorSchemeLoaded } = colorScheme;
   const appLanguageValue = useAppLanguage();
+  const { isLoaded: appLanguageLoaded } = appLanguageValue;
   const resultsLanguage = useResultsLanguage();
+  const { isLoaded: resultsLanguageLoaded } = resultsLanguage;
   const dialectValue = useDialect();
-  const { dialect } = dialectValue;
+  const { dialect, isLoaded: dialectLoaded } = dialectValue;
   const favorites = useFavorites();
   const themeNameValue = useThemeName();
-  const { themeName } = themeNameValue;
+  const { themeName, isLoaded: themeNameLoaded } = themeNameValue;
+
+  const isLoaded =
+    colorSchemeLoaded &&
+    appLanguageLoaded &&
+    resultsLanguageLoaded &&
+    dialectLoaded &&
+    themeNameLoaded;
+
   const theme = getTheme(themeName, colorSchemeValue, dialect);
+
+  if (!isLoaded) {
+    return null;
+  }
 
   return (
     <ColorSchemeProvider value={colorScheme}>

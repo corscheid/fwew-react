@@ -2,14 +2,14 @@ import { NoResults } from "@/components/common/NoResults";
 import { ResultCard } from "@/components/common/ResultCard";
 import { SearchBar } from "@/components/common/SearchBar";
 import { useResultsLanguageContext } from "@/context/ResultsLanguageContext";
-import { useFavorites } from "@/hooks/useFavorites";
+import { useFavoritesContext } from "@/context/FavoritesContext";
 import { StatusBar } from "expo-status-bar";
 import { LanguageCode } from "fwew.js";
 import { useState } from "react";
 import { ScrollView, useWindowDimensions, View } from "react-native";
 
 export default function FavoritesScreen() {
-  const { favorites } = useFavorites();
+  const { favorites } = useFavoritesContext();
   const [query, search] = useState("");
   const { resultsLanguage } = useResultsLanguageContext();
   const languageCode = resultsLanguage.toUpperCase() as Uppercase<LanguageCode>;
