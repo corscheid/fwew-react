@@ -13,6 +13,7 @@ export function useColorScheme() {
     useState<ColorSchemeName>("auto");
   const [colorSchemeValue, setColorSchemeValue] =
     useState<DefaultColorSchemeName>(deviceColorScheme);
+  const [isLoaded, setIsLoaded] = useState(false);
   const { getItem, setItem } = useAsyncStorage("fw_colorscheme");
 
   async function saveColorScheme(value: ColorSchemeName) {
@@ -27,26 +28,36 @@ export function useColorScheme() {
 
   useEffect(() => {
     (async () => {
-      const value = await getItem();
-      if (value) {
-        setColorSchemeName(value as ColorSchemeName);
-        return;
+      try {
+        const value = await getItem();
+        if (value) {
+          setColorSchemeName(value as ColorSchemeName);
+        } else {
+          setColorSchemeName("auto");
+          await setItem("auto");
+        }
+      } catch (error) {
+        console.error("Failed to load color scheme:", error);
+      } finally {
+        setIsLoaded(true);
       }
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
+    if (!isLoaded) return;
     if (colorSchemeName === "auto") {
       setColorSchemeValue(deviceColorScheme);
     } else {
       setColorSchemeValue(colorSchemeName);
     }
-  }, [deviceColorScheme, colorSchemeName]);
+  }, [deviceColorScheme, colorSchemeName, isLoaded]);
 
   return {
     colorSchemeName,
     colorSchemeValue,
     saveColorScheme,
+    isLoaded,
   };
 }

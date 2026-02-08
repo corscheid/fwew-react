@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 export function useThemeName() {
   const [themeName, setThemeName] = useState<ThemeName>("fwew");
+  const [isLoaded, setIsLoaded] = useState(false);
   const { getItem, setItem } = useAsyncStorage("fw_theme");
 
   async function saveThemeName(value: ThemeName) {
@@ -18,10 +19,15 @@ export function useThemeName() {
 
   useEffect(() => {
     (async () => {
-      const value = await getItem();
-      if (value) {
-        setThemeName(value as ThemeName);
-        return;
+      try {
+        const value = await getItem();
+        if (value) {
+          setThemeName(value as ThemeName);
+        }
+      } catch (error) {
+        console.error("Failed to load theme name:", error);
+      } finally {
+        setIsLoaded(true);
       }
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -30,5 +36,6 @@ export function useThemeName() {
   return {
     themeName,
     saveThemeName,
+    isLoaded,
   };
 }

@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 
 export function useResultsLanguage() {
   const [resultsLanguage, setResultsLanguage] = useState<LanguageCode>("en");
+  const [isLoaded, setIsLoaded] = useState(false);
   const { getItem, setItem } = useAsyncStorage("fw_lang_results");
 
   async function saveResultsLanguage(value: ExtendedLanguageCode) {
@@ -22,10 +23,15 @@ export function useResultsLanguage() {
 
   useEffect(() => {
     (async () => {
-      const value = await getItem();
-      if (value) {
-        setResultsLanguage(value as LanguageCode);
-        return;
+      try {
+        const value = await getItem();
+        if (value) {
+          setResultsLanguage(value as LanguageCode);
+        }
+      } catch (error) {
+        console.error("Failed to load results language:", error);
+      } finally {
+        setIsLoaded(true);
       }
     })();
   }, [getItem]);
@@ -33,5 +39,6 @@ export function useResultsLanguage() {
   return {
     resultsLanguage,
     saveResultsLanguage,
+    isLoaded,
   };
 }

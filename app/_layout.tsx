@@ -43,7 +43,11 @@ export default function RootLayout() {
     return null;
   }
 
-  return <RootLayoutNav />;
+  return (
+    <ContextProviders>
+      <RootLayoutNav />
+    </ContextProviders>
+  );
 }
 
 function RootLayoutNav() {
@@ -56,25 +60,23 @@ function RootLayoutNav() {
     <>
       <GlobalStyle />
       <StatusBar style="light" />
-      <ContextProviders>
-        <Stack>
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          <Stack.Screen
-            name="favorites"
-            options={{
-              title: getUI(appLanguage, dialect).screens.favorites,
-              presentation: "modal",
-            }}
-          />
-          <Stack.Screen
-            name="settings"
-            options={{
-              title: getUI(appLanguage, dialect).screens.settings,
-              presentation: "modal",
-            }}
-          />
-        </Stack>
-      </ContextProviders>
+      <Stack>
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen
+          name="favorites"
+          options={{
+            title: getUI(appLanguage, dialect).screens.favorites,
+            presentation: "modal",
+          }}
+        />
+        <Stack.Screen
+          name="settings"
+          options={{
+            title: getUI(appLanguage, dialect).screens.settings,
+            presentation: "modal",
+          }}
+        />
+      </Stack>
     </>
   );
 }
