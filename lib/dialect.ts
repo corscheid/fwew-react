@@ -37,7 +37,8 @@ export type ReefData = {
  */
 export function ReefMe(IPA: string, Navi: string): ReefData {
   // Reefify the IPA first
-  let ipaReef = IPA;
+  let ipaReef = IPA.trim();
+  Navi = Navi.trim()
 
   // Deal with ejectives
   const soften: { [id: string]: string } = {
