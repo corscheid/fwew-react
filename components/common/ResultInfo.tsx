@@ -22,7 +22,6 @@ type ResultInfoProps = {
 };
 
 export function ResultInfo({ word }: ResultInfoProps) {
-  const { playSound, disabled } = useSound(word.ID);
   const { resultsLanguage } = useResultsLanguageContext();
   const local = word[resultsLanguage.toUpperCase() as Uppercase<LanguageCode>];
   const { dialect } = useDialectContext();
@@ -31,10 +30,11 @@ export function ResultInfo({ word }: ResultInfoProps) {
   const colorExtension = getColorExtension(themeName);
   const Themed = getThemedComponents(themeName);
   const forestNavi = word.Navi;
-  const { reefInfixDots, reefInfixSlots } = ReefMe(
+  const { reefNavi, reefInfixDots, reefInfixSlots } = ReefMe(
     word.IPA,
     forestNavi
   );
+  const { playSound, disabled } = useSound(dialect, word.ID, reefNavi === forestNavi);
   const { abbr, name } = ui.common.partOfSpeech[word.PartOfSpeech];
 
   return (
