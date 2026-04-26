@@ -15,7 +15,6 @@
     "assetBundlePatterns": [
       "**/*"
     ],
-    "jsEngine": "hermes",
     "ios": {
       "bundleIdentifier": "app.fwew.react",
       "buildNumber": "4.4.0",
@@ -25,7 +24,6 @@
       "package": "app.fwew.react",
       "versionCode": 37,
       "permissions": [],
-      "edgeToEdgeEnabled": true,
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-fwew.png",
         "backgroundColor": "#7494ba",
@@ -56,7 +54,6 @@
       "expo-audio",
       "expo-asset"
     ],
-    "newArchEnabled": true,
     "experiments": {
       "typedRoutes": true,
       "tsconfigPaths": true
