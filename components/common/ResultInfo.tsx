@@ -31,7 +31,7 @@ export function ResultInfo({ word }: ResultInfoProps) {
   const colorExtension = getColorExtension(themeName);
   const Themed = getThemedComponents(themeName);
   const forestNavi = word.Navi;
-  const { reefNavi, reefInfixDots, reefInfixSlots } = ReefMe(
+  const { reefInfixDots, reefInfixSlots } = ReefMe(
     word.IPA,
     forestNavi
   );
