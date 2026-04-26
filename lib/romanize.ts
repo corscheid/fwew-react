@@ -5,7 +5,7 @@
  * @returns {string} Phonetic breakdown
  */
 export function Romanize(IPA: string): string {
-  let ipa = IPA.replaceAll("·", "");
+  let ipa = IPA.replaceAll("·", "").trim();
 
   // now Romanize the reef IPA
   let word = ipa.split(" ");
