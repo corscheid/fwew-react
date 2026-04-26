@@ -22,14 +22,14 @@ build-prod-remote:
 	eas build -p android -e production
 
 build-web:
-	yarn run build
+	pnpm build
 
 run:
-	yarn start
+	pnpm start
 
 run-better:
-	yarn start --clear --tunnel
+	pnpm start --clear --tunnel
 
 run-offline:
-	yarn start --offline
+	pnpm start --offline
 
