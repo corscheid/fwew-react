@@ -2,7 +2,7 @@ const {
   AndroidConfig,
   createRunOncePlugin,
   withAndroidManifest,
-} = require("@expo/config-plugins");
+} = require("expo/config-plugins");
 
 const withAndroidRemovedPermissions = (config, permissions) => {
   return withAndroidManifest(config, (config) => {
