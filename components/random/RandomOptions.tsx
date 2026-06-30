@@ -8,7 +8,7 @@ import { useThemeNameContext } from "@/context/ThemeNameContext";
 import { getThemedComponents } from "@/themes";
 import type { NumericString } from "@/types/common";
 import type { FilterExpressionBuilderValue } from "@/types/list";
-import { useTheme } from "@react-navigation/native";
+import { useTheme } from "expo-router/react-navigation";
 import { StyleSheet, View } from "react-native";
 
 type RandomOptionsProps = {

@@ -6,7 +6,7 @@ import { useDialectContext } from "@/context/DialectContext";
 import { useThemeNameContext } from "@/context/ThemeNameContext";
 import { getThemedComponents } from "@/themes";
 import type { FilterExpressionBuilderValue } from "@/types/list";
-import { useTheme } from "@react-navigation/native";
+import { useTheme } from "expo-router/react-navigation";
 import { View } from "react-native";
 
 type ListOptionsProps = {

@@ -7,11 +7,6 @@
     "icon": "./assets/images/icon.png",
     "scheme": "fwew",
     "userInterfaceStyle": "automatic",
-    "splash": {
-      "image": "./assets/images/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#7494BA"
-    },
     "assetBundlePatterns": [
       "**/*"
     ],
@@ -52,7 +47,9 @@
       "expo-font",
       "expo-web-browser",
       "expo-audio",
-      "expo-asset"
+      "expo-asset",
+      "expo-splash-screen",
+      "expo-status-bar"
     ],
     "experiments": {
       "typedRoutes": true,

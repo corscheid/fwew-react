@@ -1,7 +1,7 @@
 import FwewTheme from "@/themes/fwew";
 import { type Dialect } from "@/types/common";
 import { type ColorExtension } from "@/types/theme";
-import { type Theme } from "@react-navigation/native";
+import { type Theme } from "expo-router/react-navigation";
 import { type ColorSchemeName } from "react-native";
 
 const ThemeMap = {

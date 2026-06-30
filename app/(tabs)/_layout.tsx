@@ -8,7 +8,7 @@ import { useThemeNameContext } from "@/context/ThemeNameContext";
 import { getColorExtension } from "@/themes";
 import type { FAIconName } from "@/types/icons";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
-import { useTheme } from "@react-navigation/native";
+import { useTheme } from "expo-router/react-navigation";
 import { Tabs } from "expo-router";
 
 type TabBarIconProps = {

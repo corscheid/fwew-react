@@ -2,7 +2,7 @@ import { getUI } from "@/constants/i18n";
 import { useAppLanguageContext } from "@/context/AppLanguageContext";
 import { useDialectContext } from "@/context/DialectContext";
 import { FontAwesome } from "@expo/vector-icons";
-import { useTheme } from "@react-navigation/native";
+import { useTheme } from "expo-router/react-navigation";
 import { Stack, useRouter } from "expo-router";
 import { Pressable, Text, View } from "react-native";
 

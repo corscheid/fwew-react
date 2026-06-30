@@ -7,7 +7,7 @@ import { useDebounce } from "@/hooks/useDebounce";
 import { useFilterExpression } from "@/hooks/useFilterExpression";
 import { useRandom } from "@/hooks/useRandom";
 import { NumericString } from "@/types/common";
-import { useTheme } from "@react-navigation/native";
+import { useTheme } from "expo-router/react-navigation";
 import React, { useCallback, useEffect, useState } from "react";
 import {
   RefreshControl,

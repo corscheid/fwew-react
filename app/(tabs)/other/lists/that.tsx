@@ -4,7 +4,7 @@ import { useDialectContext } from "@/context/DialectContext";
 import { useResultsLanguageContext } from "@/context/ResultsLanguageContext";
 import { useThemeNameContext } from "@/context/ThemeNameContext";
 import { getThemedComponents } from "@/themes";
-import { useTheme } from "@react-navigation/native";
+import { useTheme } from "expo-router/react-navigation";
 import type { JSX } from "react";
 import {
   ScrollView,

@@ -1,6 +1,6 @@
 import type { FAIconName } from "@/types/icons";
 import { FontAwesome } from "@expo/vector-icons";
-import { useTheme } from "@react-navigation/native";
+import { useTheme } from "expo-router/react-navigation";
 import { Pressable, StyleSheet } from "react-native";
 
 type SmallButtonProps = {

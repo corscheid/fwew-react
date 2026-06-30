@@ -1,7 +1,7 @@
 import { useThemeNameContext } from "@/context/ThemeNameContext";
 import { getThemedComponents } from "@/themes";
 import { FontAwesome } from "@expo/vector-icons";
-import { useTheme } from "@react-navigation/native";
+import { useTheme } from "expo-router/react-navigation";
 import { Pressable, StyleSheet, View } from "react-native";
 
 type NameResultsProps = {

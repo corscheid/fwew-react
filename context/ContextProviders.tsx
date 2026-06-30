@@ -10,7 +10,7 @@ import { useFavorites } from "@/hooks/useFavorites";
 import { useResultsLanguage } from "@/hooks/useResultsLanguage";
 import { useThemeName } from "@/hooks/useThemeName";
 import { getTheme } from "@/themes";
-import { ThemeProvider } from "@react-navigation/native";
+import { ThemeProvider } from "expo-router/react-navigation";
 import { ColorSchemeProvider } from "./ColorSchemeContext";
 
 export function ContextProviders({ children }: { children: React.ReactNode }) {
