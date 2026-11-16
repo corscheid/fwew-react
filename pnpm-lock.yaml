@@ -54,8 +54,8 @@ importers:
         specifier: ~58.0.8
         version: 58.0.8(expo@58.0.25)(react-native@0.88.1(@babel/core@7.29.13(supports-color@8.1.1))(@react-native/metro-config@0.88.1(@babel/core@7.29.13(supports-color@8.1.1))(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.0)(supports-color@8.1.1))
       fwew.js:
-        specifier: ^3.1.0
-        version: 3.1.0
+        specifier: ^3.1.1
+        version: 3.1.1
       react:
         specifier: 19.3.0
         version: 19.3.0
@@ -2254,8 +2254,8 @@ packages:
   functions-have-names@1.2.3:
     resolution: {integrity: sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==}
 
-  fwew.js@3.1.0:
-    resolution: {integrity: sha512-vPahTr/k3vf0854o2zHFrqXYo6AIcPBL6EWuJJ1Cks9SSZfLgmxBsQJv5u/9ZulmRvmZAnQLxonSqOfdkFoJ/A==}
+  fwew.js@3.1.1:
+    resolution: {integrity: sha512-ZLI/po2nhTMvgO58cIwwvDXd0+tZ4lR5sVXLHwuJhabb0V2I+3Kw3SMhLs0XSd8j16D75YgNMxzQCszVL1q0fg==}
 
   generator-function@2.0.1:
     resolution: {integrity: sha512-SFdFmIJi+ybC0vjlHN0ZGVGHc3lgE0DxPAT0djjVg+kjOnSqclqmj0KQ7ykTOLP6YxoqOvuAODGdcHJn+43q3g==}
@@ -6444,7 +6444,7 @@ snapshots:
 
   functions-have-names@1.2.3: {}
 
-  fwew.js@3.1.0: {}
+  fwew.js@3.1.1: {}
 
   generator-function@2.0.1: {}
 
