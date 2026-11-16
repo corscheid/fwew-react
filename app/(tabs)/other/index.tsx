@@ -27,7 +27,10 @@ export default function OtherScreen() {
   return <IndexList links={links} />;
 }
 
-function getOtherLinks(screens: ScreenStrings, names: NamesStrings): LinkType[] {
+function getOtherLinks(
+  screens: ScreenStrings,
+  names: NamesStrings
+): LinkType[] {
   return [
     {
       href: "/(tabs)/other/lenition",

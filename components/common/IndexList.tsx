@@ -4,12 +4,7 @@ import { getColorExtension, getThemedComponents } from "@/themes";
 import type { LinkType } from "@/types/common";
 import { useTheme } from "expo-router/react-navigation";
 import { Fragment, useState } from "react";
-import {
-  Pressable,
-  ScrollView,
-  useWindowDimensions,
-  View
-} from "react-native";
+import { Pressable, ScrollView, useWindowDimensions, View } from "react-native";
 import { WideLayout } from "./WideLayout";
 
 export function IndexList({ links }: { links: LinkType[] }) {

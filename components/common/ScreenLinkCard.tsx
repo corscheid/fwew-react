@@ -20,10 +20,11 @@ export function ScreenLinkCard({ href, title }: Props) {
 
   return (
     <Themed.CardView>
-      <Pressable style={({ pressed }) => [
-        styles.container,
-        { opacity: pressed ? 0.5 : 1 },
-      ]}
+      <Pressable
+        style={({ pressed }) => [
+          styles.container,
+          { opacity: pressed ? 0.5 : 1 },
+        ]}
         onPress={() => router.push(href)}
       >
         <Themed.Text style={styles.text}>{title}</Themed.Text>

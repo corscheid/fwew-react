@@ -1,6 +1,10 @@
 import type { Dialect } from "@/types/common";
 import type { ColorExtension, ThemeType } from "@/types/theme";
-import { DefaultTheme, useTheme, type Theme } from "expo-router/react-navigation";
+import {
+  DefaultTheme,
+  useTheme,
+  type Theme,
+} from "expo-router/react-navigation";
 import {
   Text as DefaultText,
   TextInput as DefaultTextInput,

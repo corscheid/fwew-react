@@ -28,7 +28,7 @@ export function useNumber() {
       return;
     }
     // Remove all commas
-    let query2 = query.replace(/[,]/g, '');
+    let query2 = query.replace(/[,]/g, "");
     let n;
     if (/^(0[xX][0-9a-fA-F]+)$/.test(query2)) {
       n = parseInt(query2, 16);

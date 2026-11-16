@@ -20,79 +20,147 @@ export default function StackLayout() {
     <Stack>
       <Stack.Screen
         name="index"
-        options={{ title: screens.other, headerShown: false }} />
+        options={{ title: screens.other, headerShown: false }}
+      />
       <Stack.Screen
         name="lenition"
-        options={{ title: screens.lenition, header: () => <OtherHeader title={screens.lenition} /> }} />
+        options={{
+          title: screens.lenition,
+          header: () => <OtherHeader title={screens.lenition} />,
+        }}
+      />
       <Stack.Screen
         name="lists/index"
-        options={{ title: screens.lists, header: () => <OtherHeader title={screens.lists} /> }} />
+        options={{
+          title: screens.lists,
+          header: () => <OtherHeader title={screens.lists} />,
+        }}
+      />
       <Stack.Screen
         name="lists/all"
-        options={{ title: screens.allWords, header: () => <OtherHeader title={screens.allWords} /> }} />
+        options={{
+          title: screens.allWords,
+          header: () => <OtherHeader title={screens.allWords} />,
+        }}
+      />
       <Stack.Screen
         name="lists/cameron"
-        options={{ title: screens.cameronWords, header: () => <OtherHeader title={screens.cameronWords} /> }} />
+        options={{
+          title: screens.cameronWords,
+          header: () => <OtherHeader title={screens.cameronWords} />,
+        }}
+      />
       <Stack.Screen
         name="lists/homonyms"
-        options={{ title: screens.homonyms, header: () => <OtherHeader title={screens.homonyms} /> }} />
+        options={{
+          title: screens.homonyms,
+          header: () => <OtherHeader title={screens.homonyms} />,
+        }}
+      />
       <Stack.Screen
         name="lists/multi-ipa"
-        options={{ title: screens.multiIPA, header: () => <OtherHeader title={screens.multiIPA} /> }} />
+        options={{
+          title: screens.multiIPA,
+          header: () => <OtherHeader title={screens.multiIPA} />,
+        }}
+      />
       <Stack.Screen
         name="lists/oddballs"
-        options={{ title: screens.oddballs, header: () => <OtherHeader title={screens.oddballs} /> }} />
+        options={{
+          title: screens.oddballs,
+          header: () => <OtherHeader title={screens.oddballs} />,
+        }}
+      />
       <Stack.Screen
         name="lists/profanity"
-        options={{ title: screens.profanity, header: () => <OtherHeader title={screens.profanity} /> }} />
+        options={{
+          title: screens.profanity,
+          header: () => <OtherHeader title={screens.profanity} />,
+        }}
+      />
       <Stack.Screen
         name="lists/that"
-        options={{ title: screens.that, header: () => <OtherHeader title={screens.that} /> }} />
+        options={{
+          title: screens.that,
+          header: () => <OtherHeader title={screens.that} />,
+        }}
+      />
       <Stack.Screen
         name="names/index"
-        options={{ title: screens.names, header: () => <OtherHeader title={screens.names} /> }} />
+        options={{
+          title: screens.names,
+          header: () => <OtherHeader title={screens.names} />,
+        }}
+      />
       <Stack.Screen
         name="names/name-full"
-        options={{ title: names.full, header: () => <OtherHeader title={names.full} /> }} />
+        options={{
+          title: names.full,
+          header: () => <OtherHeader title={names.full} />,
+        }}
+      />
       <Stack.Screen
         name="names/name-single"
-        options={{ title: names.single, header: () => <OtherHeader title={names.single} /> }} />
+        options={{
+          title: names.single,
+          header: () => <OtherHeader title={names.single} />,
+        }}
+      />
       <Stack.Screen
         name="names/name-alu"
-        options={{ title: names.alu, header: () => <OtherHeader title={names.alu} /> }} />
+        options={{
+          title: names.alu,
+          header: () => <OtherHeader title={names.alu} />,
+        }}
+      />
       <Stack.Screen
         name="stats"
-        options={{ title: screens.stats, header: () => <OtherHeader title={screens.stats} /> }} />
+        options={{
+          title: screens.stats,
+          header: () => <OtherHeader title={screens.stats} />,
+        }}
+      />
       <Stack.Screen
         name="valid"
-        options={{ title: screens.valid, header: () => <OtherHeader title={screens.valid} /> }} />
+        options={{
+          title: screens.valid,
+          header: () => <OtherHeader title={screens.valid} />,
+        }}
+      />
     </Stack>
   );
 }
 
-function OtherHeader({ title }: { title: string; }) {
+function OtherHeader({ title }: { title: string }) {
   const theme = useTheme();
   const router = useRouter();
 
   return (
-    <View style={{
-      height: 60,
-      backgroundColor: theme.colors.card,
-      justifyContent: "center"
-    }}>
-      <Pressable onPress={() => router.back()} style={{
-        paddingHorizontal: 16,
-        flexDirection: "row",
-        alignItems: "center",
-        alignSelf: "flex-start",
-        height: "100%",
-        gap: 16,
-      }}>
+    <View
+      style={{
+        height: 60,
+        backgroundColor: theme.colors.card,
+        justifyContent: "center",
+      }}
+    >
+      <Pressable
+        onPress={() => router.back()}
+        style={{
+          paddingHorizontal: 16,
+          flexDirection: "row",
+          alignItems: "center",
+          alignSelf: "flex-start",
+          height: "100%",
+          gap: 16,
+        }}
+      >
         <FontAwesome name="arrow-left" size={24} color={theme.colors.text} />
-        <Text style={{
-          color: theme.colors.text,
-          fontSize: 22,
-        }}>
+        <Text
+          style={{
+            color: theme.colors.text,
+            fontSize: 22,
+          }}
+        >
           {title}
         </Text>
       </Pressable>

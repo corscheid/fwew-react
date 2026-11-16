@@ -122,7 +122,7 @@ export function ReefMe(IPA: string, Navi: string): ReefData {
       } else if (chars[i + 1] === ".") {
         secondI = i + 2;
       }
-        
+
       if (vowels.includes(chars[firstI]) && vowels.includes(chars[secondI])) {
         if (chars[firstI] !== chars[secondI]) {
           i += 1;

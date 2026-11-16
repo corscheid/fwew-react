@@ -5,12 +5,7 @@ export type FilterExpressionBuilderValue = {
 };
 
 export type WhatValue =
-  | "pos"
-  | "word"
-  | "words"
-  | "syllables"
-  | "stress"
-  | "length";
+  "pos" | "word" | "words" | "syllables" | "stress" | "length";
 export type CondValueString =
   | "starts"
   | "ends"
