@@ -5,7 +5,7 @@ import { ListResults } from "@/components/list/ListResults";
 import { useDebounce } from "@/hooks/useDebounce";
 import { useFilterExpression } from "@/hooks/useFilterExpression";
 import { useList } from "@/hooks/useList";
-import { useTheme } from "@react-navigation/native";
+import { useTheme } from "expo-router/react-navigation";
 import { useEffect } from "react";
 import {
   RefreshControl,

@@ -6,7 +6,7 @@ import { useDialectContext } from "@/context/DialectContext";
 import { useThemeNameContext } from "@/context/ThemeNameContext";
 import { getThemedComponents } from "@/themes";
 import { ExtendedLanguageCode } from "@/types/common";
-import { useTheme } from "@react-navigation/native";
+import { useTheme } from "expo-router/react-navigation";
 import { StyleSheet, View } from "react-native";
 import { FlagMap } from "./Flags";
 

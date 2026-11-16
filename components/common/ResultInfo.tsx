@@ -11,7 +11,7 @@ import { useSound } from "@/hooks/useSound";
 import { ReefMe } from "@/lib/dialect";
 import { Romanize } from "@/lib/romanize";
 import { getColorExtension, getThemedComponents } from "@/themes";
-import { useTheme } from "@react-navigation/native";
+import { useTheme } from "expo-router/react-navigation";
 import { fwewSimple, type LanguageCode, type Word } from "fwew.js";
 import React, { useCallback, useEffect, useState } from "react";
 import { StyleSheet, View } from "react-native";

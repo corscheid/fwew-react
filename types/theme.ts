@@ -1,5 +1,5 @@
 import type { Dialect } from "@/types/common";
-import type { Theme } from "@react-navigation/native";
+import type { Theme } from "expo-router/react-navigation";
 import type { JSX } from "react";
 import type { TextInputProps, TextProps, ViewProps } from "react-native";
 

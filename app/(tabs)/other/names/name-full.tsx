@@ -12,9 +12,8 @@ import { useDialectContext } from "@/context/DialectContext";
 import { useThemeNameContext } from "@/context/ThemeNameContext";
 import { useNameFull } from "@/hooks/useNameFull";
 import { getColorExtension, getThemedComponents } from "@/themes";
-import { useTheme } from "@react-navigation/native";
 import * as Clipboard from "expo-clipboard";
-import React from "react";
+import { useTheme } from "expo-router/react-navigation";
 import {
   RefreshControl,
   ScrollView,

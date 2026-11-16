@@ -1,7 +1,7 @@
 import { useColorSchemeContext } from "@/context/ColorSchemeContext";
 import { useThemeNameContext } from "@/context/ThemeNameContext";
 import { getColorExtension, getThemedComponents } from "@/themes";
-import { useTheme } from "@react-navigation/native";
+import { useTheme } from "expo-router/react-navigation";
 import { StyleSheet, Switch, View } from "react-native";
 
 type SwitchInputProps = {

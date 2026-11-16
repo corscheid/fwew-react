@@ -5,7 +5,7 @@ import { useAppLanguageContext } from "@/context/AppLanguageContext";
 import { useDialectContext } from "@/context/DialectContext";
 import { useThemeNameContext } from "@/context/ThemeNameContext";
 import { getColorExtension, getThemedComponents, ThemeNames } from "@/themes";
-import { useTheme } from "@react-navigation/native";
+import { useTheme } from "expo-router/react-navigation";
 import { StyleSheet, View } from "react-native";
 
 export function ThemeSelect() {

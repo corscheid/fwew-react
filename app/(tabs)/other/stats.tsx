@@ -1,7 +1,7 @@
 import { useThemeNameContext } from "@/context/ThemeNameContext";
 import { useStats } from "@/hooks/useStats";
 import { getThemedComponents } from "@/themes";
-import { useTheme } from "@react-navigation/native";
+import { useTheme } from "expo-router/react-navigation";
 import {
   ActivityIndicator,
   ScrollView,

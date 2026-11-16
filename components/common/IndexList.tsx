@@ -2,7 +2,7 @@ import { ScreenLinkCard } from "@/components/common/ScreenLinkCard";
 import { useThemeNameContext } from "@/context/ThemeNameContext";
 import { getColorExtension, getThemedComponents } from "@/themes";
 import type { LinkType } from "@/types/common";
-import { useTheme } from "@react-navigation/native";
+import { useTheme } from "expo-router/react-navigation";
 import { Fragment, useState } from "react";
 import {
   Pressable,

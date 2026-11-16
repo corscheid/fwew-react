@@ -1,7 +1,6 @@
 import { useThemeNameContext } from "@/context/ThemeNameContext";
 import { getThemedComponents } from "@/themes";
 import { Link, Stack } from "expo-router";
-import React from "react";
 import { StyleSheet, View } from "react-native";
 
 export default function NotFoundScreen() {

@@ -8,7 +8,7 @@ import {
   getPWAThemeUpdater,
   getThemedComponents,
 } from "@/themes";
-import { useTheme } from "@react-navigation/native";
+import { useTheme } from "expo-router/react-navigation";
 import { StyleSheet, View } from "react-native";
 import { Accordion } from "../common/Accordion";
 import { OptionItem } from "../common/OptionItem";

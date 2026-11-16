@@ -5,7 +5,7 @@ import { useDialectContext } from "@/context/DialectContext";
 import { useThemeNameContext } from "@/context/ThemeNameContext";
 import { getColorExtension, getThemedComponents } from "@/themes";
 import { FontAwesome } from "@expo/vector-icons";
-import { useTheme } from "@react-navigation/native";
+import { useTheme } from "expo-router/react-navigation";
 import { Platform, Pressable, StyleSheet, View } from "react-native";
 
 type SearchBarProps = {

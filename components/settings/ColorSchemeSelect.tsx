@@ -9,7 +9,7 @@ import { ColorSchemeName } from "@/hooks/useColorScheme";
 import { getColorExtension, getThemedComponents } from "@/themes";
 import { FAIconName } from "@/types/icons";
 import { FontAwesome } from "@expo/vector-icons";
-import { useTheme } from "@react-navigation/native";
+import { useTheme } from "expo-router/react-navigation";
 import { StyleSheet, View } from "react-native";
 
 export function ColorSchemeSelect() {
