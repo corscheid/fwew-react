@@ -17,6 +17,14 @@
       "package": "app.fwew.react",
       "versionCode": 37,
       "permissions": [],
+      "blockedPermissions": [
+        "android.permission.RECORD_AUDIO",
+        "android.permission.MODIFY_AUDIO_SETTINGS",
+        "android.permission.SYSTEM_ALERT_WINDOW",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.VIBRATE"
+      ],
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/images/adaptive-fwew.png",
         "backgroundColor": "#7494ba",
@@ -36,18 +44,7 @@
       "expo-audio",
       "expo-asset",
       "expo-splash-screen",
-      "expo-status-bar",
-      [
-        "./withAndroidRemovedPermissions",
-        [
-          "android.permission.RECORD_AUDIO",
-          "android.permission.MODIFY_AUDIO_SETTINGS",
-          "android.permission.SYSTEM_ALERT_WINDOW",
-          "android.permission.READ_EXTERNAL_STORAGE",
-          "android.permission.WRITE_EXTERNAL_STORAGE",
-          "android.permission.VIBRATE"
-        ]
-      ]
+      "expo-status-bar"
     ],
     "experiments": {
       "typedRoutes": true,
