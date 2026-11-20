@@ -49,9 +49,7 @@ const partOfSpeech: PartOfSpeech = {
   },
 };
 
-const partOfSpeechList = Object.entries(partOfSpeech).map(
-  ([value, { name }]) => ({ name, value })
-);
+const partOfSpeechList = Object.entries(partOfSpeech).map(([value, { name }]) => ({ name, value }));
 
 const table1Data = [
   ["Case", "Noun", "", "Clause Wrapper", ""],
@@ -235,8 +233,7 @@ const strings: UITranslation = {
     numSyllables2: "Кількість складів у імені роду",
     numSyllables3: "Кількість складів у імені батьків",
     nameEnding: "Закінчення імені",
-    nameEndingHint:
-      "-'itan   чол.рід, -'ite  жін.рід, -'itu  середній рід. (не є канонічним)",
+    nameEndingHint: "-'itan   чол.рід, -'ite  жін.рід, -'itu  середній рід. (не є канонічним)",
     nameEndingOptions: [
       { value: "random", name: "Випадково" },
       { value: "'ite", name: "-'ite" },

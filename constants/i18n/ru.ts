@@ -40,9 +40,7 @@ const partOfSpeech: PartOfSpeech = {
   },
 };
 
-const partOfSpeechList = Object.entries(partOfSpeech).map(
-  ([value, { name }]) => ({ name, value })
-);
+const partOfSpeechList = Object.entries(partOfSpeech).map(([value, { name }]) => ({ name, value }));
 
 const table1Data = [
   ["Case", "Noun", "", "Clause Wrapper", ""],
@@ -73,10 +71,7 @@ const getResultText = (count: number) => {
   if (lastDigit === 1 && lastTwoDigits !== 11) {
     return `результат`;
   }
-  if (
-    (lastDigit === 2 || lastDigit === 3 || lastDigit === 4) &&
-    (lastTwoDigits < 10 || lastTwoDigits > 20)
-  ) {
+  if ((lastDigit === 2 || lastDigit === 3 || lastDigit === 4) && (lastTwoDigits < 10 || lastTwoDigits > 20)) {
     return `результата`;
   }
   return `результатов`;
@@ -243,8 +238,7 @@ const strings: UITranslation = {
     numSyllables2: "Количество слогов в фамилии",
     numSyllables3: "Количество слогов в имени родителя",
     nameEnding: "Окончание имени",
-    nameEndingHint:
-      "-'itan для мужчин, -'ite для женщин, -'itu для небинарных (не является каноном)",
+    nameEndingHint: "-'itan для мужчин, -'ite для женщин, -'itu для небинарных (не является каноном)",
     nameEndingOptions: [
       { value: "random", name: "случайно" },
       { value: "'ite", name: "-'ite" },

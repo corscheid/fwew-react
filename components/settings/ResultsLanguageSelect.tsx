@@ -23,9 +23,7 @@ export function ResultsLanguageSelect() {
       closedContent={
         <View style={styles.iconContainer}>
           <View style={styles.icon}>{FlagMap[resultsLanguage]}</View>
-          <Themed.Text style={styles.value}>
-            {ui.settings.resultsLanguage}
-          </Themed.Text>
+          <Themed.Text style={styles.value}>{ui.settings.resultsLanguage}</Themed.Text>
         </View>
       }
       openedContent={

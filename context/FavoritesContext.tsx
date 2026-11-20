@@ -3,9 +3,7 @@ import { createContext, useContext } from "react";
 
 export type FavoritesType = ReturnType<typeof useFavorites>;
 
-export const FavoritesContext = createContext<FavoritesType>(
-  null as unknown as FavoritesType
-);
+export const FavoritesContext = createContext<FavoritesType>(null as unknown as FavoritesType);
 
 export const useFavoritesContext = () => useContext(FavoritesContext);
 
@@ -15,9 +13,5 @@ type FavoritesProviderProps = {
 };
 
 export function FavoritesProvider({ value, children }: FavoritesProviderProps) {
-  return (
-    <FavoritesContext.Provider value={value}>
-      {children}
-    </FavoritesContext.Provider>
-  );
+  return <FavoritesContext.Provider value={value}>{children}</FavoritesContext.Provider>;
 }

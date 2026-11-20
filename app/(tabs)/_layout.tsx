@@ -8,8 +8,8 @@ import { useThemeNameContext } from "@/context/ThemeNameContext";
 import { getColorExtension } from "@/themes";
 import type { FAIconName } from "@/types/icons";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
-import { useTheme } from "expo-router/react-navigation";
 import { Tabs } from "expo-router";
+import { useTheme } from "expo-router/react-navigation";
 
 type TabBarIconProps = {
   name: FAIconName;
@@ -53,9 +53,7 @@ export default function TabLayout() {
         name="list"
         options={{
           title: screens.list,
-          tabBarIcon: ({ color }) => (
-            <TabBarIcon name="list-ol" color={color} />
-          ),
+          tabBarIcon: ({ color }) => <TabBarIcon name="list-ol" color={color} />,
         }}
       />
       <Tabs.Screen
@@ -69,18 +67,14 @@ export default function TabLayout() {
         name="numbers"
         options={{
           title: screens.numbers,
-          tabBarIcon: ({ color }) => (
-            <TabBarIcon name="calculator" color={color} />
-          ),
+          tabBarIcon: ({ color }) => <TabBarIcon name="calculator" color={color} />,
         }}
       />
       <Tabs.Screen
         name="other"
         options={{
           title: screens.other,
-          tabBarIcon: ({ color }) => (
-            <TabBarIcon name="ellipsis-h" color={color} />
-          ),
+          tabBarIcon: ({ color }) => <TabBarIcon name="ellipsis-h" color={color} />,
         }}
       />
     </Tabs>

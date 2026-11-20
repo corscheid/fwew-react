@@ -4,11 +4,7 @@ import { ResultsLanguages } from "@/constants/Language";
 import { useDialectContext } from "@/context/DialectContext";
 import { useResultsLanguageContext } from "@/context/ResultsLanguageContext";
 import { useThemeNameContext } from "@/context/ThemeNameContext";
-import {
-  getColorExtension,
-  getPWAThemeUpdater,
-  getThemedComponents,
-} from "@/themes";
+import { getColorExtension, getPWAThemeUpdater, getThemedComponents } from "@/themes";
 import type { FAIconName } from "@/types/icons";
 import { FontAwesome } from "@expo/vector-icons";
 import { Href, useRouter } from "expo-router";
@@ -41,9 +37,7 @@ function LanguageDisplay() {
 
   return (
     <Pressable style={styles.actionButton} onPress={nextLanguage}>
-      {({ pressed }) => (
-        <View style={{ opacity: pressed ? 0.5 : 1 }}>{resultsFlag}</View>
-      )}
+      {({ pressed }) => <View style={{ opacity: pressed ? 0.5 : 1 }}>{resultsFlag}</View>}
     </Pressable>
   );
 }
@@ -64,9 +58,7 @@ function DialectButton() {
     >
       {({ pressed }) => (
         <View style={[styles.dialectButton, { opacity: pressed ? 0.5 : 1 }]}>
-          <Themed.MonoText style={styles.dialectText}>
-            {DialectDisplay[dialect].abbr}
-          </Themed.MonoText>
+          <Themed.MonoText style={styles.dialectText}>{DialectDisplay[dialect].abbr}</Themed.MonoText>
         </View>
       )}
     </Pressable>
@@ -84,17 +76,9 @@ function ActionButton({ href, icon }: ABProps) {
   const router = useRouter();
 
   return (
-    <Pressable
-      style={styles.actionButton}
-      onPress={() => router.navigate(href)}
-    >
+    <Pressable style={styles.actionButton} onPress={() => router.navigate(href)}>
       {({ pressed }) => (
-        <FontAwesome
-          name={icon}
-          size={25}
-          color={colorExtension.dark.text}
-          style={{ opacity: pressed ? 0.5 : 1 }}
-        />
+        <FontAwesome name={icon} size={25} color={colorExtension.dark.text} style={{ opacity: pressed ? 0.5 : 1 }} />
       )}
     </Pressable>
   );

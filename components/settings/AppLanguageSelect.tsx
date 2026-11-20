@@ -21,9 +21,7 @@ export function AppLanguageSelect() {
       closedContent={
         <View style={styles.iconContainer}>
           <View style={styles.icon}>{FlagMap[appLanguage]}</View>
-          <Themed.Text style={styles.value}>
-            {ui.settings.appLanguage}
-          </Themed.Text>
+          <Themed.Text style={styles.value}>{ui.settings.appLanguage}</Themed.Text>
         </View>
       }
       openedContent={

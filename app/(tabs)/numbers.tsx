@@ -11,13 +11,7 @@ export default function NumbersScreen() {
   return (
     <View style={{ flex: 1, alignItems: "center" }}>
       <View style={[styles.container, { width: wide ? "66%" : "100%" }]}>
-        <NumberSearchBar
-          mode={mode}
-          toggleMode={toggleMode}
-          query={query}
-          search={search}
-          clear={clear}
-        />
+        <NumberSearchBar mode={mode} toggleMode={toggleMode} query={query} search={search} clear={clear} />
         <NumberResultCard result={result} />
       </View>
     </View>

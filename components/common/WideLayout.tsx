@@ -1,12 +1,4 @@
-import {
-  ColorValue,
-  RefreshControl,
-  ScrollView,
-  StyleSheet,
-  useWindowDimensions,
-  View,
-  ViewStyle,
-} from "react-native";
+import { ColorValue, RefreshControl, ScrollView, StyleSheet, useWindowDimensions, View, ViewStyle } from "react-native";
 
 type Props = {
   sidebar: React.ReactNode;
@@ -59,11 +51,7 @@ export function WideLayout({
           keyboardShouldPersistTaps="always"
           refreshControl={
             refresh && (
-              <RefreshControl
-                refreshing={refresh.loading}
-                onRefresh={refresh.getData}
-                colors={refresh.colors}
-              />
+              <RefreshControl refreshing={refresh.loading} onRefresh={refresh.getData} colors={refresh.colors} />
             )
           }
         >

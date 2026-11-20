@@ -21,19 +21,11 @@ export function ScreenLinkCard({ href, title }: Props) {
   return (
     <Themed.CardView>
       <Pressable
-        style={({ pressed }) => [
-          styles.container,
-          { opacity: pressed ? 0.5 : 1 },
-        ]}
+        style={({ pressed }) => [styles.container, { opacity: pressed ? 0.5 : 1 }]}
         onPress={() => router.push(href)}
       >
         <Themed.Text style={styles.text}>{title}</Themed.Text>
-        <FontAwesome
-          size={24}
-          name="chevron-right"
-          color={colors.text}
-          style={styles.arrow}
-        />
+        <FontAwesome size={24} name="chevron-right" color={colors.text} style={styles.arrow} />
       </Pressable>
     </Themed.CardView>
   );

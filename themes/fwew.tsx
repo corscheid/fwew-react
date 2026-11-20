@@ -1,10 +1,6 @@
 import type { Dialect } from "@/types/common";
 import type { ColorExtension, ThemeType } from "@/types/theme";
-import {
-  DefaultTheme,
-  useTheme,
-  type Theme,
-} from "expo-router/react-navigation";
+import { DefaultTheme, useTheme, type Theme } from "expo-router/react-navigation";
 import {
   Text as DefaultText,
   TextInput as DefaultTextInput,
@@ -100,9 +96,7 @@ const FwewColorExtension: ColorExtension = {
 
 function Text(props: TextProps) {
   const { colors } = useTheme();
-  return (
-    <DefaultText {...props} style={[{ color: colors.text }, props.style]} />
-  );
+  return <DefaultText {...props} style={[{ color: colors.text }, props.style]} />;
 }
 
 function MonoText(props: TextProps) {
@@ -118,12 +112,7 @@ function ItalicText(props: TextProps) {
 }
 
 function UnderlinedText(props: TextProps) {
-  return (
-    <Text
-      {...props}
-      style={[props.style, { textDecorationLine: "underline" }]}
-    />
-  );
+  return <Text {...props} style={[props.style, { textDecorationLine: "underline" }]} />;
 }
 
 function CardView(props: ViewProps) {
@@ -170,11 +159,11 @@ function updatePWATheme(dialect: Dialect): void {
 
   document
     .querySelector(`meta[${attrThemeColor}][${attrMediaLight}]`)
-    ?.setAttribute("content", FwewTheme.light[dialect].colors.primary);
+    ?.setAttribute("content", FwewTheme.light[dialect].colors.primary!.toString());
 
   document
     .querySelector(`meta[${attrThemeColor}][${attrMediaDark}]`)
-    ?.setAttribute("content", FwewTheme.dark[dialect].colors.primary);
+    ?.setAttribute("content", FwewTheme.dark[dialect].colors.primary!.toString());
 }
 
 const FwewTheme: ThemeType = {

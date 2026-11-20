@@ -27,21 +27,11 @@ export function Version() {
         </View>
         <View>
           <Themed.MonoText style={styles.text}>
-            {version.AppVersion}{" "}
-            <GitDetails
-              branch={version.Branch}
-              commitHash={version.CommitHash}
-            />
+            {version.AppVersion} <GitDetails branch={version.Branch} commitHash={version.CommitHash} />
           </Themed.MonoText>
-          <Themed.MonoText style={styles.text}>
-            {version.APIVersion || "?"}
-          </Themed.MonoText>
-          <Themed.MonoText style={styles.text}>
-            {version.FwewVersion || "?"}
-          </Themed.MonoText>
-          <Themed.MonoText style={styles.text}>
-            {version.DictVersion || "?"}
-          </Themed.MonoText>
+          <Themed.MonoText style={styles.text}>{version.APIVersion || "?"}</Themed.MonoText>
+          <Themed.MonoText style={styles.text}>{version.FwewVersion || "?"}</Themed.MonoText>
+          <Themed.MonoText style={styles.text}>{version.DictVersion || "?"}</Themed.MonoText>
         </View>
       </View>
     </>

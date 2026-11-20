@@ -35,9 +35,7 @@ const partOfSpeech: PartOfSpeech = {
   "vin., vtr.": { abbr: "동", name: "자동사, 타동사" },
 };
 
-const partOfSpeechList = Object.entries(partOfSpeech).map(
-  ([value, { name }]) => ({ name, value })
-);
+const partOfSpeechList = Object.entries(partOfSpeech).map(([value, { name }]) => ({ name, value }));
 
 const table1Data = [
   ["격", "명사", "", "접속사", ""],
@@ -57,11 +55,7 @@ const table2Data = [
   ["fmawnta", "종속접속사", "그 소식"],
   ["fayluta", "종속접속사", "그 말, 그 단어들"],
   ["tsnì", "종속접속사", "(특정 동사와 함께 사용하는 종속접속사)"],
-  [
-    "tsonta",
-    "접속",
-    "~하라고, ~하도록(kxìm'명령하다' 동사와 함께 사용하는 종속접속사)",
-  ],
+  ["tsonta", "접속", "~하라고, ~하도록(kxìm'명령하다' 동사와 함께 사용하는 종속접속사)"],
   ["kuma/akum", "접속", "그리하여, 결과적으로"],
   ["a", "불변화사", "~한, ~하는 (절 단위의 명사접속사)"],
 ];
@@ -225,8 +219,7 @@ const strings: UITranslation = {
     numSyllables2: "가문명의 음절 개수",
     numSyllables3: "부모명의 음절 개수",
     nameEnding: "성별",
-    nameEndingHint:
-      "-'itan(남성), -'ite(여성), -'itu(논바이너리/해당 설정은 공식이 아닙니다)",
+    nameEndingHint: "-'itan(남성), -'ite(여성), -'itu(논바이너리/해당 설정은 공식이 아닙니다)",
     nameEndingOptions: [
       { value: "random", name: "무작위" },
       { value: "'ite", name: "-'ite" },

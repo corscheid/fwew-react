@@ -2,8 +2,8 @@ import { getUI } from "@/constants/i18n";
 import { useAppLanguageContext } from "@/context/AppLanguageContext";
 import { useDialectContext } from "@/context/DialectContext";
 import { FontAwesome } from "@expo/vector-icons";
-import { useTheme } from "expo-router/react-navigation";
 import { Stack, useRouter } from "expo-router";
+import { useTheme } from "expo-router/react-navigation";
 import { Pressable, Text, View } from "react-native";
 
 // https://docs.expo.dev/router/reference/faq/#missing-back-button
@@ -18,10 +18,7 @@ export default function StackLayout() {
 
   return (
     <Stack>
-      <Stack.Screen
-        name="index"
-        options={{ title: screens.other, headerShown: false }}
-      />
+      <Stack.Screen name="index" options={{ title: screens.other, headerShown: false }} />
       <Stack.Screen
         name="lenition"
         options={{

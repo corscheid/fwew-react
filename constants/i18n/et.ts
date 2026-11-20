@@ -44,9 +44,7 @@ const partOfSpeech: PartOfSpeech = {
   },
 };
 
-const partOfSpeechList = Object.entries(partOfSpeech).map(
-  ([value, { name }]) => ({ name, value })
-);
+const partOfSpeechList = Object.entries(partOfSpeech).map(([value, { name }]) => ({ name, value }));
 
 const table1Data = [
   ["Case", "Noun", "", "Clause Wrapper", ""],
@@ -233,8 +231,7 @@ const strings: UITranslation = {
     numSyllables2: "Perekonnanime silpide arv",
     numSyllables3: "Vanema nime silpide arv",
     nameEnding: "Nime lõpp",
-    nameEndingHint:
-      "-'itan meessoost, -'ite naissoost, -'itu mitte-binaarne (mitte-kanoniline)",
+    nameEndingHint: "-'itan meessoost, -'ite naissoost, -'itu mitte-binaarne (mitte-kanoniline)",
     nameEndingOptions: [
       { value: "random", name: "juhuslik" },
       { value: "'ite", name: "-'ite" },

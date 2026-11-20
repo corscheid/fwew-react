@@ -47,9 +47,7 @@ export function NumberResultCard({ result }: NumberResultCardProps) {
         </View>
         <View style={{ alignItems: "flex-end" }}>
           <Themed.MonoText style={styles.text}>{result.octal}</Themed.MonoText>
-          <Themed.MonoText style={styles.text}>
-            {result.decimal}
-          </Themed.MonoText>
+          <Themed.MonoText style={styles.text}>{result.decimal}</Themed.MonoText>
         </View>
       </View>
       <Scientific result={result} />
@@ -63,21 +61,9 @@ function Scientific({ result }: { result: FwewNumber }) {
     .slice(1)
     .map((digit, i, a) => {
       if (i === 0) {
-        return (
-          <Power
-            key={`nrp_${digit}_${i}`}
-            base={`${digit}×8`}
-            exponent={`${a.length - i - 1}`}
-          />
-        );
+        return <Power key={`nrp_${digit}_${i}`} base={`${digit}×8`} exponent={`${a.length - i - 1}`} />;
       }
-      return (
-        <Power
-          key={`nrp_${digit}_${i}`}
-          base={` + ${digit}×8`}
-          exponent={`${a.length - i - 1}`}
-        />
-      );
+      return <Power key={`nrp_${digit}_${i}`} base={` + ${digit}×8`} exponent={`${a.length - i - 1}`} />;
     });
   return <View style={{ flexDirection: "row" }}>{octalDigits}</View>;
 }

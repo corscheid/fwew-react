@@ -13,30 +13,13 @@ import useNameSingle from "@/hooks/useNameSingle";
 import { getThemedComponents } from "@/themes";
 import * as Clipboard from "expo-clipboard";
 import { useTheme } from "expo-router/react-navigation";
-import {
-  RefreshControl,
-  ScrollView,
-  StyleSheet,
-  useWindowDimensions,
-  View,
-} from "react-native";
+import { RefreshControl, ScrollView, StyleSheet, useWindowDimensions, View } from "react-native";
 
 export default function NameSingleScreen() {
-  const {
-    names,
-    numNames,
-    updateNumNames,
-    numSyllables,
-    updateNumSyllables,
-    loading,
-    execute,
-  } = useNameSingle();
+  const { names, numNames, updateNumNames, numSyllables, updateNumSyllables, loading, execute } = useNameSingle();
   const { appLanguage } = useAppLanguageContext();
   const { dialect } = useDialectContext();
-  const { names: uiNames, nameSingle: uiNameSingle } = getUI(
-    appLanguage,
-    dialect
-  );
+  const { names: uiNames, nameSingle: uiNameSingle } = getUI(appLanguage, dialect);
   const theme = useTheme();
   const resultsVisible = numNames.length > 0 && names.length > 0;
   const { themeName } = useThemeNameContext();
@@ -60,24 +43,15 @@ export default function NameSingleScreen() {
             <Accordion
               closedContent={<Themed.Text>{uiNames.options}</Themed.Text>}
               openedContent={
-                <View
-                  style={[
-                    styles.optionContainer,
-                    { backgroundColor: theme.colors.background },
-                  ]}
-                >
-                  <Themed.Text style={styles.label}>
-                    {uiNames.numNames}
-                  </Themed.Text>
+                <View style={[styles.optionContainer, { backgroundColor: theme.colors.background }]}>
+                  <Themed.Text style={styles.label}>{uiNames.numNames}</Themed.Text>
                   <NumericTextInput
                     placeholder={`${uiNames.numNames} (1-50)`}
                     value={numNames}
                     onChangeText={updateNumNames}
                     autoFocus
                   />
-                  <Themed.Text style={styles.label}>
-                    {uiNameSingle.numSyllables}
-                  </Themed.Text>
+                  <Themed.Text style={styles.label}>{uiNameSingle.numSyllables}</Themed.Text>
                   <OptionSelect
                     items={uiNames.syllablesOptions}
                     active={(value) => numSyllables === value}
@@ -87,23 +61,12 @@ export default function NameSingleScreen() {
               }
             />
             <View style={styles.buttonContainerLandscape}>
-              <Button
-                icon="clipboard"
-                text={uiNames.copyAll}
-                onPress={copyAll}
-                disabled={!resultsVisible}
-              />
+              <Button icon="clipboard" text={uiNames.copyAll} onPress={copyAll} disabled={!resultsVisible} />
               <Button icon="refresh" onPress={execute} disabled={loading} />
             </View>
           </>
         }
-        header={
-          <ResultCount
-            visible={resultsVisible}
-            resultCount={names.length}
-            style={styles.resultCount}
-          />
-        }
+        header={<ResultCount visible={resultsVisible} resultCount={names.length} style={styles.resultCount} />}
         main={<NameResults names={names} copyName={copy} />}
         refresh={{
           loading,
@@ -117,24 +80,13 @@ export default function NameSingleScreen() {
   return (
     <ScrollView
       keyboardShouldPersistTaps="always"
-      refreshControl={
-        <RefreshControl
-          refreshing={loading}
-          onRefresh={execute}
-          colors={[theme.colors.primary]}
-        />
-      }
+      refreshControl={<RefreshControl refreshing={loading} onRefresh={execute} colors={[theme.colors.primary]} />}
     >
       <View style={styles.container}>
         <Accordion
           closedContent={<Themed.Text>{uiNames.options}</Themed.Text>}
           openedContent={
-            <View
-              style={[
-                styles.optionContainer,
-                { backgroundColor: theme.colors.background },
-              ]}
-            >
+            <View style={[styles.optionContainer, { backgroundColor: theme.colors.background }]}>
               <Themed.Text style={styles.label}>{uiNames.numNames}</Themed.Text>
               <NumericTextInput
                 placeholder={`${uiNames.numNames} (1-50)`}
@@ -142,9 +94,7 @@ export default function NameSingleScreen() {
                 onChangeText={updateNumNames}
                 autoFocus
               />
-              <Themed.Text style={styles.label}>
-                {uiNameSingle.numSyllables}
-              </Themed.Text>
+              <Themed.Text style={styles.label}>{uiNameSingle.numSyllables}</Themed.Text>
               <OptionSelect
                 items={uiNames.syllablesOptions}
                 active={(value) => numSyllables === value}
@@ -154,19 +104,10 @@ export default function NameSingleScreen() {
           }
         />
         <View style={styles.buttonContainer}>
-          <Button
-            icon="clipboard"
-            text={uiNames.copyAll}
-            onPress={copyAll}
-            disabled={!resultsVisible}
-          />
+          <Button icon="clipboard" text={uiNames.copyAll} onPress={copyAll} disabled={!resultsVisible} />
           <Button icon="refresh" onPress={execute} disabled={loading} />
         </View>
-        <ResultCount
-          visible={resultsVisible}
-          resultCount={names.length}
-          style={styles.resultCount}
-        />
+        <ResultCount visible={resultsVisible} resultCount={names.length} style={styles.resultCount} />
         <NameResults names={names} copyName={copy} />
       </View>
     </ScrollView>

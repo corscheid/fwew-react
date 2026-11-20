@@ -23,16 +23,7 @@ type RandomOptionsProps = {
 };
 
 export function RandomOptions(props: RandomOptionsProps) {
-  const {
-    numWords,
-    updateNumWords,
-    filters,
-    add,
-    remove,
-    update,
-    incomplete,
-    initiallyOpen,
-  } = props;
+  const { numWords, updateNumWords, filters, add, remove, update, incomplete, initiallyOpen } = props;
   const { appLanguage } = useAppLanguageContext();
   const { dialect } = useDialectContext();
   const ui = getUI(appLanguage, dialect);

@@ -40,9 +40,7 @@ const partOfSpeech: PartOfSpeech = {
   },
 };
 
-const partOfSpeechList = Object.entries(partOfSpeech).map(
-  ([value, { name }]) => ({ name, value })
-);
+const partOfSpeechList = Object.entries(partOfSpeech).map(([value, { name }]) => ({ name, value }));
 
 const table1Data = [
   ["Case", "Noun", "", "Clause Wrapper", ""],
@@ -228,8 +226,7 @@ const strings: UITranslation = {
     numSyllables2: "Antal stavelser i efternamn",
     numSyllables3: "Antal stavelser i föräldersnamn",
     nameEnding: "Namnändelse",
-    nameEndingHint:
-      "-'itan för manlig, -'ite för kvinnlig, -'itu för icke-binär (icke-kanonisk)",
+    nameEndingHint: "-'itan för manlig, -'ite för kvinnlig, -'itu för icke-binär (icke-kanonisk)",
     nameEndingOptions: [
       { value: "random", name: "slumpmässig" },
       { value: "'ite", name: "-'ite" },

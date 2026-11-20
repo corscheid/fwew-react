@@ -26,12 +26,7 @@ export function ContextProviders({ children }: { children: React.ReactNode }) {
   const themeNameValue = useThemeName();
   const { themeName, isLoaded: themeNameLoaded } = themeNameValue;
 
-  const isLoaded =
-    colorSchemeLoaded &&
-    appLanguageLoaded &&
-    resultsLanguageLoaded &&
-    dialectLoaded &&
-    themeNameLoaded;
+  const isLoaded = colorSchemeLoaded && appLanguageLoaded && resultsLanguageLoaded && dialectLoaded && themeNameLoaded;
 
   const theme = getTheme(themeName, colorSchemeValue, dialect);
 
@@ -46,9 +41,7 @@ export function ContextProviders({ children }: { children: React.ReactNode }) {
           <AppLanguageProvider value={appLanguageValue}>
             <ResultsLanguageProvider value={resultsLanguage}>
               <DialectProvider value={dialectValue}>
-                <FavoritesProvider value={favorites}>
-                  {children}
-                </FavoritesProvider>
+                <FavoritesProvider value={favorites}>{children}</FavoritesProvider>
               </DialectProvider>
             </ResultsLanguageProvider>
           </AppLanguageProvider>

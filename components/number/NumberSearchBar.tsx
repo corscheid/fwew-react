@@ -31,11 +31,7 @@ export function NumberSearchBar(props: NumberSearchBarProps) {
       <Themed.TextInput
         value={query}
         onChangeText={search}
-        placeholder={
-          mode === "number"
-            ? ui.numbers.placeholderNumeric
-            : ui.numbers.placeholderAlpha
-        }
+        placeholder={mode === "number" ? ui.numbers.placeholderNumeric : ui.numbers.placeholderAlpha}
         placeholderTextColor={colors.placeholder}
         keyboardType={mode === "number" ? "number-pad" : "default"}
         style={styles.input}

@@ -6,12 +6,7 @@ import { useThemeNameContext } from "@/context/ThemeNameContext";
 import { getThemedComponents } from "@/themes";
 import { useTheme } from "expo-router/react-navigation";
 import type { JSX } from "react";
-import {
-  ScrollView,
-  StyleSheet,
-  useWindowDimensions,
-  View,
-} from "react-native";
+import { ScrollView, StyleSheet, useWindowDimensions, View } from "react-native";
 
 export default function ThatScreen() {
   const { width, height } = useWindowDimensions();
@@ -88,9 +83,7 @@ function ThatTable1() {
             fontWeight: r < 2 ? "bold" : "normal",
           }}
         >
-          {dialect === "reef" && reefReplacements.get(col)
-            ? reefReplacements.get(col)
-            : col}
+          {dialect === "reef" && reefReplacements.get(col) ? reefReplacements.get(col) : col}
         </Themed.Text>
       )}
     />
@@ -115,9 +108,7 @@ function ThatTable2() {
             fontStyle: c === 1 ? "italic" : "normal",
           }}
         >
-          {dialect === "reef" && reefReplacements.get(col)
-            ? reefReplacements.get(col)
-            : col}
+          {dialect === "reef" && reefReplacements.get(col) ? reefReplacements.get(col) : col}
         </Themed.Text>
       )}
     />

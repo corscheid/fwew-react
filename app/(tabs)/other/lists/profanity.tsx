@@ -1,12 +1,7 @@
 import { ResultCount } from "@/components/common/ResultCount";
 import { FwewSearchResults } from "@/components/search/FwewSearchResults";
 import { useProfanity } from "@/hooks/useProfanity";
-import {
-  ScrollView,
-  StyleSheet,
-  useWindowDimensions,
-  View,
-} from "react-native";
+import { ScrollView, StyleSheet, useWindowDimensions, View } from "react-native";
 
 export default function ProfanityScreen() {
   const { results, resultCount, loading } = useProfanity();

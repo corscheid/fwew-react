@@ -6,11 +6,7 @@ import { useAppLanguageContext } from "@/context/AppLanguageContext";
 import { useDialectContext } from "@/context/DialectContext";
 import { useThemeNameContext } from "@/context/ThemeNameContext";
 import { getThemedComponents } from "@/themes";
-import type {
-  FilterExpressionBuilderValue,
-  ListMenuCondItem,
-  ListMenuWhatItem,
-} from "@/types/list";
+import type { FilterExpressionBuilderValue, ListMenuCondItem, ListMenuWhatItem } from "@/types/list";
 import { StyleSheet, View } from "react-native";
 
 type FilterExpressionBuilderProps = {
@@ -27,12 +23,8 @@ export function FilterExpressionBuilder(props: FilterExpressionBuilderProps) {
   const Themed = getThemedComponents(themeName);
 
   const whatValues = list.listMenu.whatValues;
-  const condValues = value.what
-    ? list.listMenu.condValues[value.what.value]
-    : [];
-  const isExactPosSpec =
-    value.what?.value === "pos" &&
-    (value.cond?.value === "is" || value.cond?.value === "not-is");
+  const condValues = value.what ? list.listMenu.condValues[value.what.value] : [];
+  const isExactPosSpec = value.what?.value === "pos" && (value.cond?.value === "is" || value.cond?.value === "not-is");
   const isNumericSpec =
     value.what?.value === "words" ||
     value.what?.value === "syllables" ||
@@ -85,9 +77,7 @@ export function FilterExpressionBuilder(props: FilterExpressionBuilderProps) {
         options={whatValues}
         value={value.what}
         initiallyOpen={!value.what}
-        renderOption={(option) => (
-          <Themed.Text style={styles.text}>{option?.description}</Themed.Text>
-        )}
+        renderOption={(option) => <Themed.Text style={styles.text}>{option?.description}</Themed.Text>}
         keyExtractor={(option, i) => `dd_${option?.value}_${i}`}
         onChange={setWhat}
       />
@@ -97,9 +87,7 @@ export function FilterExpressionBuilder(props: FilterExpressionBuilderProps) {
           options={condValues}
           value={value.cond}
           initiallyOpen={!value.cond}
-          renderOption={(option) => (
-            <Themed.Text style={styles.text}>{option?.description}</Themed.Text>
-          )}
+          renderOption={(option) => <Themed.Text style={styles.text}>{option?.description}</Themed.Text>}
           keyExtractor={(option, i) => `dd_${option?.value}_${i}`}
           onChange={setCond}
         />
@@ -115,9 +103,7 @@ export function FilterExpressionBuilder(props: FilterExpressionBuilderProps) {
           initiallyOpen={!value.spec}
           renderOption={(option) => (
             <Themed.Text style={styles.text}>
-              {option.value && option.name
-                ? `${option.value} (${option.name})`
-                : " "}
+              {option.value && option.name ? `${option.value} (${option.name})` : " "}
             </Themed.Text>
           )}
           keyExtractor={(option, i) => `dd_${option}_${i}`}
@@ -126,12 +112,7 @@ export function FilterExpressionBuilder(props: FilterExpressionBuilderProps) {
       )}
       {/* spec numeric */}
       {value.what && value.cond && isNumericSpec && !isExactPosSpec && (
-        <NumericTextInput
-          value={value.spec}
-          onChangeText={setSpec}
-          placeholder={getNumericExample()}
-          autoFocus
-        />
+        <NumericTextInput value={value.spec} onChangeText={setSpec} placeholder={getNumericExample()} autoFocus />
       )}
       {/* spec non-numeric */}
       {value.what && value.cond && !isNumericSpec && !isExactPosSpec && (

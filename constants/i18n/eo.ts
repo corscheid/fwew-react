@@ -40,9 +40,7 @@ const partOfSpeech: PartOfSpeech = {
   },
 };
 
-const partOfSpeechList = Object.entries(partOfSpeech).map(
-  ([value, { name }]) => ({ name, value })
-);
+const partOfSpeechList = Object.entries(partOfSpeech).map(([value, { name }]) => ({ name, value }));
 
 const table1Data = [
   ["Case", "Noun", "", "Clause Wrapper", ""],
@@ -232,8 +230,7 @@ const strings: UITranslation = {
     numSyllables2: "Nombro de Silaboj en la Familia Nomo",
     numSyllables3: "Nombro de Silaboj en la Patra Nomo",
     nameEnding: "Nomo Fino",
-    nameEndingHint:
-      "-'itan por viro, -'ite por virino, -'itu por nebinara (nekana)",
+    nameEndingHint: "-'itan por viro, -'ite por virino, -'itu por nebinara (nekana)",
     nameEndingOptions: [
       { value: "random", name: "hazarda" },
       { value: "'ite", name: "-'ite" },

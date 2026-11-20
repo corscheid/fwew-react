@@ -4,12 +4,7 @@ import { getColorExtension, getThemedComponents } from "@/themes";
 import type { FAIconName } from "@/types/icons";
 import { FontAwesome } from "@expo/vector-icons";
 import { useTheme } from "expo-router/react-navigation";
-import {
-  Pressable,
-  StyleSheet,
-  type TextStyle,
-  type ViewStyle,
-} from "react-native";
+import { Pressable, StyleSheet, type TextStyle, type ViewStyle } from "react-native";
 
 type ButtonProps = {
   onPress: () => void;
@@ -43,11 +38,7 @@ export function Button(props: ButtonProps) {
       disabled={disabled}
     >
       <FontAwesome name={icon} size={24} color={colorExtension.dark.text} />
-      {text && (
-        <Themed.Text style={{ color: colorExtension.dark.text, ...textStyle }}>
-          {text}
-        </Themed.Text>
-      )}
+      {text && <Themed.Text style={{ color: colorExtension.dark.text, ...textStyle }}>{text}</Themed.Text>}
     </Pressable>
   );
 }

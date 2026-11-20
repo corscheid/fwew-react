@@ -1,15 +1,6 @@
 import type { ExtendedLanguageCode } from "@/types/common";
 import { View } from "react-native";
-import Svg, {
-  Circle,
-  Defs,
-  G,
-  Path,
-  Polygon,
-  Rect,
-  SvgProps,
-  Use,
-} from "react-native-svg";
+import Svg, { Circle, Defs, G, Path, Polygon, Rect, SvgProps, Use } from "react-native-svg";
 
 // de
 export const Germany = (props: SvgProps) => (
@@ -40,10 +31,7 @@ export const USA = (props: SvgProps) => (
 export const Esperanto = (props: SvgProps) => (
   <Svg viewBox="0 0 512 512" width={32} height={32} {...props}>
     <Path fill="#FFF" d="M0 0h202v202H0" />
-    <Path
-      fill="#090"
-      d="M0 200h200V0h400v400H0m58-243L99 31l41 126L33 79h133"
-    />
+    <Path fill="#090" d="M0 200h200V0h400v400H0m58-243L99 31l41 126L33 79h133" />
   </Svg>
 );
 
@@ -53,10 +41,7 @@ export const Mexico = (props: SvgProps) => (
     <Path d="M341.334 85.33H0v341.332h512V85.33z" fill="#d80027" />
     <Path d="M0 85.333h170.663V426.67H0z" fill="#6da544" />
     <Path d="M170.663 85.333h170.663V426.67H170.663z" fill="#f0f0f0" />
-    <Path
-      d="M208 255.996c0 26.509 21.491 48 48 48s48-21.491 48-48v-16h-96v16z"
-      fill="#6da544"
-    />
+    <Path d="M208 255.996c0 26.509 21.491 48 48 48s48-21.491 48-48v-16h-96v16z" fill="#6da544" />
     <Path
       d="M320 223.996h-48c0-8.836-7.164-16-16-16s-16 7.164-16 16h-48c0 8.836 7.697 16 16.533 16H208c0 8.836 7.164 16 16 16 0 8.836 7.164 16 16 16h32c8.836 0 16-7.164 16-16 8.836 0 16-7.164 16-16h-.533c8.836 0 16.533-7.163 16.533-16z"
       fill="#ff9811"
@@ -99,13 +84,7 @@ export const Italy = (props: SvgProps) => (
       points="341.334,85.33 170.666,85.33 0,85.33 0,426.662 170.666,426.662 341.334,426.662 512,426.662 512,85.33 "
     />
     <Rect y="85.333" fill="#6DA544" width="170.663" height="341.337" />
-    <Rect
-      x="341.337"
-      y="85.333"
-      fill="#D80027"
-      width="170.663"
-      height="341.337"
-    />
+    <Rect x="341.337" y="85.333" fill="#D80027" width="170.663" height="341.337" />
   </Svg>
 );
 
@@ -135,10 +114,7 @@ export const SouthKorea = (props: SvgProps) => (
         <Use height="96" transform="translate(0 38)" width="144" href="#a" />
         <Use height="96" transform="translate(0 44)" width="144" href="#a" />
         <Use height="96" transform="translate(0 50)" width="144" href="#a" />
-        <Path
-          d="M0 24c13.255 0 24-10.745 24-24S13.255-24 0-24c-9.941 0-18 8.059-18 18s8.059 18 18 18"
-          fill="#c60c30"
-        />
+        <Path d="M0 24c13.255 0 24-10.745 24-24S13.255-24 0-24c-9.941 0-18 8.059-18 18s8.059 18 18 18" fill="#c60c30" />
         <Path
           d="M0-24c-6.627 0-12 5.373-12 12S-6.627 0 0 0s12 5.373 12 12S6.627 24 0 24c-13.255 0-24-10.745-24-24s10.745-24 24-24"
           fill="#003478"
@@ -204,10 +180,7 @@ export const Russia = (props: SvgProps) => (
 export const Sweden = (props: SvgProps) => (
   <Svg viewBox="0 0 512 512" width={32} height={32} {...props}>
     <Path d="M0 85.333h512V426.67H0z" fill="#0052b4" />
-    <Path
-      d="M192 85.33h-64v138.666H0v64h128v138.666h64V287.996h320v-64H192z"
-      fill="#ffda44"
-    />
+    <Path d="M192 85.33h-64v138.666H0v64h128v138.666h64V287.996h320v-64H192z" fill="#ffda44" />
   </Svg>
 );
 

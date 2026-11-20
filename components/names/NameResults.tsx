@@ -14,6 +14,8 @@ export function NameResults({ names, copyName }: NameResultsProps) {
   const { themeName } = useThemeNameContext();
   const Themed = getThemedComponents(themeName);
 
+  const iconColor = theme.colors.text === null ? undefined : theme.colors.text;
+
   return (
     <View style={styles.results}>
       {names.map((name, i) => (
@@ -24,7 +26,7 @@ export function NameResults({ names, copyName }: NameResultsProps) {
         >
           <Themed.CardView style={styles.nameCard}>
             <Themed.Text style={styles.name}>{name}</Themed.Text>
-            <FontAwesome name="copy" size={24} color={theme.colors.text} />
+            <FontAwesome name="copy" size={24} color={theme.colors.text?.toString()} />
           </Themed.CardView>
         </Pressable>
       ))}

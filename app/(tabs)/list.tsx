@@ -7,17 +7,10 @@ import { useFilterExpression } from "@/hooks/useFilterExpression";
 import { useList } from "@/hooks/useList";
 import { useTheme } from "expo-router/react-navigation";
 import { useEffect } from "react";
-import {
-  RefreshControl,
-  ScrollView,
-  StyleSheet,
-  useWindowDimensions,
-  View,
-} from "react-native";
+import { RefreshControl, ScrollView, StyleSheet, useWindowDimensions, View } from "react-native";
 
 export default function ListScreen() {
-  const { filters, filterExpression, incomplete, add, remove, update } =
-    useFilterExpression();
+  const { filters, filterExpression, incomplete, add, remove, update } = useFilterExpression();
   const { loading, results, execute, cancel } = useList();
   const debounce = useDebounce();
   const resultsVisible = filterExpression.length > 0 && results.length > 0;
@@ -49,19 +42,8 @@ export default function ListScreen() {
             initiallyOpen
           />
         }
-        header={
-          <ResultCount
-            visible={resultsVisible}
-            resultCount={results.length}
-            style={styles.bottomPadded}
-          />
-        }
-        main={
-          <ListResults
-            loading={loading}
-            results={resultsVisible ? results : []}
-          />
-        }
+        header={<ResultCount visible={resultsVisible} resultCount={results.length} style={styles.bottomPadded} />}
+        main={<ListResults loading={loading} results={resultsVisible ? results : []} />}
         refresh={{
           loading,
           getData,
@@ -74,13 +56,7 @@ export default function ListScreen() {
   return (
     <ScrollView
       keyboardShouldPersistTaps="always"
-      refreshControl={
-        <RefreshControl
-          refreshing={loading}
-          onRefresh={getData}
-          colors={[theme.colors.primary]}
-        />
-      }
+      refreshControl={<RefreshControl refreshing={loading} onRefresh={getData} colors={[theme.colors.primary]} />}
     >
       <View style={styles.container}>
         <ListOptions
@@ -91,14 +67,8 @@ export default function ListScreen() {
           incomplete={incomplete}
           initiallyOpen={false}
         />
-        <ResultCount
-          visible={!loading && resultsVisible}
-          resultCount={results.length}
-        />
-        <ListResults
-          loading={loading}
-          results={resultsVisible ? results : []}
-        />
+        <ResultCount visible={!loading && resultsVisible} resultCount={results.length} />
+        <ListResults loading={loading} results={resultsVisible ? results : []} />
       </View>
     </ScrollView>
   );

@@ -3,12 +3,7 @@ import { SearchBar } from "@/components/common/SearchBar";
 import { useThemeNameContext } from "@/context/ThemeNameContext";
 import { useValid } from "@/hooks/useValid";
 import { getThemedComponents } from "@/themes";
-import {
-  ScrollView,
-  StyleSheet,
-  useWindowDimensions,
-  View,
-} from "react-native";
+import { ScrollView, StyleSheet, useWindowDimensions, View } from "react-native";
 
 export default function ValidScreen() {
   const { query, results, loading, search, cancel } = useValid();
@@ -21,10 +16,7 @@ export default function ValidScreen() {
     return (
       <View style={{ gap: 16 }}>
         <SearchBar query={query} search={search} cancel={cancel} autoFocus />
-        <ResultCount
-          resultCount={results.length}
-          visible={results.length > 0 && !loading}
-        />
+        <ResultCount resultCount={results.length} visible={results.length > 0 && !loading} />
         {results.map((row, index) => (
           <Themed.CardView key={`vrc_${index}`} style={styles.container}>
             <Themed.Text>{row}</Themed.Text>
@@ -39,10 +31,7 @@ export default function ValidScreen() {
       <View style={{ alignItems: "center" }}>
         <View style={styles.container}>
           <SearchBar query={query} search={search} cancel={cancel} autoFocus />
-          <ResultCount
-            resultCount={results.length}
-            visible={results.length > 0 && !loading}
-          />
+          <ResultCount resultCount={results.length} visible={results.length > 0 && !loading} />
           {results.map((row, index) => (
             <Themed.CardView key={`vrc_${index}`} style={styles.container}>
               <Themed.Text>{row}</Themed.Text>

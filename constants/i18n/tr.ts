@@ -34,9 +34,7 @@ const partOfSpeech: PartOfSpeech = {
   "vin., intj.": { abbr: "vin., intj.", name: "Edat" },
 };
 
-const partOfSpeechList = Object.entries(partOfSpeech).map(
-  ([value, { name }]) => ({ name, value })
-);
+const partOfSpeechList = Object.entries(partOfSpeech).map(([value, { name }]) => ({ name, value }));
 
 const table1Data = [
   ["Case", "Noun", "", "Clause Wrapper", ""],
@@ -221,8 +219,7 @@ const strings: UITranslation = {
     numSyllables2: "Soyadındaki hece sayısı",
     numSyllables3: "Ebeveyn adındaki hece sayısı",
     nameEnding: "İsim Sonu",
-    nameEndingHint:
-      "-'itan erkekler için, -'ite kadınlar için, -'itu cinsiyetsiz için (kanonik olmayan)",
+    nameEndingHint: "-'itan erkekler için, -'ite kadınlar için, -'itu cinsiyetsiz için (kanonik olmayan)",
     nameEndingOptions: [
       { value: "random", name: "rastgele" },
       { value: "'ite", name: "-'ite" },

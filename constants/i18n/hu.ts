@@ -34,9 +34,7 @@ const partOfSpeech: PartOfSpeech = {
   "vin., intj.": { abbr: "vin., intj.", name: "Intransitív ige, közbeszólás" },
 };
 
-const partOfSpeechList = Object.entries(partOfSpeech).map(
-  ([value, { name }]) => ({ name, value })
-);
+const partOfSpeechList = Object.entries(partOfSpeech).map(([value, { name }]) => ({ name, value }));
 
 const table1Data = [
   ["Case", "Noun", "", "Clause Wrapper", ""],
@@ -220,8 +218,7 @@ const strings: UITranslation = {
     numSyllables2: "Vezetéknév szótagjainak száma",
     numSyllables3: "Szülők nevének szótagjainak száma",
     nameEnding: "Név Vége",
-    nameEndingHint:
-      "-'itan férfiaknak, -'ite nőknek, -'itu nem-binárisoknak (nem kánonikus)",
+    nameEndingHint: "-'itan férfiaknak, -'ite nőknek, -'itu nem-binárisoknak (nem kánonikus)",
     nameEndingOptions: [
       { value: "random", name: "véletlen" },
       { value: "'ite", name: "-'ite" },

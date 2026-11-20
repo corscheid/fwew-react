@@ -126,27 +126,9 @@ export function Romanize(IPA: string): string {
             breakdown = breakdown.concat("x");
           }
         } else if (
-          [
-            "ʔ",
-            "l",
-            "ɾ",
-            "h",
-            "m",
-            "n",
-            "ŋ",
-            "v",
-            "w",
-            "j",
-            "z",
-            "b",
-            "d",
-            "g",
-            "ʃ",
-            "ʒ",
-            "b",
-            "d",
-            "g",
-          ].includes(runes[0])
+          ["ʔ", "l", "ɾ", "h", "m", "n", "ŋ", "v", "w", "j", "z", "b", "d", "g", "ʃ", "ʒ", "b", "d", "g"].includes(
+            runes[0]
+          )
         ) {
           // other normal onset
           breakdown = breakdown.concat(romanize[runes[0]]);

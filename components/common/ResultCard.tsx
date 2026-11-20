@@ -16,9 +16,7 @@ export function ResultCard({ word }: ResultCardProps) {
 
   return (
     <Accordion
-      closedContent={
-        <ResultOverview dialect={dialect} word={word} local={local} />
-      }
+      closedContent={<ResultOverview dialect={dialect} word={word} local={local} />}
       openedContent={<ResultInfo word={word} />}
     />
   );

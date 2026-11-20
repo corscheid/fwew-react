@@ -25,35 +25,21 @@ export function OptionItem(props: OptionItemProps) {
   };
 
   return (
-    <Pressable
-      onPress={onSelect}
-      style={({ pressed }) => ({ opacity: pressed ? 0.5 : 1 })}
-    >
+    <Pressable onPress={onSelect} style={({ pressed }) => ({ opacity: pressed ? 0.5 : 1 })}>
       <View
         style={[
           styles.container,
           {
-            backgroundColor: selected
-              ? theme.colors.primary
-              : theme.colors.card,
+            backgroundColor: selected ? theme.colors.primary : theme.colors.card,
           },
         ]}
       >
         <View style={styles.itemContainer}>
           {icon}
-          <Themed.Text style={[styles.value, { color: getTextColor() }]}>
-            {value}
-          </Themed.Text>
+          <Themed.Text style={[styles.value, { color: getTextColor() }]}>{value}</Themed.Text>
         </View>
         <View style={styles.itemContainer}>
-          {selected && (
-            <FontAwesome
-              name="check"
-              size={24}
-              color={colorExtension.dark.text}
-              style={styles.check}
-            />
-          )}
+          {selected && <FontAwesome name="check" size={24} color={colorExtension.dark.text} style={styles.check} />}
         </View>
       </View>
     </Pressable>

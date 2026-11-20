@@ -19,9 +19,7 @@ type FilterExpressionBuilderListProps = {
   mode?: "list" | "random";
 };
 
-export function FilterExpressionBuilderList(
-  props: FilterExpressionBuilderListProps
-) {
+export function FilterExpressionBuilderList(props: FilterExpressionBuilderListProps) {
   const { filters, add, remove, update, disabled, mode = "list" } = props;
   const { colors } = useTheme();
   const { appLanguage } = useAppLanguageContext();
@@ -40,20 +38,11 @@ export function FilterExpressionBuilderList(
     <View>
       {filters.map((_, i) => (
         <View key={`feb_${i}`}>
-          <View
-            style={[styles.febHeader, { backgroundColor: colors.background }]}
-          >
+          <View style={[styles.febHeader, { backgroundColor: colors.background }]}>
             <Themed.Text style={styles.label}>{getHeaderText(i)}</Themed.Text>
-            <SmallButton
-              onPress={() => remove(i)}
-              icon="trash"
-              color={colors.notification}
-            />
+            <SmallButton onPress={() => remove(i)} icon="trash" color={colors.notification} />
           </View>
-          <FilterExpressionBuilder
-            value={filters[i]}
-            onChange={(value) => update(i, value)}
-          />
+          <FilterExpressionBuilder value={filters[i]} onChange={(value) => update(i, value)} />
         </View>
       ))}
       <View style={{ paddingTop: 10 }}>

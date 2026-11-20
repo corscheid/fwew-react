@@ -108,8 +108,7 @@ export const Affixes: FwewAffixes = {
       navi: "sä-",
       productive: false,
       for: null,
-      display:
-        "creates nouns meaning (1) instrument doing [word] or (2) specific instance of doing [word]",
+      display: "creates nouns meaning (1) instrument doing [word] or (2) specific instance of doing [word]",
     },
     sna: {
       navi: "sna-",
@@ -226,15 +225,13 @@ export const Affixes: FwewAffixes = {
       navi: "<eyk>",
       productive: true,
       for: "verbs",
-      display:
-        'make [verb], cause to [verb], as in "Mo\'at makes Neytiri teach Jake"',
+      display: 'make [verb], cause to [verb], as in "Mo\'at makes Neytiri teach Jake"',
     },
     ilv: {
       navi: "<ilv>",
       productive: true,
       for: "verbs",
-      display:
-        "would have [verb]ed; completed hypothetical action or action removed from reality; have [verb]ed",
+      display: "would have [verb]ed; completed hypothetical action or action removed from reality; have [verb]ed",
     },
     imv: {
       navi: "<imv>",
@@ -246,8 +243,7 @@ export const Affixes: FwewAffixes = {
       navi: "<irv>",
       productive: true,
       for: "verbs",
-      display:
-        "would be [verb]ing; ongoing hypothetical action or action removed from reality",
+      display: "would be [verb]ing; ongoing hypothetical action or action removed from reality",
     },
     iv: {
       navi: "<iv>",
@@ -296,8 +292,7 @@ export const Affixes: FwewAffixes = {
       navi: "<ìsy>",
       productive: true,
       for: "verbs",
-      display:
-        "immediate/near future tense (with intention or determination of the speaker)",
+      display: "immediate/near future tense (with intention or determination of the speaker)",
     },
     ìy: {
       navi: "<ìy>",
@@ -467,8 +462,7 @@ export const Affixes: FwewAffixes = {
       navi: "-ve",
       productive: true,
       for: "numbers",
-      display:
-        "[number]st, [number]nd, [number]rd, [number]th, but it's always -ve",
+      display: "[number]st, [number]nd, [number]rd, [number]th, but it's always -ve",
     },
     vi: {
       navi: "-vi",
@@ -506,8 +500,7 @@ export const Affixes: FwewAffixes = {
       navi: "-a-",
       productive: true,
       for: "adjectives",
-      display:
-        'points adjective to the noun it describes, as in "The tall-> person"',
+      display: 'points adjective to the noun it describes, as in "The tall-> person"',
     },
     pe: {
       navi: "-pe+",

@@ -9,10 +9,7 @@ type ListResultsProps = {
   results: Word[] | null;
 };
 
-export const ListResults = memo(function ListResults({
-  loading,
-  results,
-}: ListResultsProps) {
+export const ListResults = memo(function ListResults({ loading, results }: ListResultsProps) {
   if (loading && Platform.OS === "web") {
     return <ActivityIndicator size="large" />;
   }

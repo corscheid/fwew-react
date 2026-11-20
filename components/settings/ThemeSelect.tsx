@@ -22,9 +22,7 @@ export function ThemeSelect() {
       closedContent={
         <View style={styles.iconContainer}>
           <View style={styles.icon}>
-            <Themed.Text style={styles.value}>
-              {themeName.slice(0, 2).toUpperCase()}
-            </Themed.Text>
+            <Themed.Text style={styles.value}>{themeName.slice(0, 2).toUpperCase()}</Themed.Text>
           </View>
           <Themed.Text style={styles.value}>{ui.settings.theme}</Themed.Text>
         </View>
@@ -40,10 +38,7 @@ export function ThemeSelect() {
                       style={[
                         styles.value,
                         {
-                          color:
-                            themeName === tn
-                              ? colorExtension.dark.text
-                              : theme.colors.text,
+                          color: themeName === tn ? colorExtension.dark.text : theme.colors.text,
                         },
                       ]}
                     >

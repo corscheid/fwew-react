@@ -30,25 +30,13 @@ export function Credits() {
       {AppLanguages.map((language, i) => {
         const names = credits.translation[language.value];
         if (names.length > 0)
-          return (
-            <CreditsItem
-              key={`sct_${i}_${language.value}`}
-              language={language.value}
-              names={names}
-            />
-          );
+          return <CreditsItem key={`sct_${i}_${language.value}`} language={language.value} names={names} />;
       })}
     </View>
   );
 }
 
-function CreditsItem({
-  language,
-  names,
-}: {
-  language?: ExtendedLanguageCode;
-  names: string[];
-}) {
+function CreditsItem({ language, names }: { language?: ExtendedLanguageCode; names: string[] }) {
   const { colors } = useTheme();
   const { themeName } = useThemeNameContext();
   const Themed = getThemedComponents(themeName);
@@ -59,13 +47,7 @@ function CreditsItem({
       <View style={{ flex: 1 }}>
         <View style={styles.creditsItemContainer}>
           {names.map((name, i) => (
-            <View
-              key={`ci_${name}_${i}`}
-              style={[
-                styles.textContainer,
-                { backgroundColor: colors.background },
-              ]}
-            >
+            <View key={`ci_${name}_${i}`} style={[styles.textContainer, { backgroundColor: colors.background }]}>
               <Themed.Text style={styles.text}>{name}</Themed.Text>
             </View>
           ))}

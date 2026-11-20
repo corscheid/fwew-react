@@ -23,10 +23,7 @@ export function Accordion(props: AccordionProps) {
   return (
     <Themed.CardView>
       <Pressable
-        style={({ pressed }) => [
-          styles.container,
-          { opacity: pressed ? 0.5 : 1 },
-        ]}
+        style={({ pressed }) => [styles.container, { opacity: pressed ? 0.5 : 1 }]}
         onPress={() => setExpanded((e) => !e)}
       >
         {closedContent}

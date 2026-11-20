@@ -52,14 +52,8 @@ export function ReefMe(IPA: string, Navi: string): ReefData {
   const ejectives = ["p'", "t'", "k'"];
   for (let b of ejectives) {
     for (let a of ejectives) {
-      ipaReef = ipaReef.replaceAll(
-        a.concat(".".concat(b)),
-        soften[a].concat(".".concat(soften[b]))
-      );
-      ipaReef = ipaReef.replaceAll(
-        a.concat(".ˈ".concat(b)),
-        soften[a].concat(".ˈ".concat(soften[b]))
-      );
+      ipaReef = ipaReef.replaceAll(a.concat(".".concat(b)), soften[a].concat(".".concat(soften[b])));
+      ipaReef = ipaReef.replaceAll(a.concat(".ˈ".concat(b)), soften[a].concat(".ˈ".concat(soften[b])));
     }
   }
 
@@ -69,15 +63,9 @@ export function ReefMe(IPA: string, Navi: string): ReefData {
       // infix markers
       for (let d of ["ˈ", ""]) {
         // stress markers
-        ipaReef = ipaReef.replaceAll(
-          ".".concat(d).concat(b).concat(c),
-          ".".concat(d).concat(soften[b]).concat(c)
-        );
+        ipaReef = ipaReef.replaceAll(".".concat(d).concat(b).concat(c), ".".concat(d).concat(soften[b]).concat(c));
         // in case there's a space before the ejective
-        ipaReef = ipaReef.replaceAll(
-          " ".concat(d).concat(b).concat(c),
-          " ".concat(d).concat(soften[b]).concat(c)
-        );
+        ipaReef = ipaReef.replaceAll(" ".concat(d).concat(b).concat(c), " ".concat(d).concat(soften[b]).concat(c));
 
         // start of a word
         if (ipaReef.startsWith(d + b)) {
@@ -86,10 +74,7 @@ export function ReefMe(IPA: string, Navi: string): ReefData {
         }
 
         for (let a of vowels) {
-          ipaReef = ipaReef.replaceAll(
-            b.concat(".".concat(d).concat(a)),
-            soften[b].concat(".".concat(d).concat(a))
-          );
+          ipaReef = ipaReef.replaceAll(b.concat(".".concat(d).concat(a)), soften[b].concat(".".concat(d).concat(a)));
         }
       }
     }
@@ -275,27 +260,9 @@ export function ReefMe(IPA: string, Navi: string): ReefData {
             breakdown = breakdown.concat("x");
           }
         } else if (
-          [
-            "ʔ",
-            "l",
-            "ɾ",
-            "h",
-            "m",
-            "n",
-            "ŋ",
-            "v",
-            "w",
-            "j",
-            "z",
-            "b",
-            "d",
-            "g",
-            "ʃ",
-            "ʒ",
-            "b",
-            "d",
-            "g",
-          ].includes(runes[0])
+          ["ʔ", "l", "ɾ", "h", "m", "n", "ŋ", "v", "w", "j", "z", "b", "d", "g", "ʃ", "ʒ", "b", "d", "g"].includes(
+            runes[0]
+          )
         ) {
           // other normal onset
           breakdown = breakdown.concat(romanize[runes[0]]);
@@ -395,10 +362,7 @@ export function ReefMe(IPA: string, Navi: string): ReefData {
     if (shortString.includes(a + "'" + a)) {
       // fix IPA
       let noTìftangBreakdown = breakdown.replaceAll(a + "'-" + a, a + "-" + a);
-      noTìftangBreakdown = noTìftangBreakdown.replaceAll(
-        a + "-'" + a,
-        a + "-" + a
-      );
+      noTìftangBreakdown = noTìftangBreakdown.replaceAll(a + "-'" + a, a + "-" + a);
 
       breakdown = breakdown.concat(" or ");
       breakdown = breakdown.concat(noTìftangBreakdown);
@@ -478,10 +442,7 @@ export function ReefMe(IPA: string, Navi: string): ReefData {
         // capitalize it
         let letterIndex = 0;
         for (let a of reefRunes) {
-          if (
-            letterIndex < lettersToCapitalize.length &&
-            a === lettersToCapitalize[letterIndex]
-          ) {
+          if (letterIndex < lettersToCapitalize.length && a === lettersToCapitalize[letterIndex]) {
             letterIndex += 1;
             newReef = newReef.concat(a.toUpperCase());
           } else {

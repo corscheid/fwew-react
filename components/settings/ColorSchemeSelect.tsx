@@ -13,8 +13,7 @@ import { useTheme } from "expo-router/react-navigation";
 import { StyleSheet, View } from "react-native";
 
 export function ColorSchemeSelect() {
-  const { colorSchemeName, colorSchemeValue, saveColorScheme } =
-    useColorSchemeContext();
+  const { colorSchemeName, colorSchemeValue, saveColorScheme } = useColorSchemeContext();
   const { dialect } = useDialectContext();
   const { appLanguage } = useAppLanguageContext();
   const ui = getUI(appLanguage, dialect);
@@ -37,16 +36,10 @@ export function ColorSchemeSelect() {
             <FontAwesome
               size={24}
               name={colorSchemeValue === "dark" ? "moon-o" : "sun-o"}
-              color={
-                colorSchemeName === "dark"
-                  ? colorExtension.dark.text
-                  : theme.colors.text
-              }
+              color={colorSchemeName === "dark" ? colorExtension.dark.text : theme.colors.text}
             />
           </View>
-          <Themed.Text style={styles.value}>
-            {ui.settings.colorScheme}
-          </Themed.Text>
+          <Themed.Text style={styles.value}>{ui.settings.colorScheme}</Themed.Text>
         </View>
       }
       openedContent={
@@ -59,11 +52,7 @@ export function ColorSchemeSelect() {
                     <FontAwesome
                       size={24}
                       name={iconMap[csn.value]}
-                      color={
-                        colorSchemeName === csn.value
-                          ? colorExtension.dark.text
-                          : theme.colors.text
-                      }
+                      color={colorSchemeName === csn.value ? colorExtension.dark.text : theme.colors.text}
                     />
                   </View>
                 }

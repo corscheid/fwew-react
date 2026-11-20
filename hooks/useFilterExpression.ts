@@ -5,20 +5,14 @@ import { FilterExpressionBuilderValue } from "@/types/list";
 import { useEffect, useState } from "react";
 
 export function useFilterExpression() {
-  const [filters, setFilters] = useState<FilterExpressionBuilderValue[]>([
-    { spec: "" },
-  ]);
+  const [filters, setFilters] = useState<FilterExpressionBuilderValue[]>([{ spec: "" }]);
 
   const { appLanguage } = useAppLanguageContext();
   const { dialect } = useDialectContext();
   const ui = getUI(appLanguage, dialect);
 
   const filterExpression = filters
-    .map((f) =>
-      `${f.what?.value ?? ""} ${f.cond?.value ?? ""} ${f.spec}`
-        .trim()
-        .replace(/ +/g, " ")
-    )
+    .map((f) => `${f.what?.value ?? ""} ${f.cond?.value ?? ""} ${f.spec}`.trim().replace(/ +/g, " "))
     .join(" and ")
     .trim();
 
@@ -48,17 +42,13 @@ export function useFilterExpression() {
         return {
           what: e.what && {
             value: e.what.value,
-            description: ui.list.listMenu.whatValues.filter(
-              (w) => w.value === e.what?.value
-            )[0]?.description,
+            description: ui.list.listMenu.whatValues.filter((w) => w.value === e.what?.value)[0]?.description,
           },
           cond: e.cond && {
             value: e.cond.value,
             description:
               e.what &&
-              ui.list.listMenu.condValues[e.what.value].filter(
-                (c) => c.value === e.cond?.value
-              )[0]?.description,
+              ui.list.listMenu.condValues[e.what.value].filter((c) => c.value === e.cond?.value)[0]?.description,
           },
           spec: e.spec,
         } as FilterExpressionBuilderValue;

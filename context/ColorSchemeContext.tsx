@@ -3,9 +3,7 @@ import { createContext, type ReactNode, useContext } from "react";
 
 export type ColorSchemeType = ReturnType<typeof useColorScheme>;
 
-export const ColorSchemeContext = createContext<ColorSchemeType>(
-  null as unknown as ColorSchemeType
-);
+export const ColorSchemeContext = createContext<ColorSchemeType>(null as unknown as ColorSchemeType);
 
 export const useColorSchemeContext = () => useContext(ColorSchemeContext);
 
@@ -14,13 +12,6 @@ type ColorSchemeProviderProps = {
   children: ReactNode;
 };
 
-export function ColorSchemeProvider({
-  value,
-  children,
-}: ColorSchemeProviderProps) {
-  return (
-    <ColorSchemeContext.Provider value={value}>
-      {children}
-    </ColorSchemeContext.Provider>
-  );
+export function ColorSchemeProvider({ value, children }: ColorSchemeProviderProps) {
+  return <ColorSchemeContext.Provider value={value}>{children}</ColorSchemeContext.Provider>;
 }

@@ -12,11 +12,7 @@ export type ThemeName = keyof typeof ThemeMap;
 
 export const ThemeNames = Object.keys(ThemeMap) as ThemeName[];
 
-export function getTheme(
-  themeName: ThemeName,
-  colorScheme: ColorSchemeName,
-  dialect: Dialect
-): Theme {
+export function getTheme(themeName: ThemeName, colorScheme: ColorSchemeName, dialect: Dialect): Theme {
   if (!colorScheme) {
     colorScheme = "light";
   }

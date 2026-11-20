@@ -28,16 +28,10 @@ export function ResultOverview({ dialect, word, local }: ResultOverviewProps) {
   return (
     <View style={styles.closedContainer}>
       {/* Na'vi */}
-      <Themed.Text style={styles.navi}>
-        {dialect === "reef" ? reefNavi : forestNavi}
-      </Themed.Text>
+      <Themed.Text style={styles.navi}>{dialect === "reef" ? reefNavi : forestNavi}</Themed.Text>
       {/* Part of Spech */}
-      <View
-        style={[styles.posContainer, { backgroundColor: colors.innerCard }]}
-      >
-        <Themed.MonoText style={styles.pos}>
-          {ui.common.partOfSpeech[word.PartOfSpeech].abbr}
-        </Themed.MonoText>
+      <View style={[styles.posContainer, { backgroundColor: colors.innerCard }]}>
+        <Themed.MonoText style={styles.pos}>{ui.common.partOfSpeech[word.PartOfSpeech].abbr}</Themed.MonoText>
       </View>
       {/* Definition */}
       <Themed.Text style={styles.local} numberOfLines={1}>

@@ -41,9 +41,7 @@ const partOfSpeech: PartOfSpeech = {
   "vin., vtr.": { abbr: "vin., vtr.", name: "Verbo intransitivo o transitivo" },
 };
 
-const partOfSpeechList = Object.entries(partOfSpeech).map(
-  ([value, { name }]) => ({ name, value })
-);
+const partOfSpeechList = Object.entries(partOfSpeech).map(([value, { name }]) => ({ name, value }));
 
 const table1Data = [
   ["Case", "Noun", "", "Clause Wrapper", ""],
@@ -233,8 +231,7 @@ const strings: UITranslation = {
     numSyllables2: "Número de Sílabas en el Apellido",
     numSyllables3: "Número de Sílabas en el Nombre del Padre",
     nameEnding: "Terminación del Nombre",
-    nameEndingHint:
-      "-'itan para masculino, -'ite para femenino, -'itu para no binario (no canónico)",
+    nameEndingHint: "-'itan para masculino, -'ite para femenino, -'itu para no binario (no canónico)",
     nameEndingOptions: [
       { value: "random", name: "aleatorio" },
       { value: "'ite", name: "-'ite" },

@@ -1,12 +1,7 @@
 import { ResultCount } from "@/components/common/ResultCount";
 import { FwewSearchResults } from "@/components/search/FwewSearchResults";
 import { useMultiIPA } from "@/hooks/useMultiIPA";
-import {
-  ScrollView,
-  StyleSheet,
-  useWindowDimensions,
-  View,
-} from "react-native";
+import { ScrollView, StyleSheet, useWindowDimensions, View } from "react-native";
 
 export default function MultiIPAScreen() {
   const { results, resultCount, loading } = useMultiIPA();

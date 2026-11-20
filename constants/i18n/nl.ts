@@ -46,9 +46,7 @@ const partOfSpeech: PartOfSpeech = {
   },
 };
 
-const partOfSpeechList = Object.entries(partOfSpeech).map(
-  ([value, { name }]) => ({ name, value })
-);
+const partOfSpeechList = Object.entries(partOfSpeech).map(([value, { name }]) => ({ name, value }));
 
 const table1Data = [
   ["Case", "Noun", "", "Clause Wrapper", ""],
@@ -238,8 +236,7 @@ const strings: UITranslation = {
     numSyllables2: "Aantal lettergrepen in de achternaam",
     numSyllables3: "Aantal lettergrepen in de naam van de ouder",
     nameEnding: "Naam Einde",
-    nameEndingHint:
-      "-'itan voor mannelijk, -'ite voor vrouwelijk, -'itu voor non-binair (niet-canoniek)",
+    nameEndingHint: "-'itan voor mannelijk, -'ite voor vrouwelijk, -'itu voor non-binair (niet-canoniek)",
     nameEndingOptions: [
       { value: "random", name: "willekeurig" },
       { value: "'ite", name: "-'ite" },

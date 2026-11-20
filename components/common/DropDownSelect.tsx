@@ -15,14 +15,7 @@ type DropDownSelectProps<T> = {
 };
 
 export function DropDownSelect<T>(props: DropDownSelectProps<T>) {
-  const {
-    options,
-    value,
-    initiallyOpen,
-    renderOption,
-    keyExtractor,
-    onChange,
-  } = props;
+  const { options, value, initiallyOpen, renderOption, keyExtractor, onChange } = props;
   const [open, setOpen] = useState(initiallyOpen ?? false);
   const { colors } = useTheme();
   const { themeName } = useThemeNameContext();
@@ -49,11 +42,7 @@ export function DropDownSelect<T>(props: DropDownSelectProps<T>) {
         })}
       >
         {value ? renderOption(value) : <View style={{ padding: 16 }} />}
-        <FontAwesome
-          name={open ? "chevron-down" : "chevron-right"}
-          size={24}
-          color={colors.text}
-        />
+        <FontAwesome name={open ? "chevron-down" : "chevron-right"} size={24} color={colors.text} />
       </Pressable>
       {open && (
         <>

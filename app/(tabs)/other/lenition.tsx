@@ -8,12 +8,7 @@ import { useThemeNameContext } from "@/context/ThemeNameContext";
 import { useList } from "@/hooks/useList";
 import { getThemedComponents } from "@/themes";
 import { useEffect } from "react";
-import {
-  ScrollView,
-  StyleSheet,
-  useWindowDimensions,
-  View,
-} from "react-native";
+import { ScrollView, StyleSheet, useWindowDimensions, View } from "react-native";
 
 export default function LenitionScreen() {
   const { width } = useWindowDimensions();
@@ -68,9 +63,7 @@ function LenitionTable() {
       {lenitionData.map(({ key, value }, i) => (
         <View key={`lt_r_${i}`} style={styles.lenitionRow}>
           <Themed.MonoText style={styles.lenitionKey}>{key}</Themed.MonoText>
-          <Themed.MonoText style={styles.lenitionValue}>
-            {value}
-          </Themed.MonoText>
+          <Themed.MonoText style={styles.lenitionValue}>{value}</Themed.MonoText>
         </View>
       ))}
     </Themed.CardView>
@@ -103,13 +96,9 @@ function LenPreList() {
 
   return (
     <View>
-      <Themed.BoldText style={styles.header}>
-        {ui.lenitingPrefixes}
-      </Themed.BoldText>
+      <Themed.BoldText style={styles.header}>{ui.lenitingPrefixes}</Themed.BoldText>
       <Themed.CardView style={{ padding: 16 }}>
-        <Themed.Text style={styles.prefixText}>
-          {lenPrefixes.join(", ")}
-        </Themed.Text>
+        <Themed.Text style={styles.prefixText}>{lenPrefixes.join(", ")}</Themed.Text>
       </Themed.CardView>
     </View>
   );
@@ -130,9 +119,7 @@ function LenAdpList() {
 
   return (
     <View>
-      <Themed.BoldText style={styles.header}>
-        {ui.lenitingAdpositions}
-      </Themed.BoldText>
+      <Themed.BoldText style={styles.header}>{ui.lenitingAdpositions}</Themed.BoldText>
       <ResultCount
         resultCount={results.length}
         visible={!loading && results.length > 0}

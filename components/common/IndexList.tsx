@@ -36,10 +36,7 @@ export function IndexList({ links }: { links: LinkType[] }) {
                 {link.Component ? (
                   <Pressable
                     style={{
-                      backgroundColor:
-                        Current?.href === link.href
-                          ? theme.colors.primary
-                          : undefined,
+                      backgroundColor: Current?.href === link.href ? theme.colors.primary : undefined,
                       borderRadius: 8,
                     }}
                     onPress={() => setCurrent(link)}
@@ -49,10 +46,7 @@ export function IndexList({ links }: { links: LinkType[] }) {
                         <Themed.Text
                           style={{
                             padding: 16,
-                            color:
-                              Current?.href === link.href
-                                ? colorExtension.dark.text
-                                : theme.colors.text,
+                            color: Current?.href === link.href ? colorExtension.dark.text : theme.colors.text,
                           }}
                         >
                           {link.title}
@@ -61,19 +55,12 @@ export function IndexList({ links }: { links: LinkType[] }) {
                     )}
                   </Pressable>
                 ) : (
-                  <Themed.BoldText
-                    style={{ fontSize: 18, paddingVertical: 16 }}
-                  >
-                    {link.title}
-                  </Themed.BoldText>
+                  <Themed.BoldText style={{ fontSize: 18, paddingVertical: 16 }}>{link.title}</Themed.BoldText>
                 )}
                 {link.links?.map((link, j) => (
                   <Pressable
                     style={{
-                      backgroundColor:
-                        Current?.href === link.href
-                          ? theme.colors.primary
-                          : undefined,
+                      backgroundColor: Current?.href === link.href ? theme.colors.primary : undefined,
                       borderRadius: 8,
                     }}
                     key={`oig_sb_${i}_${j}_${link.title}`}
@@ -84,10 +71,7 @@ export function IndexList({ links }: { links: LinkType[] }) {
                         <Themed.Text
                           style={{
                             padding: 16,
-                            color:
-                              Current?.href === link.href
-                                ? colorExtension.dark.text
-                                : theme.colors.text,
+                            color: Current?.href === link.href ? colorExtension.dark.text : theme.colors.text,
                           }}
                         >
                           {link.title}
@@ -107,9 +91,7 @@ export function IndexList({ links }: { links: LinkType[] }) {
               backgroundColor: theme.colors.card,
             }}
           >
-            <Themed.BoldText
-              style={{ fontSize: 20, alignSelf: "center", padding: 16 }}
-            >
+            <Themed.BoldText style={{ fontSize: 20, alignSelf: "center", padding: 16 }}>
               {Current?.title}
             </Themed.BoldText>
           </View>

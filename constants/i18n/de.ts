@@ -40,9 +40,7 @@ const partOfSpeech: PartOfSpeech = {
   },
 };
 
-const partOfSpeechList = Object.entries(partOfSpeech).map(
-  ([value, { name }]) => ({ name, value })
-);
+const partOfSpeechList = Object.entries(partOfSpeech).map(([value, { name }]) => ({ name, value }));
 
 const table1Data = [
   ["Case", "Noun", "", "Clause Wrapper", ""],
@@ -229,8 +227,7 @@ const strings: UITranslation = {
     numSyllables2: "Anzahl der Silben im Familiennamen",
     numSyllables3: "Anzahl der Silben im Elternnamen",
     nameEnding: "Namensendung",
-    nameEndingHint:
-      "-'itan für männlich, -'ite für weiblich, -'itu für nicht-binär (nicht kanonisch)",
+    nameEndingHint: "-'itan für männlich, -'ite für weiblich, -'itu für nicht-binär (nicht kanonisch)",
     nameEndingOptions: [
       { value: "random", name: "zufällig" },
       { value: "'ite", name: "-'ite" },

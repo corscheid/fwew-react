@@ -1,11 +1,9 @@
 const A1Names =
   "Akwey, Ateyo, Eytukan, Eywa, Mo'at, Na'vi, Newey, Neytiri, Ninat, Omatikaya, Otranyu, Rongloa, Silwanin, Tskaha, Tsu'tey";
 
-const A2Names =
-  "Aonung, Kiri, Lo'ak, Neteyam, Ronal, Rotxo, Tonowari, Tuktirey, Tsireya";
+const A2Names = "Aonung, Kiri, Lo'ak, Neteyam, Ronal, Rotxo, Tonowari, Tuktirey, Tsireya";
 
-const Nouns =
-  "'itan, 'ite, atan, au (drum), eyktan, i'en, Iknimaya, mikyun, ontu, seyri, tsaheylu, tsahìk, unil";
+const Nouns = "'itan, 'ite, atan, au (drum), eyktan, i'en, Iknimaya, mikyun, ontu, seyri, tsaheylu, tsahìk, unil";
 
 const Life = "Atokirina', Ikran, Palulukan, Riti, talioang, teylu, Toruk";
 

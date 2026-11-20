@@ -1,18 +1,13 @@
 import { useAsyncStorage } from "@react-native-async-storage/async-storage";
 import { useEffect, useState } from "react";
-import {
-  type ColorSchemeName as DefaultColorSchemeName,
-  useColorScheme as useDefaultColorScheme,
-} from "react-native";
+import { useColorScheme as useDefaultColorScheme } from "react-native";
 
 export type ColorSchemeName = "light" | "dark" | "auto";
 
 export function useColorScheme() {
-  const deviceColorScheme: DefaultColorSchemeName = useDefaultColorScheme();
-  const [colorSchemeName, setColorSchemeName] =
-    useState<ColorSchemeName>("auto");
-  const [colorSchemeValue, setColorSchemeValue] =
-    useState<DefaultColorSchemeName>(deviceColorScheme);
+  const deviceColorScheme = useDefaultColorScheme();
+  const [colorSchemeName, setColorSchemeName] = useState<ColorSchemeName>("auto");
+  const [colorSchemeValue, setColorSchemeValue] = useState(deviceColorScheme);
   const [isLoaded, setIsLoaded] = useState(false);
   const { getItem, setItem } = useAsyncStorage("fw_colorscheme");
 

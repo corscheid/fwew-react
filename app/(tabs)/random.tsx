@@ -9,18 +9,11 @@ import { useRandom } from "@/hooks/useRandom";
 import { NumericString } from "@/types/common";
 import { useTheme } from "expo-router/react-navigation";
 import { useCallback, useEffect, useState } from "react";
-import {
-  RefreshControl,
-  ScrollView,
-  StyleSheet,
-  useWindowDimensions,
-  View,
-} from "react-native";
+import { RefreshControl, ScrollView, StyleSheet, useWindowDimensions, View } from "react-native";
 
 export default function RandomScreen() {
   const [numWords, setNumWords] = useState<NumericString>("8");
-  const { filters, filterExpression, incomplete, add, remove, update } =
-    useFilterExpression();
+  const { filters, filterExpression, incomplete, add, remove, update } = useFilterExpression();
   const { loading, results, execute, cancel } = useRandom();
   const debounce = useDebounce();
   const theme = useTheme();
@@ -40,8 +33,7 @@ export default function RandomScreen() {
     setNumWords(num);
   }, []);
 
-  const getData = () =>
-    debounce(async () => await execute(numWords, filterExpression));
+  const getData = () => debounce(async () => await execute(numWords, filterExpression));
 
   useEffect(() => {
     getData();
@@ -65,27 +57,12 @@ export default function RandomScreen() {
               initiallyOpen
             />
             <View style={{ paddingTop: 16 }}>
-              <Button
-                icon="refresh"
-                onPress={() => execute(numWords, filterExpression)}
-                disabled={loading}
-              />
+              <Button icon="refresh" onPress={() => execute(numWords, filterExpression)} disabled={loading} />
             </View>
           </>
         }
-        header={
-          <ResultCount
-            visible={resultsVisible}
-            resultCount={results.length}
-            style={styles.bottomPadded}
-          />
-        }
-        main={
-          <ListResults
-            loading={loading}
-            results={resultsVisible ? results : []}
-          />
-        }
+        header={<ResultCount visible={resultsVisible} resultCount={results.length} style={styles.bottomPadded} />}
+        main={<ListResults loading={loading} results={resultsVisible ? results : []} />}
         refresh={{
           loading,
           getData,
@@ -98,13 +75,7 @@ export default function RandomScreen() {
   return (
     <ScrollView
       keyboardShouldPersistTaps="always"
-      refreshControl={
-        <RefreshControl
-          refreshing={loading}
-          onRefresh={getData}
-          colors={[theme.colors.primary]}
-        />
-      }
+      refreshControl={<RefreshControl refreshing={loading} onRefresh={getData} colors={[theme.colors.primary]} />}
     >
       <View style={styles.container}>
         <RandomOptions
@@ -117,17 +88,10 @@ export default function RandomScreen() {
           incomplete={incomplete}
         />
         <View style={{}}>
-          <Button
-            icon="refresh"
-            onPress={() => execute(numWords, filterExpression)}
-            disabled={loading}
-          />
+          <Button icon="refresh" onPress={() => execute(numWords, filterExpression)} disabled={loading} />
         </View>
         <ResultCount visible={resultsVisible} resultCount={results.length} />
-        <ListResults
-          loading={loading}
-          results={resultsVisible ? results : []}
-        />
+        <ListResults loading={loading} results={resultsVisible ? results : []} />
       </View>
     </ScrollView>
   );

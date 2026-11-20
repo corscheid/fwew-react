@@ -6,28 +6,12 @@ import { getUI } from "@/constants/i18n";
 import { useAppLanguageContext } from "@/context/AppLanguageContext";
 import { useDialectContext } from "@/context/DialectContext";
 import { useFwew } from "@/hooks/useFwew";
-import { useTheme } from "expo-router/react-navigation";
 import { router } from "expo-router";
-import {
-  RefreshControl,
-  ScrollView,
-  StyleSheet,
-  useWindowDimensions,
-  View,
-} from "react-native";
+import { useTheme } from "expo-router/react-navigation";
+import { RefreshControl, ScrollView, StyleSheet, useWindowDimensions, View } from "react-native";
 
 export default function SearchScreen() {
-  const {
-    query,
-    naviOnly,
-    results,
-    resultCount,
-    loading,
-    search,
-    setNaviOnly,
-    execute,
-    cancel,
-  } = useFwew();
+  const { query, naviOnly, results, resultCount, loading, search, setNaviOnly, execute, cancel } = useFwew();
   const { colors } = useTheme();
   const { appLanguage } = useAppLanguageContext();
   const { dialect } = useDialectContext();
@@ -38,13 +22,7 @@ export default function SearchScreen() {
   return (
     <ScrollView
       keyboardShouldPersistTaps="always"
-      refreshControl={
-        <RefreshControl
-          refreshing={loading}
-          onRefresh={execute}
-          colors={[colors.primary]}
-        />
-      }
+      refreshControl={<RefreshControl refreshing={loading} onRefresh={execute} colors={[colors.primary]} />}
     >
       <View style={{ alignItems: "center" }}>
         <View style={[styles.container, { width: wide ? "66%" : "100%" }]}>
@@ -58,16 +36,8 @@ export default function SearchScreen() {
             cancel={cancel}
             autoFocus
           />
-          <SwitchInput
-            leftLabel={ui.naviOnly}
-            rightLabel=""
-            value={naviOnly}
-            onValueChange={setNaviOnly}
-          />
-          <ResultCount
-            visible={query.length > 0 && resultCount > 0}
-            resultCount={resultCount}
-          />
+          <SwitchInput leftLabel={ui.naviOnly} rightLabel="" value={naviOnly} onValueChange={setNaviOnly} />
+          <ResultCount visible={query.length > 0 && resultCount > 0} resultCount={resultCount} />
 
           <FwewSearchResults loading={loading} results={results} />
         </View>

@@ -31,10 +31,7 @@ export function ResultInfo({ word }: ResultInfoProps) {
   const colorExtension = getColorExtension(themeName);
   const Themed = getThemedComponents(themeName);
   const forestNavi = word.Navi;
-  const { reefNavi, reefInfixDots, reefInfixSlots } = ReefMe(
-    word.IPA,
-    forestNavi
-  );
+  const { reefNavi, reefInfixDots, reefInfixSlots } = ReefMe(word.IPA, forestNavi);
   const { abbr, name } = ui.common.partOfSpeech[word.PartOfSpeech];
 
   return (
@@ -71,20 +68,10 @@ export function ResultInfo({ word }: ResultInfoProps) {
         <FavoriteButton word={word} />
       </View>
       {/* Prefixes */}
-      {word.Affixes.Prefix && (
-        <AffixDetail
-          label={ui.search.prefixes}
-          value={word.Affixes.Prefix}
-          type="prefix"
-        />
-      )}
+      {word.Affixes.Prefix && <AffixDetail label={ui.search.prefixes} value={word.Affixes.Prefix} type="prefix" />}
       {/* Infixes */}
       {word.PartOfSpeech.startsWith("v") && (
-        <AffixDetail
-          label={ui.search.infixes}
-          value={word.Affixes.Infix}
-          type="infix"
-        >
+        <AffixDetail label={ui.search.infixes} value={word.Affixes.Infix} type="infix">
           <View
             style={{
               flexWrap: "wrap",
@@ -103,9 +90,7 @@ export function ResultInfo({ word }: ResultInfoProps) {
                   }}
                 >
                   {/* Dots */}
-                  <Themed.Text style={styles.value}>
-                    {dialect === "reef" ? reefInfixDots : word.InfixDots}
-                  </Themed.Text>
+                  <Themed.Text style={styles.value}>{dialect === "reef" ? reefInfixDots : word.InfixDots}</Themed.Text>
                   <Themed.Text>/</Themed.Text>
                   {/* Brackets */}
                   <Themed.Text style={styles.value}>
@@ -118,27 +103,11 @@ export function ResultInfo({ word }: ResultInfoProps) {
         </AffixDetail>
       )}
       {/* Suffixes */}
-      {word.Affixes.Suffix && (
-        <AffixDetail
-          label={ui.search.suffixes}
-          value={word.Affixes.Suffix}
-          type="suffix"
-        />
-      )}
+      {word.Affixes.Suffix && <AffixDetail label={ui.search.suffixes} value={word.Affixes.Suffix} type="suffix" />}
       {/* Lenition */}
-      {word.Affixes.Lenition && (
-        <DetailItem
-          label={ui.search.lenition}
-          value={word.Affixes.Lenition.join(", ")}
-        />
-      )}
+      {word.Affixes.Lenition && <DetailItem label={ui.search.lenition} value={word.Affixes.Lenition.join(", ")} />}
       {/* Comment */}
-      {word.Affixes.Comment && (
-        <DetailItem
-          label={ui.search.comment}
-          value={word.Affixes.Comment.join(", ")}
-        />
-      )}
+      {word.Affixes.Comment && <DetailItem label={ui.search.comment} value={word.Affixes.Comment.join(", ")} />}
       {/* Source(s) */}
       <Themed.BoldText style={styles.label}>{ui.search.source}</Themed.BoldText>
       {word.Source.split(" | ").map((src, i) => {
@@ -153,18 +122,9 @@ export function ResultInfo({ word }: ResultInfoProps) {
             }}
           >
             {/* Source Date */}
-            {date && (
-              <Themed.MonoText style={styles.value}>{date}</Themed.MonoText>
-            )}
+            {date && <Themed.MonoText style={styles.value}>{date}</Themed.MonoText>}
             {/* Source Text/Link */}
-            {source && (
-              <Autolink
-                url
-                text={source}
-                style={styles.value}
-                component={Themed.Text}
-              />
-            )}
+            {source && <Autolink url text={source} style={styles.value} component={Themed.Text} />}
           </View>
         );
       })}
@@ -189,9 +149,7 @@ function FavoriteButton({ word }: { word: Word }) {
       text={ui.search.favorite}
       style={{
         ...styles.audioButton,
-        backgroundColor: faved
-          ? theme.colors?.primary
-          : colorExtension[theme.dark ? "dark" : "light"].innerCard,
+        backgroundColor: faved ? theme.colors?.primary : colorExtension[theme.dark ? "dark" : "light"].innerCard,
       }}
       textStyle={{ color: colorExtension.dark.text }}
     />
@@ -224,8 +182,7 @@ function AffixDetail({ label, value, type, children }: AffixDetailProps) {
           return (
             <View key={`rip_a_${i}`} style={styles.wrapRow}>
               <Themed.Text style={styles.value}>
-                <Themed.BoldText>{affix.navi}</Themed.BoldText>{" "}
-                <Themed.ItalicText>{affix.display}</Themed.ItalicText> (
+                <Themed.BoldText>{affix.navi}</Themed.BoldText> <Themed.ItalicText>{affix.display}</Themed.ItalicText> (
                 {affix.productive ? "" : "not "}
                 productive{affix.productive ? ` for ${affix.for}` : ""})
               </Themed.Text>
@@ -257,12 +214,7 @@ function AdpositionDisplay({ adposition }: { adposition: string }) {
 
   const getWord = useCallback(async () => {
     const results = await fwewSimple(adposition);
-    if (
-      !results ||
-      results.length === 0 ||
-      !results[0] ||
-      results[0].length === 0
-    ) {
+    if (!results || results.length === 0 || !results[0] || results[0].length === 0) {
       return;
     }
     const result = results[0][1][languageCode];
@@ -273,11 +225,7 @@ function AdpositionDisplay({ adposition }: { adposition: string }) {
     getWord().then();
   }, [getWord]);
 
-  return (
-    <Themed.ItalicText style={styles.value}>
-      {display ?? adposition}
-    </Themed.ItalicText>
-  );
+  return <Themed.ItalicText style={styles.value}>{display ?? adposition}</Themed.ItalicText>;
 }
 
 type DetailItemProps = {
@@ -291,16 +239,9 @@ function DetailItem({ label, value, link }: DetailItemProps) {
   const Themed = getThemedComponents(themeName);
   return (
     <View>
-      <Themed.BoldText style={[styles.label, { userSelect: "text" }]}>
-        {label}:
-      </Themed.BoldText>
+      <Themed.BoldText style={[styles.label, { userSelect: "text" }]}>{label}:</Themed.BoldText>
       {link ? (
-        <Autolink
-          url
-          text={value}
-          style={styles.value}
-          component={Themed.Text}
-        />
+        <Autolink url text={value} style={styles.value} component={Themed.Text} />
       ) : (
         <Themed.Text style={styles.value}>{value}</Themed.Text>
       )}
@@ -321,23 +262,13 @@ function Pronunciation({ IPA, Stressed, Navi }: PronunciationProps) {
 
   return (
     <View style={{ flexDirection: "row", alignItems: "center", gap: 16 }}>
-      <Themed.Text style={styles.value}>
-        {`[${dialect === "reef" ? reefIPA : forestIPA}]`}
-      </Themed.Text>
+      <Themed.Text style={styles.value}>{`[${dialect === "reef" ? reefIPA : forestIPA}]`}</Themed.Text>
       <Themed.Text>/</Themed.Text>
       <Themed.Text style={styles.value}>
         {dialect === "reef" ? (
-          <Breakdown
-            IPA={reefIPA}
-            Stressed={Stressed}
-            Syllables={reefSyllables}
-          />
+          <Breakdown IPA={reefIPA} Stressed={Stressed} Syllables={reefSyllables} />
         ) : (
-          <Breakdown
-            IPA={IPA}
-            Stressed={Stressed}
-            Syllables={ForestSyllables}
-          />
+          <Breakdown IPA={IPA} Stressed={Stressed} Syllables={ForestSyllables} />
         )}
       </Themed.Text>
     </View>
@@ -388,9 +319,7 @@ function Breakdown({ IPA, Stressed, Syllables }: BreakdownProps) {
       if (stressed[superH] && stressedIndex !== -1) {
         // underlined
         everything.push(
-          <Themed.UnderlinedText key={`srl_${h}${i}`}>
-            {syllables[i].toUpperCase()}
-          </Themed.UnderlinedText>
+          <Themed.UnderlinedText key={`srl_${h}${i}`}>{syllables[i].toUpperCase()}</Themed.UnderlinedText>
         );
       } else {
         // not underlined

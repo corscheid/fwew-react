@@ -35,9 +35,7 @@ export function NumericTextInput(props: NumericTextInputProps) {
         autoFocus={autoFocus}
       />
       <View style={styles.clearButton}>
-        {value && value.length > 0 && (
-          <SmallButton icon="close" onPress={() => onChangeText("")} />
-        )}
+        {value && value.length > 0 && <SmallButton icon="close" onPress={() => onChangeText("")} />}
       </View>
     </Themed.CardView>
   );

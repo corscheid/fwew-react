@@ -3,11 +3,7 @@ import { getUI } from "@/constants/i18n";
 import { useAppLanguageContext } from "@/context/AppLanguageContext";
 import { useDialectContext } from "@/context/DialectContext";
 import { useThemeNameContext } from "@/context/ThemeNameContext";
-import {
-  getColorExtension,
-  getPWAThemeUpdater,
-  getThemedComponents,
-} from "@/themes";
+import { getColorExtension, getPWAThemeUpdater, getThemedComponents } from "@/themes";
 import { useTheme } from "expo-router/react-navigation";
 import { StyleSheet, View } from "react-native";
 import { Accordion } from "../common/Accordion";
@@ -27,12 +23,8 @@ export function DialectSelect() {
     <Accordion
       closedContent={
         <View style={styles.iconContainer}>
-          <View
-            style={[styles.icon, { backgroundColor: theme.colors.primary }]}
-          >
-            <Themed.MonoText
-              style={[styles.value, { color: colorExtension.dark.text }]}
-            >
+          <View style={[styles.icon, { backgroundColor: theme.colors.primary }]}>
+            <Themed.MonoText style={[styles.value, { color: colorExtension.dark.text }]}>
               {DialectDisplay[dialect].abbr}
             </Themed.MonoText>
           </View>
@@ -50,10 +42,7 @@ export function DialectSelect() {
                       style={[
                         styles.value,
                         {
-                          color:
-                            dialect === d.value
-                              ? colorExtension.dark.text
-                              : theme.colors.text,
+                          color: dialect === d.value ? colorExtension.dark.text : theme.colors.text,
                         },
                       ]}
                     >

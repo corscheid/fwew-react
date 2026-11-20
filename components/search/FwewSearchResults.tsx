@@ -33,20 +33,11 @@ export function FwewSearchResults(props: FwewSearchResultsProps) {
               return (
                 <View key={`srl_${i}${j}`}>
                   <Themed.Text style={styles.label}>{word.Navi}</Themed.Text>
-                  {j === result.length - 1 && (
-                    <Themed.Text style={styles.text}>
-                      {common.noResults}
-                    </Themed.Text>
-                  )}
+                  {j === result.length - 1 && <Themed.Text style={styles.text}>{common.noResults}</Themed.Text>}
                 </View>
               );
             }
-            return (
-              <ResultCard
-                key={`sre_${word.ID}_${JSON.stringify(word.Affixes)}`}
-                word={word}
-              />
-            );
+            return <ResultCard key={`sre_${word.ID}_${JSON.stringify(word.Affixes)}`} word={word} />;
           })}
         </View>
       ))}

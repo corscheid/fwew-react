@@ -22,14 +22,9 @@ export function useNameAlu() {
       return;
     }
     setLoading(true);
-    const results = await nameAlu(
-      numNames,
-      numSyllables,
-      nounMode,
-      adjMode,
-      dialect,
-      { signal: abortController.current.signal }
-    );
+    const results = await nameAlu(numNames, numSyllables, nounMode, adjMode, dialect, {
+      signal: abortController.current.signal,
+    });
     setNames(results.trim().split("\n"));
     setLoading(false);
   }, [adjMode, dialect, nounMode, numNames, numSyllables]);

@@ -18,14 +18,7 @@ type SearchBarProps = {
 };
 
 export function SearchBar(props: SearchBarProps) {
-  const {
-    query,
-    search,
-    placeholder,
-    autoFocus = false,
-    execute,
-    cancel,
-  } = props;
+  const { query, search, placeholder, autoFocus = false, execute, cancel } = props;
   const { colorSchemeValue } = useColorSchemeContext();
   const { themeName } = useThemeNameContext();
   const colorExtension = getColorExtension(themeName);
@@ -76,10 +69,7 @@ function SearchBarRight({ showClear, clear }: SearchBarRightProps) {
 
   if (showClear) {
     return (
-      <Pressable
-        style={({ pressed }) => [styles.button, { opacity: pressed ? 0.5 : 1 }]}
-        onPress={clear}
-      >
+      <Pressable style={({ pressed }) => [styles.button, { opacity: pressed ? 0.5 : 1 }]} onPress={clear}>
         <FontAwesome name="close" size={24} color={theme.colors.text} />
       </Pressable>
     );

@@ -2,17 +2,10 @@ import { useThemeNameContext } from "@/context/ThemeNameContext";
 import { useStats } from "@/hooks/useStats";
 import { getThemedComponents } from "@/themes";
 import { useTheme } from "expo-router/react-navigation";
-import {
-  ActivityIndicator,
-  ScrollView,
-  StyleSheet,
-  useWindowDimensions,
-  View,
-} from "react-native";
+import { ActivityIndicator, ScrollView, StyleSheet, useWindowDimensions, View } from "react-native";
 
 export default function StatsScreen() {
-  const { wordCount, phonemeGrid, clusterName, clusterMap, loading } =
-    useStats();
+  const { wordCount, phonemeGrid, clusterName, clusterMap, loading } = useStats();
   const { colors } = useTheme();
   const { width, height } = useWindowDimensions();
   const landscape = width > height;
@@ -45,9 +38,7 @@ export default function StatsScreen() {
         </View>
 
         <View style={{ alignItems: "center" }}>
-          {clusterMap.length > 0 && (
-            <Themed.Text style={styles.header}>{clusterName}</Themed.Text>
-          )}
+          {clusterMap.length > 0 && <Themed.Text style={styles.header}>{clusterName}</Themed.Text>}
           <ClusterTable data={clusterMap} />
         </View>
       </View>

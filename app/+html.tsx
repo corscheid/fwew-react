@@ -22,16 +22,8 @@ export default function Root({ children }: { children: React.ReactNode }) {
         {/* Link the PWA manifest file. */}
         <link rel="manifest" href="/manifest.json" />
         {/* PWA Statusbar / Splash Theme */}
-        <meta
-          name="theme-color"
-          content="#7494ba"
-          media="(prefers-color-scheme: light)"
-        />
-        <meta
-          name="theme-color"
-          content="#3a5575"
-          media="(prefers-color-scheme: dark)"
-        />
+        <meta name="theme-color" content="#7494ba" media="(prefers-color-scheme: light)" />
+        <meta name="theme-color" content="#3a5575" media="(prefers-color-scheme: dark)" />
         {/* 
           Disable body scrolling on web. This makes ScrollView components work closer to how they do on native. 
           However, body scrolling is often nice to have for mobile web. If you want to enable it, remove this line.

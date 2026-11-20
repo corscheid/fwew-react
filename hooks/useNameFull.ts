@@ -26,15 +26,9 @@ export function useNameFull() {
     if (!syllables3) return;
     if (!dialect) return;
     setLoading(true);
-    const names = await nameFull(
-      ending,
-      numNames,
-      syllables1,
-      syllables2,
-      syllables3,
-      dialect,
-      { signal: abortController.current.signal }
-    );
+    const names = await nameFull(ending, numNames, syllables1, syllables2, syllables3, dialect, {
+      signal: abortController.current.signal,
+    });
     setNames(names.trim().split("\n"));
     setLoading(false);
   }, [dialect, ending, numNames, syllables1, syllables2, syllables3]);

@@ -30,9 +30,7 @@ export function ResultCount({ visible, resultCount, style }: ResultCountProps) {
   }
 
   return (
-    <Themed.Text style={[styles.resultCount, style]}>
-      {`${resultCount} ${ui.common.results(resultCount)}`}
-    </Themed.Text>
+    <Themed.Text style={[styles.resultCount, style]}>{`${resultCount} ${ui.common.results(resultCount)}`}</Themed.Text>
   );
 }
 
