@@ -40,7 +40,7 @@ export function FilterExpressionBuilderList(props: FilterExpressionBuilderListPr
         <View key={`feb_${i}`}>
           <View style={[styles.febHeader, { backgroundColor: colors.background }]}>
             <Themed.Text style={styles.label}>{getHeaderText(i)}</Themed.Text>
-            <SmallButton onPress={() => remove(i)} icon="trash" color={colors.notification} />
+            <SmallButton onPress={() => remove(i)} icon="trash" color={colors.notification?.toString()} />
           </View>
           <FilterExpressionBuilder value={filters[i]} onChange={(value) => update(i, value)} />
         </View>

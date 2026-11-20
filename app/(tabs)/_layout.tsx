@@ -7,7 +7,7 @@ import { useDialectContext } from "@/context/DialectContext";
 import { useThemeNameContext } from "@/context/ThemeNameContext";
 import { getColorExtension } from "@/themes";
 import type { FAIconName } from "@/types/icons";
-import FontAwesome from "@expo/vector-icons/FontAwesome";
+import FontAwesome from "@react-native-vector-icons/fontawesome";
 import { Tabs } from "expo-router";
 import { useTheme } from "expo-router/react-navigation";
 
@@ -46,35 +46,35 @@ export default function TabLayout() {
         name="index"
         options={{
           title: screens.search,
-          tabBarIcon: ({ color }) => <TabBarIcon name="search" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="search" color={color?.toString()!} />,
         }}
       />
       <Tabs.Screen
         name="list"
         options={{
           title: screens.list,
-          tabBarIcon: ({ color }) => <TabBarIcon name="list-ol" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="list-ol" color={color?.toString()!} />,
         }}
       />
       <Tabs.Screen
         name="random"
         options={{
           title: screens.random,
-          tabBarIcon: ({ color }) => <TabBarIcon name="random" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="random" color={color?.toString()!} />,
         }}
       />
       <Tabs.Screen
         name="numbers"
         options={{
           title: screens.numbers,
-          tabBarIcon: ({ color }) => <TabBarIcon name="calculator" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="calculator" color={color?.toString()!} />,
         }}
       />
       <Tabs.Screen
         name="other"
         options={{
           title: screens.other,
-          tabBarIcon: ({ color }) => <TabBarIcon name="ellipsis-h" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="ellipsis-h" color={color?.toString()!} />,
         }}
       />
     </Tabs>

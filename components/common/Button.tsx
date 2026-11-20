@@ -2,7 +2,7 @@ import { useColorSchemeContext } from "@/context/ColorSchemeContext";
 import { useThemeNameContext } from "@/context/ThemeNameContext";
 import { getColorExtension, getThemedComponents } from "@/themes";
 import type { FAIconName } from "@/types/icons";
-import { FontAwesome } from "@expo/vector-icons";
+import FontAwesome from "@react-native-vector-icons/fontawesome";
 import { useTheme } from "expo-router/react-navigation";
 import { Pressable, StyleSheet, type TextStyle, type ViewStyle } from "react-native";
 

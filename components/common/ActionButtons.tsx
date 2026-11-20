@@ -6,7 +6,7 @@ import { useResultsLanguageContext } from "@/context/ResultsLanguageContext";
 import { useThemeNameContext } from "@/context/ThemeNameContext";
 import { getColorExtension, getPWAThemeUpdater, getThemedComponents } from "@/themes";
 import type { FAIconName } from "@/types/icons";
-import { FontAwesome } from "@expo/vector-icons";
+import FontAwesome from "@react-native-vector-icons/fontawesome";
 import { Href, useRouter } from "expo-router";
 import { Platform, Pressable, StyleSheet, View } from "react-native";
 

@@ -28,7 +28,7 @@ export function ContextProviders({ children }: { children: React.ReactNode }) {
 
   const isLoaded = colorSchemeLoaded && appLanguageLoaded && resultsLanguageLoaded && dialectLoaded && themeNameLoaded;
 
-  const theme = getTheme(themeName, colorSchemeValue, dialect);
+  const theme = getTheme(themeName, colorSchemeValue ?? "light", dialect);
 
   if (!isLoaded) {
     return null;
