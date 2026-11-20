@@ -3,7 +3,7 @@ import { getUI } from "@/constants/i18n";
 import { ContextProviders } from "@/context/ContextProviders";
 import { useAppLanguage } from "@/hooks/useAppLanguage";
 import { useDialect } from "@/hooks/useDialect";
-import FontAwesome from "@react-native-vector-icons/fontawesome";
+import FontAwesome from "@react-native-vector-icons/fontawesome/static";
 import { useFonts } from "expo-font";
 import { SplashScreen, Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";

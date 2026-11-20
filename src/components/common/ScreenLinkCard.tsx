@@ -1,7 +1,7 @@
 import { useColorSchemeContext } from "@/context/ColorSchemeContext";
 import { useThemeNameContext } from "@/context/ThemeNameContext";
 import { getColorExtension, getThemedComponents } from "@/themes";
-import FontAwesome from "@react-native-vector-icons/fontawesome";
+import FontAwesome from "@react-native-vector-icons/fontawesome/static";
 import { Href, useRouter } from "expo-router";
 import { Pressable, StyleSheet } from "react-native";
 

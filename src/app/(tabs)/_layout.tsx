@@ -7,7 +7,7 @@ import { useDialectContext } from "@/context/DialectContext";
 import { useThemeNameContext } from "@/context/ThemeNameContext";
 import { getColorExtension } from "@/themes";
 import type { FAIconName } from "@/types/icons";
-import FontAwesome from "@react-native-vector-icons/fontawesome";
+import FontAwesome from "@react-native-vector-icons/fontawesome/static";
 import { Tabs } from "expo-router";
 import { useTheme } from "expo-router/react-navigation";
 

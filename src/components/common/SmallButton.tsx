@@ -1,5 +1,5 @@
 import type { FAIconName } from "@/types/icons";
-import FontAwesome from "@react-native-vector-icons/fontawesome";
+import FontAwesome from "@react-native-vector-icons/fontawesome/static";
 import { useTheme } from "expo-router/react-navigation";
 import { Pressable, StyleSheet } from "react-native";
 

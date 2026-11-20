@@ -1,7 +1,7 @@
 import { getUI } from "@/constants/i18n";
 import { useAppLanguageContext } from "@/context/AppLanguageContext";
 import { useDialectContext } from "@/context/DialectContext";
-import FontAwesome from "@react-native-vector-icons/fontawesome";
+import FontAwesome from "@react-native-vector-icons/fontawesome/static";
 import { Stack, useRouter } from "expo-router";
 import { useTheme } from "expo-router/react-navigation";
 import { Pressable, Text, View } from "react-native";

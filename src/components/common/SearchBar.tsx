@@ -4,7 +4,7 @@ import { useColorSchemeContext } from "@/context/ColorSchemeContext";
 import { useDialectContext } from "@/context/DialectContext";
 import { useThemeNameContext } from "@/context/ThemeNameContext";
 import { getColorExtension, getThemedComponents } from "@/themes";
-import FontAwesome from "@react-native-vector-icons/fontawesome";
+import FontAwesome from "@react-native-vector-icons/fontawesome/static";
 import { useTheme } from "expo-router/react-navigation";
 import { Platform, Pressable, StyleSheet, View } from "react-native";
 
