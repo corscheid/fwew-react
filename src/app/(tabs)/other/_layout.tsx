@@ -8,7 +8,7 @@ import { Pressable, Text, View } from "react-native";
 
 // https://docs.expo.dev/router/reference/faq/#missing-back-button
 export const unstable_settings = {
-  initialRouteName: "index",
+  anchor: "index",
 };
 
 export default function StackLayout() {
