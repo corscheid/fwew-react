@@ -2,7 +2,7 @@
   "expo": {
     "name": "Fwew",
     "slug": "fwew-react",
-    "version": "4.4.0",
+    "version": "4.5.0",
     "orientation": "default",
     "icon": "./src/assets/images/icon.png",
     "scheme": "fwew",
@@ -10,12 +10,12 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "bundleIdentifier": "app.fwew.react",
-      "buildNumber": "4.4.0",
+      "buildNumber": "4.5.0",
       "supportsTablet": true
     },
     "android": {
       "package": "app.fwew.react",
-      "versionCode": 37,
+      "versionCode": 38,
       "permissions": [],
       "blockedPermissions": [
         "android.permission.RECORD_AUDIO",
