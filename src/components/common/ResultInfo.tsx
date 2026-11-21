@@ -22,7 +22,6 @@ type ResultInfoProps = {
 };
 
 export function ResultInfo({ word }: ResultInfoProps) {
-  const { playSound, disabled } = useSound(word.ID);
   const { resultsLanguage } = useResultsLanguageContext();
   const local = word[resultsLanguage.toUpperCase() as Uppercase<LanguageCode>];
   const { dialect } = useDialectContext();
@@ -32,6 +31,7 @@ export function ResultInfo({ word }: ResultInfoProps) {
   const Themed = getThemedComponents(themeName);
   const forestNavi = word.Navi;
   const { reefNavi, reefInfixDots, reefInfixSlots } = ReefMe(word.IPA, forestNavi);
+  const { playSound, disabled } = useSound(dialect, word.ID, reefNavi === forestNavi);
   const { abbr, name } = ui.common.partOfSpeech[word.PartOfSpeech];
 
   return (
@@ -58,7 +58,7 @@ export function ResultInfo({ word }: ResultInfoProps) {
         {/* Audio Button */}
         <Button
           onPress={playSound}
-          disabled={disabled || (dialect === "reef" && forestNavi !== reefNavi)}
+          disabled={disabled}
           icon="volume-up"
           text={ui.search.audio}
           style={styles.audioButton}
@@ -112,7 +112,9 @@ export function ResultInfo({ word }: ResultInfoProps) {
       <Themed.BoldText style={styles.label}>{ui.search.source}</Themed.BoldText>
       {word.Source.split(" | ").map((src, i) => {
         let [source, date] = src.split("(");
-        date = date ? date.replace(")", "") : "";
+        if (date) {
+          date = date.replace(")", "");
+        }
         return (
           <View
             key={`src_${word.ID}_${i}`}

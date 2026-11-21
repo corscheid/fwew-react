@@ -22,7 +22,7 @@ build-prod-remote:
 	eas build -p android -e production
 
 build-web:
-	pnpm run build
+	pnpm build
 
 run:
 	pnpm start
