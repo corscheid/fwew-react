@@ -1,5 +1,5 @@
 import { useAsyncStorage } from "@react-native-async-storage/async-storage";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useColorScheme as useDefaultColorScheme } from "react-native";
 
 export type ColorSchemeName = "light" | "dark" | "auto";
@@ -7,7 +7,6 @@ export type ColorSchemeName = "light" | "dark" | "auto";
 export function useColorScheme() {
   const deviceColorScheme = useDefaultColorScheme();
   const [colorSchemeName, setColorSchemeName] = useState<ColorSchemeName>("auto");
-  const [colorSchemeValue, setColorSchemeValue] = useState(deviceColorScheme);
   const [isLoaded, setIsLoaded] = useState(false);
   const { getItem, setItem } = useAsyncStorage("fw_colorscheme");
 
@@ -40,13 +39,12 @@ export function useColorScheme() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
-    if (!isLoaded) return;
+  const colorSchemeValue = useMemo(() => {
+    if (!isLoaded) return deviceColorScheme;
     if (colorSchemeName === "auto") {
-      setColorSchemeValue(deviceColorScheme);
-    } else {
-      setColorSchemeValue(colorSchemeName);
+      return deviceColorScheme;
     }
+    return colorSchemeName;
   }, [deviceColorScheme, colorSchemeName, isLoaded]);
 
   return {

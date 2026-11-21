@@ -1,26 +1,12 @@
 import { useAsyncStorage } from "@react-native-async-storage/async-storage";
 import type { Word } from "fwew.js";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 export function useFavorites() {
   const [favorites, setFavorites] = useState<Word[]>([]);
   const { getItem, setItem } = useAsyncStorage("savedWords");
 
   const isFavorite = (word: Word) => favorites.some((w) => w.ID === word.ID);
-
-  const getFavorites = useCallback(async () => {
-    try {
-      const value = await getItem();
-      if (!value) return;
-      const savedWordsArr: Word[] = JSON.parse(value);
-      if (savedWordsArr == null) return;
-      setFavorites(savedWordsArr);
-    } catch (error) {
-      console.error(error);
-      return;
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   async function addFavorite(word: Word) {
     try {
@@ -66,9 +52,22 @@ export function useFavorites() {
   }
 
   useEffect(() => {
-    void getFavorites();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    let cancelled = false;
+    getItem()
+      .then((value) => {
+        if (cancelled) return;
+        if (!value) return;
+        const savedWordsArr: Word[] = JSON.parse(value);
+        if (savedWordsArr == null) return;
+        setFavorites(savedWordsArr);
+      })
+      .catch((error) => {
+        if (!cancelled) console.error(error);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [getItem]);
 
   return {
     favorites,

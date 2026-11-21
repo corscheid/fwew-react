@@ -14,8 +14,6 @@ export function NameResults({ names, copyName }: NameResultsProps) {
   const { themeName } = useThemeNameContext();
   const Themed = getThemedComponents(themeName);
 
-  const iconColor = theme.colors.text === null ? undefined : theme.colors.text;
-
   return (
     <View style={styles.results}>
       {names.map((name, i) => (

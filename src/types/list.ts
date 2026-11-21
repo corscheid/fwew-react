@@ -4,19 +4,9 @@ export type FilterExpressionBuilderValue = {
   spec: string;
 };
 
-export type WhatValue =
-  "pos" | "word" | "words" | "syllables" | "stress" | "length";
+export type WhatValue = "pos" | "word" | "words" | "syllables" | "stress" | "length";
 export type CondValueString =
-  | "starts"
-  | "ends"
-  | "is"
-  | "has"
-  | "like"
-  | "not-starts"
-  | "not-ends"
-  | "not-is"
-  | "not-has"
-  | "not-like";
+  "starts" | "ends" | "is" | "has" | "like" | "not-starts" | "not-ends" | "not-is" | "not-has" | "not-like";
 export type CondValueNumber = "<" | "<=" | "=" | ">=" | ">" | "!=";
 export type CondValueWords = "first" | "last";
 

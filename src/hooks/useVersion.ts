@@ -10,13 +10,14 @@ export function useVersion() {
   const CommitHash = process.env.EXPO_PUBLIC_GIT_COMMIT_HASH;
   const Branch = process.env.EXPO_PUBLIC_GIT_BRANCH;
 
-  const getVersion = async () => {
-    const data = await fwewVersion();
-    setVersion(data);
-  };
-
   useEffect(() => {
-    void getVersion();
+    let cancelled = false;
+    fwewVersion().then((data) => {
+      if (!cancelled) setVersion(data);
+    });
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   return {

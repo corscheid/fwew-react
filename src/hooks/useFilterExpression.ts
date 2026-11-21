@@ -2,7 +2,7 @@ import { getUI } from "@/constants/i18n";
 import { useAppLanguageContext } from "@/context/AppLanguageContext";
 import { useDialectContext } from "@/context/DialectContext";
 import { FilterExpressionBuilderValue } from "@/types/list";
-import { useEffect, useState } from "react";
+import { useMemo, useState } from "react";
 
 export function useFilterExpression() {
   const [filters, setFilters] = useState<FilterExpressionBuilderValue[]>([{ spec: "" }]);
@@ -11,14 +11,34 @@ export function useFilterExpression() {
   const { dialect } = useDialectContext();
   const ui = getUI(appLanguage, dialect);
 
-  const filterExpression = filters
+  const filtersWithDescriptions = useMemo(
+    () =>
+      filters.map((e) => {
+        return {
+          what: e.what && {
+            value: e.what.value,
+            description: ui.list.listMenu.whatValues.filter((w) => w.value === e.what?.value)[0]?.description,
+          },
+          cond: e.cond && {
+            value: e.cond.value,
+            description:
+              e.what &&
+              ui.list.listMenu.condValues[e.what.value].filter((c) => c.value === e.cond?.value)[0]?.description,
+          },
+          spec: e.spec,
+        } as FilterExpressionBuilderValue;
+      }),
+    [filters, ui.list.listMenu.condValues, ui.list.listMenu.whatValues]
+  );
+
+  const filterExpression = filtersWithDescriptions
     .map((f) => `${f.what?.value ?? ""} ${f.cond?.value ?? ""} ${f.spec}`.trim().replace(/ +/g, " "))
     .join(" and ")
     .trim();
 
   const incomplete =
     filterExpression.trim().endsWith("and") ||
-    filters.filter((fe) => (fe.what || fe.cond) && !fe.spec.trim()).length > 0;
+    filtersWithDescriptions.filter((fe) => (fe.what || fe.cond) && !fe.spec.trim()).length > 0;
 
   const add = () => {
     setFilters([...filters, { spec: "" }]);
@@ -35,26 +55,6 @@ export function useFilterExpression() {
     newExpressions[index] = expression;
     setFilters(newExpressions);
   };
-
-  useEffect(() => {
-    setFilters((prev) => {
-      return prev.map((e) => {
-        return {
-          what: e.what && {
-            value: e.what.value,
-            description: ui.list.listMenu.whatValues.filter((w) => w.value === e.what?.value)[0]?.description,
-          },
-          cond: e.cond && {
-            value: e.cond.value,
-            description:
-              e.what &&
-              ui.list.listMenu.condValues[e.what.value].filter((c) => c.value === e.cond?.value)[0]?.description,
-          },
-          spec: e.spec,
-        } as FilterExpressionBuilderValue;
-      });
-    });
-  }, [appLanguage, ui.list.listMenu.condValues, ui.list.listMenu.whatValues]);
 
   return {
     filters,

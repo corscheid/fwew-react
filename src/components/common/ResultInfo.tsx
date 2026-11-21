@@ -13,7 +13,7 @@ import { Romanize } from "@/lib/romanize";
 import { getColorExtension, getThemedComponents } from "@/themes";
 import { useTheme } from "expo-router/react-navigation";
 import { fwewSimple, type LanguageCode, type Word } from "fwew.js";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet, View } from "react-native";
 import Autolink from "react-native-autolink";
 
@@ -167,11 +167,8 @@ function AffixDetail({ label, value, type, children }: AffixDetailProps) {
   const { themeName } = useThemeNameContext();
   const Themed = getThemedComponents(themeName);
 
-  if (value == null) {
-    value = [];
-  }
-
-  const affixes = value.map((v) => Affixes[type][v]);
+  const affixValue = value ?? [];
+  const affixes = affixValue.map((v) => Affixes[type][v]);
 
   return (
     <View style={{ gap: 16 }}>
@@ -193,10 +190,10 @@ function AffixDetail({ label, value, type, children }: AffixDetailProps) {
           <View key={`rip_a_${i}`} style={styles.wrapRow}>
             <Themed.Text style={styles.value}>
               <Themed.BoldText>
-                -{value[i]}
-                {LenitingAdpositions.includes(value[i]) ? "+" : ""}
+                -{affixValue[i]}
+                {LenitingAdpositions.includes(affixValue[i]) ? "+" : ""}
               </Themed.BoldText>{" "}
-              <AdpositionDisplay adposition={value[i]} /> (productive for nouns)
+              <AdpositionDisplay adposition={affixValue[i]} /> (productive for nouns)
             </Themed.Text>
           </View>
         );
@@ -208,22 +205,24 @@ function AffixDetail({ label, value, type, children }: AffixDetailProps) {
 function AdpositionDisplay({ adposition }: { adposition: string }) {
   const { resultsLanguage } = useResultsLanguageContext();
   const languageCode = resultsLanguage.toUpperCase() as Uppercase<LanguageCode>;
-  const [display, setDisplay] = useState<string>();
   const { themeName } = useThemeNameContext();
   const Themed = getThemedComponents(themeName);
-
-  const getWord = useCallback(async () => {
-    const results = await fwewSimple(adposition);
-    if (!results || results.length === 0 || !results[0] || results[0].length === 0) {
-      return;
-    }
-    const result = results[0][1][languageCode];
-    setDisplay(result);
-  }, [adposition, languageCode]);
+  const [display, setDisplay] = useState<string>();
 
   useEffect(() => {
-    getWord().then();
-  }, [getWord]);
+    let cancelled = false;
+    fwewSimple(adposition).then((results) => {
+      if (cancelled) return;
+      if (!results || results.length === 0 || !results[0] || results[0].length === 0) {
+        return;
+      }
+      const result = results[0][1][languageCode];
+      setDisplay(result);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [adposition, languageCode]);
 
   return <Themed.ItalicText style={styles.value}>{display ?? adposition}</Themed.ItalicText>;
 }
